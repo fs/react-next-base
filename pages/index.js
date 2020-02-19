@@ -2,7 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 
-const Home = () => (
+const Home = () => {
+  console.log(process.env.API_URL);
+  return (
   <div>
     <Head>
       <title>Home</title>
@@ -83,6 +85,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+)}
 
 export default Home
