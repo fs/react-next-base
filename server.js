@@ -4,6 +4,7 @@ dotenv.config();
 const next = require('next');
 const routes = require('./routes');
 const express = require('express');
+const secure = require('express-force-https');
 
 const dev = process.env.NODE_ENV !== 'production';
 // Create the Express-Next App
@@ -15,6 +16,7 @@ app
   // Start Express server and serve the
   .then(() => {
     express()
+      .use(secure)
       .use(handle)
       .listen(3000);
   })
