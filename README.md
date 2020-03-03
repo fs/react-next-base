@@ -48,3 +48,11 @@ Run `yarn dev` for a dev server. Navigate to `http://localhost:3000/` or `lvh.me
 #
 
 ### Deploy
+
+### Credits
+
+React Next Base is maintained by [Flatstack](http://www.flatstack.com) with the help of our
+[contributors](http://github.com/fs/react-next-base/contributors).
+
+[<img src="http://www.flatstack.com/logo.svg" width="100"/>](http://www.flatstack.com)
+
