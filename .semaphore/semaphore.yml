@@ -1,0 +1,52 @@
+version: v1.0
+name: React Next Base
+
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+execution_time_limit:
+  minutes: 10
+
+auto_cancel:
+  running:
+    when: 'true'
+
+global_job_config:
+  prologue:
+    commands:
+      - checkout
+      - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+      - nvm use
+
+blocks:
+  - name: Setup
+    dependencies: []
+    task:
+      jobs:
+        - name: yarn install and cache
+          commands:
+            - yarn
+            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
+  - name: Lint
+    dependencies: ['Setup']
+    task:
+      jobs:
+        - name: yarn run lint
+          commands:
+            - yarn run lint
+  - name: CSS Lint
+    dependencies: ['Setup']
+    task:
+      jobs:
+        - name: yarn run lint:css
+          commands:
+            - yarn run lint:css
+  - name: Tests
+    dependencies: ['Setup']
+    task:
+      jobs:
+        - name: yarn test
+          commands:
+            - yarn run test:ci
