@@ -1,20 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
+import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
   font-size: 2rem;
 `;
 
 const Home = () => (
-  <Wrapper>
+  <DefaultTemplate>
     <Title>Welcome to React Next Base</Title>
-  </Wrapper>
+  </DefaultTemplate>
 );
 
 export default Home;
