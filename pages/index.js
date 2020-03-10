@@ -4,6 +4,7 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
   font-size: 2rem;
+  text-align: center;
 `;
 
 const Home = () => (
