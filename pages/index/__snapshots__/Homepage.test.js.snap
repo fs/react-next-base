@@ -1,117 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Homepage should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.c1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
 <div>
   <div
-    class="jsx-3170664004"
+    class="c0"
   >
-    <nav
-      class="jsx-647568123"
+    <h1
+      class="c1"
     >
-      <ul
-        class="jsx-647568123"
-      >
-        <li
-          class="jsx-647568123"
-        >
-          <a
-            class="jsx-647568123"
-            href="/"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          class="jsx-647568123"
-        >
-          <a
-            class="jsx-647568123"
-            href="https://zeit.co/now"
-          >
-            ZEIT
-          </a>
-        </li>
-        <li
-          class="jsx-647568123"
-        >
-          <a
-            class="jsx-647568123"
-            href="https://github.com/zeit/next.js"
-          >
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div
-      class="jsx-3170664004 hero"
-    >
-      <h1
-        class="jsx-3170664004 title"
-      >
-        Welcome to Next.js!
-      </h1>
-      <p
-        class="jsx-3170664004 description"
-      >
-        To get started, edit 
-        <code
-          class="jsx-3170664004"
-        >
-          pages/index.js
-        </code>
-         and save to reload.
-      </p>
-      <div
-        class="jsx-3170664004 row"
-      >
-        <a
-          class="jsx-3170664004 card"
-          href="https://nextjs.org/docs"
-        >
-          <h3
-            class="jsx-3170664004"
-          >
-            Documentation →
-          </h3>
-          <p
-            class="jsx-3170664004"
-          >
-            Learn more about Next.js in the documentation.
-          </p>
-        </a>
-        <a
-          class="jsx-3170664004 card"
-          href="https://nextjs.org/learn"
-        >
-          <h3
-            class="jsx-3170664004"
-          >
-            Next.js Learn →
-          </h3>
-          <p
-            class="jsx-3170664004"
-          >
-            Learn about Next.js by following an interactive tutorial!
-          </p>
-        </a>
-        <a
-          class="jsx-3170664004 card"
-          href="https://github.com/zeit/next.js/tree/master/examples"
-        >
-          <h3
-            class="jsx-3170664004"
-          >
-            Examples →
-          </h3>
-          <p
-            class="jsx-3170664004"
-          >
-            Find other example boilerplates on the Next.js GitHub.
-          </p>
-        </a>
-      </div>
-    </div>
+      Welcome to React Next Base
+    </h1>
   </div>
 </div>
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
+import renderWithTheme from '__tests__/helpers/renderWithTheme';
 
 import Homepage from '.';
 
@@ -15,7 +16,7 @@ describe('Homepage', () => {
     // Arrange
 
     // Act
-    const { container } = render(<Homepage />);
+    const { container } = render(renderWithTheme(<Homepage />));
 
     // Assert
     expect(container).toMatchSnapshot();
