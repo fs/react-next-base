@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, wait } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
 
 import Homepage from '.';
