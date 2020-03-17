@@ -3,7 +3,13 @@ const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolv
 const webpack = require('webpack');
 
 const nextConfig = {
-  webpack: config => {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+      };
+    }
+
     config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
     return config;
   },
