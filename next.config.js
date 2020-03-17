@@ -1,6 +1,7 @@
-const path = require('path');
-const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolve(process.cwd(), '.env.example') });
+const dotenv = require('dotenv');
 const webpack = require('webpack');
+
+dotenv.config();
 
 const nextConfig = {
   webpack: config => {
@@ -9,8 +10,10 @@ const nextConfig = {
       fs: 'empty',
     };
 
-    config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
     return config;
+  },
+  env: {
+    API_URL: process.env.API_URL,
   },
 };
 
