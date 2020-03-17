@@ -1,15 +1,14 @@
 const path = require('path');
-const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolve(process.cwd(), '.env.example') });
+const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolve(process.cwd(), '.env') });
 const webpack = require('webpack');
 
-const nextConfig = {
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      };
-    }
+// fix: prevents error when .css files are required by node
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = file => {};
+}
 
+const nextConfig = {
+  webpack: config => {
     config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
     return config;
   },
