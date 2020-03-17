@@ -3,7 +3,7 @@ const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolv
 const webpack = require('webpack');
 
 const nextConfig = {
-  webpack(config) {
+  webpack: config => {
     config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
     return config;
   },
