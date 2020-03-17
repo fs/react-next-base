@@ -1,17 +1,25 @@
-const path = require('path');
-const { parsed: localExampleEnv } = require('dotenv').config({ path: path.resolve(process.cwd(), '.env') });
 const webpack = require('webpack');
+// Initialize doteenv library
+require('dotenv').config();
 
-// fix: prevents error when .css files are required by node
-if (typeof require !== 'undefined') {
-  require.extensions['.css'] = file => {};
-}
-
-const nextConfig = {
+module.exports = {
   webpack: config => {
-    config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty',
+    };
+    /**
+     * Returns environment variables as an object
+     */
+    const env = Object.keys(process.env).reduce((acc, curr) => {
+      acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
+      return acc;
+    }, {});
+
+    /** Allows you to create global constants which can be configured
+     * at compile time, which in our case is our environment variables
+     */
+    config.plugins.push(new webpack.DefinePlugin(env));
     return config;
   },
 };
-
-module.exports = nextConfig;
