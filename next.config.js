@@ -4,6 +4,11 @@ const webpack = require('webpack');
 
 const nextConfig = {
   webpack: config => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty',
+    };
+
     config.plugins.push(new webpack.EnvironmentPlugin(Object.keys(localExampleEnv)));
     return config;
   },
