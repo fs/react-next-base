@@ -3,15 +3,6 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 import { Link } from 'routes';
 import styled from 'styled-components';
 import Router from 'next/router';
-import { rem } from 'polished';
-
-const MapWrapper = styled.div`
-  position: relative;
-  height: ${rem('634px')};
-  max-height: 100vh;
-  margin-bottom: 2.625rem;
-  margin-top: 0.5rem;
-`;
 
 const TitleWrapper = styled.section`
   max-width: 78.75rem;
