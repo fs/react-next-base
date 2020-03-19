@@ -3,7 +3,7 @@ import { cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 
-import Homepage from '.';
+import Homepage from 'pages/index';
 
 describe('Homepage', () => {
   afterEach(() => {
