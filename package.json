@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "heroku-prebuild": "yarn install --production",
     "start": "NODE_ENV=production node server.js -p $PORT",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx pages components",
     "lint:css": "stylelint ./**/*.js",
