@@ -4,9 +4,11 @@
   },
   "extends": [
     "airbnb",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "globals": {
     "document": true,
     "localStorage": true,
@@ -15,11 +17,15 @@
     "fetch": true
   },
   "plugins": [
+    "@typescript-eslint/eslint-plugin",
     "prettier",
     "react-hooks"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
+    ],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": 0,
@@ -39,12 +45,25 @@
     "max-len": 0,
     "camelcase": "off",
     "no-unused-expressions": "warn",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "import/extensions": [
+      "error",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["./"]
+        "paths": ["./"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }
