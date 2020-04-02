@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withApolloClient } from 'lib/withApolloClient';
-
+import useProfileData from './useProfileData';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
@@ -9,12 +9,15 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Home = () => {
+const Login = () => {
+  //const { data, error, loading } = useProfileData();
+
+  //console.log(data, error, loading)
   return (
     <DefaultTemplate>
-      <Title>Welcome to React Next Base</Title>
+      <Title>login</Title>
     </DefaultTemplate>
   );
 };
 
-export default withApolloClient(Home);
+export default withApolloClient(Login);
