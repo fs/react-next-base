@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import ResetStyles from './reset';
 
 const GlobalStyle = createGlobalStyle`
+
+  ${ResetStyles}
+
   html,
   body {
     height: 100%;
