@@ -10,7 +10,7 @@ const nextConfig = {
       fs: 'empty',
     };
 
-    // adds polyfills from ./client/polyfills.js to all browsers
+    // add polyfills to all browsers
     const originalEntry = config.entry;
 
     config.entry = async () => {
@@ -29,7 +29,7 @@ const nextConfig = {
     API_URL: process.env.API_URL,
   },
   experimental: {
-    modern: true,
+    modern: true, // split bundles for modern/old browsers (production mode only)
     polyfillsOptimization: true,
   },
 };
