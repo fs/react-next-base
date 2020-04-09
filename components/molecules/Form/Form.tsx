@@ -1,11 +1,10 @@
 import React from 'react';
-import { Formik, Field, Form as FormikForm } from 'formik';
 import mapKeys from 'lodash/mapKeys';
 import mapValues from 'lodash/mapValues';
+import { Formik, Field, Form as FormikForm } from 'formik';
+import { FormFieldType, FormType, OptionType } from '../../../config/types';
 
-// const initialValues = { text: '', text2: 'hello' };
-
-const Form = ({ form }: { form: any }) => {
+const Form = ({ form }: { form: FormType }) => {
   const handleSubmit = (values: any) => {
     console.log(values);
   };
@@ -15,10 +14,32 @@ const Form = ({ form }: { form: any }) => {
     <Formik initialValues={initialValues} onSubmit={values => handleSubmit(values)}>
       {({ values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
         <FormikForm>
-          {fields.map((field: any, i: number) => {
-            return <Field type={field.type} name={field.name} placeholder={field.placeholder} key={field.name + i} />;
+          {fields.map((field: FormFieldType, i: number) => {
+            const { type, name, placeholder, options } = field;
+            const isInput = !(type === 'textarea' || type === 'select');
+            return (
+              <Field
+                type={isInput ? type : null}
+                as={!isInput && type}
+                name={name}
+                id={name}
+                data-testid={`test-${name}`}
+                placeholder={placeholder}
+                key={`${name}${i}`}
+              >
+                {type === 'select' && options
+                  ? options.map((option: OptionType, i: number) => {
+                      const { value, label } = option;
+                      return (
+                        <option value={value} key={`${value}${i}`}>
+                          {label}
+                        </option>
+                      );
+                    })
+                  : null}
+              </Field>
+            );
           })}
-          <button type="submit">Submit</button>
         </FormikForm>
       )}
     </Formik>

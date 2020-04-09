@@ -17,9 +17,23 @@ const form = {
     },
     {
       type: 'textarea',
-      name: 'text3',
+      name: 'textarea',
       placeholder: 'Type here 3',
       initialValue: '3333',
+    },
+    {
+      type: 'select',
+      name: 'select',
+      initialValue: 2,
+      options: [
+        { label: 'chose 1', value: 1 },
+        { label: 'chose 2', value: 2 },
+      ],
+    },
+    {
+      type: 'submit',
+      name: 'submit',
+      initialValue: 'submit it',
     },
   ],
 };
