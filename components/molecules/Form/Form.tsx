@@ -15,13 +15,14 @@ const Form = ({ form }: { form: FormType }) => {
       {({ values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
         <FormikForm>
           {fields.map((field: FormFieldType, i: number) => {
-            const { type, name, placeholder, options } = field;
+            const { type, name, placeholder, options, action } = field;
             const isInput = !(type === 'textarea' || type === 'select');
             return (
               <Field
                 type={isInput ? type : null}
                 as={!isInput && type}
                 name={name}
+                onClick={action}
                 id={name}
                 data-testid={`test-${name}`}
                 placeholder={placeholder}

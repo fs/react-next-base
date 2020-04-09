@@ -1,5 +1,7 @@
 export interface FormFieldType {
+  action?: void;
   initialValue?: string | number | boolean;
+  label?: string;
   name: string;
   options?: OptionType[];
   placeholder?: string | number;

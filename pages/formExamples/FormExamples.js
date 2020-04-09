@@ -31,6 +31,12 @@ const form = {
       ],
     },
     {
+      type: 'button',
+      name: 'button',
+      initialValue: 'check it',
+      action: () => console.log('check it'),
+    },
+    {
       type: 'submit',
       name: 'submit',
       initialValue: 'submit it',
