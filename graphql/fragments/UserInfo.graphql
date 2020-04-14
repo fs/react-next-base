@@ -1,0 +1,6 @@
+fragment UserInfo on User {
+  id
+  email
+  firstName
+  lastName
+}
