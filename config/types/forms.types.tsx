@@ -1,3 +1,5 @@
+import { StringSchema } from 'yup';
+
 export interface FormFieldType {
   action?: void;
   initialValue?: string | number | boolean;
@@ -6,7 +8,7 @@ export interface FormFieldType {
   options?: OptionType[];
   placeholder?: string | number;
   type: string;
-  validationSchema: any;
+  validationSchema: StringSchema;
 }
 
 export interface FormType {

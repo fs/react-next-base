@@ -5,20 +5,12 @@ import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage, Form as FormikForm } from 'formik';
 import { FormFieldType, FormType, OptionType } from '../../../config/types';
 
-const validationRules = Yup.object().shape({
-  email: Yup.string()
-    .email('The email must be valid!!')
-    .required('This field is required'),
-  text2: Yup.string().required('This field is required'),
-  lastName: Yup.string().required('This field is required'),
-  message: Yup.string().required('This field is required'),
-});
-
 const Form = ({ form }: { form: FormType }) => {
   const { fields, action } = form;
-  const initialValues = mapValues(mapKeys(fields, 'name'), 'initialValue');
-  console.log(mapKeys(fields, 'name'));
-  const validationSchema = validationRules;
+  const formByName = mapKeys(fields, 'name');
+  const initialValues = mapValues(formByName, 'initialValue');
+  const validationSchema = Yup.object().shape(mapValues(formByName, 'validationSchema'));
+  // todo custom components to the fields, strict types
   return (
     <Formik initialValues={initialValues} onSubmit={action} validationSchema={validationSchema}>
       {({ values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
