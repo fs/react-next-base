@@ -10,6 +10,7 @@ export interface FormFieldType {
 
 export interface FormType {
   fields: FormFieldType[];
+  action: any;
 }
 
 export interface OptionType {

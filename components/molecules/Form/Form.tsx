@@ -5,13 +5,10 @@ import { Formik, Field, Form as FormikForm } from 'formik';
 import { FormFieldType, FormType, OptionType } from '../../../config/types';
 
 const Form = ({ form }: { form: FormType }) => {
-  const handleSubmit = (values: any) => {
-    console.log(values);
-  };
-  const { fields } = form;
+  const { fields, action } = form;
   const initialValues = mapValues(mapKeys(fields, 'name'), 'initialValue');
   return (
-    <Formik initialValues={initialValues} onSubmit={values => handleSubmit(values)}>
+    <Formik initialValues={initialValues} onSubmit={action}>
       {({ values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
         <FormikForm>
           {fields.map((field: FormFieldType, i: number) => {

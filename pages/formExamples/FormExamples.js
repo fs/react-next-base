@@ -31,6 +31,11 @@ const form = {
       ],
     },
     {
+      type: 'checkbox',
+      name: 'checkbox',
+      initialValue: true,
+    },
+    {
       type: 'button',
       name: 'button',
       initialValue: 'check it',
@@ -42,6 +47,7 @@ const form = {
       initialValue: 'submit it',
     },
   ],
+  action: values => console.log(values),
 };
 
 const FormExamples = () => {
