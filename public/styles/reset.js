@@ -62,19 +62,15 @@ table {
 	border-spacing: 0;
 }
 
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration,
-input[type=search]::-webkit-search-results-button,
-input[type=search]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+input[type=search]::search-cancel-button,
+input[type=search]::search-decoration,
+input[type=search]::search-results-button,
+input[type=search]::search-results-decoration {
+    appearance: none;
 }
 
 input[type=search] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
+    appearance: none;
     box-sizing: content-box;
 }
 
@@ -125,8 +121,7 @@ audio:not([controls]) {
 
 html {
     font-size: 100%; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-    -ms-text-size-adjust: 100%; /* 2 */
+    text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -248,7 +243,7 @@ button,
 html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button; /* 2 */
+    appearance: button; /* 2 */
     cursor: pointer; /* 3 */
     *overflow: visible;  /* 4 */
 }
@@ -284,9 +279,7 @@ input[type="radio"] {
  */
 
 input[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
+    appearance: textfield; /* 1 */
     box-sizing: content-box;
 }
 
@@ -295,9 +288,9 @@ input[type="search"] {
  * on OS X.
  */
 
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
+input[type="search"]::search-cancel-button,
+input[type="search"]::search-decoration {
+    appearance: none;
 }
 
 /**
@@ -335,12 +328,6 @@ input,
 select,
 textarea {
     color: #222;
-}
-
-
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
 }
 
 ::selection {
