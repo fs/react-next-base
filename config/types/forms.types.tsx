@@ -6,6 +6,7 @@ export interface FormFieldType {
   options?: OptionType[];
   placeholder?: string | number;
   type: string;
+  validationSchema: any;
 }
 
 export interface FormType {
