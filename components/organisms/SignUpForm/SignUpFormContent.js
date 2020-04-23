@@ -66,7 +66,7 @@ export const LinksContainer = styled.div`
   }
 `;
 
-const Form = styled.div``;
+const Form = styled.form``;
 
 const SignUpFormContent = ({ onSubmit, error, loading }) => {
   const [login, setLogin] = useState('');
@@ -74,13 +74,15 @@ const SignUpFormContent = ({ onSubmit, error, loading }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+
     onSubmit(login, password);
   };
 
   return (
     <>
       <StyledTitle>Create an account</StyledTitle>
-      <Form onSubmit={handleSubmit} size="big" name="sign-up">
+
+      <Form onSubmit={handleSubmit}>
         <StyledInput
           aria-label="Login"
           name="login"
@@ -101,7 +103,7 @@ const SignUpFormContent = ({ onSubmit, error, loading }) => {
           required
           autoComplete="new-password"
         />
-        <input type="submit"></input>
+        <input type="submit" value="Sign up" />
       </Form>
     </>
   );
