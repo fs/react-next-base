@@ -7,6 +7,7 @@ const form = {
     {
       type: 'text',
       name: 'text',
+      title: 'Name',
       placeholder: 'Type here',
       initialValue: '',
       validationSchema: Yup.string().required('This field is required'),
