@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useEffect } from 'react';
 
-const Input = ({ value, onChange, autoFocus, ...props }) => {
+const Input = ({ value = '', onChange = null, autoFocus = false, ...props }) => {
   const ref = useRef(null);
 
   const handleChange = useCallback(
