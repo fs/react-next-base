@@ -18,6 +18,10 @@ const FormWrapper = styled.div`
     border-radius: 0.3rem;
     border: 1px solid rgb(179, 179, 179);
   }
+  input[type='checkbox'],
+  input[type='radio'] {
+    width: auto;
+  }
   textarea {
     resize: vertical;
   }
@@ -26,11 +30,6 @@ const FormContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-gap: 1rem;
-`;
-const FieldWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 `;
 const Label = styled.label`
   margin-bottom: 0.5rem;
@@ -55,10 +54,10 @@ const Form = ({ form }: { form: FormType }) => {
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
-                const { type, name, placeholder, options, action, title } = field;
+                const { type, name, label, placeholder, options, action, title } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
                 return (
-                  <FieldWrapper key={`${name}${i}`}>
+                  <div key={`${name}${i}`}>
                     {title && <Label htmlFor={name}>{title}</Label>}
                     <Field
                       type={isInput ? type : null}
@@ -80,8 +79,9 @@ const Form = ({ form }: { form: FormType }) => {
                           })
                         : null}
                     </Field>
+                    {label && type === 'checkbox' && <label htmlFor={name}>{label}</label>}
                     <ErrorMessage name={name}>{msg => <ErrorWrapper>{msg}</ErrorWrapper>}</ErrorMessage>
-                  </FieldWrapper>
+                  </div>
                 );
               })}
             </FormContainer>

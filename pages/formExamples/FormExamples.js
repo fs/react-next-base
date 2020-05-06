@@ -15,6 +15,7 @@ const form = {
     {
       type: 'email',
       name: 'email',
+      title: 'E-mail',
       placeholder: 'your email',
       initialValue: '',
       validationSchema: Yup.string()
@@ -45,7 +46,9 @@ const form = {
     {
       type: 'checkbox',
       name: 'checkbox',
+      label: 'check it',
       initialValue: true,
+      validationSchema: Yup.string().matches(true, 'Need to be checked'),
     },
     {
       type: 'button',
