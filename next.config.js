@@ -1,9 +1,11 @@
-const Dotenv = require('dotenv-webpack');
+const dotenv = require('dotenv');
 const webpack = require('webpack');
 const withPlugins = require('next-compose-plugins');
 const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
+
+dotenv.config();
 
 const nextConfig = {
   webpack: config => {
@@ -39,6 +41,7 @@ const nextConfig = {
   },
   env: {
     ASSET_HOST: process.env.ASSET_HOST || '',
+    API_URL: process.env.API_URL,
   },
   experimental: {
     modern: true, // split bundles for modern/old browsers (production mode only)
@@ -46,4 +49,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([[nextImages], [nextFonts], [svgr], [new Dotenv()]], nextConfig);
+module.exports = withPlugins([[nextImages], [nextFonts], [svgr]], nextConfig);

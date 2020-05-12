@@ -1,18 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Homepage should render correctly 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-height: 100vh;
+.c2 {
+  width: 50px;
 }
 
 .c1 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 1rem;
+  z-index: 5;
+}
+
+.c0 {
+  display: grid;
+  grid-template-rows: 80px auto;
+  min-height: 100vh;
+}
+
+.c3 {
+  font-family: 'Montserrat',sans-serif;
   font-size: 2rem;
   text-align: center;
 }
@@ -21,8 +31,24 @@ exports[`Homepage should render correctly 1`] = `
   <div
     class="c0"
   >
-    <h1
+    <header
       class="c1"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="c2"
+          src="/images/logo.png"
+        />
+      </a>
+      <icon-mock
+        classname="Header__Profile-sc-1w2lq3e-1 jCGqTu"
+      />
+    </header>
+    <h1
+      class="c3 capitalize"
     >
       Welcome to React Next Base
     </h1>
