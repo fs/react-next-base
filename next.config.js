@@ -10,6 +10,19 @@ const nextConfig = {
       fs: 'empty',
     };
 
+    // add polyfills to all browsers
+    const originalEntry = config.entry;
+
+    config.entry = async () => {
+      const entries = await originalEntry();
+
+      if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+        entries['main.js'].unshift('./client/polyfills.js');
+      }
+
+      return entries;
+    };
+
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
@@ -20,6 +33,10 @@ const nextConfig = {
   },
   env: {
     API_URL: process.env.API_URL,
+  },
+  experimental: {
+    modern: true, // split bundles for modern/old browsers (production mode only)
+    polyfillsOptimization: true,
   },
 };
 
