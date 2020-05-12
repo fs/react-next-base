@@ -7,10 +7,12 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Home = () => (
-  <DefaultTemplate>
-    <Title>Welcome to React Next Base</Title>
-  </DefaultTemplate>
-);
+const Home = () => {
+  return (
+    <DefaultTemplate>
+      <Title>Welcome to React Next Base</Title>
+    </DefaultTemplate>
+  );
+};
 
 export default Home;

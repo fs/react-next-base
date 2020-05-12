@@ -22,6 +22,19 @@ const nextConfig = {
       },
     });
 
+    // add polyfills to all browsers
+    const originalEntry = config.entry;
+
+    config.entry = async () => {
+      const entries = await originalEntry();
+
+      if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+        entries['main.js'].unshift('./client/polyfills.js');
+      }
+
+      return entries;
+    };
+
     return config;
   },
   env: {
@@ -29,6 +42,10 @@ const nextConfig = {
     ASSET_HOST: process.env.ASSET_HOST || '',
   },
   assetPrefix: process.env.ASSET_HOST || '',
+  experimental: {
+    modern: true, // split bundles for modern/old browsers (production mode only)
+    polyfillsOptimization: true,
+  },
 };
 
 module.exports = withPlugins([[nextCSS], [nextImages], [svgr], [new Dotenv()]], nextConfig);
