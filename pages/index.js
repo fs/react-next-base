@@ -11,7 +11,7 @@ const Title = styled.h1`
 const Home = () => {
   return (
     <DefaultTemplate>
-      <Title className="capitalize">Welcome to React Next Base</Title>
+      <Title className="capitalize">Welcome to React Next Base </Title>
     </DefaultTemplate>
   );
 };
