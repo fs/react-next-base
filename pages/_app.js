@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from 'public/styles/globalStyles';
 import theme from 'public/styles/theme';
+// Custom styles
+import 'public/styles/custom.css';
 
 class MyApp extends App {
   render() {

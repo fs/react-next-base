@@ -1,8 +1,8 @@
 const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 const withPlugins = require('next-compose-plugins');
-const nextCSS = require('@zeit/next-css');
 const nextImages = require('next-images');
+const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
 
 const nextConfig = {
@@ -38,14 +38,12 @@ const nextConfig = {
     return config;
   },
   env: {
-    API_URL: process.env.API_URL,
     ASSET_HOST: process.env.ASSET_HOST || '',
   },
-  assetPrefix: process.env.ASSET_HOST || '',
   experimental: {
     modern: true, // split bundles for modern/old browsers (production mode only)
     polyfillsOptimization: true,
   },
 };
 
-module.exports = withPlugins([[nextCSS], [nextImages], [svgr], [new Dotenv()]], nextConfig);
+module.exports = withPlugins([[nextImages], [nextFonts], [svgr], [new Dotenv()]], nextConfig);
