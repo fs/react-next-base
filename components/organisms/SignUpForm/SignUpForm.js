@@ -4,6 +4,7 @@ import SignUpFormContent from './SignUpFormContent';
 import useSignUp from './useSignUp';
 
 const SignUpForm = ({ onSuccess }) => {
+  // todo remove callbacks from mutation hooks
   const {
     signUp,
     mutationResult: { error, loading },
