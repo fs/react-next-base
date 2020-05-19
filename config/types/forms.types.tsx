@@ -14,7 +14,7 @@ export interface FormFieldType {
 
 export interface FormType {
   fields: FormFieldType[];
-  action: any;
+  submit: any;
 }
 
 export interface OptionType {

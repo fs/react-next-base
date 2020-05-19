@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import mapKeys from 'lodash/mapKeys';
 import mapValues from 'lodash/mapValues';
 import * as Yup from 'yup';
@@ -42,15 +42,15 @@ const ErrorWrapper = styled.div`
 `;
 
 const Form = ({ form }: { form: FormType }) => {
-  const { fields, action } = form;
+  const { fields, submit } = form;
   const formByName = mapKeys(fields, 'name');
   const initialValues = mapValues(formByName, 'initialValue');
   const validationSchema = Yup.object().shape(mapValues(formByName, 'validationSchema'));
   // todo custom components to the fields, strict types
   return (
     <FormWrapper>
-      <Formik initialValues={initialValues} onSubmit={action} validationSchema={validationSchema}>
-        {({ values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
+      <Formik initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
+        {() => (
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
@@ -69,11 +69,11 @@ const Form = ({ form }: { form: FormType }) => {
                       placeholder={placeholder}
                     >
                       {type === 'select' && options
-                        ? options.map((option: OptionType, i: number) => {
-                            const { value, label } = option;
+                        ? options.map((option: OptionType, j: number) => {
+                            const { value, label: optionLabel } = option;
                             return (
-                              <option value={value} key={`${value}${i}`}>
-                                {label}
+                              <option value={value} key={`${value}${j}`}>
+                                {optionLabel}
                               </option>
                             );
                           })

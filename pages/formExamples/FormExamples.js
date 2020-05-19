@@ -1,6 +1,6 @@
 import React from 'react';
-import Form from '../../components/molecules/Form';
 import * as Yup from 'yup';
+import Form from '../../components/molecules/Form';
 
 const form = {
   fields: [
@@ -62,7 +62,7 @@ const form = {
       initialValue: 'submit it',
     },
   ],
-  action: values => console.log(values),
+  submit: values => console.log(values),
 };
 
 const FormExamples = () => {
