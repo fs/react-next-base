@@ -36,7 +36,8 @@
     "graphql-tag": "^2.10.3",
     "https-proxy-agent": "^5.0.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "9.2.1",
+    "core-js": "3",
+    "next": "9.3.5",
     "next-routes": "^1.4.2",
     "next-with-apollo": "^5.0.0",
     "polished": "^3.4.4",
@@ -44,7 +45,8 @@
     "react-dom": "16.12.0",
     "styled-components": "^5.0.1",
     "typescript": "^3.8.3",
-    "universal-cookie": "^4.0.3"
+    "universal-cookie": "^4.0.3",
+    "styled-reset": "^4.1.4"
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.3",
