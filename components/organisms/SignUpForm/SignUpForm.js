@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import SignUpFormContent from './SignUpFormContent';
 import useSignUp from './useSignUp';
