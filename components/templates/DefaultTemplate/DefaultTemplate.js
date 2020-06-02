@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import Header from 'components/organisms/Header';
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-rows: 80px auto;
   min-height: 100vh;
 `;
 

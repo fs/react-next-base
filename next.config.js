@@ -13,16 +13,6 @@ const nextConfig = {
     config.node = {
       fs: 'empty',
     };
-    config.module.rules.push({
-      test: /\.(eot|woff|woff2|ttf|png|jpg|gif)$/,
-      use: {
-        loader: 'url-loader',
-        options: {
-          limit: 100000,
-          name: '[name].[ext]',
-        },
-      },
-    });
 
     // add polyfills to all browsers
     const originalEntry = config.entry;
