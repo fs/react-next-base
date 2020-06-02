@@ -4,7 +4,7 @@ import reset from 'styled-reset';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Montserrat';
-    src: url('public/fonts/Montserrat-Regular.ttf');
+    src: url('/fonts/Montserrat-Regular.ttf');
   }
 
   ${reset}
