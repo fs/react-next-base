@@ -1,8 +1,8 @@
 #import "../fragments/UserInfo.graphql"
 
-mutation SignUp($email: String!, $password: String!) {
-  registerUser(email: $email, password: $password) {
-    user {
+mutation SignUp($email: String!, $password: String!, $firstName: String, $lastName: String) {
+  signUp(email: $email, password: $password, first_name: $firstName, last_name: $lastName) {
+    me {
       ...UserInfo
     }
   }

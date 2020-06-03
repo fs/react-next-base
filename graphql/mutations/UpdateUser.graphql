@@ -1,0 +1,23 @@
+#import "../fragments/UserInfo.graphql"
+
+mutation UpdateUser(
+  $email: String
+  $password: String
+  $firstName: String
+  $lastName: String
+  $currentPassword: String
+  $password: String
+) {
+  updateUser(
+    email: $email
+    password: $password
+    first_name: $firstName
+    last_name: $lastName
+    current_password: $currentPassword
+    password: $password
+  ) {
+    me {
+      ...UserInfo
+    }
+  }
+}
