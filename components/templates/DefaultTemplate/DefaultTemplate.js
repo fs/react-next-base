@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Header from 'components/organisms/Header';
+
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 `;
 
 const DefaultTemplate = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper>
+      <Header />
+      {children}
+    </Wrapper>
+  );
 };
 
 export default DefaultTemplate;
