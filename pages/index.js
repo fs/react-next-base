@@ -5,6 +5,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
+  font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   text-align: center;
 `;
@@ -12,7 +13,7 @@ const Title = styled.h1`
 const Home = () => {
   return (
     <DefaultTemplate>
-      <Title>Welcome to React Next Base</Title>
+      <Title className="capitalize">Welcome to React Next Base</Title>
     </DefaultTemplate>
   );
 };
