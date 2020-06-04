@@ -1,4 +1,4 @@
-#import "../fragments/UserInfo.graphql"
+#import "../fragments/userInfo.graphql"
 
 query CurrentUser {
   me {

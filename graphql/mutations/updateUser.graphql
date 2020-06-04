@@ -1,4 +1,4 @@
-#import "../fragments/UserInfo.graphql"
+#import "../fragments/userInfo.graphql"
 
 mutation UpdateUser(
   $email: String
@@ -11,8 +11,8 @@ mutation UpdateUser(
   updateUser(
     email: $email
     password: $password
-    first_name: $firstName
-    last_name: $lastName
+    firstName: $firstName
+    lastName: $lastName
     current_password: $currentPassword
     password: $password
   ) {

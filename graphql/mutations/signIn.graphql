@@ -1,7 +1,7 @@
-#import "../fragments/UserInfo.graphql"
+#import "../fragments/userInfo.graphql"
 
 mutation SignIn($email: String!, $password: String!) {
-  signIn(email: $email, password: $password) {
+  signin(email: $email, password: $password) {
     me {
       ...UserInfo
     }
