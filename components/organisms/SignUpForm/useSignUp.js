@@ -1,8 +1,8 @@
 import { useMutation } from '@apollo/react-hooks';
-import mutations from 'pages/login/profileMutations';
+import SignUp from 'graphql/mutations/signUp.graphql';
 
 const useSignUp = ({ onSuccess }) => {
-  const [mutation, mutationResult] = useMutation(mutations.SIGNUP);
+  const [mutation, mutationResult] = useMutation(SignUp);
 
   const signUp = async (email, password) => {
     try {
