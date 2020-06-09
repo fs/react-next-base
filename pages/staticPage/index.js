@@ -1,3 +1,3 @@
-import staticPage from './staticPage';
+import StaticPage from './StaticPage';
 
-export default staticPage;
+export default StaticPage;
