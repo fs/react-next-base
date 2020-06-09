@@ -5,6 +5,7 @@ mutation SignUp($email: String!, $password: String!, $firstName: String, $lastNa
     me {
       ...UserInfo
     }
-    token
+    access_token
+    refresh_token
   }
 }
