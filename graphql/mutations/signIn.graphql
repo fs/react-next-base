@@ -5,5 +5,7 @@ mutation SignIn($email: String!, $password: String!) {
     me {
       ...UserInfo
     }
+    accessToken
+    refreshToken
   }
 }
