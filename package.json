@@ -30,6 +30,7 @@
     "@types/yup": "^0.26.36",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.14",
     "apollo-link-context": "^1.0.19",
     "apollo-link-http": "^1.5.16",
     "core-js": "3",
