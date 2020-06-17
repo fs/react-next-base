@@ -1,5 +1,4 @@
 import React from 'react';
-import { withApolloClient } from 'lib/withApolloClient';
 import SignUpForm from 'components/organisms/SignUpForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
@@ -15,4 +14,4 @@ const Login = () => {
   );
 };
 
-export default withApolloClient(Login);
+export default Login;

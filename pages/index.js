@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
@@ -18,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default withApolloClient(Home);
+export default Home;

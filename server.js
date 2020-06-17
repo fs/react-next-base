@@ -32,7 +32,7 @@ const proxy = createProxyMiddleware({
         const { data } = JSON.parse(body.toString());
         const authKey = Object.keys(data).find(key => ['signin', 'signup'].includes(key));
 
-        if (authKey) {
+        if (authKey && data[authKey]) {
           const { refreshToken } = data[authKey];
           const { exp } = parseJWT(refreshToken);
           const expires = new Date(exp * 1000).toUTCString();
