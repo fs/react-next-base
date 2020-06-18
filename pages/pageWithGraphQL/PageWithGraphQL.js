@@ -10,7 +10,7 @@ const PageWithGraphQL = props => {
 
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>Error: {error}</h3>;
-  return <div>{`This is Current User: ${me}`}</div>;
+  return <div>{`This is Current User: ${JSON.stringify(me)}`}</div>;
 };
 
-export default graphql(CurrentUser)(WithAuthSecurity(PageWithGraphQL));
+export default WithAuthSecurity(graphql(CurrentUser)(PageWithGraphQL));

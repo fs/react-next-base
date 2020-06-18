@@ -5,11 +5,14 @@ const next = require('next');
 const express = require('express');
 const secure = require('express-force-https');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const bodyParser = require('body-parser');
+const Cookie = require('universal-cookie');
 
 const routes = require('./routes');
-const { DEV, PORT, API_URL, GRAPHQL_APP_URL, REFRESH_TOKEN_KEY } = require('./config/vars');
+const { DEV, PORT, API_URL, GRAPHQL_APP_URL } = require('./config/vars');
+const { REFRESH_TOKEN_KEY } = require('./config/jwt.json');
 
-const { parseJWT } = require('./lib/auth/tokens');
+const { setRefreshToken } = require('./lib/auth/tokens');
 
 // Create the Express-Next App
 const app = next({ dev: DEV });
@@ -17,7 +20,33 @@ const handle = routes.getRequestHandler(app);
 
 const proxy = createProxyMiddleware({
   target: API_URL,
-  changeOrigin: true,
+  selfHandleResponse: true,
+  onProxyReq: (proxyReq, req, res) => {
+    if (!req.body || !Object.keys(req.body).length) {
+      return;
+    }
+
+    if (req.body.operationName === 'updateToken') {
+      const cookie = new Cookie(req.headers.cookie);
+      const refreshToken = cookie.get(REFRESH_TOKEN_KEY);
+
+      proxyReq.setHeader('Authorization', `Bearer ${refreshToken}`);
+    }
+
+    const contentType = proxyReq.getHeader('Content-Type');
+    const writeBody = bodyData => {
+      proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+      proxyReq.write(bodyData);
+    };
+
+    if (contentType === 'application/json') {
+      writeBody(JSON.stringify(req.body));
+    }
+
+    if (contentType === 'application/x-www-form-urlencoded') {
+      writeBody(querystring.stringify(req.body));
+    }
+  },
   onProxyRes: (proxyRes, req, res) => {
     const bodyChunks = [];
 
@@ -30,14 +59,12 @@ const proxy = createProxyMiddleware({
 
       try {
         const { data } = JSON.parse(body.toString());
-        const authKey = Object.keys(data).find(key => ['signin', 'signup'].includes(key));
+        const authKey = Object.keys(data).find(key => ['signin', 'signup', 'updateToken'].includes(key));
 
         if (authKey && data[authKey]) {
           const { refreshToken } = data[authKey];
-          const { exp } = parseJWT(refreshToken);
-          const expires = new Date(exp * 1000).toUTCString();
 
-          res.setHeader('Set-Cookie', [`${REFRESH_TOKEN_KEY}=${refreshToken}; expires=${expires}; path=/; httpOnly;`]);
+          setRefreshToken({ refreshToken, res });
         }
       } catch (error) {
         console.error(error);
@@ -46,7 +73,6 @@ const proxy = createProxyMiddleware({
       res.end(body);
     });
   },
-  selfHandleResponse: true,
 });
 
 // Start the app
@@ -55,6 +81,7 @@ app
   // Start Express server and serve the
   .then(() => {
     express()
+      .use(bodyParser.json())
       .use(GRAPHQL_APP_URL, proxy)
       .use(secure)
       .use(handle)
