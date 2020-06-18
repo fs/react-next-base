@@ -9,10 +9,14 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const PageContent = styled.div``;
+
 const Home = () => {
   return (
     <DefaultTemplate>
-      <Title className="capitalize">Welcome to React Next Base</Title>
+      <PageContent>
+        <Title className="capitalize">Welcome to React Next Base</Title>
+      </PageContent>
     </DefaultTemplate>
   );
 };
