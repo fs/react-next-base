@@ -4,7 +4,7 @@
 
 #### Screenshots
 
-#### Plan to resolve
+#### Resolve actions
 
 - ...
 
