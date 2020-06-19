@@ -15,4 +15,5 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/__tests__/mocks/styleMock.js',
     '\\.svg': '<rootDir>/__tests__/mocks/svgrMock.js',
   },
+  testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
 };
