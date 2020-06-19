@@ -2,7 +2,7 @@
 
 #### A brief description of the pull request.
 
-[StoryTitle](TrelloLink)
+#### Resolves: #issue_number
 
 #### Screenshots in case of UI changes
 
