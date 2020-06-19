@@ -2,7 +2,7 @@
 
 #### A brief description of the pull request.
 
-[StoryTitle](TrelloLink)
+#### Resolves: #issue_number
 
 #### Screenshots in case of UI changes
 
@@ -21,7 +21,7 @@
 
 #### While reviewing pull-request (especially when it's your pull-request), please make sure that:
 
-- you named PR close to task name
+- you named PR close to issue name and linked that issue
 - you understand what problem is solved by PR and how is it solved
 - new tests are in place, no redundant tests
 - required ENV variables added and described in `.env.example` and added to Heroku
