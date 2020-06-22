@@ -25,7 +25,10 @@ app
       .use(GRAPHQL_APP_URL, graphqlProxyMidlleware)
       .use(secure)
       .use(handle)
-      .listen(PORT);
+      .listen(PORT, err => {
+        if (err) throw err;
+        console.log(`> Ready on http://localhost:${PORT}`);
+      });
   })
   .catch(ex => {
     console.error(ex.stack);

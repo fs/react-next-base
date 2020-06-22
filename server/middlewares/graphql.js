@@ -14,7 +14,9 @@ const graphqlProxyMidlleware = createProxyMiddleware({
       return;
     }
 
-    if (req.body.operationName === 'updateToken') {
+    const { operationName } = req.body;
+
+    if (['updateToken', 'signout'].includes(operationName)) {
       const cookie = new Cookie(req.headers.cookie);
       const refreshToken = cookie.get(REFRESH_TOKEN_KEY);
 
@@ -47,7 +49,7 @@ const graphqlProxyMidlleware = createProxyMiddleware({
 
       try {
         const { data } = JSON.parse(body.toString());
-        const authKey = Object.keys(data).find(key => ['signin', 'signup', 'updateToken'].includes(key));
+        const authKey = Object.keys(data).find(key => ['signin', 'signup', 'signout', 'updateToken'].includes(key));
 
         if (authKey && data[authKey]) {
           const { refreshToken } = data[authKey];
