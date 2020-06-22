@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -7,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
     src: url('/fonts/Montserrat-Regular.ttf');
   }
 
-  ${reset}
   html,
   body {
     height: 100%;
