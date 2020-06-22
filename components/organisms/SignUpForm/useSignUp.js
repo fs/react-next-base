@@ -3,7 +3,7 @@ import SignUp from 'graphql/mutations/signUp.graphql';
 import SignIn from 'graphql/mutations/signIn.graphql';
 
 const useSignUp = ({ onSuccess }) => {
-  const [mutation, mutationResult] = useMutation(SignUp);
+  const [mutation, mutationResult] = useMutation(SignIn);
 
   const signUp = async (email, password) => {
     try {
