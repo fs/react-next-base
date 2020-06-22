@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from '@apollo/react-hoc';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 import WithAuthSecurity from 'lib/auth/WithAuthSecurity';
+import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const PageWithGraphQL = props => {
@@ -18,4 +19,4 @@ const PageWithGraphQL = props => {
   );
 };
 
-export default WithAuthSecurity(graphql(CurrentUser)(PageWithGraphQL));
+export default withApolloClient(WithAuthSecurity(graphql(CurrentUser)(PageWithGraphQL)));

@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useQuery } from '@apollo/react-hooks';
 
 import { Link } from 'routes';
-import { PAGE_WITH_GRAPHQL } from 'config/routes';
-
-import CurrentUser from 'graphql/queries/currentUser.graphql';
+import { PAGE_WITH_GRAPHQL, LOGIN } from 'config/routes';
 
 import Logo from 'components/atoms/Logo';
 
@@ -24,15 +21,22 @@ const Profile = styled.img`
   height: 40px;
 `;
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <HeaderWrapper>
       <Logo />
-      <Link route={PAGE_WITH_GRAPHQL.pattern}>
-        <a>
-          <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
-        </a>
-      </Link>
+      {!user && (
+        <Link route={LOGIN.pattern}>
+          <a>Sign In</a>
+        </Link>
+      )}
+      {!!user && (
+        <Link route={PAGE_WITH_GRAPHQL.pattern}>
+          <a>
+            <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
+          </a>
+        </Link>
+      )}
     </HeaderWrapper>
   );
 };

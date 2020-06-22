@@ -21,7 +21,7 @@ class MyApp extends App {
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyles />
-            <ApolloConsumer>{client => <Component apolloClient={client} {...pageProps} />}</ApolloConsumer>
+            <Component {...pageProps} />
           </>
         </ThemeProvider>
       </>
@@ -29,4 +29,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(MyApp);
+export default MyApp;
