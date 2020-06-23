@@ -1,16 +1,12 @@
 import React from 'react';
 
+import { useSignIn } from 'lib/apollo/hooks/actions';
 import SignUpFormContent from './SignUpFormContent';
-import useSignUp from './useSignUp';
 
 const SignUpForm = () => {
-  // todo remove callbacks from mutation hooks
-  const {
-    signUp,
-    mutationResult: { error, loading },
-  } = useSignUp();
+  const [signIn, { error, loading }] = useSignIn();
 
-  return <SignUpFormContent error={error} loading={loading} onSubmit={signUp} />;
+  return <SignUpFormContent error={error} loading={loading} onSubmit={signIn} />;
 };
 
 export default SignUpForm;

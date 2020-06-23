@@ -1,22 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useQuery } from '@apollo/react-hooks';
-import { withApolloClient } from 'lib/withApolloClient';
 import Header from 'components/organisms/Header';
 
-import CurrentUser from 'graphql/queries/currentUser.graphql';
+import { withApolloClient } from 'lib/withApolloClient';
+import { useCurrentUser } from 'lib/apollo/hooks/state';
 
 const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const DefaultTemplate = ({ apolloClient, children }) => {
-  const { data } = useQuery(CurrentUser, {
-    fetchPolicy: 'cache-only',
-  });
-
-  const user = data?.me;
+const DefaultTemplate = ({ children }) => {
+  const user = useCurrentUser(false);
 
   return (
     <Wrapper>

@@ -69,13 +69,13 @@ export const LinksContainer = styled.div`
 const Form = styled.form``;
 
 const SignUpFormContent = ({ onSubmit, error, loading }) => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit(login, password);
+    onSubmit({ email, password });
   };
 
   return (
@@ -88,8 +88,8 @@ const SignUpFormContent = ({ onSubmit, error, loading }) => {
           name="login"
           type="text"
           placeholder="Email"
-          onChange={setLogin}
-          value={login}
+          onChange={setEmail}
+          value={email}
           required
           autoComplete="new-login"
         />

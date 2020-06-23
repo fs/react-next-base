@@ -3,21 +3,15 @@ import SignUpForm from 'components/organisms/SignUpForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 import { withApolloClient } from 'lib/withApolloClient';
-import { useQuery } from '@apollo/react-hooks';
-
-import CurrentUser from 'graphql/queries/currentUser.graphql';
+import { useCurrentUser } from 'lib/apollo/hooks/state';
 
 const Login = () => {
-  const onSuccess = data => {
-    console.log('success', data);
-  };
-
-  const { data } = useQuery(CurrentUser);
+  const user = useCurrentUser(false);
 
   return (
     <DefaultTemplate>
-      <SignUpForm onSuccess={onSuccess} />
-      {JSON.stringify(data)};
+      <SignUpForm />
+      {JSON.stringify(user)};
     </DefaultTemplate>
   );
 };
