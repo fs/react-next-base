@@ -4,7 +4,7 @@ const Cookie = require('universal-cookie');
 const { API_URL } = require('../../config/vars');
 const { REFRESH_TOKEN_KEY } = require('../../config/jwt.json');
 
-const { setRefreshToken } = require('../../lib/auth/tokens');
+const { setRefreshToken, deleteRefreshToken } = require('../../lib/auth/tokens');
 
 const graphqlProxyMidlleware = createProxyMiddleware({
   target: API_URL,
@@ -51,7 +51,9 @@ const graphqlProxyMidlleware = createProxyMiddleware({
         const { data } = JSON.parse(body.toString());
         const authKey = Object.keys(data).find(key => ['signin', 'signup', 'signout', 'updateToken'].includes(key));
 
-        if (authKey && data[authKey]) {
+        if (authKey === 'signout') {
+          deleteRefreshToken({ res });
+        } else if (authKey && data[authKey]) {
           const { refreshToken } = data[authKey];
 
           setRefreshToken({ refreshToken, res });

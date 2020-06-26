@@ -21,22 +21,34 @@ const Profile = styled.img`
   height: 40px;
 `;
 
-const Header = ({ user }) => {
+const Links = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Header = ({ user, signOut }) => {
   return (
     <HeaderWrapper>
       <Logo />
-      {!user && (
-        <Link route={LOGIN.pattern}>
-          <a>Sign In</a>
-        </Link>
-      )}
-      {!!user && (
-        <Link route={PAGE_WITH_GRAPHQL.pattern}>
-          <a>
-            <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
-          </a>
-        </Link>
-      )}
+      <Links>
+        {!user && (
+          <Link route={LOGIN.pattern}>
+            <a>Sign In</a>
+          </Link>
+        )}
+        {!!user && (
+          <>
+            <Link route={PAGE_WITH_GRAPHQL.pattern}>
+              <a>
+                <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
+              </a>
+            </Link>
+            <button type="button" onClick={signOut}>
+              Sign Out
+            </button>
+          </>
+        )}
+      </Links>
     </HeaderWrapper>
   );
 };
