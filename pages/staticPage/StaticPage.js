@@ -9,7 +9,7 @@ const Title = styled.h1`
 
 const Home = () => (
   <DefaultTemplate>
-    <Title data-cy="static-page-title">Welcome to static page</Title>
+    <Title>Welcome to static page</Title>
     <h1>h1 - This is a main title</h1>
     <h2>h2 - This is a subtitle</h2>
     <h3>h3 - This is a section title</h3>
