@@ -43,18 +43,10 @@ blocks:
         - name: yarn run lint:css
           commands:
             - yarn run lint:css
-  - name: Unit Tests
+  - name: Tests
     dependencies: ['Setup']
     task:
       jobs:
         - name: yarn test
           commands:
-            - yarn run test:ci
-  - name: E2E Tests
-    dependencies: ['Setup']
-    task:
-      jobs:
-        - name: yarn test
-          commands:
-            - yarn dev
             - yarn run test:ci
