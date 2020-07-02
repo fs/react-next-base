@@ -5,7 +5,7 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Login = () => {
   const onSuccess = data => {
-    console.log('success', data);
+    console.log(data);
   };
 
   return (
