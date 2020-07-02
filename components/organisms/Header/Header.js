@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'routes';
 
 import Logo from 'components/atoms/Logo';
 
@@ -19,10 +20,18 @@ const Profile = styled.img`
 `;
 
 const Header = () => {
+  const profile = false;
+
   return (
     <HeaderWrapper>
       <Logo />
-      <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
+      {profile ? (
+        <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
+      ) : (
+        <Link passHref route="signup">
+          <a>Sign Up</a>
+        </Link>
+      )}
     </HeaderWrapper>
   );
 };

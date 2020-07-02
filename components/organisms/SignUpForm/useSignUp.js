@@ -4,9 +4,9 @@ import SignUp from 'graphql/mutations/signUp.graphql';
 const useSignUp = ({ onSuccess }) => {
   const [mutation, mutationResult] = useMutation(SignUp);
 
-  const signUp = async (email, password) => {
+  const signUp = async ({ firstName, lastName, email, password }) => {
     try {
-      const result = await mutation({ variables: { email, password } });
+      const result = await mutation({ variables: { firstName, lastName, email, password } });
       await onSuccess(result);
     } catch (error) {
       console.log(error);
