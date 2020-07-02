@@ -11,7 +11,11 @@
     "lint:css": "stylelint ./**/*.js",
     "test": "jest --watch",
     "test:ci": "jest",
-    "scan": "yarn lint && yarn lint:css && yarn test:ci"
+    "scan": "yarn lint && yarn lint:css && yarn test:ci",
+    "cy": "cypress",
+    "cy:run": "cypress run",
+    "cy:chr": "cypress run --browser chrome",
+    "cy:open": "cypress open"
   },
   "engines": {
     "node": "13.9.0"
@@ -69,6 +73,7 @@
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.7",
+    "cypress": "^4.8.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-import": "^0.13.0",
