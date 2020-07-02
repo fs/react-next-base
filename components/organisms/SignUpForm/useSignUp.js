@@ -5,7 +5,6 @@ const useSignUp = ({ onSuccess }) => {
   const [mutation, mutationResult] = useMutation(SignUp);
 
   const signUp = async ({ firstName, lastName, email, password }) => {
-    console.log(firstName, lastName, email, password);
     try {
       const result = await mutation({ variables: { firstName, lastName, email, password } });
       await onSuccess(result);

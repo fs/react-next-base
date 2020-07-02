@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
@@ -67,12 +67,7 @@ export const LinksContainer = styled.div`
   }
 `;
 
-const FormT = styled.form``;
-
-const SignUpFormContent = ({ onSubmit, error, loading }) => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-
+const SignUpFormContent = ({ onSubmit }) => {
   const form = {
     fields: [
       {
