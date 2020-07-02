@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
+import Form from '../../molecules/Form';
 
 export const StyledTitle = styled.h3`
   max-width: 40.625rem;
@@ -66,45 +67,55 @@ export const LinksContainer = styled.div`
   }
 `;
 
-const Form = styled.form``;
-
-const SignUpFormContent = ({ onSubmit, error, loading }) => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    onSubmit(login, password);
+const SignUpFormContent = ({ onSubmit }) => {
+  const form = {
+    fields: [
+      {
+        type: 'text',
+        name: 'firstName',
+        title: 'First Name',
+        placeholder: 'First Name',
+        initialValue: '',
+        validationSchema: Yup.string().required('This field is required'),
+      },
+      {
+        type: 'text',
+        name: 'lastName',
+        title: 'Last Name',
+        placeholder: 'Last Name',
+        initialValue: '',
+        validationSchema: Yup.string().required('This field is required'),
+      },
+      {
+        type: 'email',
+        name: 'email',
+        title: 'Email',
+        placeholder: 'Email',
+        initialValue: '',
+        validationSchema: Yup.string()
+          .email('The email must be valid!!')
+          .required('This field is required'),
+      },
+      {
+        type: 'password',
+        name: 'password',
+        title: 'Password',
+        placeholder: '',
+      },
+      {
+        type: 'submit',
+        name: 'sign_up',
+        initialValue: 'Sign Up',
+      },
+    ],
+    submit: values => onSubmit(values),
   };
 
   return (
     <>
       <StyledTitle>Create an account</StyledTitle>
 
-      <Form onSubmit={handleSubmit}>
-        <StyledInput
-          aria-label="Login"
-          name="login"
-          type="text"
-          placeholder="Email"
-          onChange={setLogin}
-          value={login}
-          required
-          autoComplete="new-login"
-        />
-        <StyledInput
-          aria-label="Password"
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={setPassword}
-          required
-          autoComplete="new-password"
-        />
-        <input type="submit" value="Sign up" />
-      </Form>
+      <Form form={form} />
     </>
   );
 };
