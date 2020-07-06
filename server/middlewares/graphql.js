@@ -1,20 +1,46 @@
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const zlib = require('zlib');
 const Cookie = require('universal-cookie');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const { API_URL } = require('../../config/vars');
 const { REFRESH_TOKEN_KEY } = require('../../config/jwt.json');
 
 const { setRefreshToken, deleteRefreshToken } = require('../../lib/auth/tokens');
 
+// Working with refresh token
+const handleResponse = ({ res, body }) => {
+  const authOperationNames = ['signin', 'signup', 'signout', 'updateToken'];
+
+  try {
+    const { data } = JSON.parse(body.toString());
+
+    const authOperationName = Object.keys(data).find(key => authOperationNames.includes(key));
+
+    if (authOperationName === 'signout') {
+      deleteRefreshToken({ res });
+    } else if (authOperationName && data[authOperationName]) {
+      const { refreshToken } = data[authOperationName];
+
+      setRefreshToken({ refreshToken, res });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  res.end(body);
+};
+
 const graphqlProxyMidlleware = createProxyMiddleware({
   target: API_URL,
   selfHandleResponse: true,
   onProxyReq: (proxyReq, req, res) => {
-    if (!req.body || !Object.keys(req.body).length) {
-      return;
+    const { body } = req;
+
+    if (!body || !Object.keys(body).length) {
+      return res.end();
     }
 
-    const { operationName } = req.body;
+    const { operationName } = body;
 
     if (['updateToken', 'signout'].includes(operationName)) {
       const cookie = new Cookie(req.headers.cookie);
@@ -23,18 +49,20 @@ const graphqlProxyMidlleware = createProxyMiddleware({
       proxyReq.setHeader('Authorization', `Bearer ${refreshToken}`);
     }
 
+    // send request body in correct format (after parsing body with body-parser library)
     const contentType = proxyReq.getHeader('Content-Type');
+
     const writeBody = bodyData => {
       proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
       proxyReq.write(bodyData);
     };
 
     if (contentType === 'application/json') {
-      writeBody(JSON.stringify(req.body));
+      writeBody(JSON.stringify(body));
     }
 
     if (contentType === 'application/x-www-form-urlencoded') {
-      writeBody(querystring.stringify(req.body));
+      writeBody(querystring.stringify(body));
     }
   },
   onProxyRes: (proxyRes, req, res) => {
@@ -47,22 +75,15 @@ const graphqlProxyMidlleware = createProxyMiddleware({
     proxyRes.on('end', () => {
       const body = Buffer.concat(bodyChunks);
 
-      try {
-        const { data } = JSON.parse(body.toString());
-        const authKey = Object.keys(data).find(key => ['signin', 'signup', 'signout', 'updateToken'].includes(key));
+      const contentEncoding = proxyRes.headers['content-encoding'];
 
-        if (authKey === 'signout') {
-          deleteRefreshToken({ res });
-        } else if (authKey && data[authKey]) {
-          const { refreshToken } = data[authKey];
-
-          setRefreshToken({ refreshToken, res });
-        }
-      } catch (error) {
-        console.error(error);
+      if (contentEncoding === 'gzip') {
+        zlib.gunzip(body, (err, dezipped) => {
+          handleResponse({ res, body: dezipped });
+        });
+      } else {
+        handleResponse({ res, body });
       }
-
-      res.end(body);
     });
   },
 });

@@ -11,6 +11,8 @@ const graphqlProxyMidlleware = require('./server/middlewares/graphql');
 const routes = require('./routes');
 const { DEV, PORT, GRAPHQL_APP_URL } = require('./config/vars');
 
+// Create body-parser json middleware
+const bodyParserJSON = bodyParser.json();
 // Create the Express-Next App
 const app = next({ dev: DEV });
 const handle = routes.getRequestHandler(app);
@@ -21,8 +23,8 @@ app
   // Start Express server and serve the
   .then(() => {
     express()
-      .use(bodyParser.json())
-      .use(GRAPHQL_APP_URL, graphqlProxyMidlleware)
+      // use proxy middleware to send graphql requests to api server
+      .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMidlleware)
       .use(secure)
       .use(handle)
       .listen(PORT, err => {
