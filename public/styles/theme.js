@@ -2,6 +2,7 @@ export default {
   colors: {
     black: '#000',
     white: '#fff',
+    link: '#00f',
   },
   breakpoints: {
     xs: '320px',
