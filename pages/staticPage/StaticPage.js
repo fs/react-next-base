@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'routes';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
@@ -16,14 +17,17 @@ const Home = () => (
     <h4>h4 - This is a section subtitle</h4>
 
     <p>
-      <b>There is a body text</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Purus gravida quis blandit turpis. Lobortis elementum nibh tellus
-      molestie nunc. Felis donec et odio pellentesque diam. Sit amet nisl purus in. Interdum consectetur libero id
-      faucibus nisl tincidunt. Tincidunt dui ut ornare lectus sit amet est placerat. Dolor sed viverra ipsum nunc
-      aliquet bibendum enim facilisis gravida. Eget aliquet nibh praesent tristique magna sit amet. Accumsan lacus vel
-      facilisis volutpat est velit egestas. Libero nunc consequat interdum varius sit. Blandit libero volutpat sed cras
-      ornare arcu dui vivamus arcu. Aliquam etiam erat velit scelerisque in dictum non consectetur. Sit amet venenatis
-      urna cursus. Tristique senectus et netus et malesuada fames. Mauris a diam maecenas sed.
+      <b>There is a body text</b> Lorem ipsum dolor sit amet,{' '}
+      <Link passHref route="/">
+        consectetur adipiscing elit
+      </Link>
+      , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus gravida quis blandit turpis. Lobortis
+      elementum nibh tellus molestie nunc. Felis donec et odio pellentesque diam. Sit amet nisl purus in. Interdum
+      consectetur libero id faucibus nisl tincidunt. Tincidunt dui ut ornare lectus sit amet est placerat. Dolor sed
+      viverra ipsum nunc aliquet bibendum enim facilisis gravida. Eget aliquet nibh praesent tristique magna sit amet.
+      Accumsan lacus vel facilisis volutpat est velit egestas. Libero nunc consequat interdum varius sit. Blandit libero
+      volutpat sed cras ornare arcu dui vivamus arcu. Aliquam etiam erat velit scelerisque in dictum non consectetur.
+      Sit amet venenatis urna cursus. Tristique senectus et netus et malesuada fames. Mauris a diam maecenas sed.
     </p>
     <p>
       Faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Et malesuada fames ac turpis egestas. At
