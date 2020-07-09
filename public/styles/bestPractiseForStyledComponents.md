@@ -1,3 +1,4 @@
+```jsx harmony
 import styled, { css } from 'styled-components';
 
 /**
@@ -38,3 +39,4 @@ const OverrideComponent = styled(BaseComponent)`
     padding: 2rem;
   }
 `;
+```
