@@ -19,16 +19,12 @@ exports[`Homepage should render correctly 1`] = `
   z-index: 5;
 }
 
-.c2 {
-  height: 100%;
-}
-
 .c0 {
   min-height: 100vh;
+  padding: 1rem 2rem;
 }
 
-.c3 {
-  font-family: 'Montserrat',sans-serif;
+.c2 {
   font-size: 2rem;
   text-align: center;
 }
@@ -62,14 +58,14 @@ exports[`Homepage should render correctly 1`] = `
           </g>
         </svg>
       </a>
-      <img
-        alt="avatar"
-        class="c2"
-        src="/images/avatar-placeholder.png"
-      />
+      <a
+        href="signup"
+      >
+        Sign Up
+      </a>
     </header>
     <h1
-      class="c3 capitalize"
+      class="c2 capitalize"
     >
       Welcome to React Next Base
     </h1>

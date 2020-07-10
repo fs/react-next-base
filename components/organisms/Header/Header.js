@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { Link } from 'routes';
+
 import { PAGE_WITH_GRAPHQL, LOGIN } from 'config/routes';
 
 import Logo from 'components/atoms/Logo';

@@ -7,7 +7,6 @@ import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
-  font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   text-align: center;
 `;
