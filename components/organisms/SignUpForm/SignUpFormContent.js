@@ -66,9 +66,8 @@ export const LinksContainer = styled.div`
     flex-direction: row;
   }
 `;
-
-const SignUpFormContent = ({ onSubmit }) => {
-  const form = {
+const SignUpFormContent = ({ onSubmit, activeForm }) => {
+  const SignUpForm = {
     fields: [
       {
         type: 'text',
@@ -101,6 +100,7 @@ const SignUpFormContent = ({ onSubmit }) => {
         name: 'password',
         title: 'Password',
         placeholder: '',
+        initialValue: '',
       },
       {
         type: 'submit',
@@ -111,11 +111,37 @@ const SignUpFormContent = ({ onSubmit }) => {
     submit: values => onSubmit(values),
   };
 
+  const SignInForm = {
+    fields: [
+      {
+        type: 'email',
+        name: 'email',
+        title: 'Email',
+        placeholder: 'Email',
+        initialValue: '',
+        validationSchema: Yup.string()
+          .email('The email must be valid!!')
+          .required('This field is required'),
+      },
+      {
+        type: 'password',
+        name: 'password',
+        title: 'Password',
+        placeholder: '',
+        initialValue: '',
+      },
+      {
+        type: 'submit',
+        name: 'sign_in',
+        initialValue: 'Sign In',
+      },
+    ],
+    submit: values => onSubmit(values),
+  };
   return (
     <>
-      <StyledTitle>Create an account</StyledTitle>
-
-      <Form form={form} />
+      <StyledTitle>{activeForm === 'signUp' ? 'Create an account' : 'Log in'}</StyledTitle>
+      {activeForm === 'signUp' ? <Form form={SignUpForm} /> : <Form form={SignInForm} />}
     </>
   );
 };
