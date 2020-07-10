@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql } from '@apollo/react-hoc';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-import WithAuth from 'lib/auth/WithAuth';
-import WithAuthSecurity from 'lib/auth/WithAuthSecurity';
+import WithAuth from 'lib/auth/withAuth';
+import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';

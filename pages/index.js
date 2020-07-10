@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import WithAuth from 'lib/auth/WithAuth';
+import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';
@@ -14,7 +14,7 @@ const Title = styled.h1`
 
 const PageContent = styled.div``;
 
-const Home = props => {
+const Home = () => {
   return (
     <DefaultTemplate>
       <PageContent>
