@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Header from 'components/organisms/Header';
 
-import { withApolloClient } from 'lib/withApolloClient';
 import { useCurrentUser } from 'lib/apollo/hooks/state';
 import { useSignOut } from 'lib/apollo/hooks/actions';
 
@@ -23,4 +22,4 @@ const DefaultTemplate = ({ children }) => {
   );
 };
 
-export default withApolloClient(DefaultTemplate);
+export default DefaultTemplate;
