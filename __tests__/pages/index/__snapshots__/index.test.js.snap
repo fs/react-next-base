@@ -19,12 +19,23 @@ exports[`Homepage should render correctly 1`] = `
   z-index: 5;
 }
 
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
   min-height: 100vh;
   padding: 1rem 2rem;
 }
 
-.c2 {
+.c3 {
   font-size: 2rem;
   text-align: center;
 }
@@ -58,17 +69,25 @@ exports[`Homepage should render correctly 1`] = `
           </g>
         </svg>
       </a>
-      <a
-        href="signup"
+      <div
+        class="c2"
       >
-        Sign Up
-      </a>
+        <a
+          href="/signup"
+        >
+          Sign In
+        </a>
+      </div>
     </header>
-    <h1
-      class="c2 capitalize"
+    <div
+      class=""
     >
-      Welcome to React Next Base
-    </h1>
+      <h1
+        class="c3 capitalize"
+      >
+        Welcome to React Next Base
+      </h1>
+    </div>
   </div>
 </div>
 `;
