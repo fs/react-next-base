@@ -28,8 +28,8 @@ const Header = () => {
       {profile ? (
         <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
       ) : (
-        <Link passHref route="signup">
-          <a>Sign Up</a>
+        <Link passHref route="login">
+          <a>Log In</a>
         </Link>
       )}
     </HeaderWrapper>
