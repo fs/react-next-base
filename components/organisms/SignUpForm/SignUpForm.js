@@ -26,12 +26,11 @@ const SignUpForm = ({ onSuccess }) => {
   const handleActiveFormChoose = () => {
     activeForm === 'signUp' ? toggleSignForm('signIn') : toggleSignForm('signUp');
   };
+  const toggleButtonText = activeForm === 'signUp' ? 'Already signed up' : 'Sign up';
   return (
     <StyledFormWrapper>
       <SignUpFormContent error={error} loading={loading} onSubmit={signUp} activeForm={activeForm} />
-      <StyledToggleForm onClick={() => handleActiveFormChoose()}>
-        {activeForm === 'signUp' ? 'Already signed up' : 'Sign up'}
-      </StyledToggleForm>
+      <StyledToggleForm onClick={() => handleActiveFormChoose()}>{toggleButtonText}</StyledToggleForm>
     </StyledFormWrapper>
   );
 };

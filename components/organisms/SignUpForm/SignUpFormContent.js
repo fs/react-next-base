@@ -66,82 +66,72 @@ export const LinksContainer = styled.div`
     flex-direction: row;
   }
 `;
+
 const SignUpFormContent = ({ onSubmit, activeForm }) => {
-  const SignUpForm = {
-    fields: [
-      {
-        type: 'text',
-        name: 'firstName',
-        title: 'First Name',
-        placeholder: 'First Name',
-        initialValue: '',
-        validationSchema: Yup.string().required('This field is required'),
-      },
-      {
-        type: 'text',
-        name: 'lastName',
-        title: 'Last Name',
-        placeholder: 'Last Name',
-        initialValue: '',
-        validationSchema: Yup.string().required('This field is required'),
-      },
-      {
-        type: 'email',
-        name: 'email',
-        title: 'Email',
-        placeholder: 'Email',
-        initialValue: '',
-        validationSchema: Yup.string()
-          .email('The email must be valid!!')
-          .required('This field is required'),
-      },
-      {
-        type: 'password',
-        name: 'password',
-        title: 'Password',
-        placeholder: '',
-        initialValue: '',
-      },
-      {
-        type: 'submit',
-        name: 'sign_up',
-        initialValue: 'Sign Up',
-      },
-    ],
-    submit: values => onSubmit(values),
+  const isSignUp = activeForm === 'signUp';
+  const fieldNames = {
+    firstName: isSignUp,
+    lastName: isSignUp,
+    email: true,
+    password: true,
+    sign_up: isSignUp,
+    sign_in: !isSignUp,
   };
 
-  const SignInForm = {
-    fields: [
-      {
-        type: 'email',
-        name: 'email',
-        title: 'Email',
-        placeholder: 'Email',
-        initialValue: '',
-        validationSchema: Yup.string()
-          .email('The email must be valid!!')
-          .required('This field is required'),
-      },
-      {
-        type: 'password',
-        name: 'password',
-        title: 'Password',
-        placeholder: '',
-        initialValue: '',
-      },
-      {
-        type: 'submit',
-        name: 'sign_in',
-        initialValue: 'Sign In',
-      },
-    ],
-    submit: values => onSubmit(values),
-  };
+  const allFields = [
+    {
+      type: 'text',
+      name: 'firstName',
+      title: 'First Name',
+      placeholder: 'First Name',
+      initialValue: '',
+      validationSchema: Yup.string().required('This field is required'),
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      title: 'Last Name',
+      placeholder: 'Last Name',
+      initialValue: '',
+      validationSchema: Yup.string().required('This field is required'),
+    },
+    {
+      type: 'email',
+      name: 'email',
+      title: 'Email',
+      placeholder: 'Email',
+      initialValue: '',
+      validationSchema: Yup.string()
+        .email('The email must be valid!!')
+        .required('This field is required'),
+    },
+    {
+      type: 'password',
+      name: 'password',
+      title: 'Password',
+      placeholder: '',
+      initialValue: '',
+    },
+    {
+      type: 'submit',
+      name: 'sign_up',
+      initialValue: 'Sign Up',
+    },
+    {
+      type: 'submit',
+      name: 'sign_in',
+      initialValue: 'Sign In',
+    },
+  ];
+  let currentFormFields = [];
+  currentFormFields['fields'] = allFields.filter(field => {
+    return fieldNames[field.name];
+  });
+  const signFormTitle = activeForm === 'signUp' ? 'Create an account' : 'Log in';
   return (
     <>
-      <StyledTitle>{activeForm === 'signUp' ? 'Create an account' : 'Log in'}</StyledTitle>
-      {activeForm === 'signUp' ? <Form form={SignUpForm} /> : <Form form={SignInForm} />}
+      <StyledTitle>{signFormTitle}</StyledTitle>
+      <Form form={currentFormFields} />
     </>
   );
 };
