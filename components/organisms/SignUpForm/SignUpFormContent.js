@@ -74,8 +74,8 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
     lastName: isSignUp,
     email: true,
     password: true,
-    sign_up: isSignUp,
-    sign_in: !isSignUp,
+    signUp: isSignUp,
+    signIn: !isSignUp,
   };
 
   const allFields = [
@@ -114,17 +114,17 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
     },
     {
       type: 'submit',
-      name: 'sign_up',
+      name: 'signUp',
       initialValue: 'Sign Up',
     },
     {
       type: 'submit',
-      name: 'sign_in',
+      name: 'signIn',
       initialValue: 'Sign In',
     },
   ];
-  let currentFormFields = [];
-  currentFormFields['fields'] = allFields.filter(field => {
+  const currentFormFields = [];
+  currentFormFields.fields = allFields.filter(field => {
     return fieldNames[field.name];
   });
   const signFormTitle = activeForm === 'signUp' ? 'Create an account' : 'Log in';
