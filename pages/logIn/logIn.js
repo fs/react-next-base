@@ -3,7 +3,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 import SignUpForm from 'components/organisms/SignUpForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
-const Signup = () => {
+const LogIn = () => {
   const onSuccess = data => {
     console.log(data);
   };
@@ -15,4 +15,4 @@ const Signup = () => {
   );
 };
 
-export default withApolloClient(Signup);
+export default withApolloClient(LogIn);

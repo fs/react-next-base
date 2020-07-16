@@ -123,10 +123,11 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
       initialValue: 'Sign In',
     },
   ];
-  const currentFormFields = [];
+  const currentFormFields = {};
   currentFormFields.fields = allFields.filter(field => {
     return fieldNames[field.name];
   });
+  currentFormFields.submit = values => onSubmit(values);
   const signFormTitle = activeForm === 'signUp' ? 'Create an account' : 'Log in';
   return (
     <>
