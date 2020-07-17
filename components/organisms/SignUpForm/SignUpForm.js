@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 import SignUpFormContent from './SignUpFormContent';
 import useSignUp from './useSignUp';
+import { SIGN_IN_FORM, SIGN_UP_FORM } from './constants';
 
-export const SIGN_IN_FORM = 'signIn';
-export const SIGN_UP_FORM = 'signUp';
 export const StyledFormWrapper = styled.div`
   text-align: center;
 `;

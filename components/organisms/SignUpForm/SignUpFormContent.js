@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
 import Form from '../../molecules/Form';
-import { SIGN_IN_FORM, SIGN_UP_FORM } from './SignUpForm';
+import { SIGN_IN_FORM, SIGN_UP_FORM } from './constants';
 
 export const StyledTitle = styled.h3`
   max-width: 40.625rem;
