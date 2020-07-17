@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
 import Form from '../../molecules/Form';
+import { SIGN_IN_FORM, SIGN_UP_FORM } from './SignUpForm';
 
 export const StyledTitle = styled.h3`
   max-width: 40.625rem;
@@ -68,14 +69,14 @@ export const LinksContainer = styled.div`
 `;
 
 const SignUpFormContent = ({ onSubmit, activeForm }) => {
-  const isSignUp = activeForm === 'signUp';
+  const isSignUp = activeForm === SIGN_UP_FORM;
   const fieldNames = {
     firstName: isSignUp,
     lastName: isSignUp,
     email: true,
     password: true,
-    signUp: isSignUp,
-    signIn: !isSignUp,
+    SIGN_UP_FORM: isSignUp,
+    SIGN_IN_FORM: !isSignUp,
   };
 
   const allFields = [
@@ -114,20 +115,22 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
     },
     {
       type: 'submit',
-      name: 'signUp',
+      name: SIGN_UP_FORM,
       initialValue: 'Sign Up',
     },
     {
       type: 'submit',
-      name: 'signIn',
+      name: SIGN_IN_FORM,
       initialValue: 'Sign In',
     },
   ];
   const currentFormFields = {
     fields: allFields.filter(field => fieldNames[field.name]),
+    fields: allFields.filter(({ name }) => fieldNames[name]),
+
+    submit: values => onSubmit(values),
   };
-  currentFormFields.submit = values => onSubmit(values);
-  const signFormTitle = activeForm === 'signUp' ? 'Create an account' : 'Log in';
+  const signFormTitle = activeForm === SIGN_UP_FORM ? 'Create an account' : 'Log in';
   return (
     <>
       <StyledTitle>{signFormTitle}</StyledTitle>
