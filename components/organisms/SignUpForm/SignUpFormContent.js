@@ -125,9 +125,7 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
     },
   ];
   const currentFormFields = {
-    fields: allFields.filter(field => fieldNames[field.name]),
     fields: allFields.filter(({ name }) => fieldNames[name]),
-
     submit: values => onSubmit(values),
   };
   const signFormTitle = activeForm === SIGN_UP_FORM ? 'Create an account' : 'Log in';
