@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from 'components/organisms/LoginForm';
+import LoginForm from '../../components/organisms/LoginForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 import WithAuth from 'lib/auth/withAuth';

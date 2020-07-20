@@ -11,9 +11,7 @@ const Wrapper = styled.div`
   padding: 1rem 2rem;
 `;
 
-const DefaultTemplate = props => {
-  console.warn(props);
-  const { children } = props;
+const DefaultTemplate = ({ children }) => {
   const user = useCurrentUser(false);
   const [signOut] = useSignOut();
 

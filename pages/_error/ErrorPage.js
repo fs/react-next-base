@@ -1,5 +1,4 @@
 import React from 'react';
-import DefaultTemplate from 'components/templates/DefaultTemplate';
 import { Link } from 'routes';
 import styled from 'styled-components';
 import Router from 'next/router';
@@ -41,12 +40,10 @@ const ErrorPage = ({ statusCode }) => {
   }
 
   return (
-    <DefaultTemplate>
-      <TitleWrapper data-testid="error-page-text">
-        <h1>{title}</h1>
-        <Description>{description}</Description>
-      </TitleWrapper>
-    </DefaultTemplate>
+    <TitleWrapper data-testid="error-page-text">
+      <h1>{title}</h1>
+      <Description>{description}</Description>
+    </TitleWrapper>
   );
 };
 
