@@ -17,6 +17,7 @@ exports[`Homepage should render correctly 1`] = `
   height: 80px;
   padding: 1rem;
   z-index: 5;
+  border-bottom: 1px solid #eee;
 }
 
 .c2 {
@@ -32,10 +33,13 @@ exports[`Homepage should render correctly 1`] = `
 
 .c0 {
   min-height: 100vh;
-  padding: 1rem 2rem;
 }
 
 .c3 {
+  padding: 2rem 1rem;
+}
+
+.c4 {
   font-size: 2rem;
   text-align: center;
 }
@@ -80,13 +84,17 @@ exports[`Homepage should render correctly 1`] = `
       </div>
     </header>
     <div
-      class=""
+      class="c3"
     >
-      <h1
-        class="c3 capitalize"
+      <div
+        class=""
       >
-        Welcome to React Next Base
-      </h1>
+        <h1
+          class="c4 capitalize"
+        >
+          Welcome to React Next Base
+        </h1>
+      </div>
     </div>
   </div>
 </div>
