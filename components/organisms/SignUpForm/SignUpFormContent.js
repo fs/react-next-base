@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
 import Form from '../../molecules/Form';
+import { SIGN_IN_FORM, SIGN_UP_FORM } from './constants';
 
 export const StyledTitle = styled.h3`
   max-width: 40.625rem;
@@ -67,55 +68,71 @@ export const LinksContainer = styled.div`
   }
 `;
 
-const SignUpFormContent = ({ onSubmit }) => {
-  const form = {
-    fields: [
-      {
-        type: 'text',
-        name: 'firstName',
-        title: 'First Name',
-        placeholder: 'First Name',
-        initialValue: '',
-        validationSchema: Yup.string().required('This field is required'),
-      },
-      {
-        type: 'text',
-        name: 'lastName',
-        title: 'Last Name',
-        placeholder: 'Last Name',
-        initialValue: '',
-        validationSchema: Yup.string().required('This field is required'),
-      },
-      {
-        type: 'email',
-        name: 'email',
-        title: 'Email',
-        placeholder: 'Email',
-        initialValue: '',
-        validationSchema: Yup.string()
-          .email('The email must be valid!!')
-          .required('This field is required'),
-      },
-      {
-        type: 'password',
-        name: 'password',
-        title: 'Password',
-        placeholder: '',
-      },
-      {
-        type: 'submit',
-        name: 'sign_up',
-        initialValue: 'Sign Up',
-      },
-    ],
-    submit: values => onSubmit(values),
+const SignUpFormContent = ({ onSubmit, activeForm }) => {
+  const isSignUp = activeForm === SIGN_UP_FORM;
+  const fieldNames = {
+    firstName: isSignUp,
+    lastName: isSignUp,
+    email: true,
+    password: true,
+    SIGN_UP_FORM: isSignUp,
+    SIGN_IN_FORM: !isSignUp,
   };
 
+  const allFields = [
+    {
+      type: 'text',
+      name: 'firstName',
+      title: 'First Name',
+      placeholder: 'First Name',
+      initialValue: '',
+      validationSchema: Yup.string().required('This field is required'),
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      title: 'Last Name',
+      placeholder: 'Last Name',
+      initialValue: '',
+      validationSchema: Yup.string().required('This field is required'),
+    },
+    {
+      type: 'email',
+      name: 'email',
+      title: 'Email',
+      placeholder: 'Email',
+      initialValue: '',
+      validationSchema: Yup.string()
+        .email('The email must be valid!!')
+        .required('This field is required'),
+    },
+    {
+      type: 'password',
+      name: 'password',
+      title: 'Password',
+      placeholder: '',
+      initialValue: '',
+    },
+    {
+      type: 'submit',
+      name: SIGN_UP_FORM,
+      initialValue: 'Sign Up',
+    },
+    {
+      type: 'submit',
+      name: SIGN_IN_FORM,
+      initialValue: 'Sign In',
+    },
+  ];
+  const currentFormFields = {
+    fields: allFields.filter(({ name }) => fieldNames[name]),
+    submit: values => onSubmit(values),
+  };
+  const signFormTitle = activeForm === SIGN_UP_FORM ? 'Create an account' : 'Log in';
   return (
     <>
-      <StyledTitle>Create an account</StyledTitle>
-
-      <Form form={form} />
+      <StyledTitle>{signFormTitle}</StyledTitle>
+      <Form form={currentFormFields} />
     </>
   );
 };
