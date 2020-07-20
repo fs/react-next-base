@@ -69,11 +69,15 @@ exports[`Homepage should render correctly 1`] = `
           </g>
         </svg>
       </a>
-      <a
-        href="login"
+      <div
+        class="c2"
       >
-        Log In
-      </a>
+        <a
+          href="/login"
+        >
+          Log In
+        </a>
+      </div>
     </header>
     <div
       class=""
