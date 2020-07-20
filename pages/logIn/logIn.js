@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpForm from 'components/organisms/SignUpForm';
+import LoginForm from 'components/organisms/LoginForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 import WithAuth from 'lib/auth/withAuth';
@@ -8,7 +8,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 const Login = () => {
   return (
     <DefaultTemplate>
-      <SignUpForm />
+      <LoginForm />
     </DefaultTemplate>
   );
 };

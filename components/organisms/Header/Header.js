@@ -33,7 +33,7 @@ const Header = ({ user, signOut }) => {
       <Links>
         {!user && (
           <Link route={LOGIN.pattern}>
-            <a>Sign In</a>
+            <a>Log In</a>
           </Link>
         )}
         {!!user && (
