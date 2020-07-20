@@ -5,6 +5,7 @@ import { Link } from 'routes';
 import { PAGE_WITH_GRAPHQL, LOGIN } from 'config/routes';
 
 import Logo from 'components/atoms/Logo';
+import UserNavigation from './components/UserNavigation';
 
 const HeaderWrapper = styled.header`
   position: sticky;
@@ -15,10 +16,7 @@ const HeaderWrapper = styled.header`
   height: 80px;
   padding: 1rem;
   z-index: 5;
-`;
-
-const Profile = styled.img`
-  height: 40px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 `;
 
 const Links = styled.div`
@@ -27,6 +25,10 @@ const Links = styled.div`
 `;
 
 const Header = ({ user, signOut }) => {
+  const links = [{ text: 'Profile', url: PAGE_WITH_GRAPHQL.pattern }];
+
+  const actions = [{ text: 'Sign Out', action: signOut }];
+
   return (
     <HeaderWrapper>
       <Logo />
@@ -36,18 +38,7 @@ const Header = ({ user, signOut }) => {
             <a>Log In</a>
           </Link>
         )}
-        {!!user && (
-          <>
-            <Link route={PAGE_WITH_GRAPHQL.pattern}>
-              <a>
-                <Profile src={`${process.env.ASSET_HOST}/images/avatar-placeholder.png`} alt="avatar" />
-              </a>
-            </Link>
-            <button type="button" onClick={signOut}>
-              Sign Out
-            </button>
-          </>
-        )}
+        {!!user && <UserNavigation user={user} links={links} actions={actions} />}
       </Links>
     </HeaderWrapper>
   );

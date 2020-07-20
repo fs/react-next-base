@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
+import { useSignIn, useSignUp } from 'lib/apollo/hooks/actions';
 import LoginFormContent from './LoginFormContent';
 
-import { useSignIn, useSignUp } from 'lib/apollo/hooks/actions';
 import { SIGN_IN_FORM, SIGN_UP_FORM } from './constants';
 
 export const StyledFormWrapper = styled.div`
@@ -21,7 +21,7 @@ const LoginForm = () => {
   const [signIn] = useSignIn();
   const [signUp] = useSignUp();
 
-  const [activeForm, setActiveForm] = useState(SIGN_UP_FORM);
+  const [activeForm, setActiveForm] = useState(SIGN_IN_FORM);
 
   const isSignUp = useMemo(() => activeForm === SIGN_UP_FORM, [activeForm]);
 
@@ -29,14 +29,9 @@ const LoginForm = () => {
     setActiveForm(isSignUp ? SIGN_IN_FORM : SIGN_UP_FORM);
   }, [isSignUp]);
 
-  const onSubmit = useCallback(
-    values => {
-      isSignUp ? signUp(values) : signIn(values);
-    },
-    [isSignUp],
-  );
+  const onSubmit = useCallback(values => (isSignUp ? signUp(values) : signIn(values)), [isSignUp, signIn, signUp]);
 
-  const toggleButtonText = activeForm === SIGN_UP_FORM ? 'Already signed up' : 'Sign up';
+  const toggleButtonText = activeForm === SIGN_UP_FORM ? 'Sign in' : 'Create an account';
 
   return (
     <StyledFormWrapper>

@@ -17,7 +17,7 @@ const PageWithGraphQL = ({ data: { loading, error, me } }) => {
   return (
     <DefaultTemplate>
       {loading && <h3>Loading...</h3>}
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {!loading && !error && <div>{`This is Current User: ${JSON.stringify(me)}`}</div>}
     </DefaultTemplate>
   );
