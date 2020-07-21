@@ -1,18 +1,16 @@
 import React from 'react';
-import { withApolloClient } from 'lib/withApolloClient';
-import SignUpForm from 'components/organisms/SignUpForm';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 
-const LogIn = () => {
-  const onSuccess = data => {
-    console.log(data);
-  };
+import WithAuth from 'lib/auth/withAuth';
+import { withApolloClient } from 'lib/withApolloClient';
+import LoginForm from '../../components/organisms/LoginForm';
 
+const Login = () => {
   return (
     <DefaultTemplate>
-      <SignUpForm onSuccess={onSuccess} />
+      <LoginForm />
     </DefaultTemplate>
   );
 };
 
-export default withApolloClient(LogIn);
+export default withApolloClient(WithAuth(Login));

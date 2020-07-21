@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'routes';
-import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -9,7 +8,7 @@ const Title = styled.h1`
 `;
 
 const Home = () => (
-  <DefaultTemplate>
+  <>
     <Title data-cy="static-page-title">Welcome to static page</Title>
     <h1>h1 - This is a main title</h1>
     <h2>h2 - This is a subtitle</h2>
@@ -48,7 +47,7 @@ const Home = () => (
       rhoncus aenean. Aliquet risus feugiat in ante metus dictum. Sed vulputate mi sit amet mauris commodo quis
       imperdiet.
     </p>
-  </DefaultTemplate>
+  </>
 );
 
 export default Home;

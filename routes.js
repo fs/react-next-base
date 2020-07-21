@@ -1,8 +1,9 @@
-const routes = require('next-routes');
+const nextRoutes = require('next-routes');
+const routes = require('./config/routes');
 
-module.exports = routes()
-  .add({ name: 'home', pattern: '/', page: 'index' })
-  .add({ name: 'formExamples', pattern: '/form-examples', page: 'formExamples' })
-  .add({ name: 'logIn', pattern: '/login', page: 'logIn' })
-  .add({ name: 'staticPage', pattern: '/static-page', page: 'staticPage' })
-  .add({ name: 'pageWithGraphQL', pattern: '/page-with-graphql', page: 'pageWithGraphQL' });
+module.exports = nextRoutes()
+  .add(routes.HOME)
+  .add(routes.FORM_EXAMPLES)
+  .add(routes.LOGIN)
+  .add(routes.STATIC_PAGE)
+  .add(routes.PAGE_WITH_GRAPHQL);

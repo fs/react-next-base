@@ -1,0 +1,4 @@
+fragment AuthTokens on Authentication {
+  accessToken
+  refreshToken
+}

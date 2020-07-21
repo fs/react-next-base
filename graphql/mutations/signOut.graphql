@@ -1,0 +1,5 @@
+mutation signout($everywhere: Boolean = false) {
+  signout(everywhere: $everywhere) {
+    message
+  }
+}

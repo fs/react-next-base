@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input';
 import Form from '../../molecules/Form';
-import { SIGN_IN_FORM, SIGN_UP_FORM } from './constants';
+import { SIGN_UP_FORM } from './constants';
 
 export const StyledTitle = styled.h3`
   max-width: 40.625rem;
@@ -68,33 +68,28 @@ export const LinksContainer = styled.div`
   }
 `;
 
-const SignUpFormContent = ({ onSubmit, activeForm }) => {
+const LoginFormContent = ({ onSubmit, activeForm }) => {
   const isSignUp = activeForm === SIGN_UP_FORM;
-  const fieldNames = {
-    firstName: isSignUp,
-    lastName: isSignUp,
-    email: true,
-    password: true,
-    SIGN_UP_FORM: isSignUp,
-    SIGN_IN_FORM: !isSignUp,
-  };
 
-  const allFields = [
-    {
+  const submitButtonText = isSignUp ? 'Sign Up' : 'Sign In';
+  const formTitle = isSignUp ? 'Create an account' : 'Sign in';
+
+  const fields = [
+    isSignUp && {
       type: 'text',
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
       initialValue: '',
-      validationSchema: Yup.string().required('This field is required'),
+      validationSchema: Yup.string(),
     },
-    {
+    isSignUp && {
       type: 'text',
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
       initialValue: '',
-      validationSchema: Yup.string().required('This field is required'),
+      validationSchema: Yup.string(),
     },
     {
       type: 'email',
@@ -112,29 +107,26 @@ const SignUpFormContent = ({ onSubmit, activeForm }) => {
       title: 'Password',
       placeholder: '',
       initialValue: '',
+      validationSchema: Yup.string().required('This field is required'),
     },
     {
       type: 'submit',
-      name: SIGN_UP_FORM,
-      initialValue: 'Sign Up',
+      name: activeForm,
+      initialValue: submitButtonText,
     },
-    {
-      type: 'submit',
-      name: SIGN_IN_FORM,
-      initialValue: 'Sign In',
-    },
-  ];
-  const currentFormFields = {
-    fields: allFields.filter(({ name }) => fieldNames[name]),
+  ].filter(Boolean);
+
+  const form = {
+    fields,
     submit: values => onSubmit(values),
   };
-  const signFormTitle = activeForm === SIGN_UP_FORM ? 'Create an account' : 'Log in';
+
   return (
     <>
-      <StyledTitle>{signFormTitle}</StyledTitle>
-      <Form form={currentFormFields} />
+      <StyledTitle>{formTitle}</StyledTitle>
+      <Form form={form} />
     </>
   );
 };
 
-export default SignUpFormContent;
+export default LoginFormContent;
