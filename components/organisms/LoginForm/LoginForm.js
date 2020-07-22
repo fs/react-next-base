@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions';
@@ -26,12 +26,24 @@ const StyledFormActions = styled.div`
   margin-bottom: 2rem;
 `;
 
+const StyledMessage = styled.div`
+  color: green;
+  margin-top: 2rem;
+`;
+
 const LoginForm = () => {
   const [signIn, signInContext] = useSignIn();
   const [signUp, signUpContext] = useSignUp();
   const [recoverPassword, recoverPasswordContext] = usePasswordRecovery();
 
   const [activeForm, setActiveForm] = useState(SIGN_IN_FORM);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const message = recoverPasswordContext?.data?.requestPasswordRecovery?.detail;
+
+    if (message) setMessage(message);
+  }, [recoverPasswordContext]);
 
   const formActions = [
     {
@@ -48,35 +60,36 @@ const LoginForm = () => {
     },
   ];
 
-  const onSubmit = useCallback(
-    async (values, { setSubmitting }) => {
-      const action = {
-        [SIGN_IN_FORM]: signIn,
-        [SIGN_UP_FORM]: signUp,
-        [PASSWORD_RECOVERY_FORM]: recoverPassword,
-      }[activeForm];
+  const toggleForm = form => {
+    setActiveForm(form);
+    setMessage('');
+  };
 
-      setSubmitting(true);
+  const onSubmit = async (values, { setSubmitting }) => {
+    const action = {
+      [SIGN_IN_FORM]: signIn,
+      [SIGN_UP_FORM]: signUp,
+      [PASSWORD_RECOVERY_FORM]: recoverPassword,
+    }[activeForm];
 
-      await action(values);
+    setSubmitting(true);
 
-      setSubmitting(false);
+    await action(values);
 
-      console.warn('INSIDE ONSUBMIT', recoverPasswordContext);
-    },
-    [recoverPasswordContext, activeForm],
-  );
+    setSubmitting(false);
+  };
 
   return (
     <StyledFormWrapper>
       <StyledFormActions>
         {formActions.map(({ text, to }) => (
-          <StyledToggleForm key={to} onClick={() => setActiveForm(to)}>
+          <StyledToggleForm key={to} onClick={() => toggleForm(to)}>
             {text}
           </StyledToggleForm>
         ))}
       </StyledFormActions>
       <LoginFormContent onSubmit={onSubmit} activeForm={activeForm} />
+      <StyledMessage>{message}</StyledMessage>
     </StyledFormWrapper>
   );
 };
