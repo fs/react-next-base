@@ -1,78 +1,32 @@
 import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import Input from 'components/atoms/Input';
 import Form from '../../molecules/Form';
-import { SIGN_UP_FORM } from './constants';
+import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
 
-export const StyledTitle = styled.h3`
-  max-width: 40.625rem;
-  margin: 0 auto;
+export const StyledFormTitle = styled.h3`
+  margin: 0 auto 2rem;
   line-height: 1.25;
   letter-spacing: -0.035em;
 `;
 
-export const StyledSubTitle = styled.p`
-  padding-top: 1rem;
-  font-size: 1rem;
-`;
-
-export const StyledInput = styled(Input)`
-  padding: 1.25rem;
-  border-radius: 0;
-  border-right: 0;
-  background-color: transparent;
-  font-size: 1.375rem;
-  font-weight: 400;
-  height: 3.75rem;
-  width: 100%;
-  outline: none;
-
-  &:not(:first-child) {
-    border-top: 0;
-  }
-`;
-
-export const StyledLink = styled.a(
-  ({ theme: { up, breakpoints } }) => `
-  text-align: center;
-  display: inline-block;
-  margin-top: 1.25rem;
-  text-decoration-line: underline;
-  font-size: 0.875rem;
-
-  ${up(breakpoints.lg)} {
-    text-align: left;
-  }
-
-  &:not(:first-child) {
-    ${up(breakpoints.lg)} {
-      margin-left: 1.25rem;
-    }
-  }
-`,
-);
-
-export const LinksContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 2.5rem;
-
-  p {
-    margin-top: 1.125rem;
-  }
-
-  ${({ theme: { up, breakpoints } }) => up(breakpoints.lg)} {
-    flex-direction: row;
-  }
-`;
-
 const LoginFormContent = ({ onSubmit, activeForm }) => {
   const isSignUp = activeForm === SIGN_UP_FORM;
+  const isRecovery = activeForm === PASSWORD_RECOVERY_FORM;
 
-  const submitButtonText = isSignUp ? 'Sign Up' : 'Sign In';
-  const formTitle = isSignUp ? 'Create an account' : 'Sign in';
+  const submitButtonText =
+    {
+      [SIGN_IN_FORM]: 'Sign In',
+      [SIGN_UP_FORM]: 'Sign Up',
+      [PASSWORD_RECOVERY_FORM]: 'Recover Password',
+    }[activeForm] ?? '';
+
+  const formTitle =
+    {
+      [SIGN_IN_FORM]: 'Sign In',
+      [SIGN_UP_FORM]: 'Create an account',
+      [PASSWORD_RECOVERY_FORM]: 'Recover my password',
+    }[activeForm] ?? '';
 
   const fields = [
     isSignUp && {
@@ -101,7 +55,7 @@ const LoginFormContent = ({ onSubmit, activeForm }) => {
         .email('The email must be valid!!')
         .required('This field is required'),
     },
-    {
+    !isRecovery && {
       type: 'password',
       name: 'password',
       title: 'Password',
@@ -118,12 +72,12 @@ const LoginFormContent = ({ onSubmit, activeForm }) => {
 
   const form = {
     fields,
-    submit: values => onSubmit(values),
+    submit: onSubmit,
   };
 
   return (
     <>
-      <StyledTitle>{formTitle}</StyledTitle>
+      <StyledFormTitle>{formTitle}</StyledFormTitle>
       <Form form={form} />
     </>
   );
