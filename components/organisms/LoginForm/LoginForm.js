@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 
 import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions';
@@ -48,23 +48,24 @@ const LoginForm = () => {
     },
   ];
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    const action = {
-      [SIGN_IN_FORM]: signIn,
-      [SIGN_UP_FORM]: signUp,
-      [PASSWORD_RECOVERY_FORM]: recoverPassword,
-    }[activeForm];
+  const onSubmit = useCallback(
+    async (values, { setSubmitting }) => {
+      const action = {
+        [SIGN_IN_FORM]: signIn,
+        [SIGN_UP_FORM]: signUp,
+        [PASSWORD_RECOVERY_FORM]: recoverPassword,
+      }[activeForm];
 
-    setSubmitting(true);
+      setSubmitting(true);
 
-    await action(values);
+      await action(values);
 
-    setSubmitting(false);
+      setSubmitting(false);
 
-    console.warn('INSIDE ONSUBMIT', recoverPasswordContext);
-  };
-
-  console.warn('IN COMPONENT', recoverPasswordContext);
+      console.warn('INSIDE ONSUBMIT', recoverPasswordContext);
+    },
+    [recoverPasswordContext, activeForm],
+  );
 
   return (
     <StyledFormWrapper>
