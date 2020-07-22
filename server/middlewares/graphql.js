@@ -32,6 +32,7 @@ const handleResponse = ({ res, body }) => {
 
 const graphqlProxyMidlleware = createProxyMiddleware({
   target: API_URL,
+  changeOrigin: true,
   selfHandleResponse: true,
   onProxyReq: (proxyReq, req, res) => {
     const { body } = req;
