@@ -66,17 +66,23 @@ const LoginForm = () => {
   };
 
   const onSubmit = async (values, { setSubmitting }) => {
-    const action = {
-      [SIGN_IN_FORM]: signIn,
-      [SIGN_UP_FORM]: signUp,
-      [PASSWORD_RECOVERY_FORM]: recoverPassword,
-    }[activeForm];
+    try {
+      const action = {
+        [SIGN_IN_FORM]: signIn,
+        [SIGN_UP_FORM]: signUp,
+        [PASSWORD_RECOVERY_FORM]: recoverPassword,
+      }[activeForm];
 
-    setSubmitting(true);
+      if (!action) throw new Error(`Action for ${activeForm} form is not exists`);
 
-    await action(values);
+      setSubmitting(true);
 
-    setSubmitting(false);
+      await action(values);
+
+      setSubmitting(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
