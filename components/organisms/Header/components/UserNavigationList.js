@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'routes';
 
-const StyledUserMenu = styled.ul`
+const StyledUserMenu = styled.ul(
+  ({ theme: { colors } }) => `
   display: block;
   position: absolute;
   margin: 0;
@@ -14,9 +15,10 @@ const StyledUserMenu = styled.ul`
   border: none;
   border-radius: 0.25rem;
   text-align: left;
-  background-color: #005873;
+  background-color: ${colors.white};
   z-index: 1;
   list-style-type: none;
+  filter: drop-shadow(0 0 3px ${colors.black});
 
   &::after {
     content: '';
@@ -26,19 +28,21 @@ const StyledUserMenu = styled.ul`
     position: absolute;
     top: -0.3125rem;
     right: 0.25rem;
-    background-color: #005873;
+    background-color: ${colors.white};
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
   }
-`;
+`,
+);
 
-const UserMenuItem = styled.li`
+const UserMenuItem = styled.li(
+  ({ theme: { colors } }) => `
   a,
   button {
     display: block;
     padding: 0.7rem 1rem;
     line-height: 1;
-    color: #fff;
+    color: ${colors.black};
     cursor: pointer;
     background: none;
     border: none;
@@ -50,7 +54,8 @@ const UserMenuItem = styled.li`
       color: #63bc36;
     }
   }
-`;
+`,
+);
 
 const UserNavigationList = ({ links = [], actions = [], ...attributes }) => (
   <StyledUserMenu {...attributes}>

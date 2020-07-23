@@ -18,7 +18,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
-      initialValue: firstName ? firstName : '',
+      initialValue: firstName || '',
       validationSchema: Yup.string(),
     },
     {
@@ -26,7 +26,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
-      initialValue: lastName ? lastName : '',
+      initialValue: lastName || '',
       validationSchema: Yup.string(),
     },
     {
@@ -34,7 +34,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
-      initialValue: email ? email : '',
+      initialValue: email || '',
       validationSchema: Yup.string()
         .email('The email must be valid!!')
         .required('This field is required'),
