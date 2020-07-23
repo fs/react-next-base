@@ -9,6 +9,7 @@ import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';
+import ProfileForm from 'components/organisms/ProfileForm';
 
 const PageWithGraphQL = ({ data: { loading, error, me } }) => {
   let errorMessage;
@@ -18,7 +19,8 @@ const PageWithGraphQL = ({ data: { loading, error, me } }) => {
     <DefaultTemplate>
       {loading && <h3>Loading...</h3>}
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {!loading && !error && <div>{`This is Current User: ${JSON.stringify(me)}`}</div>}
+
+      {!loading && !error && <ProfileForm profile={me} />}
     </DefaultTemplate>
   );
 };
