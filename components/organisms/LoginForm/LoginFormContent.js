@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Form from '../../molecules/Form';
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
 
-export const StyledFormTitle = styled.h3`
+const StyledFormTitle = styled.h3`
   margin: 0 auto 2rem;
   line-height: 1.25;
   letter-spacing: -0.035em;

@@ -6,13 +6,13 @@ import LoginFormContent from './LoginFormContent';
 
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
 
-export const StyledFormWrapper = styled.div`
+const StyledFormWrapper = styled.div`
   text-align: center;
   max-width: 40.625rem;
   margin: auto;
 `;
 
-export const StyledToggleForm = styled.div`
+const StyledToggleForm = styled.div`
   display: inline-block;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.link};
@@ -31,34 +31,34 @@ const StyledMessage = styled.div`
   margin-top: 2rem;
 `;
 
+const FORM_ACTIONS = [
+  {
+    to: SIGN_IN_FORM,
+    text: 'Sign In',
+  },
+  {
+    to: SIGN_UP_FORM,
+    text: 'Create an account',
+  },
+  {
+    to: PASSWORD_RECOVERY_FORM,
+    text: 'Forgot your password?',
+  },
+];
+
 const LoginForm = () => {
-  const [signIn, signInContext] = useSignIn();
-  const [signUp, signUpContext] = useSignUp();
+  const [signIn] = useSignIn();
+  const [signUp] = useSignUp();
   const [recoverPassword, recoverPasswordContext] = usePasswordRecovery();
 
   const [activeForm, setActiveForm] = useState(SIGN_IN_FORM);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const message = recoverPasswordContext?.data?.requestPasswordRecovery?.detail;
+    const detail = recoverPasswordContext?.data?.requestPasswordRecovery?.detail;
 
-    if (message) setMessage(message);
+    if (detail) setMessage(detail);
   }, [recoverPasswordContext]);
-
-  const formActions = [
-    {
-      to: SIGN_IN_FORM,
-      text: 'Sign In',
-    },
-    {
-      to: SIGN_UP_FORM,
-      text: 'Create an account',
-    },
-    {
-      to: PASSWORD_RECOVERY_FORM,
-      text: 'Forgot your password?',
-    },
-  ];
 
   const toggleForm = form => {
     setActiveForm(form);
@@ -82,7 +82,7 @@ const LoginForm = () => {
   return (
     <StyledFormWrapper>
       <StyledFormActions>
-        {formActions.map(({ text, to }) => (
+        {FORM_ACTIONS.map(({ text, to }) => (
           <StyledToggleForm key={to} onClick={() => toggleForm(to)}>
             {text}
           </StyledToggleForm>

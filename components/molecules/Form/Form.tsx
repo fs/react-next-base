@@ -56,7 +56,7 @@ const Form = ({ form }: { form: FormType }) => {
   return (
     <FormWrapper>
       <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
-        {({ isSubmitting, values }) => (
+        {({ isSubmitting }) => (
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
