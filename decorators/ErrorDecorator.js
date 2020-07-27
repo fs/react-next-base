@@ -1,4 +1,4 @@
-import { ApolloError } from 'apollo-client';
+import { ApolloError } from '@apollo/client';
 
 const getMessage = errors => (Array.isArray(errors) ? errors.map(error => error.message).join(' \n') : 'Unknown error');
 
