@@ -3,7 +3,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import ErrorContext from './ErrorContext';
 
-const AuthorizationProvider = ({ children }) => {
+const ErrorProvider = ({ children }) => {
   const [error, setError] = useState('');
 
   const context = useMemo(
@@ -17,4 +17,4 @@ const AuthorizationProvider = ({ children }) => {
   return <ErrorContext.Provider value={context}>{children}</ErrorContext.Provider>;
 };
 
-export default withApolloClient(AuthorizationProvider);
+export default withApolloClient(ErrorProvider);
