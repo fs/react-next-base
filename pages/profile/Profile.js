@@ -11,7 +11,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ProfileForm from 'components/organisms/ProfileForm';
 
-const PageWithGraphQL = ({ data: { loading, error, me } }) => {
+const Profile = ({ data: { loading, error, me } }) => {
   let errorMessage;
   if (error) errorMessage = new ErrorDecorator(error).getMessages();
 
@@ -25,4 +25,4 @@ const PageWithGraphQL = ({ data: { loading, error, me } }) => {
   );
 };
 
-export default withApolloClient(WithAuth(WithAuthSecurity(graphql(CurrentUser)(PageWithGraphQL))));
+export default withApolloClient(WithAuth(WithAuthSecurity(graphql(CurrentUser)(Profile))));

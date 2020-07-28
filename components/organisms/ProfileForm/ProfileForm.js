@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Form from '../../molecules/Form';
+import { useUpdateUser } from 'lib/apollo/hooks/actions';
+import ErrorDecorator from 'decorators/ErrorDecorator';
 
 const StyledTitle = styled.h3`
   max-width: 40rem;
@@ -10,8 +12,13 @@ const StyledTitle = styled.h3`
   letter-spacing: -0.035em;
 `;
 
+const Error = styled.div`
+  color: red;
+`;
+
 const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
-  console.log(email);
+  const [error, setError] = useState(false);
+  const [updateUser] = useUpdateUser();
   const fields = [
     {
       type: 'text',
@@ -46,19 +53,29 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
     },
   ];
 
-  const onSubmit = values => {
-    console.log(values);
+  const onSubmit = async (values, { setSubmitting }) => {
+    try {
+      setSubmitting(true);
+
+      await updateUser(values);
+
+      setSubmitting(false);
+    } catch (error) {
+      setError(error);
+      console.error(error);
+    }
   };
 
   const form = {
     fields,
-    submit: values => onSubmit(values),
+    submit: onSubmit,
   };
 
   return (
     <>
       <StyledTitle>Profile</StyledTitle>
       <Form form={form} />
+      {error && <Error>{new ErrorDecorator(error).getMessages()}</Error>}
     </>
   );
 };
