@@ -1,4 +1,4 @@
-import { ApolloError } from 'apollo-client';
+import { ApolloError } from '@apollo/client';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 describe('Error Decorator', () => {
