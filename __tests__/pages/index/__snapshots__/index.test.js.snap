@@ -17,14 +17,29 @@ exports[`Homepage should render correctly 1`] = `
   height: 80px;
   padding: 1rem;
   z-index: 5;
+  border-bottom: 1px solid #eee;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c0 {
   min-height: 100vh;
-  padding: 1rem 2rem;
 }
 
-.c2 {
+.c3 {
+  padding: 2rem 1rem;
+}
+
+.c4 {
   font-size: 2rem;
   text-align: center;
 }
@@ -58,17 +73,29 @@ exports[`Homepage should render correctly 1`] = `
           </g>
         </svg>
       </a>
-      <a
-        href="login"
+      <div
+        class="c2"
       >
-        Log In
-      </a>
+        <a
+          href="/login"
+        >
+          Log In
+        </a>
+      </div>
     </header>
-    <h1
-      class="c2 capitalize"
+    <div
+      class="c3"
     >
-      Welcome to React Next Base
-    </h1>
+      <div
+        class=""
+      >
+        <h1
+          class="c4 capitalize"
+        >
+          Welcome to React Next Base
+        </h1>
+      </div>
+    </div>
   </div>
 </div>
 `;

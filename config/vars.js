@@ -1,5 +1,5 @@
 const DEV = process.env.NODE_ENV !== 'production';
-const PORT = parseInt(process.env.PORT, 10) || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 8080;
 const API_URL = process.env.API_URL;
 const GRAPHQL_APP_URL = '/graphql';
 

@@ -31,9 +31,14 @@ const FormContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-gap: 1rem;
 `;
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  display: block;
+const FieldWrapper = styled.div`
+  position: relative;
+  padding-top: 1.5rem;
+`;
+const FieldLabel = styled.label`
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 const ErrorWrapper = styled.div`
   font-size: 0.9rem;
@@ -45,20 +50,22 @@ const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
   const formByName = mapKeys(fields, 'name');
   const initialValues = mapValues(formByName, 'initialValue');
+
   const validationSchema = Yup.object().shape(mapValues(formByName, 'validationSchema'));
   // todo custom components to the fields, strict types
   return (
     <FormWrapper>
-      <Formik initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
-        {() => (
+      <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
+        {({ isSubmitting }) => (
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
                 const { type, name, label, placeholder, options, action, title } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
+
                 return (
-                  <div key={`${name}${i}`}>
-                    {title && <Label htmlFor={name}>{title}</Label>}
+                  <FieldWrapper key={`${name}${i}`}>
+                    {title && <FieldLabel htmlFor={name}>{title}</FieldLabel>}
                     <Field
                       type={isInput ? type : null}
                       as={!isInput && type}
@@ -67,6 +74,7 @@ const Form = ({ form }: { form: FormType }) => {
                       id={name}
                       data-testid={`test-${name}`}
                       placeholder={placeholder}
+                      disabled={isSubmitting}
                     >
                       {type === 'select' && options
                         ? options.map((option: OptionType, j: number) => {
@@ -81,7 +89,7 @@ const Form = ({ form }: { form: FormType }) => {
                     </Field>
                     {label && type === 'checkbox' && <label htmlFor={name}>{label}</label>}
                     <ErrorMessage name={name}>{msg => <ErrorWrapper>{msg}</ErrorWrapper>}</ErrorMessage>
-                  </div>
+                  </FieldWrapper>
                 );
               })}
             </FormContainer>
