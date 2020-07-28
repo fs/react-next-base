@@ -1,15 +1,20 @@
 import React from 'react';
-import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 import WithAuth from 'lib/auth/withAuth';
+import { ErrorProvider } from 'contexts/ErrorContext';
 import { withApolloClient } from 'lib/withApolloClient';
-import LoginForm from '../../components/organisms/LoginForm';
+import DefaultTemplate from 'components/templates/DefaultTemplate';
+import LoginForm from 'components/organisms/LoginForm';
+import ErrorNotifier from 'components/atoms/ErrorNotifier/ErrorNotifier';
 
 const Login = () => {
   return (
-    <DefaultTemplate>
-      <LoginForm />
-    </DefaultTemplate>
+    <ErrorProvider>
+      <DefaultTemplate>
+        <LoginForm />
+        <ErrorNotifier />
+      </DefaultTemplate>
+    </ErrorProvider>
   );
 };
 
