@@ -12,11 +12,9 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const PageWithGraphQL = () => {
   const { loading, error, data } = useQuery(CurrentUser);
+
   const me = data?.me;
-
-  let errorMessage;
-
-  if (error) errorMessage = new ErrorDecorator(error).getMessages();
+  const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
 
   return (
     <DefaultTemplate>
