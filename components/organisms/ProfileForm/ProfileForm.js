@@ -19,6 +19,7 @@ const Error = styled.div`
 const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
   const [error, setError] = useState(false);
   const [updateUser] = useUpdateUser();
+
   const fields = [
     {
       type: 'text',
@@ -47,6 +48,22 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
         .required('This field is required'),
     },
     {
+      type: 'password',
+      name: 'password',
+      title: 'New Password',
+      placeholder: 'New Password',
+      initialValue: '',
+      validationSchema: Yup.string(),
+    },
+    {
+      type: 'currentPassword',
+      name: 'currentPassword',
+      title: 'Confirm Password',
+      placeholder: 'Confirm Password',
+      initialValue: '',
+      validationSchema: Yup.string(),
+    },
+    {
       type: 'submit',
       name: 'Update',
       initialValue: 'Update',
@@ -54,6 +71,8 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
   ];
 
   const onSubmit = async (values, { setSubmitting }) => {
+    setError(false);
+
     try {
       setSubmitting(true);
 
@@ -61,8 +80,8 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
 
       setSubmitting(false);
     } catch (error) {
-      setError(error);
-      console.error(error);
+      const errorMsg = new ErrorDecorator(error).getMessages();
+      setError(errorMsg);
     }
   };
 
@@ -74,8 +93,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
   return (
     <>
       <StyledTitle>Profile</StyledTitle>
-      <Form form={form} />
-      {error && <Error>{new ErrorDecorator(error).getMessages()}</Error>}
+      <Form form={form} submittingError={error} />
     </>
   );
 };

@@ -46,7 +46,7 @@ const ErrorWrapper = styled.div`
   padding: 0.5rem 0 0 1rem;
 `;
 
-const Form = ({ form }: { form: FormType }) => {
+const Form = ({ form, submittingError }: { form: FormType; submittingError: any }) => {
   const { fields, submit } = form;
   const formByName = mapKeys(fields, 'name');
   const initialValues = mapValues(formByName, 'initialValue');
@@ -96,6 +96,7 @@ const Form = ({ form }: { form: FormType }) => {
           </FormikForm>
         )}
       </Formik>
+      <ErrorWrapper>{submittingError}</ErrorWrapper>
     </FormWrapper>
   );
 };
