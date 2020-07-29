@@ -46,7 +46,7 @@ const ErrorWrapper = styled.div`
   padding: 0.5rem 0 0 1rem;
 `;
 
-const Form = ({ form, submittingError }: { form: FormType; submittingError: any }) => {
+const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
   const formByName = mapKeys(fields, 'name');
   const initialValues = mapValues(formByName, 'initialValue');
@@ -56,7 +56,7 @@ const Form = ({ form, submittingError }: { form: FormType; submittingError: any 
   return (
     <FormWrapper>
       <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
-        {({ isSubmitting }) => (
+        {({ isSubmitting, status }) => (
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
@@ -93,10 +93,10 @@ const Form = ({ form, submittingError }: { form: FormType; submittingError: any 
                 );
               })}
             </FormContainer>
+            {!!status && <ErrorWrapper>{status}</ErrorWrapper>}
           </FormikForm>
         )}
       </Formik>
-      <ErrorWrapper>{submittingError}</ErrorWrapper>
     </FormWrapper>
   );
 };

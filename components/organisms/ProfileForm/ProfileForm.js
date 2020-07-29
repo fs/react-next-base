@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import Form from '../../molecules/Form';
 import { useUpdateUser } from 'lib/apollo/hooks/actions';
 import ErrorDecorator from 'decorators/ErrorDecorator';
+import Form from '../../molecules/Form';
 
 const StyledTitle = styled.h3`
   max-width: 40rem;
@@ -12,12 +12,7 @@ const StyledTitle = styled.h3`
   letter-spacing: -0.035em;
 `;
 
-const Error = styled.div`
-  color: red;
-`;
-
 const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
-  const [error, setError] = useState(false);
   const [updateUser] = useUpdateUser();
 
   const fields = [
@@ -70,9 +65,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
     },
   ];
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    setError(false);
-
+  const onSubmit = async (values, { setSubmitting, setStatus }) => {
     try {
       setSubmitting(true);
 
@@ -81,7 +74,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
       setSubmitting(false);
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
-      setError(errorMsg);
+      setStatus(errorMsg);
     }
   };
 
@@ -93,7 +86,7 @@ const ProfileForm = ({ profile: { email, firstName, lastName } }) => {
   return (
     <>
       <StyledTitle>Profile</StyledTitle>
-      <Form form={form} submittingError={error} />
+      <Form form={form} />
     </>
   );
 };
