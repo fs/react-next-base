@@ -47,7 +47,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
       validationSchema: Yup.string(),
     },
     {
-      type: 'currentPassword',
+      type: 'password',
       name: 'currentPassword',
       title: 'Confirm Password',
       placeholder: 'Confirm Password',
