@@ -52,7 +52,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
       title: 'Confirm Password',
       placeholder: 'Confirm Password',
       initialValue: '',
-      validationSchema: Yup.string(),
+      validationSchema: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
     },
     {
       type: 'submit',
