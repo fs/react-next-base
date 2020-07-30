@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileFormContent should render correctly 1`] = `
+.c1 {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.c1 input,
+.c1 textarea,
+.c1 select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgb(179,179,179);
+}
+
+.c1 input[type='checkbox'],
+.c1 input[type='radio'] {
+  width: auto;
+}
+
+.c1 textarea {
+  resize: vertical;
+}
+
+.c2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+  grid-gap: 1rem;
+}
+
+.c3 {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.c4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  max-width: 40rem;
+  margin: 0 auto 1rem;
+  line-height: 1.25;
+  -webkit-letter-spacing: -0.035em;
+  -moz-letter-spacing: -0.035em;
+  -ms-letter-spacing: -0.035em;
+  letter-spacing: -0.035em;
+}
+
+<div>
+  <h3
+    class="c0"
+  >
+    Profile
+  </h3>
+  <div
+    class="c1"
+  >
+    <form
+      action="#"
+    >
+      <div
+        class="c2"
+      >
+        <div
+          class="c3"
+        >
+          <label
+            class="c4"
+            for="firstName"
+          >
+            First Name
+          </label>
+          <input
+            data-testid="test-firstName"
+            id="firstName"
+            name="firstName"
+            placeholder="First Name"
+            type="text"
+            value="Test firstName"
+          />
+        </div>
+        <div
+          class="c3"
+        >
+          <label
+            class="c4"
+            for="lastName"
+          >
+            Last Name
+          </label>
+          <input
+            data-testid="test-lastName"
+            id="lastName"
+            name="lastName"
+            placeholder="Last Name"
+            type="text"
+            value="Test LastName"
+          />
+        </div>
+        <div
+          class="c3"
+        >
+          <label
+            class="c4"
+            for="email"
+          >
+            Email
+          </label>
+          <input
+            data-testid="test-email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            type="email"
+            value="test@test.com"
+          />
+        </div>
+        <div
+          class="c3"
+        >
+          <label
+            class="c4"
+            for="password"
+          >
+            New Password
+          </label>
+          <input
+            data-testid="test-password"
+            id="password"
+            name="password"
+            placeholder="New Password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="c3"
+        >
+          <label
+            class="c4"
+            for="currentPassword"
+          >
+            Confirm Password
+          </label>
+          <input
+            data-testid="test-currentPassword"
+            id="currentPassword"
+            name="currentPassword"
+            placeholder="Confirm Password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="c3"
+        >
+          <input
+            data-testid="test-Update"
+            id="Update"
+            name="Update"
+            type="submit"
+            value="Update"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

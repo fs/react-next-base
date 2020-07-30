@@ -9,8 +9,10 @@ module.exports = {
     '<rootDir>/__tests__/helpers',
     '<rootDir>/__tests__/mocks',
   ],
+  preset: 'ts-jest',
   transform: {
     '\\.(gql|graphql)$': 'jest-transform-graphql',
+    '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.(js)$': 'babel-jest',
   },
   moduleNameMapper: {
@@ -20,4 +22,5 @@ module.exports = {
     '\\.svg': '<rootDir>/__tests__/mocks/svgrMock.js',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };

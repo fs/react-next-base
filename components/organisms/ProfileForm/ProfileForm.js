@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUpdateUser } from 'lib/apollo/hooks/actions';
-import ProfileFormContent from './ProfileFormContent';
 import ErrorDecorator from 'decorators/ErrorDecorator';
+import ProfileFormContent from './ProfileFormContent';
 
 const ProfileForm = ({ profile }) => {
   const [updateUser] = useUpdateUser();
