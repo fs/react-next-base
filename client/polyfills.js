@@ -4,4 +4,5 @@
 // Make sure you don't duplicate these in this file
 // https://github.com/zeit/next.js/blob/canary/packages/next-polyfill-nomodule/src/index.js
 
-import 'core-js/features/function/name';
+// resolved by https://github.com/vercel/next.js/pull/13704/files
+// import 'core-js/features/function/name';
