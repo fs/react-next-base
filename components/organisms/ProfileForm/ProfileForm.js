@@ -7,16 +7,15 @@ const ProfileForm = ({ profile }) => {
   const [updateUser] = useUpdateUser();
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
+    setStatus('');
+    setSubmitting(true);
     try {
-      setSubmitting(true);
-
       await updateUser(values);
-
-      setSubmitting(false);
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
       setStatus(errorMsg);
     }
+    setSubmitting(false);
   };
 
   return <ProfileFormContent profile={profile} onSubmit={onSubmit} />;

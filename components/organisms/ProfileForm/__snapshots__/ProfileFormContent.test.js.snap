@@ -1,14 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfileFormContent should render correctly 1`] = `
-.c1 {
+.c2 {
   max-width: 40rem;
-  margin: 0 auto;
 }
 
-.c1 input,
-.c1 textarea,
-.c1 select {
+.c2 input,
+.c2 textarea,
+.c2 select {
   width: 100%;
   padding: 1rem;
   font-size: 1rem;
@@ -16,33 +15,42 @@ exports[`ProfileFormContent should render correctly 1`] = `
   border: 1px solid rgb(179,179,179);
 }
 
-.c1 input[type='checkbox'],
-.c1 input[type='radio'] {
+.c2 input[type='checkbox'],
+.c2 input[type='radio'] {
   width: auto;
 }
 
-.c1 textarea {
+.c2 textarea {
   resize: vertical;
 }
 
-.c2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
-  grid-gap: 1rem;
-}
-
 .c3 {
-  position: relative;
-  padding-top: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c4 {
+  position: relative;
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.c5 {
   position: absolute;
   top: 0;
   left: 0;
 }
 
 .c0 {
+  width: 20rem;
+}
+
+.c1 {
   max-width: 40rem;
   margin: 0 auto 1rem;
   line-height: 1.25;
@@ -53,123 +61,127 @@ exports[`ProfileFormContent should render correctly 1`] = `
 }
 
 <div>
-  <h3
+  <div
     class="c0"
   >
-    Profile
-  </h3>
-  <div
-    class="c1"
-  >
-    <form
-      action="#"
+    <h3
+      class="c1"
     >
-      <div
-        class="c2"
+      Profile
+    </h3>
+    <div
+      class="c2"
+    >
+      <form
+        action="#"
       >
         <div
           class="c3"
         >
-          <label
+          <div
             class="c4"
-            for="firstName"
           >
-            First Name
-          </label>
-          <input
-            data-testid="test-firstName"
-            id="firstName"
-            name="firstName"
-            placeholder="First Name"
-            type="text"
-            value="Test firstName"
-          />
-        </div>
-        <div
-          class="c3"
-        >
-          <label
+            <label
+              class="c5"
+              for="firstName"
+            >
+              First Name
+            </label>
+            <input
+              data-testid="test-firstName"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+              type="text"
+              value="Test firstName"
+            />
+          </div>
+          <div
             class="c4"
-            for="lastName"
           >
-            Last Name
-          </label>
-          <input
-            data-testid="test-lastName"
-            id="lastName"
-            name="lastName"
-            placeholder="Last Name"
-            type="text"
-            value="Test LastName"
-          />
-        </div>
-        <div
-          class="c3"
-        >
-          <label
+            <label
+              class="c5"
+              for="lastName"
+            >
+              Last Name
+            </label>
+            <input
+              data-testid="test-lastName"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+              type="text"
+              value="Test LastName"
+            />
+          </div>
+          <div
             class="c4"
-            for="email"
           >
-            Email
-          </label>
-          <input
-            data-testid="test-email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            type="email"
-            value="test@test.com"
-          />
-        </div>
-        <div
-          class="c3"
-        >
-          <label
+            <label
+              class="c5"
+              for="email"
+            >
+              Email
+            </label>
+            <input
+              data-testid="test-email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              value="test@test.com"
+            />
+          </div>
+          <div
             class="c4"
-            for="password"
           >
-            New Password
-          </label>
-          <input
-            data-testid="test-password"
-            id="password"
-            name="password"
-            placeholder="New Password"
-            type="password"
-            value=""
-          />
-        </div>
-        <div
-          class="c3"
-        >
-          <label
+            <label
+              class="c5"
+              for="password"
+            >
+              New Password
+            </label>
+            <input
+              data-testid="test-password"
+              id="password"
+              name="password"
+              placeholder="New Password"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
             class="c4"
-            for="currentPassword"
           >
-            Confirm Password
-          </label>
-          <input
-            data-testid="test-currentPassword"
-            id="currentPassword"
-            name="currentPassword"
-            placeholder="Confirm Password"
-            type="password"
-            value=""
-          />
+            <label
+              class="c5"
+              for="currentPassword"
+            >
+              Confirm Password
+            </label>
+            <input
+              data-testid="test-currentPassword"
+              id="currentPassword"
+              name="currentPassword"
+              placeholder="Confirm Password"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <input
+              data-testid="test-Update"
+              id="Update"
+              name="Update"
+              type="submit"
+              value="Update"
+            />
+          </div>
         </div>
-        <div
-          class="c3"
-        >
-          <input
-            data-testid="test-Update"
-            id="Update"
-            name="Update"
-            type="submit"
-            value="Update"
-          />
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 `;

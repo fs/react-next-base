@@ -3,6 +3,10 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Form from '../../molecules/Form';
 
+const FormWrapper = styled.div`
+  width: 20rem;
+`;
+
 const StyledTitle = styled.h3`
   max-width: 40rem;
   margin: 0 auto 1rem;
@@ -67,10 +71,10 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
   };
 
   return (
-    <>
+    <FormWrapper>
       <StyledTitle>Profile</StyledTitle>
       <Form form={form} />
-    </>
+    </FormWrapper>
   );
 };
 export default ProfileFormContent;
