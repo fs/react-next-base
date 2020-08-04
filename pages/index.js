@@ -5,6 +5,7 @@ import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';
+import { ErrorProvider } from 'contexts/ErrorContext';
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -15,11 +16,13 @@ const PageContent = styled.div``;
 
 const Home = () => {
   return (
-    <DefaultTemplate>
-      <PageContent>
-        <Title className="capitalize">Welcome to React Next Base</Title>
-      </PageContent>
-    </DefaultTemplate>
+    <ErrorProvider>
+      <DefaultTemplate>
+        <PageContent>
+          <Title className="capitalize">Welcome to React Next Base</Title>
+        </PageContent>
+      </DefaultTemplate>
+    </ErrorProvider>
   );
 };
 
