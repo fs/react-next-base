@@ -4,4 +4,5 @@ module.exports = {
   LOGIN: { name: 'login', pattern: '/login', page: 'logIn' },
   STATIC_PAGE: { name: 'staticPage', pattern: '/static-page', page: 'staticPage' },
   PAGE_WITH_GRAPHQL: { name: 'pageWithGraphQL', pattern: '/page-with-graphql', page: 'pageWithGraphQL' },
+  ACTIVITY: { name: 'activity', pattern: '/activity', page: 'activity' },
 };

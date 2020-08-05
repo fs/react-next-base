@@ -1,0 +1,30 @@
+query Activities {
+  activities(events: [USER_LOGGED_IN, USER_REGISTERED, USER_RESET_PASSWORD, RESET_PASSWORD_REQUESTED, USER_UPDATED]) {
+    edges {
+      cursor
+      node {
+        body
+      }
+    }
+    nodes {
+      body
+      createdAt
+      event
+      id
+      title
+      user {
+        avatarUrl
+        email
+        firstName
+        id
+        lastName
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}
