@@ -14,7 +14,7 @@ import ProfileForm from 'components/organisms/ProfileForm';
 const Profile = () => {
   const { loading, error, data } = useQuery(CurrentUser);
 
-  const me = data?.me;
+  const profile = data?.me ?? {};
   const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
 
   return (
@@ -22,7 +22,7 @@ const Profile = () => {
       {loading && <h3>Loading...</h3>}
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
-      {!loading && !error && <ProfileForm profile={me} />}
+      {!loading && !error && <ProfileForm profile={profile} />}
     </DefaultTemplate>
   );
 };
