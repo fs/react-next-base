@@ -31,12 +31,13 @@ const Profile = () => {
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {!loading && !error && (
         <>
-          <ProfileForm profile={profile} />
           <StyledProfileActions>
             <button type="button" onClick={LogOutFromAllDevices}>
               Log out from all devices
             </button>
           </StyledProfileActions>
+
+          <ProfileForm profile={profile} />
         </>
       )}
     </DefaultTemplate>

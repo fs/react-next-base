@@ -53,10 +53,14 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
     {
       type: 'password',
       name: 'currentPassword',
-      title: 'Confirm Password',
-      placeholder: 'Confirm Password',
+      title: 'Current Password',
+      placeholder: 'Current Password',
       initialValue: '',
-      validationSchema: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
+      validationSchema: Yup.string().when(['password'], {
+        is: password => password?.length > 0,
+        then: Yup.string().required('If you filled New Password, Current Password field should be filled too'),
+        otherwise: Yup.string(),
+      }),
     },
     {
       type: 'submit',

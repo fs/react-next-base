@@ -157,13 +157,13 @@ exports[`ProfileFormContent should render correctly 1`] = `
               class="c5"
               for="currentPassword"
             >
-              Confirm Password
+              Current Password
             </label>
             <input
               data-testid="test-currentPassword"
               id="currentPassword"
               name="currentPassword"
-              placeholder="Confirm Password"
+              placeholder="Current Password"
               type="password"
               value=""
             />
