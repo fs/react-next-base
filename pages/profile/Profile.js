@@ -27,10 +27,10 @@ const Profile = () => {
 
   return (
     <DefaultTemplate>
-      {loading && <h3>Loading...</h3>}
+      {loading && <h3 data-testid="test-profile-loading">Loading...</h3>}
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {!loading && !error && (
-        <>
+        <div data-testid="test-profile-page">
           <StyledProfileActions>
             <button type="button" onClick={LogOutFromAllDevices}>
               Log out from all devices
@@ -38,7 +38,7 @@ const Profile = () => {
           </StyledProfileActions>
 
           <ProfileForm profile={profile} />
-        </>
+        </div>
       )}
     </DefaultTemplate>
   );

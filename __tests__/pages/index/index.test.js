@@ -7,9 +7,6 @@ import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import Homepage from 'pages/index';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-// hotfix https://github.com/vercel/next.js/issues/15543
-jest.mock('next/link', () => 'div');
-
 describe('Homepage', () => {
   afterEach(() => {
     jest.clearAllMocks();

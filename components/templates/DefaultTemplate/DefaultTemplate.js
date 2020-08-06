@@ -19,7 +19,7 @@ const PageContent = styled.div`
 `;
 
 const DefaultTemplate = ({ children }) => {
-  const user = useCurrentUser(false);
+  const { user } = useCurrentUser(false);
   const [signOut] = useSignOut();
 
   return (
