@@ -21,7 +21,7 @@ const Profile = () => {
   const { loading, error, data } = useQuery(CurrentUser);
   const [signOut] = useSignOut();
 
-  const me = data?.me;
+  const profile = data?.me ?? {};
   const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
   const LogOutFromAllDevices = () => signOut({ everywhere: true });
 
@@ -31,7 +31,7 @@ const Profile = () => {
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {!loading && !error && (
         <>
-          <ProfileForm profile={me} />
+          <ProfileForm profile={profile} />
           <StyledProfileActions>
             <button type="button" onClick={LogOutFromAllDevices}>
               Log out from all devices
