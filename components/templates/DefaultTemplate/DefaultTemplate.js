@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import Header from 'components/organisms/Header';
 
-import { useCurrentUser } from 'lib/apollo/hooks/state';
-import { useSignOut } from 'lib/apollo/hooks/actions';
+import useCurrentUser from 'lib/apollo/hooks/state/useCurrentUser';
+import { useSignOut } from 'lib/apollo/hooks/actions/actions';
 
 const Wrapper = styled.div`
   display: flex;

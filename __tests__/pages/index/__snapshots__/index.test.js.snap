@@ -1,6 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Homepage should render correctly 1`] = `
+.c5 {
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  font-size: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.c6 {
+  display: inline-block;
+  color: #000;
+  font-weight: 600;
+  margin: 0 0.3125rem 0 0.375rem;
+  line-height: 1.1875rem;
+  max-width: 10rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 1.25rem;
+  outline: none;
+}
+
+.c4::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0.3125rem;
+  width: 0;
+  height: 0;
+  margin-top: 0;
+  border: inset transparent;
+  border-top: solid #000;
+  border-bottom-width: 0;
+  content: '';
+}
+
 .c1 {
   position: -webkit-sticky;
   position: sticky;
@@ -46,14 +107,20 @@ exports[`Homepage should render correctly 1`] = `
   align-items: center;
 }
 
-.c3 {
+.c7 {
   padding: 2rem 1rem;
   max-width: 40rem;
 }
 
-.c4 {
+.c8 {
   font-size: 2rem;
   text-align: center;
+}
+
+@media (max-width:576px) {
+  .c6 {
+    display: none;
+  }
 }
 
 <div>
@@ -92,23 +159,34 @@ exports[`Homepage should render correctly 1`] = `
         class="c2"
       >
         <div
-          as="/login"
-          href="/logIn?"
+          class="c3"
         >
-          <a>
-            Log In
-          </a>
+          <div
+            class="c4"
+            data-testid="test-user-name"
+          >
+            <img
+              alt="Avatar"
+              class="c5"
+              src="/images/avatar-placeholder.png"
+            />
+            <span
+              class="c6"
+            >
+              user@mail.ru
+            </span>
+          </div>
         </div>
       </div>
     </header>
     <div
-      class="c3"
+      class="c7"
     >
       <div
         class=""
       >
         <h1
-          class="c4 capitalize"
+          class="c8 capitalize"
         >
           Welcome to React Next Base
         </h1>

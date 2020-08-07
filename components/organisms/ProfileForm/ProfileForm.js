@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUpdateUser } from 'lib/apollo/hooks/actions';
+import { useUpdateUser } from 'lib/apollo/hooks/actions/actions';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import ProfileFormContent from './ProfileFormContent';
 

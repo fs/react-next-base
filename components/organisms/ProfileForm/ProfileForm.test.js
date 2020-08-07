@@ -2,12 +2,12 @@ import React from 'react';
 import { cleanup, render, fireEvent, wait } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import * as actions from 'lib/apollo/hooks/actions';
+import * as actions from 'lib/apollo/hooks/actions/actions';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
-jest.mock('lib/apollo/hooks/actions');
+jest.mock('lib/apollo/hooks/actions/actions');
 jest.mock('decorators/ErrorDecorator');
 const originalUseUpdateUser = actions.useUpdateUser;
 
