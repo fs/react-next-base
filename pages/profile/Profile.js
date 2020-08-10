@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <>
       {loading && <h3 data-testid="test-profile-loading">Loading...</h3>}
-      {error && <ErrorMessage testId="test-profile-error">{errorMessage}</ErrorMessage>}
+      {error && <ErrorMessage data-testid="test-profile-error">{errorMessage}</ErrorMessage>}
       {!loading && !error && (
         <DefaultTemplate data-testid="test-profile-page">
           <ProfileForm profile={profile} />
