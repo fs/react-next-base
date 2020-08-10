@@ -26,7 +26,7 @@ describe('Profile page', () => {
     const mockUseCurrentUserData = jest.fn(() => ({
       loading: undefined,
       error: undefined,
-      user: { id: '1', email: 'user@mail.ru', firrstName: 'First Name' },
+      user: { id: '1', email: 'user@mail.ru', firstName: 'First Name' },
     }));
     useCurrentUser.mockImplementation(mockUseCurrentUserData);
 

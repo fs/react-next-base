@@ -95,7 +95,7 @@ exports[`Profile page should render correctly 1`] = `
               name="firstName"
               placeholder="First Name"
               type="text"
-              value=""
+              value="First Name"
             />
           </div>
           <div
