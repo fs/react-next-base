@@ -1,6 +1,6 @@
 import React from 'react';
 import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
-import { act, cleanup, render } from '@testing-library/react';
+import { wait, cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import { useCurrentUser } from 'lib/apollo/hooks/state';
@@ -28,7 +28,7 @@ describe('Homepage', () => {
     const { container } = render(renderWithTheme(renderWithApolloClient(<Homepage />)));
 
     // Assert
-    await act(async () => {
+    await wait(() => {
       expect(container).toMatchSnapshot();
     });
   });
