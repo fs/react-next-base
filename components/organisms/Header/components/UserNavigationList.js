@@ -47,6 +47,7 @@ const UserMenuItem = styled.li(
     background: none;
     border: none;
     font-size: 1rem;
+    text-align: left;
 
     &:hover,
     &:active,
