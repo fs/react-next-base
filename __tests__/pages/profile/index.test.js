@@ -3,13 +3,13 @@ import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import { render, cleanup, wait } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import useCurrentUser from 'lib/apollo/hooks/state/useCurrentUser';
+import { useCurrentUser } from 'lib/apollo/hooks/state';
 
 import Profile from 'pages/profile';
 
 jest.mock('components/templates/DefaultTemplate', () => 'div');
-jest.mock('lib/apollo/hooks/state/useCurrentUser');
-jest.mock('lib/apollo/hooks/actions/actions', () => ({
+jest.mock('lib/apollo/hooks/state.js');
+jest.mock('lib/apollo/hooks/actions.js', () => ({
   useSignIn: jest.fn(() => []),
   useUpdateUser: jest.fn(() => []),
 }));

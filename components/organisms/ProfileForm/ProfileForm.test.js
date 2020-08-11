@@ -2,18 +2,16 @@ import React from 'react';
 import { cleanup, render, fireEvent, wait } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import * as actions from 'lib/apollo/hooks/actions/actions';
+import { useUpdateUser } from 'lib/apollo/hooks/actions';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
-jest.mock('lib/apollo/hooks/actions/actions');
+jest.mock('lib/apollo/hooks/actions.js');
 jest.mock('decorators/ErrorDecorator');
-const originalUseUpdateUser = actions.useUpdateUser;
 
 describe('ProfileForm', () => {
   afterEach(() => {
-    actions.useUpdateUser = originalUseUpdateUser;
     jest.clearAllMocks();
     jest.resetModules();
     cleanup();
@@ -38,7 +36,7 @@ describe('ProfileForm', () => {
       [expectedButtonText]: expectedButtonText,
     };
     const mockUpdateUser = jest.fn(() => Promise.resolve());
-    actions.useUpdateUser = jest.fn(() => [mockUpdateUser]);
+    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
 
     const { getByText } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
@@ -68,7 +66,7 @@ describe('ProfileForm', () => {
       errors: [{ message: 'Record Invalid' }],
     };
     const mockUpdateUser = jest.fn(() => Promise.reject(expectedError));
-    actions.useUpdateUser = jest.fn(() => [mockUpdateUser]);
+    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
 
     const mockErrorDecorator = jest.fn();
     ErrorDecorator.mockImplementation(mockErrorDecorator);

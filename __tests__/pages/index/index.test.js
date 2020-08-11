@@ -3,11 +3,11 @@ import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import { act, cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import useCurrentUser from 'lib/apollo/hooks/state/useCurrentUser';
+import { useCurrentUser } from 'lib/apollo/hooks/state';
 
 import Homepage from 'pages/index';
 
-jest.mock('lib/apollo/hooks/state/useCurrentUser');
+jest.mock('lib/apollo/hooks/state.js');
 
 describe('Homepage', () => {
   afterEach(() => {
