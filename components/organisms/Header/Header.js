@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'routes';
 
-import { PAGE_WITH_GRAPHQL, LOGIN } from 'config/routes';
+import { PROFILE, LOGIN } from 'config/routes';
 
 import Logo from 'components/atoms/Logo';
 import UserNavigation from './components/UserNavigation';
@@ -25,9 +25,12 @@ const Links = styled.div`
 `;
 
 const Header = ({ user, signOut }) => {
-  const links = [{ text: 'Profile', url: PAGE_WITH_GRAPHQL.pattern }];
+  const links = [{ text: 'Profile', url: PROFILE.pattern }];
 
-  const actions = [{ text: 'Sign Out', action: signOut }];
+  const actions = [
+    { text: 'Sign Out', action: signOut },
+    { text: 'Log out from all devices', action: () => signOut({ everywhere: true }) },
+  ];
 
   return (
     <HeaderWrapper>
