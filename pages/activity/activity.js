@@ -12,6 +12,21 @@ import ErrorMessage from 'components/atoms/ErrorMessage';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ActivityTable from 'components/organisms/ActivityTable';
 
+const getFormattedActivity = data => {
+  return data.activities.nodes.map(
+    ({ id, title, body, createdAt, event, user: { firstName, lastName, email, avatarUrl } }) => ({
+      id,
+      title,
+      description: body,
+      date: createdAt,
+      type: event,
+      name: `${firstName} ${lastName}`,
+      email,
+      avatarUrl,
+    }),
+  );
+};
+
 const Activity = () => {
   const { loading, error, data } = useQuery(Activities);
 
@@ -21,7 +36,7 @@ const Activity = () => {
     <DefaultTemplate>
       {loading && <h3>Loading...</h3>}
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {!loading && !error && <ActivityTable data={data} />}
+      {!loading && !error && <ActivityTable data={getFormattedActivity(data)} />}
     </DefaultTemplate>
   );
 };
