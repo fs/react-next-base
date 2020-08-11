@@ -1,32 +1,27 @@
 import React, { useState, useMemo } from 'react';
 import { withApolloClient } from 'lib/withApolloClient';
 import ErrorDecorator from 'decorators/ErrorDecorator';
+import TYPES from 'config/types/notifierTypes';
 import NotifierContext from './NotifierContext';
-import Type from '../../config/types/notifier.types';
 
 const NotifierProvider = ({ children }) => {
   const [message, setMessage] = useState('');
   const [type, setType] = useState('');
 
-  let notifierMessage = message;
-
-  if (type === Type.error) {
-    [notifierMessage] = new ErrorDecorator(message).getMessages();
-  }
-
   const setError = errorMessage => {
-    setMessage(errorMessage);
-    setType(Type.error);
+    const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
+    setMessage(parsedMessage);
+    setType(TYPES.error);
   };
 
   const setInfo = infoMessage => {
     setMessage(infoMessage);
-    setType(Type.info);
+    setType(TYPES.info);
   };
 
   const setSuccess = successMessage => {
     setMessage(successMessage);
-    setType(Type.success);
+    setType(TYPES.success);
   };
 
   const clearMessage = () => {
@@ -36,7 +31,7 @@ const NotifierProvider = ({ children }) => {
 
   const context = useMemo(
     () => ({
-      message: notifierMessage || '',
+      message,
       type,
       setError,
       setInfo,
