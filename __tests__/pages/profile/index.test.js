@@ -23,12 +23,12 @@ describe('Profile page', () => {
 
   test('should render correctly', async () => {
     // Arrange
-    const mockUseCurrentUserData = jest.fn(() => ({
+    const mockUseCurrentUser = jest.fn(() => ({
       loading: undefined,
       error: undefined,
       user: { id: '1', email: 'user@mail.ru', firstName: 'First Name' },
     }));
-    useCurrentUser.mockImplementation(mockUseCurrentUserData);
+    useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
     const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Profile />)));
@@ -41,12 +41,12 @@ describe('Profile page', () => {
 
   test('should show loader while loading', async () => {
     // Arrange
-    const mockUseCurrentUserData = jest.fn(() => ({
+    const mockUseCurrentUser = jest.fn(() => ({
       loading: true,
       error: undefined,
       user: undefined,
     }));
-    useCurrentUser.mockImplementation(mockUseCurrentUserData);
+    useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
     const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Profile />)));

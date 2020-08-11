@@ -18,12 +18,12 @@ describe('Homepage', () => {
 
   test('should render correctly', async () => {
     // Arrange
-    const mockUseCurrentUserData = jest.fn(() => ({
+    const mockUseCurrentUser = jest.fn(() => ({
       loading: undefined,
       error: undefined,
       user: { id: '1', email: 'user@mail.ru' },
     }));
-    useCurrentUser.mockImplementation(mockUseCurrentUserData);
+    useCurrentUser.mockImplementation(mockUseCurrentUser);
     // Act
     const { container } = render(renderWithTheme(renderWithApolloClient(<Homepage />)));
 
