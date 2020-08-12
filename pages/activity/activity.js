@@ -18,7 +18,7 @@ const getFormattedActivity = data => {
       id,
       title,
       description: body,
-      date: createdAt,
+      date: new Date(createdAt).toLocaleString(),
       type: event,
       name: `${firstName} ${lastName}`,
       email,
