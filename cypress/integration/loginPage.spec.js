@@ -1,4 +1,4 @@
-describe('Static Page', () => {
+describe('Login Page', () => {
   beforeEach(() => {
     cy.visit('/login');
     cy.get('.loginFormTitle')
@@ -7,9 +7,12 @@ describe('Static Page', () => {
     cy.get('.formToggler').as('formToggler');
   });
 
-  it('should render sign in form by default', () => {
-    cy.get('@formHeaderTag').should('be.visible');
-    cy.get('@formHeaderTag').should('contain', 'Sign In');
+  describe('Sign in form', () => {
+    // test sign in functionality
+    it('should render sign in form by default', () => {
+      cy.get('@formHeaderTag').should('be.visible');
+      cy.get('@formHeaderTag').should('contain', 'Sign In');
+    });
   });
 
   it('should render create an account form by click', () => {

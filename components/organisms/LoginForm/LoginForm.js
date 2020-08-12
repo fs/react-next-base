@@ -89,7 +89,7 @@ const LoginForm = () => {
     <StyledFormWrapper>
       <StyledFormActions>
         {FORM_ACTIONS.map(({ text, to }) => (
-          <StyledToggleForm key={to} onClick={() => toggleForm(to)}>
+          <StyledToggleForm className="formToggler" key={to} onClick={() => toggleForm(to)}>
             {text}
           </StyledToggleForm>
         ))}
