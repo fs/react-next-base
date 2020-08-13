@@ -1,5 +1,5 @@
-query Activities {
-  activities(events: [USER_LOGGED_IN, USER_REGISTERED, USER_RESET_PASSWORD, RESET_PASSWORD_REQUESTED, USER_UPDATED]) {
+query Activities($events: [ActivityEvent!]) {
+  activities(events: $events) {
     edges {
       cursor
       node {
