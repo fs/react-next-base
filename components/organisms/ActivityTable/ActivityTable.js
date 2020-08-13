@@ -1,14 +1,21 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Table = styled.table(
+import ProfileImage from 'components/atoms/ProfileImage';
+
+import baseCellStyles from './baseCellStyles';
+import DataCell from './DataCell';
+
+const StyledTable = styled.table(
   ({ theme: { up, breakpoints } }) =>
     css`
+      position: relative;
       border-spacing: 0;
       display: block;
       overflow-x: auto;
       text-align: left;
       width: 100%;
+      color: #606c76;
 
       ${up(breakpoints.lg)} {
         display: table;
@@ -17,59 +24,56 @@ const Table = styled.table(
     `,
 );
 
-const baseCellStyles = css`
-  border-bottom: 1px solid #e1e1e1;
-  padding: 1.2em 1em;
-  color: #606c76;
-  font-size: 0.9em;
-  line-height: 1.4em;
+const ColorLabel = styled.td(
+  ({ color }) => css`
+    min-width: 5px;
+    background-color: ${color};
+  `,
+);
 
-  &:first-child {
-    padding-left: 0;
-  }
-`;
+const HeaderCell = styled.th(
+  ({ theme }) => css`
+    ${baseCellStyles(theme)}
+  `,
+);
 
-const HeaderCell = styled.th`
-  ${baseCellStyles}
-`;
-const DataCell = styled.td`
-  ${baseCellStyles}
-  font-weight: 100;
-
-  &:nth-child(3) {
-    white-space: nowrap;
-  }
+const UserInfo = styled.span`
+  margin-left: 0.5rem;
 `;
 
 const ActivityTable = ({ data }) => {
-  // console.log('data', data);
-  // TODO: show user's avatar before name
-  // TODO: mobile view
+  const columnNames = ['Title', 'Description', 'Date', 'User'];
+
   return (
-    <Table>
+    <StyledTable>
       <thead>
         <tr>
-          <HeaderCell>Title</HeaderCell>
-          <HeaderCell>Description</HeaderCell>
-          <HeaderCell>Date</HeaderCell>
-          <HeaderCell>User</HeaderCell>
+          {columnNames.map((name, id) => (
+            <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
+              {name}
+            </HeaderCell>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {data.map(({ id, title, description, date, name, email }) => {
+        {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
           return (
             <tr key={id}>
+              <ColorLabel color={color} />
               <DataCell>{title}</DataCell>
               <DataCell>{description}</DataCell>
               <DataCell>{date.toString()}</DataCell>
               <DataCell>
-                {name} ({email})
+                <ProfileImage avatar={avatarUrl} />
+                <UserInfo>
+                  {name} ({email})
+                </UserInfo>
               </DataCell>
             </tr>
           );
         })}
       </tbody>
-    </Table>
+    </StyledTable>
   );
 };
 
