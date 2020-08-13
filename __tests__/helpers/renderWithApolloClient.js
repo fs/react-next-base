@@ -1,8 +1,9 @@
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
 export default function renderWithApolloClient(component) {
   const mockClient = new ApolloClient({
-    link: new HttpLink({ uri: `${process.env.API_URL}/graphql` }),
+    link: new createUploadLink({ uri: `${process.env.API_URL}/graphql` }),
     cache: new InMemoryCache(),
   });
 

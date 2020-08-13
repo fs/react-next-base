@@ -66,33 +66,50 @@ const Form = ({ form }: { form: FormType }) => {
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
-                const { type, name, label, placeholder, options, action, title } = field;
+                const { type, name, label, placeholder, options, action, title, initialValue } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
 
                 return (
                   <FieldWrapper key={`${name}${i}`}>
                     {title && <FieldLabel htmlFor={name}>{title}</FieldLabel>}
-                    <Field
-                      type={isInput ? type : null}
-                      as={!isInput && type}
-                      name={name}
-                      onClick={action}
-                      id={name}
-                      data-testid={`test-${name}`}
-                      placeholder={placeholder}
-                      disabled={isSubmitting}
-                    >
-                      {type === 'select' && options
-                        ? options.map((option: OptionType, j: number) => {
-                            const { value, label: optionLabel } = option;
-                            return (
-                              <option value={value} key={`${value}${j}`}>
-                                {optionLabel}
-                              </option>
-                            );
-                          })
-                        : null}
-                    </Field>
+                    {type === 'file' ? (
+                      <>
+                        <img src={initialValue} />
+                        <Field
+                          type={isInput ? type : null}
+                          as={!isInput && type}
+                          name={name}
+                          onChange={action}
+                          id={name}
+                          data-testid={`test-${name}`}
+                          placeholder={placeholder}
+                          disabled={isSubmitting}
+                        ></Field>
+                      </>
+                    ) : (
+                      <Field
+                        type={isInput ? type : null}
+                        as={!isInput && type}
+                        name={name}
+                        onClick={action}
+                        id={name}
+                        data-testid={`test-${name}`}
+                        placeholder={placeholder}
+                        disabled={isSubmitting}
+                      >
+                        {type === 'select' && options
+                          ? options.map((option: OptionType, j: number) => {
+                              const { value, label: optionLabel } = option;
+                              return (
+                                <option value={value} key={`${value}${j}`}>
+                                  {optionLabel}
+                                </option>
+                              );
+                            })
+                          : null}
+                      </Field>
+                    )}
+
                     {label && type === 'checkbox' && <label htmlFor={name}>{label}</label>}
                     <ErrorMessage name={name}>{msg => <ErrorWrapper>{msg}</ErrorWrapper>}</ErrorMessage>
                   </FieldWrapper>

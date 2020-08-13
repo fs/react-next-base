@@ -14,8 +14,25 @@ const StyledTitle = styled.h3`
   letter-spacing: -0.035em;
 `;
 
-const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit }) => {
+const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit, setFieldValue }) => {
+  const handleFileUpload = event => {
+    const {
+      target: {
+        validity,
+        files: [file],
+      },
+    } = event;
+
+    if (validity.valid) setFieldValue(file);
+  };
+
   const fields = [
+    {
+      type: 'file',
+      name: 'avatar',
+      title: 'Avatar',
+      action: handleFileUpload,
+    },
     {
       type: 'text',
       name: 'firstName',
