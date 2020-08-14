@@ -13,6 +13,13 @@ describe('Login Page', () => {
       cy.get('@formHeaderTag').should('be.visible');
       cy.get('@formHeaderTag').should('contain', 'Sign In');
     });
+
+    it('should pass correct user', () => {
+      cy.get('#email').type('marat.sadriev@flatstack.com');
+      cy.get('#password').type('Pwd21093');
+      cy.get('#signIn').click();
+      //cy.getCookie()
+    });
   });
 
   it('should render create an account form by click', () => {
