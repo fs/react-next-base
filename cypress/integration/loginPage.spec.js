@@ -8,7 +8,7 @@ describe('Login Page', () => {
   });
 
   describe('Sign in form', () => {
-    // test sign in functionality
+    //TODO: test sign in functionality
     it('should render sign in form by default', () => {
       cy.get('@formHeaderTag').should('be.visible');
       cy.get('@formHeaderTag').should('contain', 'Sign In');
@@ -27,5 +27,18 @@ describe('Login Page', () => {
       .eq(2)
       .click();
     cy.get('@formHeaderTag').should('contain', 'Recover my password');
+  });
+
+  it('should render recover form by click', () => {
+    cy.get('@formToggler')
+      .eq(1)
+      .click();
+
+    cy.get('#firstName').type('testmail@test.test');
+    cy.get('#lastName').type('testlastname');
+    cy.get('#email').type('testmail@test.test');
+    cy.get('#password').type('test');
+    cy.get('#signUp').click();
+    cy.getToken;
   });
 });
