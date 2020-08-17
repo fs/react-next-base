@@ -15,8 +15,8 @@ describe('Login Page', () => {
     });
 
     it('should pass correct user', () => {
-      cy.get('#email').type('marat.sadriev@flatstack.com');
-      cy.get('#password').type('Pwd21093');
+      cy.get('#email').type(Cypress.env('CORRECT_PEMAIL_FOR_E2E'));
+      cy.get('#password').type(Cypress.env('CORRECT_PASSWORD_FOR_E2E'));
       cy.get('#signIn').click();
       //cy.getCookie()
     });
