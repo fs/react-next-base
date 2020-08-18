@@ -69,9 +69,10 @@ const Form = ({ form }: { form: FormType }) => {
                 const { type, name, label, placeholder, options, title, onClick, onChange, onBlur } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
 
-                const actions = Object.entries({ onClick, onChange, onBlur })
-                  .filter(([, val]) => val)
-                  .reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {});
+                const actions = Object.entries({ onClick, onChange, onBlur }).reduce(
+                  (acc, [key, val]) => (val ? { ...acc, [key]: val } : { ...acc }),
+                  {},
+                );
 
                 const restProps = {
                   type: isInput ? type : null,
