@@ -1,7 +1,9 @@
 import { StringSchema } from 'yup';
 
 export interface FormFieldType {
-  action?: void;
+  onClick?: void;
+  onChange?: void;
+  onBlur?: void;
   initialValue?: string | number | boolean;
   label?: string;
   name: string;
