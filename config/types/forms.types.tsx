@@ -4,6 +4,7 @@ export interface FormFieldType {
   onClick?: void;
   onChange?: void;
   onBlur?: void;
+  accept?: string;
   initialValue?: string | number | boolean;
   label?: string;
   name: string;

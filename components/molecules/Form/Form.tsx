@@ -66,7 +66,7 @@ const Form = ({ form }: { form: FormType }) => {
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
-                const { type, name, label, placeholder, options, title, onClick, onChange, onBlur } = field;
+                const { type, name, label, placeholder, options, title, accept, onClick, onChange, onBlur } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
 
                 const actions = Object.entries({ onClick, onChange, onBlur }).reduce(
@@ -74,21 +74,20 @@ const Form = ({ form }: { form: FormType }) => {
                   {},
                 );
 
-                const fieldRestProps = {
-                  type: isInput ? type : null,
-                  as: !isInput && type,
-                  name,
-                  id: name,
-                  'data-testid': `test-${name}`,
-                  placeholder,
-                  disabled: isSubmitting,
-                  ...actions,
-                };
-
                 return (
                   <FieldWrapper key={`${name}${i}`}>
                     {title && <FieldLabel htmlFor={name}>{title}</FieldLabel>}
-                    <Field {...fieldRestProps}>
+                    <Field
+                      type={isInput ? type : null}
+                      as={!isInput && type}
+                      name={name}
+                      accept={accept}
+                      id={name}
+                      data-testid={`test-${name}`}
+                      placeholder={placeholder}
+                      disabled={isSubmitting}
+                      {...actions}
+                    >
                       {type === 'select' && options
                         ? options.map((option: OptionType, j: number) => {
                             const { value, label: optionLabel } = option;

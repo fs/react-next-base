@@ -5,26 +5,23 @@ import ProfileFormContent from './ProfileFormContent';
 
 const ProfileForm = ({ profile }) => {
   const [updateUser] = useUpdateUser();
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState({});
 
   const handleAvatarChange = event => {
-    console.log(event);
     const {
       target: {
         validity,
         files: [file],
       },
     } = event;
-
-    if (validity.valid) console.log(setAvatar(file));
+    if (validity.valid) setAvatar(file);
   };
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
     setStatus('');
     setSubmitting(true);
     try {
-      // await updateUser(values);
-      console.log(values);
+      await updateUser({ ...values, avatar });
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
       setStatus(errorMsg);

@@ -66,6 +66,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit,
       type: 'file',
       name: 'avatar',
       title: 'Avatar',
+      accept: 'image/*',
       onChange: handleAvatarChange,
     },
     {
