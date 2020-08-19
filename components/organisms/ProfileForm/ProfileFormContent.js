@@ -67,7 +67,6 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit,
       name: 'avatar',
       title: 'Avatar',
       onChange: handleAvatarChange,
-      onClick: handleAvatarChange,
     },
     {
       type: 'submit',

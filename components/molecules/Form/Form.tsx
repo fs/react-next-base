@@ -74,7 +74,7 @@ const Form = ({ form }: { form: FormType }) => {
                   {},
                 );
 
-                const restProps = {
+                const fieldRestProps = {
                   type: isInput ? type : null,
                   as: !isInput && type,
                   name,
@@ -88,7 +88,7 @@ const Form = ({ form }: { form: FormType }) => {
                 return (
                   <FieldWrapper key={`${name}${i}`}>
                     {title && <FieldLabel htmlFor={name}>{title}</FieldLabel>}
-                    <Field {...restProps}>
+                    <Field {...fieldRestProps}>
                       {type === 'select' && options
                         ? options.map((option: OptionType, j: number) => {
                             const { value, label: optionLabel } = option;
