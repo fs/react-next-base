@@ -5,6 +5,7 @@ import mapValues from 'lodash/mapValues';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage, Form as FormikForm } from 'formik';
 import { FormFieldType, FormType, OptionType } from '../../../config/types';
+import FileField from '../../atoms/FileField';
 
 const FormWrapper = styled.div`
   max-width: 40rem;
@@ -73,19 +74,7 @@ const Form = ({ form }: { form: FormType }) => {
                   <FieldWrapper key={`${name}${i}`}>
                     {title && <FieldLabel htmlFor={name}>{title}</FieldLabel>}
                     {type === 'file' ? (
-                      <>
-                        <img src={initialValue} />
-                        <Field
-                          type={isInput ? type : null}
-                          as={!isInput && type}
-                          name={name}
-                          onChange={action}
-                          id={name}
-                          data-testid={`test-${name}`}
-                          placeholder={placeholder}
-                          disabled={isSubmitting}
-                        ></Field>
-                      </>
+                      <FileField name={name} placeholder={placeholder} title={title} initialValue={initialValue} />
                     ) : (
                       <Field
                         type={isInput ? type : null}

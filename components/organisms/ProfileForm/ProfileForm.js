@@ -8,7 +8,6 @@ const ProfileForm = ({ profile }) => {
   const [fieldValue, setFieldValue] = useState(undefined);
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
-    console.log(fieldValue);
     const updatedValues = {
       ...values,
       avatar: {
