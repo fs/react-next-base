@@ -27,14 +27,16 @@ const FileField = ({ name, placeholder, title, initialValue }) => {
     } = event;
 
     if (validity.valid) {
-      const { name: filename, type } = file;
+      const { name: filename, type, size } = file;
 
-      console.log({ filename, type });
+      console.log({ filename, type, size });
+      let result;
       try {
-        await uploadFile({ filename, type });
+        result = await uploadFile({ filename, type });
       } catch (error) {
         console.log(error);
       }
+      console.log(result);
     }
   };
 
