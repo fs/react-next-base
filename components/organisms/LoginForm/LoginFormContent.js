@@ -77,7 +77,7 @@ const LoginFormContent = ({ onSubmit, activeForm }) => {
 
   return (
     <>
-      <StyledFormTitle className="loginFormTitle">{formTitle}</StyledFormTitle>
+      <StyledFormTitle id="loginFormTitle">{formTitle}</StyledFormTitle>
       <Form form={form} />
     </>
   );
