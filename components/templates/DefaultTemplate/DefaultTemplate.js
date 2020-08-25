@@ -22,7 +22,7 @@ const PageContent = styled.div(
   `,
 );
 
-const DefaultTemplate = ({ children, contentStyles }) => {
+const DefaultTemplate = ({ children, contentStyles = '' }) => {
   const { user } = useCurrentUser(false);
   const [signOut] = useSignOut();
 
