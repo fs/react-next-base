@@ -185,6 +185,9 @@ exports[`Profile page should render correctly 1`] = `
       </form>
     </div>
   </div>
+  <div
+    class="Toastify"
+  />
 </div>
 `;
 
