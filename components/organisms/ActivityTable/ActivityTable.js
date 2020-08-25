@@ -41,11 +41,11 @@ const UserInfo = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ActivityTable = ({ data }) => {
+const ActivityTable = ({ data, testId }) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
 
   return (
-    <StyledTable>
+    <StyledTable data-testid={testId}>
       <thead>
         <tr>
           {columnNames.map((name, id) => (
