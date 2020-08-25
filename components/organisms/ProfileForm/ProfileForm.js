@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useUpdateUser } from 'lib/apollo/hooks/actions';
 import ErrorDecorator from 'decorators/ErrorDecorator';
+import useNotifier from 'hooks/useNotifier';
 import ProfileFormContent from './ProfileFormContent';
 
 const ProfileForm = ({ profile }) => {
+  const { setSuccess } = useNotifier();
   const [updateUser] = useUpdateUser();
+  
   const [avatar, setAvatar] = useState({});
 
   const handleAvatarChange = event => {
@@ -22,6 +25,7 @@ const ProfileForm = ({ profile }) => {
     setSubmitting(true);
     try {
       await updateUser({ ...values, avatar });
+      setSuccess('Profile updated successfully');
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
       setStatus(errorMsg);
