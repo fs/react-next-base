@@ -6,4 +6,5 @@ module.exports = nextRoutes()
   .add(routes.FORM_EXAMPLES)
   .add(routes.LOGIN)
   .add(routes.STATIC_PAGE)
-  .add(routes.PROFILE);
+  .add(routes.PROFILE)
+  .add(routes.ACTIVITY);
