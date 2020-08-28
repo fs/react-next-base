@@ -7,7 +7,6 @@ exports[`Homepage should render correctly 1`] = `
   height: 1.875rem;
   font-size: 0;
   border-radius: 50%;
-  overflow: hidden;
 }
 
 .c6 {
