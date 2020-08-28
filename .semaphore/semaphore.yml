@@ -50,5 +50,6 @@ blocks:
             - 'yarn run test:ci'
         - name: e2e tests
           commands:
-            - npm install cypress --save-dev
+            - yarn install cypress --save-dev
+            - 'yarn start & wait-on http://localhost:3000'
             - ./node_modules/.bin/cypress open
