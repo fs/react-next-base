@@ -51,5 +51,4 @@ blocks:
         - name: e2e tests
           commands:
             - npm install cypress --save-dev
-            - yarn dev
             - ./node_modules/.bin/cypress open
