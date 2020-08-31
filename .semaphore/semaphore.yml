@@ -50,5 +50,5 @@ blocks:
             - 'yarn run test:ci'
         - name: e2e tests
           commands:
-            - yarn dev
+            - 'yarn dev & wait-on http://localhost:3000'
             - ./node_modules/.bin/cypress open
