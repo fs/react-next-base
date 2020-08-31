@@ -48,7 +48,3 @@ blocks:
         - name: yarn test
           commands:
             - 'yarn run test:ci'
-        - name: e2e tests
-          commands:
-            - yarn dev
-            - ./node_modules/.bin/cypress open
