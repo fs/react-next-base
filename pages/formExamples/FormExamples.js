@@ -54,7 +54,7 @@ const form = {
       type: 'button',
       name: 'button',
       initialValue: 'check it',
-      action: () => console.log('check it'),
+      onClick: () => console.log('check it'),
     },
     {
       type: 'submit',
