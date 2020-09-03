@@ -14,7 +14,7 @@ const StyledTitle = styled.h3`
   letter-spacing: -0.035em;
 `;
 
-const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit }) => {
+const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit, handleAvatarChange }) => {
   const fields = [
     {
       type: 'text',
@@ -61,6 +61,13 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
         then: Yup.string().required('If you filled New Password, Current Password field should be filled too'),
         otherwise: Yup.string(),
       }),
+    },
+    {
+      type: 'file',
+      name: 'avatar',
+      title: 'Avatar',
+      accept: 'image/*',
+      onChange: handleAvatarChange,
     },
     {
       type: 'submit',

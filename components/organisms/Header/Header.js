@@ -28,8 +28,8 @@ const Header = ({ user, signOut }) => {
   const links = [{ text: 'Profile', url: PROFILE.pattern }];
 
   const actions = [
-    { text: 'Sign Out', action: signOut },
-    { text: 'Log out from all devices', action: () => signOut({ everywhere: true }) },
+    { text: 'Sign Out', onClick: signOut },
+    { text: 'Log out from all devices', onClick: () => signOut({ everywhere: true }) },
   ];
 
   return (
