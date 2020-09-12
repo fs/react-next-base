@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions';
+import Tabs from 'components/molecules/Tabs';
 import LoginFormContent from './LoginFormContent';
 
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
@@ -12,39 +13,17 @@ const StyledFormWrapper = styled.div`
   margin: auto;
 `;
 
-const StyledToggleForm = styled.div`
-  display: inline-block;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.link};
-  margin: 1rem 1rem 1rem 0;
-`;
-
 const StyledFormActions = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `;
 
 const StyledMessage = styled.div`
-  color: green;
+  color: ${({ theme: { colors } }) => colors.green};
   margin-top: 2rem;
 `;
-
-const FORM_ACTIONS = [
-  {
-    to: SIGN_IN_FORM,
-    text: 'Sign In',
-  },
-  {
-    to: SIGN_UP_FORM,
-    text: 'Create an account',
-  },
-  {
-    to: PASSWORD_RECOVERY_FORM,
-    text: 'Forgot your password?',
-  },
-];
 
 const LoginForm = () => {
   const [signIn] = useSignIn();
@@ -64,6 +43,27 @@ const LoginForm = () => {
     setActiveForm(form);
     setMessage('');
   };
+
+  const FORMS = [
+    {
+      id: 'sign_in',
+      name: 'Sign in',
+      component: SIGN_IN_FORM,
+      onClick: () => toggleForm(SIGN_IN_FORM),
+    },
+    {
+      id: 'sign_up',
+      name: 'Create an account',
+      component: SIGN_UP_FORM,
+      onClick: () => toggleForm(SIGN_UP_FORM),
+    },
+    {
+      id: 'password_recovery',
+      name: 'Forgot your password',
+      component: PASSWORD_RECOVERY_FORM,
+      onClick: () => toggleForm(PASSWORD_RECOVERY_FORM),
+    },
+  ];
 
   const onSubmit = async (values, { setSubmitting }) => {
     try {
@@ -88,11 +88,7 @@ const LoginForm = () => {
   return (
     <StyledFormWrapper>
       <StyledFormActions>
-        {FORM_ACTIONS.map(({ text, to }) => (
-          <StyledToggleForm key={to} onClick={() => toggleForm(to)}>
-            {text}
-          </StyledToggleForm>
-        ))}
+        <Tabs tabs={FORMS} activeForm={activeForm} />
       </StyledFormActions>
       <LoginFormContent onSubmit={onSubmit} activeForm={activeForm} />
       <StyledMessage>{message}</StyledMessage>
