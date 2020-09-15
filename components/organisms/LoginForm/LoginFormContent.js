@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import Tabs from 'components/molecules/Tabs';
 import Form from '../../molecules/Form';
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
 
@@ -10,7 +11,7 @@ const StyledFormTitle = styled.h3`
   letter-spacing: -0.035em;
 `;
 
-const LoginFormContent = ({ onSubmit, activeForm }) => {
+const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
   const isSignUp = activeForm === SIGN_UP_FORM;
   const isRecovery = activeForm === PASSWORD_RECOVERY_FORM;
 
@@ -75,12 +76,38 @@ const LoginFormContent = ({ onSubmit, activeForm }) => {
     submit: onSubmit,
   };
 
-  return (
+  const Content = () => (
     <>
       <StyledFormTitle>{formTitle}</StyledFormTitle>
       <Form form={form} />
     </>
   );
+
+  const TABS = [
+    {
+      id: 'sign_in',
+      name: 'Sign in',
+      active: activeForm === SIGN_IN_FORM,
+      onClick: () => toggleForm(SIGN_IN_FORM),
+      content: <Content />,
+    },
+    {
+      id: 'sign_up',
+      name: 'Create an account',
+      active: activeForm === SIGN_UP_FORM,
+      onClick: () => toggleForm(SIGN_UP_FORM),
+      content: <Content />,
+    },
+    {
+      id: 'password_recovery',
+      name: 'Forgot your password',
+      active: activeForm === PASSWORD_RECOVERY_FORM,
+      onClick: () => toggleForm(PASSWORD_RECOVERY_FORM),
+      content: <Content />,
+    },
+  ];
+
+  return <Tabs tabs={TABS} />;
 };
 
 export default LoginFormContent;
