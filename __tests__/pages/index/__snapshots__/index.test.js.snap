@@ -172,6 +172,7 @@ exports[`Homepage should render correctly 1`] = `
             />
             <span
               class="c6"
+              id="userName"
             >
               user@mail.ru
             </span>

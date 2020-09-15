@@ -89,13 +89,13 @@ const LoginForm = () => {
     <StyledFormWrapper>
       <StyledFormActions>
         {FORM_ACTIONS.map(({ text, to }) => (
-          <StyledToggleForm key={to} onClick={() => toggleForm(to)}>
+          <StyledToggleForm className="formToggler" key={to} onClick={() => toggleForm(to)}>
             {text}
           </StyledToggleForm>
         ))}
       </StyledFormActions>
       <LoginFormContent onSubmit={onSubmit} activeForm={activeForm} />
-      <StyledMessage>{message}</StyledMessage>
+      <StyledMessage id="recoverPasswordMessage">{message}</StyledMessage>
     </StyledFormWrapper>
   );
 };
