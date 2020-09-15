@@ -2,14 +2,8 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import UserNavigationList from './UserNavigationList';
 
-const ProfileImage = styled.img`
-  display: inline-block;
-  width: 1.875rem;
-  height: 1.875rem;
-  font-size: 0;
-  border-radius: 50%;
-  overflow: hidden;
-`;
+import ProfileImage from 'components/atoms/ProfileImage';
+import UserNavigationList from './UserNavigationList';
 
 const UserName = styled.span(
   ({ theme: { colors, breakpoints } }) => css`
@@ -93,7 +87,7 @@ const UserNavigation = ({ user, links, actions }) => {
       {user && (
         <>
           <UserNameWrapper data-testid="test-user-name" onClick={toggleDropdown}>
-            <ProfileImage alt="Avatar" src={avatar} />
+            <ProfileImage avatar={avatar} />
             <UserName>{user.email}</UserName>
           </UserNameWrapper>
           {isOpen && <UserNavigationList links={links} actions={actions} data-testid="test-user-navigation" />}
