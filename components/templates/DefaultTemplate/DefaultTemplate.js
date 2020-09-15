@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Header from 'components/organisms/Header';
 
@@ -13,19 +13,23 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const PageContent = styled.div`
-  padding: 2rem 1rem;
-  max-width: 40rem;
-`;
+const PageContent = styled.div(({ theme, customStyles }) => {
+  return css`
+    padding: 2rem 1rem;
+    max-width: 40rem;
 
-const DefaultTemplate = ({ children }) => {
+    ${customStyles && customStyles({ theme })}
+  `;
+});
+
+const DefaultTemplate = ({ children, contentStyles = '' }) => {
   const { user } = useCurrentUser(false);
   const [signOut] = useSignOut();
 
   return (
     <Wrapper>
       <Header user={user} signOut={signOut} />
-      <PageContent>{children}</PageContent>
+      <PageContent customStyles={contentStyles}>{children}</PageContent>
     </Wrapper>
   );
 };
