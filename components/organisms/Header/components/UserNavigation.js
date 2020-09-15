@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import ProfileImage from 'components/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
