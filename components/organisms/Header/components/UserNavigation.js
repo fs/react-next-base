@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import UserNavigationList from './UserNavigationList';
 
 import ProfileImage from 'components/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
