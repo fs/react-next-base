@@ -108,7 +108,7 @@ exports[`Homepage should render correctly 1`] = `
 
 .c7 {
   padding: 2rem 1rem;
-  max-width: 40rem;
+  max-width: 1200px;
 }
 
 .c8 {
@@ -119,6 +119,12 @@ exports[`Homepage should render correctly 1`] = `
 @media (max-width:576px) {
   .c6 {
     display: none;
+  }
+}
+
+@media (max-width:1200px) {
+  .c7 {
+    max-width: 100%;
   }
 }
 

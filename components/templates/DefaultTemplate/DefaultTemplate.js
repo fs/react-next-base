@@ -13,23 +13,26 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const PageContent = styled.div(({ theme, customStyles }) => {
-  return css`
-    padding: 2rem 1rem;
-    max-width: 40rem;
+const PageContent = styled.div(
+  ({ theme: { down, breakpoints } }) =>
+    css`
+      padding: 2rem 1rem;
+      max-width: ${breakpoints.xl};
 
-    ${customStyles && customStyles({ theme })}
-  `;
-});
+      ${down(breakpoints.xl)} {
+        max-width: 100%;
+      }
+    `,
+);
 
-const DefaultTemplate = ({ children, contentStyles = '' }) => {
+const DefaultTemplate = ({ children }) => {
   const { user } = useCurrentUser(false);
   const [signOut] = useSignOut();
 
   return (
     <Wrapper>
       <Header user={user} signOut={signOut} />
-      <PageContent customStyles={contentStyles}>{children}</PageContent>
+      <PageContent>{children}</PageContent>
     </Wrapper>
   );
 };

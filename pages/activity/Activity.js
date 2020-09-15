@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from 'styled-components';
 
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
@@ -11,14 +10,6 @@ import ErrorMessage from 'components/atoms/ErrorMessage';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ActivityTable from 'components/organisms/ActivityTable';
 
-const templateStyles = ({ theme: { breakpoints, down } }) => css`
-  max-width: 75em;
-
-  ${down(breakpoints.xl)} {
-    max-width: 100%;
-  }
-`;
-
 const Activity = () => {
   // TODO: implement filter for activity events
 
@@ -27,7 +18,7 @@ const Activity = () => {
   const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
 
   return (
-    <DefaultTemplate contentStyles={templateStyles}>
+    <DefaultTemplate>
       {loading && <h3 data-testid="test-activity-loading">Loading...</h3>}
       {error && <ErrorMessage data-testid="test-activity-error">{errorMessage}</ErrorMessage>}
       {!loading && !error && <ActivityTable testId="test-activity-table" data={activities} />}
