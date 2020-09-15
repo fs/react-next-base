@@ -13,14 +13,14 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const PageContent = styled.div(
-  ({ customStyles }) => css`
+const PageContent = styled.div(({ theme, customStyles }) => {
+  return css`
     padding: 2rem 1rem;
     max-width: 40rem;
 
-    ${customStyles}
-  `,
-);
+    ${customStyles && customStyles({ theme })}
+  `;
+});
 
 const DefaultTemplate = ({ children, contentStyles = '' }) => {
   const { user } = useCurrentUser(false);
