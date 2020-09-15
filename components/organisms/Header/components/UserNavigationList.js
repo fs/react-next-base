@@ -19,7 +19,6 @@ const StyledUserMenu = styled.ul(
     z-index: 1;
     list-style-type: none;
     filter: drop-shadow(0 0 3px ${colors.black});
-
     &::after {
       content: '';
       display: block;
@@ -48,7 +47,6 @@ const UserMenuItem = styled.li(
       border: none;
       font-size: 1rem;
       text-align: left;
-
       &:hover,
       &:active,
       &:focus {

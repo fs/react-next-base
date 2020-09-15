@@ -8,7 +8,7 @@ import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants'
 const StyledFormTitle = styled.h3`
   margin: 0 auto 2rem;
   line-height: 1.25;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.035rem;
 `;
 
 const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
