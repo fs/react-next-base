@@ -55,7 +55,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.0.1",
-    "typescript": "^3.8.3",
+    "typescript": "3.9.3",
     "universal-cookie": "^4.0.3",
     "yup": "^0.29.2"
   },
@@ -89,7 +89,8 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0"
+    "stylelint-processor-styled-components": "^1.10.0",
+    "ts-jest": "^26.1.4"
   },
   "husky": {
     "hooks": {

@@ -1,14 +1,13 @@
 import React from 'react';
-import { MockedProvider } from '@apollo/client/testing';
-import { act, cleanup, render } from '@testing-library/react';
+import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
+import { wait, cleanup, render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
+import { useCurrentUser } from 'lib/apollo/hooks/state';
 
 import Homepage from 'pages/index';
-import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-// hotfix https://github.com/vercel/next.js/issues/15543
-jest.mock('next/link', () => 'div');
+jest.mock('lib/apollo/hooks/state.js');
 
 describe('Homepage', () => {
   afterEach(() => {
@@ -19,35 +18,18 @@ describe('Homepage', () => {
 
   test('should render correctly', async () => {
     // Arrange
-    const mocks = [
-      {
-        request: {
-          query: CurrentUser,
-        },
-        result: {
-          data: {
-            me: { id: '1', email: 'user@mail.ru' },
-          },
-        },
-      },
-    ];
-
-    let container;
-
+    const mockUseCurrentUser = jest.fn(() => ({
+      loading: undefined,
+      error: undefined,
+      user: { id: '1', email: 'user@mail.ru' },
+    }));
+    useCurrentUser.mockImplementation(mockUseCurrentUser);
     // Act
-    await act(async () => {
-      const rendered = render(
-        renderWithTheme(
-          <MockedProvider mocks={mocks} addTypename={false}>
-            <Homepage />
-          </MockedProvider>,
-        ),
-      );
-
-      container = rendered.container;
-    });
+    const { container } = render(renderWithTheme(renderWithApolloClient(<Homepage />)));
 
     // Assert
-    expect(container).toMatchSnapshot();
+    await wait(() => {
+      expect(container).toMatchSnapshot();
+    });
   });
 });

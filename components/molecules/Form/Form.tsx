@@ -8,7 +8,7 @@ import { FormFieldType, FormType, OptionType } from '../../../config/types';
 
 const FormWrapper = styled.div`
   max-width: 40rem;
-  margin: 0 auto;
+
   input,
   textarea,
   select {
@@ -18,28 +18,34 @@ const FormWrapper = styled.div`
     border-radius: 0.3rem;
     border: 1px solid rgb(179, 179, 179);
   }
+
   input[type='checkbox'],
   input[type='radio'] {
     width: auto;
   }
+
   textarea {
     resize: vertical;
   }
 `;
+
 const FormContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
 `;
+
 const FieldWrapper = styled.div`
   position: relative;
   padding-top: 1.5rem;
+  margin-bottom: 1rem;
 `;
+
 const FieldLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
 `;
+
 const ErrorWrapper = styled.div`
   font-size: 0.9rem;
   color: red;
@@ -56,7 +62,7 @@ const Form = ({ form }: { form: FormType }) => {
   return (
     <FormWrapper>
       <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
-        {({ isSubmitting }) => (
+        {({ isSubmitting, status }) => (
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
@@ -93,6 +99,7 @@ const Form = ({ form }: { form: FormType }) => {
                 );
               })}
             </FormContainer>
+            {!!status && <ErrorWrapper>{status}</ErrorWrapper>}
           </FormikForm>
         )}
       </Formik>
