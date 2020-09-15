@@ -11,8 +11,12 @@ import ErrorMessage from 'components/atoms/ErrorMessage';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ActivityTable from 'components/organisms/ActivityTable';
 
-const templateStyles = css`
-  max-width: 80em;
+const templateStyles = ({ theme: { breakpoints, down } }) => css`
+  max-width: 75em;
+
+  ${down(breakpoints.xl)} {
+    max-width: 100%;
+  }
 `;
 
 const Activity = () => {
