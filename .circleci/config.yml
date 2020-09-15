@@ -1,14 +1,8 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '10.4'
+    docker: 
+      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn
-      - run: yarn test
+      - checkout # check out the code in the project directory
+      - run: echo "hello world" # run the `echo` command
