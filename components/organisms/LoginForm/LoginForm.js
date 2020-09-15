@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions';
-import Tabs from 'components/molecules/Tabs';
 import LoginFormContent from './LoginFormContent';
 
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
@@ -11,13 +10,6 @@ const StyledFormWrapper = styled.div`
   text-align: center;
   max-width: 40.625rem;
   margin: auto;
-`;
-
-const StyledFormActions = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  margin-bottom: 3rem;
 `;
 
 const StyledMessage = styled.div`
@@ -44,27 +36,6 @@ const LoginForm = () => {
     setMessage('');
   };
 
-  const FORMS = [
-    {
-      id: 'sign_in',
-      name: 'Sign in',
-      component: SIGN_IN_FORM,
-      onClick: () => toggleForm(SIGN_IN_FORM),
-    },
-    {
-      id: 'sign_up',
-      name: 'Create an account',
-      component: SIGN_UP_FORM,
-      onClick: () => toggleForm(SIGN_UP_FORM),
-    },
-    {
-      id: 'password_recovery',
-      name: 'Forgot your password',
-      component: PASSWORD_RECOVERY_FORM,
-      onClick: () => toggleForm(PASSWORD_RECOVERY_FORM),
-    },
-  ];
-
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const action = {
@@ -87,10 +58,7 @@ const LoginForm = () => {
 
   return (
     <StyledFormWrapper>
-      <StyledFormActions>
-        <Tabs tabs={FORMS} activeForm={activeForm} />
-      </StyledFormActions>
-      <LoginFormContent onSubmit={onSubmit} activeForm={activeForm} />
+      <LoginFormContent onSubmit={onSubmit} toggleForm={toggleForm} activeForm={activeForm} />
       <StyledMessage>{message}</StyledMessage>
     </StyledFormWrapper>
   );
