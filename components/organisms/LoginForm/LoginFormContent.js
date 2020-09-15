@@ -76,42 +76,34 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     submit: onSubmit,
   };
 
+  const Content = () => (
+    <>
+      <StyledFormTitle>{formTitle}</StyledFormTitle>
+      <Form form={form} />
+    </>
+  );
+
   const TABS = [
     {
       id: 'sign_in',
       name: 'Sign in',
       active: activeForm === SIGN_IN_FORM,
       onClick: () => toggleForm(SIGN_IN_FORM),
-      content: (
-        <>
-          <StyledFormTitle>{formTitle}</StyledFormTitle>
-          <Form form={form} />
-        </>
-      ),
+      content: <Content />,
     },
     {
       id: 'sign_up',
       name: 'Create an account',
       active: activeForm === SIGN_UP_FORM,
       onClick: () => toggleForm(SIGN_UP_FORM),
-      content: (
-        <>
-          <StyledFormTitle>{formTitle}</StyledFormTitle>
-          <Form form={form} />
-        </>
-      ),
+      content: <Content />,
     },
     {
       id: 'password_recovery',
       name: 'Forgot your password',
       active: activeForm === PASSWORD_RECOVERY_FORM,
       onClick: () => toggleForm(PASSWORD_RECOVERY_FORM),
-      content: (
-        <>
-          <StyledFormTitle>{formTitle}</StyledFormTitle>
-          <Form form={form} />
-        </>
-      ),
+      content: <Content />,
     },
   ];
 
