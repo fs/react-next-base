@@ -4,6 +4,7 @@ export default {
     white: '#fff',
     link: '#00f',
     grey: '#eee',
+    green: '#46a049',
   },
   breakpoints: {
     xs: '320px',
