@@ -20,8 +20,8 @@ const StyledTab = styled.li(
   `,
 );
 
-const Tab = ({ active, name, onClick }) => (
-  <StyledTab role="tab" active={active} onClick={onClick}>
+const Tab = ({ active, name, dataTestId, onClick }) => (
+  <StyledTab role="tab" active={active} onClick={onClick} data-testid={dataTestId}>
     {name}
   </StyledTab>
 );

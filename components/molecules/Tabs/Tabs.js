@@ -19,7 +19,7 @@ const Tabs = ({ tabs }) => (
   <StyledTabs>
     <StyledTabList role="tablist">
       {tabs.map(({ id, name, active, onClick }) => (
-        <Tab key={id} name={name} active={active} onClick={onClick} />
+        <Tab key={id} name={name} active={active} onClick={onClick} dataTestId={`test-tab-${id}`} />
       ))}
     </StyledTabList>
     {tabs.map(({ id, active, content }) => active && <div key={id}>{content}</div>)}
