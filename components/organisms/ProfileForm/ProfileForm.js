@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useUpdateUser, usePresignFile, useFileUpload } from 'lib/apollo/hooks/actions';
+import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions';
+import { useFileUpload } from 'lib/FileUpload/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import useNotifier from 'hooks/useNotifier';
 import ProfileFormContent from './ProfileFormContent';
@@ -28,8 +29,8 @@ const ProfileForm = ({ profile }) => {
 
     try {
       const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
-      await uploadFile(presignData);
-      await updateUser({ ...values });
+      const uploadedAvatar = await uploadFile(presignData, avatar);
+      await updateUser({ ...values, avatar: uploadedAvatar });
       setSuccess('Profile updated successfully');
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
