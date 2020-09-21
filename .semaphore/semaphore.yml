@@ -45,4 +45,3 @@ blocks:
         - name: yarn test
           commands:
             - 'yarn run test:ci'
-            - ./node_modules/.bin/cypress run --headless
