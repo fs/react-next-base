@@ -19,8 +19,8 @@ blocks:
       jobs:
         - name: yarn install and cache
           commands:
-            - yarn
-            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
+            - 'yarn run test:ci'
+            - ./node_modules/.bin/cypress run --headless
   - name: Lint
     dependencies:
       - Setup
