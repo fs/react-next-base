@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Header from 'components/organisms/Header';
 
@@ -13,10 +13,17 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const PageContent = styled.div`
-  padding: 2rem 1rem;
-  max-width: 40rem;
-`;
+const PageContent = styled.div(
+  ({ theme: { down, breakpoints } }) =>
+    css`
+      padding: 2rem 1rem;
+      max-width: ${breakpoints.xl};
+
+      ${down(breakpoints.xl)} {
+        max-width: 100%;
+      }
+    `,
+);
 
 const DefaultTemplate = ({ children }) => {
   const { user } = useCurrentUser(false);
