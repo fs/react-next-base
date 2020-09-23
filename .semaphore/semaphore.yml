@@ -55,7 +55,7 @@ blocks:
       - Setup
     task:
       jobs:
-        - name: yarn run cy:ci
+        - name: yarn dev cy:ci
           commands:
             - npx cypress install
             - ./node_modules/.bin/cypress run
