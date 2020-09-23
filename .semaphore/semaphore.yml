@@ -58,4 +58,4 @@ blocks:
         - name: yarn run cy:ci
           commands:
             - npx cypress install
-            - yarn run cy:ci
+            - ./node_modules/.bin/cypress run
