@@ -8,6 +8,7 @@ mutation updateUser(
   $lastName: String
   $password: String
   $currentPassword: String
+  $avatar: ImageUploader
 ) {
   updateUser(
     email: $email
@@ -15,6 +16,7 @@ mutation updateUser(
     lastName: $lastName
     password: $password
     currentPassword: $currentPassword
+    avatar: $avatar
   ) {
     ...UserInfo
   }
