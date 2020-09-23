@@ -12,6 +12,7 @@ const ProfileForm = ({ profile }) => {
   const [uploadFile] = useFileUpload();
 
   const [avatar, setAvatar] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleAvatarChange = event => {
     const {
@@ -26,20 +27,30 @@ const ProfileForm = ({ profile }) => {
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
     setStatus('');
     setSubmitting(true);
+    setLoading(true);
 
     try {
       const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
       const uploadedAvatar = await uploadFile(presignData, avatar);
       await updateUser({ ...values, avatar: uploadedAvatar });
+      setLoading(false);
       setSuccess('Profile updated successfully');
     } catch (error) {
       const errorMsg = new ErrorDecorator(error).getMessages();
+      setLoading(false);
       setStatus(errorMsg);
     }
 
     setSubmitting(false);
   };
 
-  return <ProfileFormContent profile={profile} onSubmit={onSubmit} handleAvatarChange={handleAvatarChange} />;
+  return (
+    <ProfileFormContent
+      profile={profile}
+      onSubmit={onSubmit}
+      handleAvatarChange={handleAvatarChange}
+      loading={loading}
+    />
+  );
 };
 export default ProfileForm;
