@@ -2,12 +2,14 @@ import React from 'react';
 import { cleanup, render, fireEvent, wait } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import { useUpdateUser } from 'lib/apollo/hooks/actions';
+import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions';
+import { useFileUpload } from 'lib/FileUpload/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
-jest.mock('lib/apollo/hooks/actions.js');
+jest.mock('lib/apollo/hooks/actions');
+jest.mock('lib/FileUpload/useFileUpload');
 jest.mock('decorators/ErrorDecorator');
 
 describe('ProfileForm', () => {
@@ -37,6 +39,10 @@ describe('ProfileForm', () => {
     };
     const mockUpdateUser = jest.fn(() => Promise.resolve());
     useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
+    const mockPresignFile = jest.fn(() => Promise.resolve());
+    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
+    const mockFileUpload = jest.fn(() => Promise.resolve());
+    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
     const { getByText } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
@@ -67,6 +73,8 @@ describe('ProfileForm', () => {
     };
     const mockUpdateUser = jest.fn(() => Promise.reject(expectedError));
     useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
+    const mockPresignFile = jest.fn(() => Promise.resolve());
+    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
 
     const mockErrorDecorator = jest.fn();
     ErrorDecorator.mockImplementation(mockErrorDecorator);

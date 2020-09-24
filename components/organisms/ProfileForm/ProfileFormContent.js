@@ -2,9 +2,11 @@ import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Form from '../../molecules/Form';
+import Loader from '../../atoms/Loader';
 
 const FormWrapper = styled.div`
   width: 20rem;
+  position: relative;
 `;
 
 const StyledTitle = styled.h3`
@@ -14,7 +16,7 @@ const StyledTitle = styled.h3`
   letter-spacing: -0.035rem;
 `;
 
-const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit }) => {
+const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit, handleAvatarChange, loading }) => {
   const fields = [
     {
       type: 'text',
@@ -63,6 +65,13 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
       }),
     },
     {
+      type: 'file',
+      name: 'avatar',
+      title: 'Avatar',
+      accept: 'image/*',
+      onChange: handleAvatarChange,
+    },
+    {
       type: 'submit',
       name: 'Update',
       initialValue: 'Update',
@@ -78,6 +87,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
     <FormWrapper>
       <StyledTitle>Profile</StyledTitle>
       <Form form={form} />
+      {loading && <Loader>Loading</Loader>}
     </FormWrapper>
   );
 };

@@ -48,6 +48,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
 
 .c0 {
   width: 20rem;
+  position: relative;
 }
 
 .c1 {
@@ -165,6 +166,24 @@ exports[`ProfileFormContent should render correctly 1`] = `
               name="currentPassword"
               placeholder="Current Password"
               type="password"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="avatar"
+            >
+              Avatar
+            </label>
+            <input
+              accept="image/*"
+              data-testid="test-avatar"
+              id="avatar"
+              name="avatar"
+              type="file"
               value=""
             />
           </div>
