@@ -52,6 +52,64 @@ describe('ProfileForm', () => {
     // Assert
     await wait(() => {
       expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues);
+      expect(mockPresignFile).toHaveBeenCalledWith({});
+      expect(mockFileUpload).toHaveBeenCalledWith(undefined, {});
+    });
+  });
+
+  test('should call useUpdateUser and fileUpload on submit', async () => {
+    // Arrange
+    const mockFileName = 'avatar.png';
+    const mockFileType = 'image/png';
+    // eslint-disable-next-line no-undef
+    const mockFile = new File(['avatarka'], mockFileName, { type: mockFileType });
+    const mockAvatarChangeEvent = {
+      target: {
+        files: [mockFile],
+      },
+    };
+    const expectedEmail = 'test@test.com';
+    const expectedFirstName = 'Test FirstName';
+    const expectedLastName = 'Test LastName';
+    const expectedAvatarTestId = 'test-avatar';
+    const expectedButtonText = 'Update';
+    const expectedProfile = {
+      email: expectedEmail,
+      firstName: expectedFirstName,
+      lastName: expectedLastName,
+    };
+
+    const expectedPresignFileValues = {
+      filename: mockFileName,
+      type: mockFileType,
+    };
+
+    const expectedUpdateUserValues = {
+      ...expectedProfile,
+      password: '',
+      currentPassword: '',
+      [expectedButtonText]: expectedButtonText,
+    };
+    const mockUpdateUser = jest.fn(() => Promise.resolve());
+    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
+    const mockPresignFile = jest.fn(() => Promise.resolve());
+    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
+    const mockFileUpload = jest.fn(() => Promise.resolve());
+    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
+
+    const { getByText, getByTestId } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
+
+    const fileInput = getByTestId(expectedAvatarTestId);
+    fireEvent.change(fileInput, mockAvatarChangeEvent);
+
+    // Act
+    fireEvent.click(getByText(expectedButtonText));
+
+    // Assert
+    await wait(() => {
+      expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues);
+      expect(mockFileUpload).toHaveBeenCalledWith(undefined, mockFile);
+      expect(mockUpdateUser).toHaveBeenCalledWith(expectedUpdateUserValues);
     });
   });
 
@@ -75,6 +133,8 @@ describe('ProfileForm', () => {
     useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
     const mockPresignFile = jest.fn(() => Promise.resolve());
     usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
+    const mockFileUpload = jest.fn(() => Promise.resolve());
+    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
     const mockErrorDecorator = jest.fn();
     ErrorDecorator.mockImplementation(mockErrorDecorator);
