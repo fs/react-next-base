@@ -49,6 +49,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
+    "import/prefer-default-export": 0,
     "import/extensions": [
       "error",
       {

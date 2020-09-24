@@ -1,4 +1,5 @@
 fragment UserInfo on User {
+  avatarUrl
   id
   email
   firstName
