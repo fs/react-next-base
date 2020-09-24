@@ -79,7 +79,7 @@ const UserNavigation = ({ user, links, actions }) => {
     };
   }, [isOpen, toggleDropdown]);
 
-  const avatar = user.avatar || `${process.env.ASSET_HOST}/images/avatar-placeholder.png`;
+  const avatar = user.avatarUrl || `${process.env.ASSET_HOST}/images/avatar-placeholder.png`;
 
   return (
     <UserNavigationWrapper ref={wrapperRef}>
