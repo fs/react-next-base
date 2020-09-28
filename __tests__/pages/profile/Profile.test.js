@@ -12,6 +12,7 @@ jest.mock('lib/apollo/hooks/state.js');
 jest.mock('lib/apollo/hooks/actions.js', () => ({
   useSignIn: jest.fn(() => []),
   useUpdateUser: jest.fn(() => []),
+  usePresignFile: jest.fn(() => []),
 }));
 
 describe('Profile page', () => {
