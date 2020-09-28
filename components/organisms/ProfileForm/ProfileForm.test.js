@@ -110,6 +110,8 @@ describe('ProfileForm', () => {
       expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues);
       expect(mockFileUpload).toHaveBeenCalledWith(undefined, mockFile);
       expect(mockUpdateUser).toHaveBeenCalledWith(expectedUpdateUserValues);
+      expect(mockPresignFile).toHaveBeenCalledBefore(mockFileUpload);
+      expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
     });
   });
 
