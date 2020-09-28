@@ -1,32 +1,25 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import ProfileImage from 'components/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
 
-const ProfileImage = styled.img`
-  display: inline-block;
-  width: 1.875rem;
-  height: 1.875rem;
-  font-size: 0;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
 const UserName = styled.span(
-  ({ theme }) => `
-  display: inline-block;
-  color: ${theme.colors.black};
-  font-weight: 600;
-  margin: 0 0.3125rem 0 0.375rem;
-  line-height: 1.1875rem;
-  max-width: 10rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  ({ theme: { colors, breakpoints } }) => css`
+    display: inline-block;
+    color: ${colors.black};
+    font-weight: 600;
+    margin: 0 0.3125rem 0 0.375rem;
+    line-height: 1.1875rem;
+    max-width: 10rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
-  @media (max-width: ${theme.breakpoints.sm}) {
-    display: none;
-  }
-`,
+    @media (max-width: ${breakpoints.sm}) {
+      display: none;
+    }
+  `,
 );
 
 const UserNavigationWrapper = styled.div`
@@ -37,25 +30,26 @@ const UserNavigationWrapper = styled.div`
 `;
 
 const UserNameWrapper = styled.div(
-  ({ theme }) => `
-  display: flex;
-  align-items: center;
-  padding-right: 1.25rem;
-  outline: none;
+  ({ theme: { colors } }) => css`
+    display: flex;
+    align-items: center;
+    padding-right: 1.25rem;
+    outline: none;
 
-  &::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 0.3125rem;
-    width: 0;
-    height: 0;
-    margin-top: 0;
-    border: inset transparent;
-    border-top: solid ${theme.colors.black};
-    border-bottom-width: 0;
-    content: '';
-  }`,
+    &::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 0.3125rem;
+      width: 0;
+      height: 0;
+      margin-top: 0;
+      border: inset transparent;
+      border-top: solid ${colors.black};
+      border-bottom-width: 0;
+      content: '';
+    }
+  `,
 );
 
 const UserNavigation = ({ user, links, actions }) => {
@@ -92,10 +86,17 @@ const UserNavigation = ({ user, links, actions }) => {
       {user && (
         <>
           <UserNameWrapper data-testid="test-user-name" onClick={toggleDropdown}>
-            <ProfileImage alt="Avatar" src={avatar} />
-            <UserName>{user.email}</UserName>
+            <ProfileImage avatar={avatar} />
+            <UserName id="userName">{user.email}</UserName>
           </UserNameWrapper>
-          {isOpen && <UserNavigationList links={links} actions={actions} data-testid="test-user-navigation" />}
+          {isOpen && (
+            <UserNavigationList
+              id="userNavigationList"
+              links={links}
+              actions={actions}
+              data-testid="test-user-navigation"
+            />
+          )}
         </>
       )}
     </UserNavigationWrapper>

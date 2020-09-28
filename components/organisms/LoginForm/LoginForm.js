@@ -12,39 +12,10 @@ const StyledFormWrapper = styled.div`
   margin: auto;
 `;
 
-const StyledToggleForm = styled.div`
-  display: inline-block;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.link};
-  margin: 1rem 1rem 1rem 0;
-`;
-
-const StyledFormActions = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  margin-bottom: 2rem;
-`;
-
 const StyledMessage = styled.div`
-  color: green;
+  color: ${({ theme: { colors } }) => colors.green};
   margin-top: 2rem;
 `;
-
-const FORM_ACTIONS = [
-  {
-    to: SIGN_IN_FORM,
-    text: 'Sign In',
-  },
-  {
-    to: SIGN_UP_FORM,
-    text: 'Create an account',
-  },
-  {
-    to: PASSWORD_RECOVERY_FORM,
-    text: 'Forgot your password?',
-  },
-];
 
 const LoginForm = () => {
   const [signIn] = useSignIn();
@@ -87,14 +58,7 @@ const LoginForm = () => {
 
   return (
     <StyledFormWrapper>
-      <StyledFormActions>
-        {FORM_ACTIONS.map(({ text, to }) => (
-          <StyledToggleForm className="formToggler" key={to} onClick={() => toggleForm(to)}>
-            {text}
-          </StyledToggleForm>
-        ))}
-      </StyledFormActions>
-      <LoginFormContent onSubmit={onSubmit} activeForm={activeForm} />
+      <LoginFormContent onSubmit={onSubmit} toggleForm={toggleForm} activeForm={activeForm} />
       <StyledMessage>{message}</StyledMessage>
     </StyledFormWrapper>
   );

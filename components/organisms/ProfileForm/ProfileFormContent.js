@@ -11,7 +11,7 @@ const StyledTitle = styled.h3`
   max-width: 40rem;
   margin: 0 auto 1rem;
   line-height: 1.25;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.035rem;
 `;
 
 const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit }) => {
@@ -76,7 +76,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit 
 
   return (
     <FormWrapper>
-      <StyledTitle>Profile</StyledTitle>
+      <StyledTitle id="profileFormTitle">Profile</StyledTitle>
       <Form form={form} />
     </FormWrapper>
   );

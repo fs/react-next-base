@@ -54,10 +54,10 @@ exports[`ProfileFormContent should render correctly 1`] = `
   max-width: 40rem;
   margin: 0 auto 1rem;
   line-height: 1.25;
-  -webkit-letter-spacing: -0.035em;
-  -moz-letter-spacing: -0.035em;
-  -ms-letter-spacing: -0.035em;
-  letter-spacing: -0.035em;
+  -webkit-letter-spacing: -0.035rem;
+  -moz-letter-spacing: -0.035rem;
+  -ms-letter-spacing: -0.035rem;
+  letter-spacing: -0.035rem;
 }
 
 <div>
@@ -66,6 +66,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
   >
     <h3
       class="c1"
+      id="profileFormTitle"
     >
       Profile
     </h3>

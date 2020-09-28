@@ -1,5 +1,5 @@
 describe('404 page testing', () => {
-  it('should show 404-page status', () => {
+  it('should return 404-page status', () => {
     cy.request({
       url: '/non-existant-page',
       failOnStatusCode: false,

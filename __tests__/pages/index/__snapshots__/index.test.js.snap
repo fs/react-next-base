@@ -7,7 +7,6 @@ exports[`Homepage should render correctly 1`] = `
   height: 1.875rem;
   font-size: 0;
   border-radius: 50%;
-  overflow: hidden;
 }
 
 .c6 {
@@ -109,7 +108,7 @@ exports[`Homepage should render correctly 1`] = `
 
 .c7 {
   padding: 2rem 1rem;
-  max-width: 40rem;
+  max-width: 1200px;
 }
 
 .c8 {
@@ -120,6 +119,12 @@ exports[`Homepage should render correctly 1`] = `
 @media (max-width:576px) {
   .c6 {
     display: none;
+  }
+}
+
+@media (max-width:1200px) {
+  .c7 {
+    max-width: 100%;
   }
 }
 
@@ -172,6 +177,7 @@ exports[`Homepage should render correctly 1`] = `
             />
             <span
               class="c6"
+              id="userName"
             >
               user@mail.ru
             </span>
