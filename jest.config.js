@@ -2,7 +2,7 @@ module.exports = {
   verbose: true,
   clearMocks: true,
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js', '<rootDir>/jest.setEnvVars.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js', '<rootDir>/jest.setEnvVars.js', 'jest-extended'],
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
