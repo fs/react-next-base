@@ -57,4 +57,4 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
-            - yarn start-test 'yarn dev' 3000 './node_modules/.bin/cypress run'
+            - yarn start-test 'yarn dev' 3000 'yarn run lint:css'
