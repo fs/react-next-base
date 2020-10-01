@@ -50,3 +50,15 @@ blocks:
         - name: yarn test
           commands:
             - yarn run test:ci
+  - name: E2E Tests (cypress)
+    dependencies:
+      - Setup
+    task:
+      env_vars:
+        - name: API_URL
+          value: https://rails-base-graphql-api.herokuapp.com
+      jobs:
+        - name: yarn dev and cypress run
+          commands:
+            - cypress install
+            - yarn start-test 'yarn dev' 3000 './node_modules/.bin/cypress run'
