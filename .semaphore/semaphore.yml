@@ -57,7 +57,6 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
-            - yarn global add wait-on
             - npm install cypress --save-dev
-            - yarn dev start & wait-on http://localhost:8080
-            - ./node_modules/.bin/cypress run
+            - npm install --save-dev start-server-and-test
+            - start-server-and-test 'http-server -c-1 --silent' 3000 './node_modules/.bin/cypress run --record'
