@@ -57,6 +57,4 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
-            - npm install cypress --save-dev
-            - npm install --save-dev start-server-and-test
-            - start-server-and-test 'http-server -c-1 --silent' 3000 './node_modules/.bin/cypress run --record'
+            - yarn start-test 'yarn dev' 3000 './node_modules/.bin/cypress run'
