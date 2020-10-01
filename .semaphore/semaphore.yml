@@ -59,5 +59,6 @@ blocks:
           commands:
             - yarn global add wait-on
             - npm install cypress --save-dev
+            - npm install body-parser
             - yarn dev start & wait-on http://localhost:3000
             - ./node_modules/.bin/cypress run
