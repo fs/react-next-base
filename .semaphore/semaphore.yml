@@ -59,5 +59,5 @@ blocks:
           commands:
             - yarn global add wait-on
             - npm install cypress --save-dev
-            - yarn dev start & wait-on http://localhost:3080
+            - yarn dev start & wait-on http://localhost:8080
             - ./node_modules/.bin/cypress run
