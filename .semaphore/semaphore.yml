@@ -46,6 +46,9 @@ blocks:
   - name: Tests
     dependencies: ['Setup']
     task:
+      env_vars:
+        - name: API_URL
+          value: https://rails-base-graphql-api.herokuapp.com
       jobs:
         - name: yarn test
           commands:
