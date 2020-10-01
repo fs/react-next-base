@@ -85,7 +85,7 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit,
 
   return (
     <FormWrapper>
-      <StyledTitle>Profile</StyledTitle>
+      <StyledTitle id="profileFormTitle">Profile</StyledTitle>
       <Form form={form} />
       {loading && <Loader>Loading</Loader>}
     </FormWrapper>
