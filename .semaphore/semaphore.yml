@@ -64,4 +64,4 @@ blocks:
           commands:
             - npm install cypress --save-dev
             - yarn add --dev @types/react @types/node
-            - yarn start-test 'yarn dev' 3000 './node_modules/.bin/cypress run --record --key d6d05aec-0354-4c6b-b947-50c1398d1fc3'
+            - yarn start-test 'yarn dev' 3000 './node_modules/.bin/cypress run --record --key 62fd7424-4f5e-49b8-9a61-923c8713f94a'
