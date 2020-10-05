@@ -17,7 +17,7 @@ const StyledTabList = styled.ul(
 
 const Tabs = ({ tabs }) => (
   <StyledTabs>
-    <StyledTabList role="tablist">
+    <StyledTabList role="tablist" className="formToggler">
       {tabs.map(({ id, name, active, onClick }) => (
         <Tab key={id} name={name} active={active} onClick={onClick} dataTestId={`test-tab-${id}`} />
       ))}
