@@ -4,7 +4,7 @@ describe('Login Page', () => {
     cy.get('#loginFormTitle')
       .eq(0)
       .as('formHeaderTag');
-    cy.get('.formToggler').as('formToggler');
+    cy.get('.formToggler li').as('formTogglers');
   });
 
   describe('Sign in form', () => {
@@ -30,7 +30,7 @@ describe('Login Page', () => {
 
   describe('Create an account form', () => {
     it('should render create an account form by click', () => {
-      cy.get('@formToggler')
+      cy.get('@formTogglers')
         .eq(1)
         .click();
       cy.get('@formHeaderTag').should('contain', 'Create an account');
@@ -39,14 +39,14 @@ describe('Login Page', () => {
 
   describe('Recover my password form', () => {
     it('should render recover form by click', () => {
-      cy.get('@formToggler')
+      cy.get('@formTogglers')
         .eq(2)
         .click();
       cy.get('@formHeaderTag').should('contain', 'Recover my password');
     });
 
     it('should show success message when user clicks "Recover Password"', () => {
-      cy.get('@formToggler')
+      cy.get('@formTogglers')
         .eq(2)
         .click();
       cy.get('#email').type('test@mail.com');
@@ -68,7 +68,9 @@ describe('Login Page', () => {
 
     it('should show profile info ', () => {
       cy.get('#userName').click();
-      cy.get('#userNavigationList li a').click();
+      cy.get('#userNavigationList li a')
+        .eq(0)
+        .click();
       cy.get('#profileFormTitle').should('be.visible');
     });
 
@@ -79,18 +81,5 @@ describe('Login Page', () => {
         .click();
       cy.url().should('not.contain', 'login');
     });
-  });
-
-  it('should render recover form by click', () => {
-    cy.get('@formToggler')
-      .eq(1)
-      .click();
-
-    cy.get('#firstName').type('testmail@test.test');
-    cy.get('#lastName').type('testlastname');
-    cy.get('#email').type('testmail@test.test');
-    cy.get('#password').type('test');
-    cy.get('#signUp').click();
-    cy.getToken;
   });
 });
