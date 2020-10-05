@@ -79,6 +79,7 @@ describe('Login Page', () => {
       cy.get('#userNavigationList li button')
         .eq(0)
         .click();
+      cy.wait(2000);
       cy.url().should('not.contain', 'login');
     });
   });
