@@ -12,7 +12,7 @@ describe('Login Page', () => {
       cy.get('@formHeaderTag').should('be.visible');
       cy.get('@formHeaderTag').should('contain', 'Sign In');
     });
-
+    /*
     it('should pass correct user', () => {
       cy.get('#email').type(Cypress.env('CORRECT_EMAIL_FOR_E2E'));
       cy.get('#password').type(Cypress.env('CORRECT_PASSWORD_FOR_E2E'));
@@ -21,7 +21,7 @@ describe('Login Page', () => {
       cy.wait(1000);
       cy.get('#userName').should('contain', Cypress.env('CORRECT_EMAIL_FOR_E2E'));
     });
-
+*/
     it('should not pass incorrect user', () => {
       cy.get('#email').type('incorrect@mail.com');
       cy.get('#password').type('incorrectPassword');
@@ -75,12 +75,13 @@ describe('Login Page', () => {
         .click();
       cy.get('#profileFormTitle').should('be.visible');
     });
-
+    /*
     it('should sign out by click', () => {
       cy.get('#userName').click();
       cy.get('#userNavigationList li button').then(el => el.eq(0).click());
       cy.wait(1000);
       cy.url().should('not.contain', 'login');
     });
+    */
   });
 });
