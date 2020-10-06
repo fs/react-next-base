@@ -2,14 +2,27 @@
 
 exports[`Homepage should render correctly 1`] = `
 .c5 {
+  position: relative;
   display: inline-block;
   width: 1.875rem;
   height: 1.875rem;
   font-size: 0;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .c6 {
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.c7 {
   display: inline-block;
   color: #000;
   font-weight: 600;
@@ -77,7 +90,7 @@ exports[`Homepage should render correctly 1`] = `
   height: 80px;
   padding: 1rem;
   z-index: 5;
-  border-bottom: 1px solid #eee;
+  background: #fff border-bottom:1px solid #eee;
 }
 
 .c2 {
@@ -106,24 +119,24 @@ exports[`Homepage should render correctly 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c8 {
   padding: 2rem 1rem;
   max-width: 1200px;
 }
 
-.c8 {
+.c9 {
   font-size: 2rem;
   text-align: center;
 }
 
 @media (max-width:576px) {
-  .c6 {
+  .c7 {
     display: none;
   }
 }
 
 @media (max-width:1200px) {
-  .c7 {
+  .c8 {
     max-width: 100%;
   }
 }
@@ -170,13 +183,17 @@ exports[`Homepage should render correctly 1`] = `
             class="c4"
             data-testid="test-user-name"
           >
-            <img
-              alt="Avatar"
+            <div
               class="c5"
-              src="/images/avatar-placeholder.png"
-            />
+            >
+              <img
+                alt="Avatar"
+                class="c6"
+                src="/images/avatar-placeholder.png"
+              />
+            </div>
             <span
-              class="c6"
+              class="c7"
             >
               user@mail.ru
             </span>
@@ -185,13 +202,13 @@ exports[`Homepage should render correctly 1`] = `
       </div>
     </header>
     <div
-      class="c7"
+      class="c8"
     >
       <div
         class=""
       >
         <h1
-          class="c8 capitalize"
+          class="c9 capitalize"
         >
           Welcome to React Next Base
         </h1>

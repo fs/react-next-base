@@ -15,7 +15,7 @@ exports[`Profile page should render correctly 1`] = `
   border: 1px solid rgb(179,179,179);
 }
 
-.c2 [type="file"] {
+.c2 [type='file'] {
   border: none;
   padding: 0;
 }
