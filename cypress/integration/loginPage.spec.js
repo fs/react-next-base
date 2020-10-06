@@ -59,7 +59,7 @@ describe('Login Page', () => {
       );
     });
   });
-
+  /*
   describe('On logged user', () => {
     beforeEach(() => {
       cy.visit('/login');
@@ -75,13 +75,13 @@ describe('Login Page', () => {
         .click();
       cy.get('#profileFormTitle').should('be.visible');
     });
-    /*
+    
     it('should sign out by click', () => {
       cy.get('#userName').click();
       cy.get('#userNavigationList li button').then(el => el.eq(0).click());
       cy.wait(1000);
       cy.url().should('not.contain', 'login');
     });
-    */
-  });
+    
+  });*/
 });
