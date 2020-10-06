@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions';
-import { useFileUpload } from 'lib/FileUpload/useFileUpload';
+import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import useNotifier from 'hooks/useNotifier';
 import ProfileFormContent from './ProfileFormContent';
@@ -12,6 +12,7 @@ const ProfileForm = ({ profile }) => {
   const [uploadFile] = useFileUpload();
 
   const [avatar, setAvatar] = useState({});
+  const [temporaryUrl, setTemporaryUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleAvatarChange = event => {
@@ -21,7 +22,11 @@ const ProfileForm = ({ profile }) => {
         files: [file],
       },
     } = event;
-    if (validity.valid) setAvatar(file);
+
+    if (validity.valid) {
+      setAvatar(file);
+      setTemporaryUrl(URL.createObjectURL(file));
+    }
   };
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
@@ -46,6 +51,7 @@ const ProfileForm = ({ profile }) => {
 
   return (
     <ProfileFormContent
+      temporaryUrl={temporaryUrl}
       profile={profile}
       onSubmit={onSubmit}
       handleAvatarChange={handleAvatarChange}
