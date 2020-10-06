@@ -90,7 +90,8 @@ exports[`Homepage should render correctly 1`] = `
   height: 80px;
   padding: 1rem;
   z-index: 5;
-  background: #fff border-bottom:1px solid #eee;
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 .c2 {

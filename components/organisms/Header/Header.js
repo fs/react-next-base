@@ -17,7 +17,7 @@ const HeaderWrapper = styled.header(
     height: 80px;
     padding: 1rem;
     z-index: 5;
-    background: ${colors.white}
+    background: ${colors.white};
     border-bottom: 1px solid ${colors.grey};
   `,
 );
