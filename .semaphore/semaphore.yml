@@ -60,6 +60,7 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
+            - npm install cypress --save-dev
             - npm run build
             - yarn start:ci &
             - yarn cy:run
