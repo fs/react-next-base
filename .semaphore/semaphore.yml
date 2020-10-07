@@ -61,5 +61,5 @@ blocks:
         - name: yarn dev and cypress run
           commands:
             - npm run build
-            - yarn start:ci
+            - yarn start:ci &
             - yarn cy:run
