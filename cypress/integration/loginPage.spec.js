@@ -12,16 +12,7 @@ describe('Login Page', () => {
       cy.get('@formHeaderTag').should('be.visible');
       cy.get('@formHeaderTag').should('contain', 'Sign In');
     });
-    /*
-    it('should pass correct user', () => {
-      cy.get('#email').type(Cypress.env('CORRECT_EMAIL_FOR_E2E'));
-      cy.get('#password').type(Cypress.env('CORRECT_PASSWORD_FOR_E2E'));
-      cy.wait(1000);
-      cy.get('#signIn').click();
-      cy.wait(1000);
-      cy.get('#userName').should('contain', Cypress.env('CORRECT_EMAIL_FOR_E2E'));
-    });
-*/
+
     it('should not pass incorrect user', () => {
       cy.get('#email').type('incorrect@mail.com');
       cy.get('#password').type('incorrectPassword');
@@ -59,29 +50,4 @@ describe('Login Page', () => {
       );
     });
   });
-  /*
-  describe('On logged user', () => {
-    beforeEach(() => {
-      cy.visit('/login');
-      cy.get('#email').type(Cypress.env('CORRECT_EMAIL_FOR_E2E'));
-      cy.get('#password').type(Cypress.env('CORRECT_PASSWORD_FOR_E2E'));
-      cy.get('#signIn').click();
-    });
-
-    it('should show profile info ', () => {
-      cy.get('#userName').click();
-      cy.get('#userNavigationList li a')
-        .eq(0)
-        .click();
-      cy.get('#profileFormTitle').should('be.visible');
-    });
-    
-    it('should sign out by click', () => {
-      cy.get('#userName').click();
-      cy.get('#userNavigationList li button').then(el => el.eq(0).click());
-      cy.wait(1000);
-      cy.url().should('not.contain', 'login');
-    });
-    
-  });*/
 });
