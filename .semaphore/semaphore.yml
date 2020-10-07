@@ -60,5 +60,6 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
+            - next build
             - yarn start:ci
             - yarn cy:run
