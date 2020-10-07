@@ -108,14 +108,14 @@ const ProfileFormContent = ({
     submit: onSubmit,
   };
 
-  const isAvatarUrl = temporaryUrl || avatarUrl;
+  const avatarSrc = temporaryUrl || avatarUrl;
 
   return (
     <FormWrapper>
       <StyledTitle>Profile</StyledTitle>
-      {isAvatarUrl && (
+      {avatarSrc && (
         <AvatarWrapper>
-          <AvatarImg src={isAvatarUrl} />
+          <AvatarImg src={avatarSrc} />
         </AvatarWrapper>
       )}
       <Form form={form} />
