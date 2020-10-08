@@ -41,39 +41,65 @@ const UserInfo = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ActivityTable = ({ data, testId }) => {
+const ActivityTable = ({ data, pageInfo, setBeforeCursor, setAfterCursor, testId }) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
 
+  const { hasPreviousPage, hasNextPage, startCursor, endCursor } = pageInfo;
+
+  const goToPrevPage = () => {
+    setBeforeCursor(startCursor);
+    setAfterCursor(undefined);
+  };
+
+  const goToNextPage = () => {
+    setAfterCursor(endCursor);
+    setBeforeCursor(undefined);
+  };
+
   return (
-    <StyledTable data-testid={testId}>
-      <thead>
-        <tr>
-          {columnNames.map((name, id) => (
-            <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
-              {name}
-            </HeaderCell>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
-          return (
-            <tr key={id}>
-              <ColorLabel color={color} />
-              <DataCell>{title}</DataCell>
-              <DataCell>{description}</DataCell>
-              <DataCell>{date.toString()}</DataCell>
-              <DataCell>
-                <ProfileImage avatar={avatarUrl} />
-                <UserInfo>
-                  {name} ({email})
-                </UserInfo>
-              </DataCell>
-            </tr>
-          );
-        })}
-      </tbody>
-    </StyledTable>
+    <>
+      <StyledTable data-testid={testId}>
+        <thead>
+          <tr>
+            {columnNames.map((name, id) => (
+              <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
+                {name}
+              </HeaderCell>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
+            return (
+              <tr key={id}>
+                <ColorLabel color={color} />
+                <DataCell>{title}</DataCell>
+                <DataCell>{description}</DataCell>
+                <DataCell>{date.toString()}</DataCell>
+                <DataCell>
+                  <ProfileImage avatar={avatarUrl} />
+                  <UserInfo>
+                    {name} ({email})
+                  </UserInfo>
+                </DataCell>
+              </tr>
+            );
+          })}
+        </tbody>
+      </StyledTable>
+
+      <div>
+        <button type="button" disabled={!hasPreviousPage} onClick={() => goToPrevPage()}>
+          {'<- prev'}
+        </button>
+        <span>
+          Start cursor: {startCursor}, End cursor: {endCursor}
+        </span>
+        <button type="button" disabled={!hasNextPage} onClick={() => goToNextPage()}>
+          {'next ->'}
+        </button>
+      </div>
+    </>
   );
 };
 
