@@ -3,7 +3,8 @@ export default {
     black: '#000',
     white: '#fff',
     link: '#00f',
-    grey: '#eee',
+    grey: '#ccc',
+    lightGrey: '#eee',
     green: '#46a049',
   },
   breakpoints: {
