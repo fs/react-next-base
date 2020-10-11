@@ -1,5 +1,5 @@
-query Activities($events: [ActivityEvent!], $first: Int, $before: String, $after: String) {
-  activities(events: $events, first: $first, before: $before, after: $after) {
+query Activities($events: [ActivityEvent!], $last: Int, $before: String, $first: Int, $after: String) {
+  activities(events: $events, last: $last, before: $before, first: $first, after: $after) {
     edges {
       cursor
       node {
