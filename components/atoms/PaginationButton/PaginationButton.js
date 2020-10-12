@@ -4,8 +4,9 @@ import styled, { css } from 'styled-components';
 const StyledButton = styled.button(
   ({
     theme: {
-      colors: { black, grey },
+      colors: { grey },
     },
+    disabled,
     customStyles,
   }) => css`
     display: flex;
@@ -14,15 +15,11 @@ const StyledButton = styled.button(
     border: 2px solid ${grey};
     ${customStyles}
 
-    & svg {
+    ${disabled &&
+      `& svg {
       fill: ${grey};
       transition: fill 0.2s;
-    }
-
-    &:hover svg {
-      fill: ${black};
-      transition: fill 0.2s;
-    }
+    }`}
   `,
 );
 
