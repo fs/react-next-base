@@ -17,6 +17,7 @@ const HeaderWrapper = styled.header`
   padding: 1rem;
   z-index: 5;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const Links = styled.div`

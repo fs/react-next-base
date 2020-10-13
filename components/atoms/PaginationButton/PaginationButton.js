@@ -17,7 +17,8 @@ const StyledButton = styled.button(
 
     ${disabled &&
       css`
-        & svg {
+        cursor: default;
+        svg {
           fill: ${grey};
           transition: fill 0.2s;
         }

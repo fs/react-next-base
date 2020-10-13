@@ -9,7 +9,7 @@ import PaginationButton from 'components/atoms/PaginationButton';
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 `;
 
 const pointerIconStyles = css`

@@ -7,7 +7,7 @@ import baseCellStyles from './baseCellStyles';
 import DataCell from './DataCell';
 
 const StyledTable = styled.table(
-  ({ theme: { up, breakpoints } }) =>
+  ({ theme: { colors, up, breakpoints } }) =>
     css`
       position: relative;
       border-spacing: 0;
@@ -15,7 +15,7 @@ const StyledTable = styled.table(
       overflow-x: auto;
       text-align: left;
       width: 100%;
-      color: #606c76;
+      color: ${colors.darkGrey};
 
       ${up(breakpoints.lg)} {
         display: table;
