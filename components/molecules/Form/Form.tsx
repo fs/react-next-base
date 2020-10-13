@@ -19,6 +19,11 @@ const FormWrapper = styled.div`
     border: 1px solid rgb(179, 179, 179);
   }
 
+  [type='file'] {
+    border: none;
+    padding: 0;
+  }
+
   input[type='checkbox'],
   input[type='radio'] {
     width: auto;

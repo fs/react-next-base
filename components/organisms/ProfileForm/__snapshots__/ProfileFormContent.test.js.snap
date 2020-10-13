@@ -15,6 +15,11 @@ exports[`ProfileFormContent should render correctly 1`] = `
   border: 1px solid rgb(179,179,179);
 }
 
+.c2 [type='file'] {
+  border: none;
+  padding: 0;
+}
+
 .c2 input[type='checkbox'],
 .c2 input[type='radio'] {
   width: auto;
@@ -79,6 +84,24 @@ exports[`ProfileFormContent should render correctly 1`] = `
         <div
           class="c3"
         >
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="avatar"
+            >
+              Avatar
+            </label>
+            <input
+              accept="image/*"
+              data-testid="test-avatar"
+              id="avatar"
+              name="avatar"
+              type="file"
+              value=""
+            />
+          </div>
           <div
             class="c4"
           >
@@ -166,24 +189,6 @@ exports[`ProfileFormContent should render correctly 1`] = `
               name="currentPassword"
               placeholder="Current Password"
               type="password"
-              value=""
-            />
-          </div>
-          <div
-            class="c4"
-          >
-            <label
-              class="c5"
-              for="avatar"
-            >
-              Avatar
-            </label>
-            <input
-              accept="image/*"
-              data-testid="test-avatar"
-              id="avatar"
-              name="avatar"
-              type="file"
               value=""
             />
           </div>
