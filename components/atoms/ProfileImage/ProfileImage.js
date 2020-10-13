@@ -11,14 +11,19 @@ const StyledImageWrapper = styled.div`
   overflow: hidden;
 `;
 const StyledImage = styled.img`
-  position: absolute;
-  top: -9999px;
-  right: -9999px;
-  bottom: -9999px;
-  left: -9999px;
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  // Todo: use this solution for IE
+  // position: absolute;
+  // top: -9999px;
+  // right: -9999px;
+  // bottom: -9999px;
+  // left: -9999px;
+  // max-width: 100%;
+  // max-height: 100%;
+  // margin: auto;
 `;
 
 const ProfileImage = ({ avatar, alt }) => {

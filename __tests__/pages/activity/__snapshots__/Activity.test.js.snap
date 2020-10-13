@@ -12,14 +12,9 @@ exports[`Activity page should render correctly 1`] = `
 }
 
 .c6 {
-  position: absolute;
-  top: -9999px;
-  right: -9999px;
-  bottom: -9999px;
-  left: -9999px;
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .c3 {
@@ -331,7 +326,25 @@ exports[`Activity page should show error on error 1`] = `
 </div>
 `;
 
+exports[`Activity page should show error on error 2`] = `
+<div
+  data-testid="test-activity-error"
+>
+  <p>
+    Something went wrong
+  </p>
+</div>
+`;
+
 exports[`Activity page should show loader while loading 1`] = `
+<h3
+  data-testid="test-activity-loading"
+>
+  Loading...
+</h3>
+`;
+
+exports[`Activity page should show loader while loading 2`] = `
 <h3
   data-testid="test-activity-loading"
 >
