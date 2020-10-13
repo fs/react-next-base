@@ -3,7 +3,7 @@ describe('Static Page', () => {
     cy.visit('/static-page');
   });
 
-  it('should render static page', () => {
+  test('should render static page', () => {
     // Arrange
     // Act
     // Assert

@@ -5,7 +5,7 @@ describe('Error Decorator', () => {
   const errorMessage = 'Invalid email';
 
   describe('parse method', () => {
-    it('should parse Apollo Error', () => {
+    test('should parse Apollo Error', () => {
       // Arrange
       const mockApolloError = new ApolloError({
         graphQLErrors: [
@@ -26,7 +26,7 @@ describe('Error Decorator', () => {
       expect(actualError).toEqual(expectedError);
     });
 
-    it('should not change if JS Error object', () => {
+    test('should not change if JS Error object', () => {
       // Arrange
       const mockJsError = new Error(errorMessage);
       const expectedError = mockJsError;
@@ -38,7 +38,7 @@ describe('Error Decorator', () => {
       expect(actualError).toEqual(expectedError);
     });
 
-    it('should create Error object', () => {
+    test('should create Error object', () => {
       // Arrange
       const expectedError = new Error(errorMessage);
 
@@ -49,7 +49,7 @@ describe('Error Decorator', () => {
       expect(actualError).toEqual(expectedError);
     });
 
-    it('should return Something went wrong message', () => {
+    test('should return Something went wrong message', () => {
       // Arrange
       const mockErrorObject = { someKey: 'Wrong file path' };
       const expectedError = new Error('Something went wrong');
@@ -63,7 +63,7 @@ describe('Error Decorator', () => {
   });
 
   describe('getMessages method', () => {
-    it('should return messages array for one error', () => {
+    test('should return messages array for one error', () => {
       // Arrange
       const error = new ErrorDecorator('Error message');
       const expectedMessages = ['Error message'];
@@ -75,7 +75,7 @@ describe('Error Decorator', () => {
       expect(actualMessages).toEqual(expectedMessages);
     });
 
-    it('should return messages array for a few errors', () => {
+    test('should return messages array for a few errors', () => {
       // Arrange
       const otherErrorMessage = 'Your password invalid or expired';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Tab from './components/Tab';
+import Tab from './Tab';
 
 const StyledTabs = styled.div``;
 
@@ -22,7 +22,9 @@ const Tabs = ({ tabs }) => (
         <Tab key={id} name={name} active={active} onClick={onClick} dataTestId={`test-tab-${id}`} />
       ))}
     </StyledTabList>
-    {tabs.map(({ id, active, content }) => active && <div key={id}>{content}</div>)}
+    <div data-testid="test-tabs-content">
+      {tabs.map(({ id, active, content }) => active && <div key={id}>{content}</div>)}
+    </div>
   </StyledTabs>
 );
 
