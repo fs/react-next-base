@@ -15,15 +15,15 @@ const StyledImage = styled.img`
   height: 100%;
   object-fit: cover;
 
-  // Todo: use this solution for IE
-  // position: absolute;
-  // top: -9999px;
-  // right: -9999px;
-  // bottom: -9999px;
-  // left: -9999px;
-  // max-width: 100%;
-  // max-height: 100%;
-  // margin: auto;
+  /* Todo: use this solution for IE
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto; */
 `;
 
 const ProfileImage = ({ avatar, alt }) => {
