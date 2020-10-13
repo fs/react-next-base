@@ -5,7 +5,7 @@ import { Link } from 'routes';
 import { PROFILE, LOGIN, ACTIVITY } from 'config/routes';
 
 import Logo from 'components/atoms/Logo';
-import UserNavigation from './components/UserNavigation';
+import UserNavigation from './UserNavigation';
 
 const HeaderWrapper = styled.header`
   position: sticky;
