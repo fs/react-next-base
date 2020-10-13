@@ -17,9 +17,41 @@ const StyledTitle = styled.h3`
   line-height: 1.25;
   letter-spacing: -0.035rem;
 `;
+const AvatarWrapper = styled.div`
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  margin: 0 0 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+`;
 
-const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit, handleAvatarChange, loading }) => {
+const AvatarImg = styled.img`
+  position: absolute;
+  top: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+`;
+
+const ProfileFormContent = ({
+  temporaryUrl,
+  profile: { email, firstName, lastName, avatarUrl },
+  onSubmit,
+  handleAvatarChange,
+  loading,
+}) => {
   const fields = [
+    {
+      type: 'file',
+      name: 'avatar',
+      title: 'Avatar',
+      accept: 'image/*',
+      onChange: handleAvatarChange,
+    },
     {
       type: 'text',
       name: 'firstName',
@@ -67,13 +99,6 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit,
       }),
     },
     {
-      type: 'file',
-      name: 'avatar',
-      title: 'Avatar',
-      accept: 'image/*',
-      onChange: handleAvatarChange,
-    },
-    {
       type: 'submit',
       name: 'Update',
       initialValue: 'Update',
@@ -85,9 +110,16 @@ const ProfileFormContent = ({ profile: { email, firstName, lastName }, onSubmit,
     submit: onSubmit,
   };
 
+  const avatarSrc = temporaryUrl || avatarUrl;
+
   return (
     <FormWrapper>
       <StyledTitle>Profile</StyledTitle>
+      {avatarSrc && (
+        <AvatarWrapper>
+          <AvatarImg src={avatarSrc} />
+        </AvatarWrapper>
+      )}
       <Form form={form} />
       {loading && <Loader>Loading</Loader>}
     </FormWrapper>

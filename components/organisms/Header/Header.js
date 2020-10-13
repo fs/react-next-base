@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'routes';
 
 import { PROFILE, LOGIN, ACTIVITY } from 'config/routes';
@@ -7,18 +7,20 @@ import { PROFILE, LOGIN, ACTIVITY } from 'config/routes';
 import Logo from 'components/atoms/Logo';
 import UserNavigation from './components/UserNavigation';
 
-const HeaderWrapper = styled.header`
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 80px;
-  padding: 1rem;
-  z-index: 5;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
-  background-color: ${({ theme }) => theme.colors.white};
-`;
+const HeaderWrapper = styled.header(
+  ({ theme: { colors } }) => css`
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    padding: 1rem;
+    z-index: 5;
+    background-color: ${colors.white};
+    border-bottom: 1px solid ${colors.lightGrey};
+  `,
+);
 
 const Links = styled.div`
   display: flex;

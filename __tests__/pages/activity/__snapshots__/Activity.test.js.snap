@@ -2,11 +2,19 @@
 
 exports[`Activity page should render correctly 1`] = `
 .c5 {
+  position: relative;
   display: inline-block;
   width: 1.875rem;
   height: 1.875rem;
   font-size: 0;
   border-radius: 50%;
+  overflow: hidden;
+}
+
+.c6 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .c3 {
@@ -51,12 +59,12 @@ exports[`Activity page should render correctly 1`] = `
   background-color: #2979ff;
 }
 
-.c7 {
+.c8 {
   min-width: 5px;
   background-color: #00e676;
 }
 
-.c8 {
+.c9 {
   min-width: 5px;
   background-color: #f50057;
 }
@@ -72,7 +80,7 @@ exports[`Activity page should render correctly 1`] = `
   padding-left: 0;
 }
 
-.c6 {
+.c7 {
   margin-left: 0.5rem;
 }
 
@@ -168,13 +176,17 @@ exports[`Activity page should render correctly 1`] = `
         <div
           class="c4"
         >
-          <img
-            alt="Avatar"
+          <div
             class="c5"
-            src="/images/avatar-placeholder.png"
-          />
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
           <span
-            class="c6"
+            class="c7"
           >
             111test1 еуые
              (
@@ -186,7 +198,7 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
     <tr>
       <td
-        class="c7"
+        class="c8"
         color="#00e676"
       />
       <td
@@ -222,13 +234,17 @@ exports[`Activity page should render correctly 1`] = `
         <div
           class="c4"
         >
-          <img
-            alt="Avatar"
+          <div
             class="c5"
-            src="/images/avatar-placeholder.png"
-          />
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
           <span
-            class="c6"
+            class="c7"
           >
             Nikita Polyakov
              (
@@ -240,7 +256,7 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
     <tr>
       <td
-        class="c8"
+        class="c9"
         color="#f50057"
       />
       <td
@@ -276,13 +292,17 @@ exports[`Activity page should render correctly 1`] = `
         <div
           class="c4"
         >
-          <img
-            alt="Avatar"
+          <div
             class="c5"
-            src="/images/avatar-placeholder.png"
-          />
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
           <span
-            class="c6"
+            class="c7"
           >
             Test Test
              (
