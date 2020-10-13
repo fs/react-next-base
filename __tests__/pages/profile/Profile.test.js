@@ -1,6 +1,6 @@
 import React from 'react';
 import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
-import { render, cleanup, wait } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import { useCurrentUser } from 'lib/apollo/hooks/state';
@@ -16,12 +16,6 @@ jest.mock('lib/apollo/hooks/actions.js', () => ({
 }));
 
 describe('Profile page', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    jest.resetModules();
-    cleanup();
-  });
-
   test('should render correctly', async () => {
     // Arrange
     const mockUseCurrentUser = jest.fn(() => ({
@@ -32,12 +26,11 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    const pageContent = await screen.getByTestId('test-profile-page');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-profile-page')).toMatchSnapshot();
-    });
+    expect(pageContent).toMatchSnapshot();
   });
 
   test('should show loader while loading', async () => {
@@ -50,12 +43,11 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    const loadingContent = await screen.getByTestId('test-profile-loading');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-profile-loading')).toMatchSnapshot();
-    });
+    expect(loadingContent).toMatchSnapshot();
   });
 
   test('should show error on error', async () => {
@@ -78,11 +70,10 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUserErrorData);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    const errorContent = await screen.getByTestId('test-profile-error');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-profile-error')).toMatchSnapshot();
-    });
+    expect(errorContent).toMatchSnapshot();
   });
 });

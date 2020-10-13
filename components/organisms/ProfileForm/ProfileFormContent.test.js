@@ -1,17 +1,11 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 
 import ProfileFormContent from './ProfileFormContent';
 
 describe('ProfileFormContent', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    jest.resetModules();
-    cleanup();
-  });
-
   test('should render correctly', async () => {
     // Arrange
     const expectedProfile = {
