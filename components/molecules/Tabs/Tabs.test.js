@@ -34,6 +34,7 @@ describe('Tabs', () => {
     expect(activeTabContent).not.toBeNull();
   });
 
+  // TODO: check this test, it doesn't seem to work
   test('should show switch tab and show this tab content', () => {
     // Act
     render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
