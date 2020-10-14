@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, wait } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import { useActivity } from 'lib/apollo/hooks/activity';
@@ -17,12 +17,6 @@ jest.mock('lib/apollo/hooks/actions.js', () => ({
 }));
 
 describe('Activity page', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    jest.resetModules();
-    cleanup();
-  });
-
   test('should render correctly', async () => {
     // Arrange
     const mockUseActivity = jest.fn(() => ({
@@ -33,12 +27,11 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivity);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    const pageContent = await screen.getByTestId('test-activity-table');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-activity-table')).toMatchSnapshot();
-    });
+    expect(pageContent).toMatchSnapshot();
   });
 
   test('should show loader while loading', async () => {
@@ -51,12 +44,11 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivity);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    const loadingContent = await screen.getByTestId('test-activity-loading');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-activity-loading')).toMatchSnapshot();
-    });
+    expect(loadingContent).toMatchSnapshot();
   });
 
   test('should show error on error', async () => {
@@ -78,11 +70,10 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivityErrorData);
 
     // Act
-    const { getByTestId } = render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    const errorContent = await screen.getByTestId('test-activity-error');
 
     // Assert
-    await wait(() => {
-      expect(getByTestId('test-activity-error')).toMatchSnapshot();
-    });
+    expect(errorContent).toMatchSnapshot();
   });
 });

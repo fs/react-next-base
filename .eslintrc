@@ -6,7 +6,9 @@
     "airbnb",
     "prettier",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "globals": {
@@ -19,7 +21,9 @@
   "plugins": [
     "@typescript-eslint/eslint-plugin",
     "prettier",
-    "react-hooks"
+    "react-hooks",
+    "testing-library",
+    "jest-dom"
   ],
   "rules": {
     "react/jsx-filename-extension": [
