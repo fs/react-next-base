@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions';
@@ -13,12 +13,6 @@ jest.mock('hooks/useFileUpload');
 jest.mock('decorators/ErrorDecorator');
 
 describe('ProfileForm', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    jest.resetModules();
-    cleanup();
-  });
-
   test('should call useUpdateUser on submit', async () => {
     // Arrange
     const expectedEmail = 'test@test.com';
@@ -44,17 +38,15 @@ describe('ProfileForm', () => {
     const mockFileUpload = jest.fn(() => Promise.resolve());
     useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
-    const { getByText } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
+    render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
     // Act
-    fireEvent.click(getByText(expectedButtonText));
+    fireEvent.click(screen.getByText(expectedButtonText));
 
     // Assert
-    await wait(() => {
-      expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues);
-      expect(mockPresignFile).toHaveBeenCalledWith({});
-      expect(mockFileUpload).toHaveBeenCalledWith(undefined, {});
-    });
+    await waitFor(() => expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues));
+    expect(mockPresignFile).toHaveBeenCalledWith({});
+    expect(mockFileUpload).toHaveBeenCalledWith(undefined, {});
   });
 
   test('should call useUpdateUser and fileUpload on submit', async () => {
@@ -97,22 +89,20 @@ describe('ProfileForm', () => {
     const mockFileUpload = jest.fn(() => Promise.resolve());
     useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
-    const { getByText, getByTestId } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
+    render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
-    const fileInput = getByTestId(expectedAvatarTestId);
+    const fileInput = screen.getByTestId(expectedAvatarTestId);
     fireEvent.change(fileInput, mockAvatarChangeEvent);
 
     // Act
-    fireEvent.click(getByText(expectedButtonText));
+    fireEvent.click(screen.getByText(expectedButtonText));
 
     // Assert
-    await wait(() => {
-      expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues);
-      expect(mockFileUpload).toHaveBeenCalledWith(undefined, mockFile);
-      expect(mockUpdateUser).toHaveBeenCalledWith(expectedUpdateUserValues);
-      expect(mockPresignFile).toHaveBeenCalledBefore(mockFileUpload);
-      expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
-    });
+    await waitFor(() => expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues));
+    expect(mockFileUpload).toHaveBeenCalledWith(undefined, mockFile);
+    expect(mockUpdateUser).toHaveBeenCalledWith(expectedUpdateUserValues);
+    expect(mockPresignFile).toHaveBeenCalledBefore(mockFileUpload);
+    expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
   });
 
   test('should call errrorDecorator on error', async () => {
@@ -141,15 +131,13 @@ describe('ProfileForm', () => {
     const mockErrorDecorator = jest.fn();
     ErrorDecorator.mockImplementation(mockErrorDecorator);
 
-    const { getByText, getByPlaceholderText } = render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
-    fireEvent.input(getByPlaceholderText(expectedPasswordPlaceholderText), { value: '123' });
+    render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
+    fireEvent.input(screen.getByPlaceholderText(expectedPasswordPlaceholderText), { value: '123' });
 
     // Act
-    fireEvent.click(getByText(expectedButtonText));
+    fireEvent.click(screen.getByText(expectedButtonText));
 
     // Assert
-    await wait(() => {
-      expect(mockErrorDecorator).toHaveBeenCalledWith(expectedError);
-    });
+    await waitFor(() => expect(mockErrorDecorator).toHaveBeenCalledWith(expectedError));
   });
 });
