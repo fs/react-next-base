@@ -44,19 +44,16 @@ describe('Tabs', () => {
     expect(activeTabContent).not.toBeNull();
   });
 
-  // TODO: check this test, it doesn't seem to work
-  test('should show switch tab and show this tab content', () => {
+  test('should show switch tab and show this tab content', async () => {
     // Act
-    render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
+    const { container } = render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
 
     const secondTab = screen.getByTestId(`test-tab-${MOCK_TABS[1].id}`);
-    const switchedTabContent = screen.queryByText(secondTabContent);
 
     fireEvent.click(secondTab);
+    const switchedTabContent = await screen.findByText(secondTabContent);
 
     // Assert
-    waitFor(() => {
-      expect(switchedTabContent).not.toBeNull();
-    });
+    expect(switchedTabContent).not.toBeNull();
   });
 });

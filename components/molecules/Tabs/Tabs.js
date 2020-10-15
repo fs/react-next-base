@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Tab from './Tab';
 
@@ -15,17 +15,27 @@ const StyledTabList = styled.ul(
   `,
 );
 
-const Tabs = ({ tabs }) => (
-  <StyledTabs>
-    <StyledTabList role="tablist">
-      {tabs.map(({ id, name, active, onClick }) => (
-        <Tab key={id} name={name} active={active} onClick={onClick} dataTestId={`test-tab-${id}`} />
-      ))}
-    </StyledTabList>
-    <div data-testid="test-tabs-content">
-      {tabs.map(({ id, active, content }) => active && <div key={id}>{content}</div>)}
-    </div>
-  </StyledTabs>
-);
+const Tabs = ({ tabs = [] }) => {
+  const [aciveTabId, setAciveTabId] = useState(tabs[0].id);
+
+  return (
+    <StyledTabs>
+      <StyledTabList role="tablist">
+        {tabs.map(({ id, name }) => (
+          <Tab
+            key={id}
+            name={name}
+            active={aciveTabId === id}
+            onClick={() => setAciveTabId(id)}
+            dataTestId={`test-tab-${id}`}
+          />
+        ))}
+      </StyledTabList>
+      <div data-testid="test-tabs-content">
+        <div>{tabs.find(({ id }) => id === aciveTabId).content}</div>
+      </div>
+    </StyledTabs>
+  );
+};
 
 export default Tabs;
