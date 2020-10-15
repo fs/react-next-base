@@ -4,6 +4,16 @@ import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import Tabs from '.';
 
 describe('Tabs', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+    jest.useRealTimers();
+  });
+
   const onClick = jest.fn();
   const firstTabContent = 'First Tab Content';
   const secondTabContent = 'Second Tab Content';
