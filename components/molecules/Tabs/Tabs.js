@@ -15,25 +15,28 @@ const StyledTabList = styled.ul(
   `,
 );
 
-const Tabs = ({ tabs = [] }) => {
-  const [aciveTabId, setAciveTabId] = useState(tabs[0].id);
+const Tabs = ({ tabs = [], active }) => {
+  const [aciveTabId, setAciveTabId] = useState(active || tabs[0].id);
+
+  const onClickHandle = ({ id, action = () => {} }) => {
+    setAciveTabId(id);
+    action();
+  };
 
   return (
     <StyledTabs>
       <StyledTabList role="tablist">
-        {tabs.map(({ id, name }) => (
+        {tabs.map(({ id, name, action }) => (
           <Tab
             key={id}
             name={name}
             active={aciveTabId === id}
-            onClick={() => setAciveTabId(id)}
+            onClick={() => onClickHandle({ id, action })}
             dataTestId={`test-tab-${id}`}
           />
         ))}
       </StyledTabList>
-      <div data-testid="test-tabs-content">
-        <div>{tabs.find(({ id }) => id === aciveTabId).content}</div>
-      </div>
+      <div data-testid="test-tabs-content">{tabs.find(({ id }) => id === aciveTabId).content}</div>
     </StyledTabs>
   );
 };
