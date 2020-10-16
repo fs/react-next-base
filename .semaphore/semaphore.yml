@@ -50,3 +50,17 @@ blocks:
         - name: yarn test
           commands:
             - yarn run test:ci
+  - name: E2E Tests (cypress)
+    dependencies:
+      - Setup
+    task:
+      env_vars:
+        - name: API_URL
+          value: https://rails-base-graphql-api.herokuapp.com
+      jobs:
+        - name: yarn dev and cypress run
+          commands:
+            - npm install cypress --save-dev
+            - npm run build
+            - yarn start:ci &
+            - yarn cy:run #you can enable tests recording by adding record key: https://docs.cypress.io/guides/guides/continuous-integration.html#Record-tests
