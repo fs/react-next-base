@@ -7,7 +7,7 @@ import baseCellStyles from './baseCellStyles';
 import DataCell from './DataCell';
 
 const StyledTable = styled.table(
-  ({ theme: { up, breakpoints } }) =>
+  ({ theme: { colors, up, breakpoints } }) =>
     css`
       position: relative;
       border-spacing: 0;
@@ -15,7 +15,7 @@ const StyledTable = styled.table(
       overflow-x: auto;
       text-align: left;
       width: 100%;
-      color: #606c76;
+      color: ${colors.darkGrey};
 
       ${up(breakpoints.lg)} {
         display: table;
@@ -41,39 +41,51 @@ const UserInfo = styled.span`
   margin-left: 0.5rem;
 `;
 
+const EmptyList = styled.div`
+  margin: 3rem 0;
+  text-align: center;
+  font-style: italic;
+`;
+
 const ActivityTable = ({ data, testId }) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
 
   return (
-    <StyledTable data-testid={testId}>
-      <thead>
-        <tr>
-          {columnNames.map((name, id) => (
-            <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
-              {name}
-            </HeaderCell>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
-          return (
-            <tr key={id}>
-              <ColorLabel color={color} />
-              <DataCell>{title}</DataCell>
-              <DataCell>{description}</DataCell>
-              <DataCell>{date.toString()}</DataCell>
-              <DataCell>
-                <ProfileImage avatar={avatarUrl} />
-                <UserInfo>
-                  {name} ({email})
-                </UserInfo>
-              </DataCell>
+    <>
+      {data.length > 0 ? (
+        <StyledTable data-testid={testId}>
+          <thead>
+            <tr>
+              {columnNames.map((name, id) => (
+                <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
+                  {name}
+                </HeaderCell>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </StyledTable>
+          </thead>
+          <tbody>
+            {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
+              return (
+                <tr key={id}>
+                  <ColorLabel color={color} />
+                  <DataCell>{title}</DataCell>
+                  <DataCell>{description}</DataCell>
+                  <DataCell>{date.toString()}</DataCell>
+                  <DataCell>
+                    <ProfileImage avatar={avatarUrl} />
+                    <UserInfo>
+                      {name} ({email})
+                    </UserInfo>
+                  </DataCell>
+                </tr>
+              );
+            })}
+          </tbody>
+        </StyledTable>
+      ) : (
+        <EmptyList>No records found</EmptyList>
+      )}
+    </>
   );
 };
 
