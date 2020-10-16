@@ -60,7 +60,7 @@ blocks:
       jobs:
         - name: yarn dev and cypress run
           commands:
-            - npm install cypress --save-dev
-            - npm run build
+            - yarn add cypress --save-dev
+            - yarn build
             - yarn start:ci &
             - yarn cy:run #you can enable tests recording by adding record key: https://docs.cypress.io/guides/guides/continuous-integration.html#Record-tests
