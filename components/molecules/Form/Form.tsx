@@ -19,6 +19,11 @@ const FormWrapper = styled.div`
     border: 1px solid rgb(179, 179, 179);
   }
 
+  [type='file'] {
+    border: none;
+    padding: 0;
+  }
+
   input[type='checkbox'],
   input[type='radio'] {
     width: auto;
@@ -66,8 +71,13 @@ const Form = ({ form }: { form: FormType }) => {
           <FormikForm>
             <FormContainer>
               {fields.map((field: FormFieldType, i: number) => {
-                const { type, name, label, placeholder, options, action, title } = field;
+                const { type, name, label, placeholder, options, title, accept, onClick, onChange, onBlur } = field;
                 const isInput = !(type === 'textarea' || type === 'select');
+
+                const actions = Object.entries({ onClick, onChange, onBlur }).reduce(
+                  (acc, [key, val]) => (val ? { ...acc, [key]: val } : { ...acc }),
+                  {},
+                );
 
                 return (
                   <FieldWrapper key={`${name}${i}`}>
@@ -76,11 +86,12 @@ const Form = ({ form }: { form: FormType }) => {
                       type={isInput ? type : null}
                       as={!isInput && type}
                       name={name}
-                      onClick={action}
+                      accept={accept}
                       id={name}
                       data-testid={`test-${name}`}
                       placeholder={placeholder}
                       disabled={isSubmitting}
+                      {...actions}
                     >
                       {type === 'select' && options
                         ? options.map((option: OptionType, j: number) => {
