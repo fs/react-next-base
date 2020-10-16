@@ -14,11 +14,11 @@ const Title = styled.h1`
 
 const PageContent = styled.div``;
 
-const Home = () => {
+const HomePage = () => {
   return (
     <NotifierProvider>
       <DefaultTemplate>
-        <PageContent>
+        <PageContent data-testid="test-page-content">
           <Title className="capitalize">Welcome to React Next Base</Title>
         </PageContent>
       </DefaultTemplate>
@@ -26,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default withApolloClient(WithAuth(Home));
+export default withApolloClient(WithAuth(HomePage));
