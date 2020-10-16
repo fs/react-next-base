@@ -112,7 +112,7 @@ const ProfileFormContent = ({
 
   return (
     <FormWrapper>
-      <StyledTitle>Profile</StyledTitle>
+      <StyledTitle id="profileFormTitle">Profile</StyledTitle>
       {avatarSrc && (
         <AvatarWrapper>
           <AvatarImg src={avatarSrc} />
