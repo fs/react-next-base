@@ -4,7 +4,7 @@ describe('Login Page', () => {
     cy.get('#loginFormTitle')
       .eq(0)
       .as('formHeaderTag');
-    cy.get('.formToggler').as('formToggler');
+    cy.get('#formToggler li').as('formToggler');
   });
 
   describe('Sign in form', () => {
