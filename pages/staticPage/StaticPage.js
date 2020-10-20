@@ -18,7 +18,7 @@ const Home = () => (
     <p>
       <b>There is a body text</b> Lorem ipsum dolor sit amet,{' '}
       <Link passHref route="/">
-        consectetur adipiscing elit
+        <a>consectetur adipiscing elit</a>
       </Link>
       , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus gravida quis blandit turpis. Lobortis
       elementum nibh tellus molestie nunc. Felis donec et odio pellentesque diam. Sit amet nisl purus in. Interdum
