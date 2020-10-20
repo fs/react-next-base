@@ -7,7 +7,7 @@
     "build": "next build",
     "heroku-prebuild": "yarn install --production",
     "start": "NODE_ENV=production node server.js -p $PORT",
-    "start:ci": "yarn start --no-clipboard --listen ${PORT:-3000}",
+    "start:ci": "yarn start --no-clipboard ${PORT:-3000}",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx pages components",
     "lint:css:in:js": "stylelint './**/*.js'",
     "lint:css:in:ts": "stylelint './**/*.tsx'",
@@ -21,7 +21,7 @@
     "cy:open": "cypress open"
   },
   "engines": {
-    "node": "13.9.0"
+    "node": ">=13.9.0"
   },
   "dependencies": {
     "@apollo/client": "^3.0.2",
@@ -92,7 +92,6 @@
     "jest-transform-graphql": "^2.1.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "start-server-and-test": "^1.11.4",
     "stylelint": "^13.2.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
