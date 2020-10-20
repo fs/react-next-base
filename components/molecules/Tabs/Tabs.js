@@ -25,7 +25,7 @@ const Tabs = ({ tabs = [], active }) => {
 
   return (
     <StyledTabs>
-      <StyledTabList role="tablist">
+      <StyledTabList role="tablist" id="formToggler">
         {tabs.map(({ id, name, action }) => (
           <Tab
             key={id}
