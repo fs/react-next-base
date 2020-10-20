@@ -21,7 +21,7 @@
     "cy:open": "cypress open"
   },
   "engines": {
-    "node": "13.9.0"
+    "node": ">=13.9.0"
   },
   "dependencies": {
     "@apollo/client": "^3.0.2",
