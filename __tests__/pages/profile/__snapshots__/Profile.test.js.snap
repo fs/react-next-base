@@ -74,6 +74,7 @@ exports[`Profile page should render correctly 1`] = `
   >
     <h3
       class="c1"
+      id="profileFormTitle"
     >
       Profile
     </h3>
