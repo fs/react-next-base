@@ -4,7 +4,7 @@ import { transparentize } from 'polished';
 
 const Wrapper = styled.div(
   ({ theme: { colors } }) => css`
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,13 +17,13 @@ const Wrapper = styled.div(
   `,
 );
 
-const Title = styled.div`
+const Title = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
 `;
 
-const Loader = ({ children }) => (
-  <Wrapper>
+const Loader = ({ children, testId }) => (
+  <Wrapper data-testid={testId}>
     <Title>{children}</Title>
   </Wrapper>
 );
