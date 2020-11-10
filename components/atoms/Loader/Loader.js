@@ -22,8 +22,8 @@ const Title = styled.span`
   font-weight: bold;
 `;
 
-const Loader = ({ children }) => (
-  <Wrapper>
+const Loader = ({ children, testId }) => (
+  <Wrapper data-testid={testId}>
     <Title>{children}</Title>
   </Wrapper>
 );

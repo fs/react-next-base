@@ -109,7 +109,7 @@ const Activity = () => {
           />
         )}
 
-        {loading && <Loader data-testid="test-activity-loading">Loading...</Loader>}
+        {loading && <Loader testId="test-activity-loading">Loading...</Loader>}
         {error && <ErrorMessage data-testid="test-activity-error">{errorMessage}</ErrorMessage>}
         {!loading && !error && <ActivityTable data={activities} testId="test-activity-table" />}
       </Wrapper>

@@ -45,7 +45,7 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const loadingContent = await screen.getByTestId('test-activity-loading');
+    const loadingContent = screen.getByTestId('test-activity-loading');
 
     // Assert
     expect(loadingContent).toMatchSnapshot();
