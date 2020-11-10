@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import Tabs from '.';
 
@@ -36,7 +36,7 @@ describe('Tabs', () => {
 
   test('should show switch tab and show this tab content', async () => {
     // Act
-    const { container } = render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
+    render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
 
     const secondTab = screen.getByTestId(`test-tab-${MOCK_TABS[1].id}`);
 

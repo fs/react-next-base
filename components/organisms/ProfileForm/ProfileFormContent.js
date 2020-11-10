@@ -5,6 +5,8 @@ import Form from '../../molecules/Form';
 import Loader from '../../atoms/Loader';
 
 const FormWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
   width: 20rem;
   position: relative;
 `;
