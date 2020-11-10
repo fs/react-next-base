@@ -17,7 +17,7 @@ const Wrapper = styled.div(
   `,
 );
 
-const Title = styled.div`
+const Title = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
 `;

@@ -14,8 +14,8 @@ import Loader from 'components/atoms/Loader';
 import ErrorMessage from 'components/atoms/ErrorMessage';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ActivityTable from 'components/organisms/ActivityTable';
-import ActivityPagination from 'components/organisms/ActivityPagination';
-import ActivityDropdown from 'components/organisms/ActivityDropdown';
+import ActivityPagination from 'components/molecules/ActivityPagination';
+import ActivityDropdown from 'components/atoms/ActivityDropdown';
 
 const Wrapper = styled.div`
   position: relative;
@@ -52,7 +52,7 @@ const Activity = () => {
   const [afterCursor, setAfterCursor] = useState();
   const [pageNumber, setPageNumber] = useState(1);
   const [filterValue, setFilterValue] = useState();
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState();
 
   const { activities, pageInfo, loading, error } = useActivity({ beforeCursor, afterCursor, filterValue, pageSize });
 
