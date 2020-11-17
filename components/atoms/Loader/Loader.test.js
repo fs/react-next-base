@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-
 import Loader from 'components/atoms/Loader';
 
 describe('Loader', () => {

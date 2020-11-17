@@ -85,7 +85,6 @@ const Activity = () => {
           onChange={handleFilterChange}
           disabled={loading}
           customStyles={filterDropdownStyles}
-          testId="test-activity-filter"
         />
 
         <ActivityDropdown
@@ -95,7 +94,6 @@ const Activity = () => {
           onChange={handlePageSizeChange}
           disabled={loading}
           customStyles={pageSizeDropdownStyles}
-          testId="test-page-size"
         />
 
         {pageInfo && (
@@ -105,13 +103,12 @@ const Activity = () => {
             setAfterCursor={setAfterCursor}
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}
-            testId="test-activity-pagination"
           />
         )}
 
         {loading && <Loader testId="test-activity-loading">Loading...</Loader>}
         {error && <ErrorMessage data-testid="test-activity-error">{errorMessage}</ErrorMessage>}
-        {!loading && !error && <ActivityTable data={activities} testId="test-activity-table" />}
+        {!loading && !error && <ActivityTable data={activities} />}
       </Wrapper>
     </DefaultTemplate>
   );

@@ -3,17 +3,16 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-
 import PaginationButton from 'components/atoms/PaginationButton';
 
 describe('PaginationButton', () => {
-  const mockContent = "PaginationButton's content";
+  const mockText = "PaginationButton's content";
 
   test('should render correctly', () => {
     // Arrange
 
     // Act
-    render(renderWithTheme(<PaginationButton>{mockContent}</PaginationButton>));
+    render(renderWithTheme(<PaginationButton>{mockText}</PaginationButton>));
 
     const button = screen.getByRole('button');
 
@@ -25,7 +24,7 @@ describe('PaginationButton', () => {
     // Arrange
 
     // Act
-    render(renderWithTheme(<PaginationButton disabled>{mockContent}</PaginationButton>));
+    render(renderWithTheme(<PaginationButton disabled>{mockText}</PaginationButton>));
 
     const button = screen.getByRole('button');
 

@@ -35,40 +35,41 @@ exports[`ActivityDropdown should render correctly 1`] = `
   }
 }
 
-<div
-  class="c0"
-  data-testid="test-activity-dropdown"
->
-  <label
-    class="c1"
-    for="test-activity-dropdown-dropdown"
+<div>
+  <div
+    class="c0"
   >
-    ActivityDropdown's label
-    <select
-      class="c2"
-      id="test-activity-dropdown-dropdown"
+    <label
+      class="c1"
+      for="activity-dropdown"
     >
-      <option
-        value="5"
+      ActivityDropdown's label
+      <select
+        class="c2"
+        id="activity-dropdown"
       >
-        5
-      </option>
-      <option
-        value="10"
-      >
-        10
-      </option>
-      <option
-        value="25"
-      >
-        25
-      </option>
-      <option
-        value="50"
-      >
-        50
-      </option>
-    </select>
-  </label>
+        <option
+          value="5"
+        >
+          5
+        </option>
+        <option
+          value="10"
+        >
+          10
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="50"
+        >
+          50
+        </option>
+      </select>
+    </label>
+  </div>
 </div>
 `;

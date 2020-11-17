@@ -17,7 +17,7 @@ jest.mock('lib/apollo/hooks/actions.js', () => ({
 }));
 
 describe('Activity page', () => {
-  test('should render correctly', async () => {
+  test('should render correctly', () => {
     // Arrange
     const mockUseActivity = jest.fn(() => ({
       loading: undefined,
@@ -28,13 +28,13 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const pageContent = await screen.getByTestId('test-activity-table');
+    const pageContent = screen.getByTestId('test-activity-table');
 
     // Assert
     expect(pageContent).toMatchSnapshot();
   });
 
-  test('should show loader while loading', async () => {
+  test('should show loader while loading', () => {
     // Arrange
     const mockUseActivity = jest.fn(() => ({
       loading: true,
@@ -51,7 +51,7 @@ describe('Activity page', () => {
     expect(loadingContent).toMatchSnapshot();
   });
 
-  test('should show error on error', async () => {
+  test('should show error on error', () => {
     // Arrange
     const error = {
       graphQLErrors: [
@@ -71,7 +71,7 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const errorContent = await screen.getByTestId('test-activity-error');
+    const errorContent = screen.getByTestId('test-activity-error');
 
     // Assert
     expect(errorContent).toMatchSnapshot();

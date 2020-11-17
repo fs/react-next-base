@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 
 import LeftPointer from 'public/images/icons/left-pointer.svg';
 import RightPointer from 'public/images/icons/right-pointer.svg';
-
 import PaginationButton from 'components/atoms/PaginationButton';
 
 const Wrapper = styled.div`
@@ -39,7 +38,7 @@ const PageNumber = styled.span`
   font-size: 1.1rem;
 `;
 
-const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNumber, setPageNumber, testId }) => {
+const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNumber, setPageNumber }) => {
   const { hasPreviousPage, hasNextPage, startCursor, endCursor } = pageInfo;
 
   const goToPrevPage = () => {
@@ -55,7 +54,7 @@ const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNum
   };
 
   return (
-    <Wrapper data-testid={testId}>
+    <Wrapper data-testid="test-activity-pagination">
       <PaginationButton disabled={!hasPreviousPage} onClick={() => goToPrevPage()} customStyles={prevButtonStyles}>
         <LeftPointerIcon />
       </PaginationButton>

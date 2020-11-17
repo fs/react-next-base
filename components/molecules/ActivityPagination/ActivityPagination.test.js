@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import pageInfoMock from '__tests__/mocks/pageInfoMock';
-
 import ActivityPagination from 'components/molecules/ActivityPagination';
 
 describe('ActivityPagination', () => {
@@ -18,12 +18,7 @@ describe('ActivityPagination', () => {
     // Act
     render(
       renderWithTheme(
-        <ActivityPagination
-          pageInfo={pageInfoMock}
-          pageNumber={mockPageNumber}
-          setPageNumber={mockSetPageNumber}
-          testId={mockTestId}
-        />,
+        <ActivityPagination pageInfo={pageInfoMock} pageNumber={mockPageNumber} setPageNumber={mockSetPageNumber} />,
       ),
     );
 
@@ -40,16 +35,15 @@ describe('ActivityPagination', () => {
     // Act
     render(
       renderWithTheme(
-        <ActivityPagination
-          pageInfo={mockPageInfo}
-          pageNumber={mockPageNumber}
-          setPageNumber={mockSetPageNumber}
-          testId={mockTestId}
-        />,
+        <ActivityPagination pageInfo={mockPageInfo} pageNumber={mockPageNumber} setPageNumber={mockSetPageNumber} />,
       ),
     );
 
+    const buttons = screen.getAllByRole('button');
+
     // Assert
-    // TODO: check that buttons have an attribute 'disabled'
+    buttons.forEach(btn => {
+      expect(btn).toBeDisabled();
+    });
   });
 });

@@ -10,18 +10,15 @@ import ActivityDropdown from 'components/atoms/ActivityDropdown';
 describe('ActivityDropdown', () => {
   const mockLabel = "ActivityDropdown's label";
   const mockValues = activityPageSizes.map(item => ({ value: item, name: item }));
-  const mockTestId = 'test-activity-dropdown';
 
   test('should render correctly', () => {
     // Arrange
 
     // Act
-    render(renderWithTheme(<ActivityDropdown label={mockLabel} values={mockValues} testId={mockTestId} />));
-
-    const dropdown = screen.getByTestId(mockTestId);
+    const { container } = render(renderWithTheme(<ActivityDropdown label={mockLabel} values={mockValues} />));
 
     // Assert
-    expect(dropdown).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render empty option', () => {

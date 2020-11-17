@@ -47,13 +47,13 @@ const EmptyList = styled.div`
   font-style: italic;
 `;
 
-const ActivityTable = ({ data, testId }) => {
+const ActivityTable = ({ data }) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
 
   return (
     <>
       {data.length > 0 ? (
-        <StyledTable data-testid={testId}>
+        <StyledTable data-testid="test-activity-table">
           <thead>
             <tr>
               {columnNames.map((name, id) => (
@@ -83,7 +83,7 @@ const ActivityTable = ({ data, testId }) => {
           </tbody>
         </StyledTable>
       ) : (
-        <EmptyList>No records found</EmptyList>
+        <EmptyList data-testid="test-activity-table-empty">No records found</EmptyList>
       )}
     </>
   );

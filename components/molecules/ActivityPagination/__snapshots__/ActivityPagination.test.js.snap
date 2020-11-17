@@ -9,10 +9,10 @@ exports[`ActivityPagination should render correctly 1`] = `
   padding: 0.5rem;
   background-color: transparent;
   border: 2px solid #ccc;
+  cursor: default;
   border-right-width: 0;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  cursor: default;
 }
 
 .c1 svg {

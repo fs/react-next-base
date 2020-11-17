@@ -13,7 +13,6 @@ const StyledButton = styled.button(
     padding: 0.5rem;
     background-color: transparent;
     border: 2px solid ${grey};
-    ${customStyles}
 
     ${disabled &&
       css`
@@ -36,6 +35,7 @@ const StyledButton = styled.button(
         }
       `}
 
+    ${customStyles}
   `,
 );
 

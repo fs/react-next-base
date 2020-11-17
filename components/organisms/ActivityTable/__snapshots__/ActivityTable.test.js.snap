@@ -1,0 +1,317 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityTable should render correctly 1`] = `
+.c5 {
+  position: relative;
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  font-size: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.c6 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c3 {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 0.8rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-weight: 100;
+}
+
+.c3:first-child {
+  padding-left: 0;
+}
+
+.c3:nth-child(4) {
+  white-space: nowrap;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  position: relative;
+  border-spacing: 0;
+  display: block;
+  overflow-x: auto;
+  text-align: left;
+  width: 100%;
+  color: #606c76;
+}
+
+.c2 {
+  min-width: 5px;
+  background-color: #2979ff;
+}
+
+.c8 {
+  min-width: 5px;
+  background-color: #00e676;
+}
+
+.c9 {
+  min-width: 5px;
+  background-color: #f50057;
+}
+
+.c1 {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 0.8rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.c1:first-child {
+  padding-left: 0;
+}
+
+.c7 {
+  margin-left: 0.5rem;
+}
+
+@media (min-width:calc(992px + 0.02px)) {
+  .c3 {
+    padding: 1.2rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width:calc(992px + 0.02px)) {
+  .c0 {
+    display: table;
+    overflow-x: initial;
+  }
+}
+
+@media (min-width:calc(992px + 0.02px)) {
+  .c1 {
+    padding: 1.2rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+<table
+  class="c0"
+  data-testid="test-activity-table"
+>
+  <thead>
+    <tr>
+      <th
+        class="c1"
+        colspan="2"
+      >
+        Title
+      </th>
+      <th
+        class="c1"
+        colspan="1"
+      >
+        Description
+      </th>
+      <th
+        class="c1"
+        colspan="1"
+      >
+        Date
+      </th>
+      <th
+        class="c1"
+        colspan="1"
+      >
+        User
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        class="c2"
+        color="#2979ff"
+      />
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          User Updated
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          User updated with the next attributes: First name - 111test1, Last name - еуые, Email - tes1t@test.com
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          04.08.2020, 13:38:51
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          <div
+            class="c5"
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
+          <span
+            class="c7"
+          >
+            111test1 еуые
+             (
+            tes1t@test.com
+            )
+          </span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="c8"
+        color="#00e676"
+      />
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          User Logged In
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          User logged in with the next attributes: First name - , Last name - 
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          04.08.2020, 15:01:32
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          <div
+            class="c5"
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
+          <span
+            class="c7"
+          >
+            Nikita Polyakov
+             (
+            nikita.polyakov@flatstack.com
+            )
+          </span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="c9"
+        color="#f50057"
+      />
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          User Registered
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          New user registered with the next attributes: First name - Test, Last name - Test↵
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          04.08.2020, 15:26:08
+        </div>
+      </td>
+      <td
+        class="c3"
+      >
+        <div
+          class="c4"
+        >
+          <div
+            class="c5"
+          >
+            <img
+              alt="Avatar"
+              class="c6"
+              src="/images/avatar-placeholder.png"
+            />
+          </div>
+          <span
+            class="c7"
+          >
+            Test Test
+             (
+            test123@example.com
+            )
+          </span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
