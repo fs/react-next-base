@@ -1,7 +1,7 @@
 export default [
-  { name: 'USER_LOGGED_IN', color: '#00e676' },
-  { name: 'USER_REGISTERED', color: '#f50057' },
-  { name: 'USER_RESET_PASSWORD', color: '#d500f9' },
-  { name: 'RESET_PASSWORD_REQUESTED', color: '#ffea00' },
-  { name: 'USER_UPDATED', color: '#2979ff' },
+  { value: 'USER_LOGGED_IN', name: 'User logged in', color: '#00e676' },
+  { value: 'USER_REGISTERED', name: 'User registered', color: '#f50057' },
+  { value: 'USER_RESET_PASSWORD', name: 'User reset password', color: '#d500f9' },
+  { value: 'RESET_PASSWORD_REQUESTED', name: 'Reset password requested', color: '#ffea00' },
+  { value: 'USER_UPDATED', name: 'User updated', color: '#2979ff' },
 ];

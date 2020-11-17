@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityDropdown should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #606c76;
+}
+
+.c2 {
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+@media (min-width:calc(576px + 0.02px)) {
+  .c2 {
+    font-size: 0.8rem;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <label
+      class="c1"
+      for="activity-dropdown"
+    >
+      ActivityDropdown's label
+      <select
+        class="c2"
+        id="activity-dropdown"
+      >
+        <option
+          value="5"
+        >
+          5
+        </option>
+        <option
+          value="10"
+        >
+          10
+        </option>
+        <option
+          value="25"
+        >
+          25
+        </option>
+        <option
+          value="50"
+        >
+          50
+        </option>
+      </select>
+    </label>
+  </div>
+</div>
+`;

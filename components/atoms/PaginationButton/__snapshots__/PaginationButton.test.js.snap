@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationButton should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 2px solid #ccc;
+}
+
+.c0 {
+  background-color: transparent;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.c0:hover {
+  background-color: rgba(0,0,0,0.05);
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+<button
+  class="c0"
+  type="button"
+>
+  PaginationButton's content
+</button>
+`;
