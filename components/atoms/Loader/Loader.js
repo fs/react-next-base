@@ -4,7 +4,7 @@ import { transparentize } from 'polished';
 
 const Wrapper = styled.div(
   ({ theme: { colors } }) => css`
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;

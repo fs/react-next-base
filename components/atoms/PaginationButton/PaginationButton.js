@@ -14,26 +14,24 @@ const StyledButton = styled.button(
     background-color: transparent;
     border: 2px solid ${grey};
 
-    ${disabled &&
-      css`
-        cursor: default;
-        svg {
-          fill: ${grey};
-          transition: fill 0.2s;
-        }
-      `}
-
-    ${!disabled &&
-      css`
-        & {
-          background-color: transparent;
-          transition: background-color 0.2s;
-        }
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.05);
-          transition: background-color 0.2s;
-        }
-      `}
+    ${disabled
+      ? css`
+          cursor: default;
+          svg {
+            fill: ${grey};
+            transition: fill 0.2s;
+          }
+        `
+      : css`
+          & {
+            background-color: transparent;
+            transition: background-color 0.2s;
+          }
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s;
+          }
+        `}
 
     ${customStyles}
   `,
