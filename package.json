@@ -14,11 +14,12 @@
     "lint:css": "yarn lint:css:in:js && yarn lint:css:in:ts",
     "test": "jest --watch",
     "test:ci": "jest",
-    "scan": "yarn lint && yarn lint:css && yarn test:ci",
     "cy": "cypress",
     "cy:run": "cypress run",
     "cy:chr": "cypress run --browser chrome",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "scan": "yarn lint && yarn lint:css && yarn test:ci",
+    "scan:full": "yarn lint && yarn lint:css && yarn test:ci && yarn cy:run"
   },
   "engines": {
     "node": ">=13.9.0"
@@ -78,6 +79,7 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest-dom": "^3.2.3",
     "eslint-plugin-jsx-a11y": "^6.2.3",

@@ -17,6 +17,7 @@ const PageContent = styled.div(
   ({ theme: { down, breakpoints } }) =>
     css`
       padding: 2rem 1rem;
+      width: 100%;
       max-width: ${breakpoints.xl};
 
       ${down(breakpoints.xl)} {
