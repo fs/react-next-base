@@ -59,7 +59,7 @@ const LoginForm = () => {
   return (
     <StyledFormWrapper>
       <LoginFormContent onSubmit={onSubmit} toggleForm={toggleForm} activeForm={activeForm} />
-      <StyledMessage id="recoverPasswordMessage">{message}</StyledMessage>
+      <StyledMessage data-cy="password-recovery-message">{message}</StyledMessage>
     </StyledFormWrapper>
   );
 };
