@@ -21,7 +21,9 @@ const Activity = () => {
     <DefaultTemplate>
       {loading && <h3 data-testid="test-activity-loading">Loading...</h3>}
       {error && <ErrorMessage data-testid="test-activity-error">{errorMessage}</ErrorMessage>}
-      {!loading && !error && <ActivityTable testId="test-activity-table" data={activities} />}
+      {!loading && !error && (
+        <ActivityTable testId="test-activity-table" data-cy="test-activity-table" data={activities} />
+      )}
     </DefaultTemplate>
   );
 };
