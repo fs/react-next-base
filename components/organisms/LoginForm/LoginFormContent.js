@@ -79,7 +79,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
 
   const Content = () => (
     <>
-      <StyledFormTitle id="loginFormTitle">{formTitle}</StyledFormTitle>
+      <StyledFormTitle data-cy="login-form-title">{formTitle}</StyledFormTitle>
       <Form form={form} />
     </>
   );
