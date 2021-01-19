@@ -114,7 +114,7 @@ const ProfileFormContent = ({
 
   return (
     <FormWrapper>
-      <StyledTitle id="profileFormTitle">Profile</StyledTitle>
+      <StyledTitle data-cy="profile-form-title">Profile</StyledTitle>
       {avatarSrc && (
         <AvatarWrapper>
           <AvatarImg src={avatarSrc} />

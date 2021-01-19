@@ -89,6 +89,7 @@ const Form = ({ form }: { form: FormType }) => {
                       accept={accept}
                       id={name}
                       data-testid={`test-${name}`}
+                      data-cy={name}
                       placeholder={placeholder}
                       disabled={isSubmitting}
                       {...actions}

@@ -1,10 +1,10 @@
 describe('Login Page', () => {
   beforeEach(() => {
     cy.visit('/login');
-    cy.get('#loginFormTitle')
+    cy.get('[data-cy=login-form-title]')
       .eq(0)
       .as('formHeaderTag');
-    cy.get('#formToggler li').as('formToggler');
+    cy.get('[data-cy=form-toggler] li').as('formToggler');
   });
 
   describe('Sign in form', () => {
@@ -14,9 +14,9 @@ describe('Login Page', () => {
     });
 
     it('should not pass incorrect user', () => {
-      cy.get('#email').type('incorrect@mail.com');
-      cy.get('#password').type('incorrectPassword');
-      cy.get('#signIn').click();
+      cy.get('[data-cy=email]').type('incorrect@mail.com');
+      cy.get('[data-cy=password]').type('incorrectPassword');
+      cy.get('[data-cy=signIn]').click();
       cy.get('@formHeaderTag').should('contain', 'Sign In');
     });
   });
@@ -42,9 +42,9 @@ describe('Login Page', () => {
       cy.get('@formToggler')
         .eq(2)
         .click();
-      cy.get('#email').type('test@mail.com');
-      cy.get('#passwordRecovery').click();
-      cy.get('#recoverPasswordMessage').should(
+      cy.get('[data-cy=email]').type('test@mail.com');
+      cy.get('[data-cy=passwordRecovery]').click();
+      cy.get('[data-cy=password-recovery-message]').should(
         'contain',
         'Password recovery instructions were sent if that account exists',
       );
