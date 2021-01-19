@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Activity page should render correctly 1`] = `
+exports[`ActivityTable should render correctly 1`] = `
 .c5 {
   position: relative;
   display: inline-block;
@@ -103,26 +103,6 @@ exports[`Activity page should render correctly 1`] = `
     padding: 1.2rem 1rem;
     font-size: 0.9rem;
   }
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
 }
 
 <table
@@ -334,94 +314,4 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
   </tbody>
 </table>
-`;
-
-exports[`Activity page should show error on error 1`] = `
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-<div
-  data-testid="test-activity-error"
->
-  <p>
-    Something went wrong
-  </p>
-</div>
-`;
-
-exports[`Activity page should show loader while loading 1`] = `
-.c0 {
-  position: absolute;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(255,255,255,0.9);
-  opacity: 0.7;
-}
-
-.c1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-<div
-  class="c0"
-  data-testid="test-activity-loading"
->
-  <span
-    class="c1"
-  >
-    Loading...
-  </span>
-</div>
 `;

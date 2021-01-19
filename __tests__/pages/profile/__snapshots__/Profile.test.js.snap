@@ -52,6 +52,8 @@ exports[`Profile page should render correctly 1`] = `
 }
 
 .c0 {
+  margin-left: auto;
+  margin-right: auto;
   width: 20rem;
   position: relative;
 }
@@ -74,7 +76,7 @@ exports[`Profile page should render correctly 1`] = `
   >
     <h3
       class="c1"
-      id="profileFormTitle"
+      data-cy="profile-form-title"
     >
       Profile
     </h3>
@@ -98,6 +100,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               accept="image/*"
+              data-cy="avatar"
               data-testid="test-avatar"
               id="avatar"
               name="avatar"
@@ -115,6 +118,7 @@ exports[`Profile page should render correctly 1`] = `
               First Name
             </label>
             <input
+              data-cy="firstName"
               data-testid="test-firstName"
               id="firstName"
               name="firstName"
@@ -133,6 +137,7 @@ exports[`Profile page should render correctly 1`] = `
               Last Name
             </label>
             <input
+              data-cy="lastName"
               data-testid="test-lastName"
               id="lastName"
               name="lastName"
@@ -151,6 +156,7 @@ exports[`Profile page should render correctly 1`] = `
               Email
             </label>
             <input
+              data-cy="email"
               data-testid="test-email"
               id="email"
               name="email"
@@ -169,6 +175,7 @@ exports[`Profile page should render correctly 1`] = `
               New Password
             </label>
             <input
+              data-cy="password"
               data-testid="test-password"
               id="password"
               name="password"
@@ -187,6 +194,7 @@ exports[`Profile page should render correctly 1`] = `
               Current Password
             </label>
             <input
+              data-cy="currentPassword"
               data-testid="test-currentPassword"
               id="currentPassword"
               name="currentPassword"
@@ -199,6 +207,7 @@ exports[`Profile page should render correctly 1`] = `
             class="c4"
           >
             <input
+              data-cy="Update"
               data-testid="test-Update"
               id="Update"
               name="Update"

@@ -5,6 +5,8 @@ import Form from '../../molecules/Form';
 import Loader from '../../atoms/Loader';
 
 const FormWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
   width: 20rem;
   position: relative;
 `;
@@ -112,7 +114,7 @@ const ProfileFormContent = ({
 
   return (
     <FormWrapper>
-      <StyledTitle id="profileFormTitle">Profile</StyledTitle>
+      <StyledTitle data-cy="profile-form-title">Profile</StyledTitle>
       {avatarSrc && (
         <AvatarWrapper>
           <AvatarImg src={avatarSrc} />
