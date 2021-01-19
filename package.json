@@ -18,7 +18,8 @@
     "cy:run": "cypress run",
     "cy:chr": "cypress run --browser chrome",
     "cy:open": "cypress open",
-    "scan": "yarn lint && yarn lint:css && yarn test:ci"
+    "scan": "yarn lint && yarn lint:css && yarn test:ci",
+    "scan:full": "yarn lint && yarn lint:css && yarn test:ci && yarn cy:run"
   },
   "engines": {
     "node": ">=13.9.0"
