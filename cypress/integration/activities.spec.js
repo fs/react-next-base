@@ -8,9 +8,9 @@ describe('Activities', () => {
     cy.get('#password').type(PASSWORD);
     cy.get('#signIn').click();
     cy.get('[data-cy=dropdown-toggler]').click();
-    cy.get('[data-cy=activity]').click();
+    cy.get('[data-cy=activity]', { timeout: 10000 }).click();
 
-    cy.get('[data-cy=test-activity-table]').as('activityTable');
-    cy.wait('@activityTable');
+    cy.get('[data-cy=test-activity-table]').should('be.visible');
+    //cy.wait('@activityTable');
   });
 });

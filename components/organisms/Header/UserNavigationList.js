@@ -60,9 +60,9 @@ const UserNavigationList = ({ links = [], actions = [], ...attributes }) => (
   <StyledUserMenu {...attributes}>
     {links.map(({ text, url, dataCy }, i) => {
       return (
-        <UserMenuItem key={i}>
+        <UserMenuItem key={i} data-cy={dataCy}>
           <Link route={url}>
-            <a data-cy={dataCy}>{text}</a>
+            <a>{text}</a>
           </Link>
         </UserMenuItem>
       );

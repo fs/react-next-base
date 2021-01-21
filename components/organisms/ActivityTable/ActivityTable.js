@@ -53,7 +53,7 @@ const ActivityTable = ({ data }) => {
   return (
     <>
       {data.length > 0 ? (
-        <StyledTable data-testid="test-activity-table">
+        <StyledTable data-testid="test-activity-table" data-cy="test-activity-table">
           <thead>
             <tr>
               {columnNames.map((name, id) => (
