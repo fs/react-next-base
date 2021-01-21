@@ -98,7 +98,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
             </label>
             <input
               accept="image/*"
-              data-cy="cy-avatar"
+              data-cy="avatar"
               data-testid="test-avatar"
               id="avatar"
               name="avatar"
@@ -116,7 +116,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               First Name
             </label>
             <input
-              data-cy="cy-first-name"
+              data-cy="first-name"
               data-testid="test-first-name"
               id="firstName"
               name="firstName"
@@ -135,7 +135,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               Last Name
             </label>
             <input
-              data-cy="cy-last-name"
+              data-cy="last-name"
               data-testid="test-last-name"
               id="lastName"
               name="lastName"
@@ -154,7 +154,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               Email
             </label>
             <input
-              data-cy="cy-email"
+              data-cy="email"
               data-testid="test-email"
               id="email"
               name="email"
@@ -173,7 +173,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               New Password
             </label>
             <input
-              data-cy="cy-password"
+              data-cy="password"
               data-testid="test-password"
               id="password"
               name="password"
@@ -192,7 +192,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               Current Password
             </label>
             <input
-              data-cy="cy-current-password"
+              data-cy="current-password"
               data-testid="test-current-password"
               id="currentPassword"
               name="currentPassword"
@@ -205,7 +205,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
             class="c4"
           >
             <input
-              data-cy="cy-update-button"
+              data-cy="update-button"
               data-testid="test-update-button"
               id="Update"
               name="Update"
