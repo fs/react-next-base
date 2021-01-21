@@ -127,6 +127,7 @@ exports[`Activity page should render correctly 1`] = `
 
 <table
   class="c0"
+  data-cy="test-activity-table"
   data-testid="test-activity-table"
 >
   <thead>
@@ -358,6 +359,7 @@ exports[`Activity page should show error on error 1`] = `
 }
 
 <div
+  data-cy="test-activity-error"
   data-testid="test-activity-error"
 >
   <p>

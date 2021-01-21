@@ -107,6 +107,7 @@ exports[`ActivityTable should render correctly 1`] = `
 
 <table
   class="c0"
+  data-cy="test-activity-table"
   data-testid="test-activity-table"
 >
   <thead>
