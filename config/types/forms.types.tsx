@@ -13,6 +13,7 @@ export interface FormFieldType {
   title?: string;
   type: string;
   validationSchema: StringSchema;
+  testID?: string;
 }
 
 export interface FormType {
