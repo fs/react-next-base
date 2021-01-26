@@ -1,19 +1,17 @@
-const EMAIL = 'marat.sadriev@flatstack.com';
-const PASSWORD = 'Pwd21093';
-
 describe('Activities', () => {
-  it('should see activity page', () => {
-    cy.visit('/login');
-    cy.get('#email').type(EMAIL);
-    cy.get('#password').type(PASSWORD);
-    cy.get('#signIn').click();
-    cy.intercept('/').as('mainPage');
-    cy.wait('@mainPage');
-
-    cy.get('[data-cy=dropdown-toggler]', { timeout: 1000 }).click();
+  beforeEach(() => {
+    cy.login(Cypress.env('email'), Cypress.env('password'));
+    cy.get('[data-cy=dropdown-toggler]').click();
     cy.contains('Activity').click();
+  });
 
+  it('should see activity page', () => {
     cy.get('[data-cy=test-activity-table]').should('be.visible');
-    //cy.wait('@activityTable');
+  });
+
+  it('should see activity page', () => {
+    cy.get('[data-cy=activity-row]')
+      .its('length')
+      .should('be.eq', 5);
   });
 });

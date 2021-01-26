@@ -66,7 +66,7 @@ const ActivityTable = ({ data }) => {
           <tbody>
             {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
               return (
-                <tr key={id}>
+                <tr key={id} data-cy="activity-row">
                   <ColorLabel color={color} />
                   <DataCell>{title}</DataCell>
                   <DataCell>{description}</DataCell>
