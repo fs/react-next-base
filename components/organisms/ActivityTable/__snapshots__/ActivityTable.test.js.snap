@@ -139,7 +139,9 @@ exports[`ActivityTable should render correctly 1`] = `
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c2"
         color="#2979ff"
@@ -197,7 +199,9 @@ exports[`ActivityTable should render correctly 1`] = `
         </div>
       </td>
     </tr>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c8"
         color="#00e676"
@@ -255,7 +259,9 @@ exports[`ActivityTable should render correctly 1`] = `
         </div>
       </td>
     </tr>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c9"
         color="#f50057"
