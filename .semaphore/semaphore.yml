@@ -14,53 +14,62 @@ auto_cancel:
     when: 'true'
 
 global_job_config:
+  env_vars:
+    - name: API_URL
+      value: 'https://rails-base-graphql-api.herokuapp.com'
+
+  secrets:
+    - name: react-next-base-secrets
+
   prologue:
     commands:
       - checkout
-      - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
       - nvm use
+      - cache restore node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock),node-modules-${SEMAPHORE_GIT_BRANCH},node-modules-master
 
 blocks:
   - name: Setup
-    dependencies: []
     task:
       jobs:
         - name: yarn install and cache
           commands:
-            - yarn
-            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
-  - name: Lint
-    dependencies: ['Setup']
+            - yarn install --frozen-lockfile
+
+            - cache store node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock) node_modules
+            - cache store cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) ~/.cache/Cypress
+
+  - name: Lints
     task:
       jobs:
-        - name: yarn run lint
+        - name: Common
           commands:
             - yarn run lint
-  - name: CSS Lint
-    dependencies: ['Setup']
-    task:
-      jobs:
-        - name: yarn run lint:css
+
+        - name: CSS
           commands:
             - yarn run lint:css
+
   - name: Tests
-    dependencies: ['Setup']
     task:
       jobs:
-        - name: yarn test
+        - name: Yarn
           commands:
             - yarn run test:ci
-  - name: E2E Tests (cypress)
-    dependencies:
-      - Setup
-    task:
-      env_vars:
-        - name: API_URL
-          value: https://rails-base-graphql-api.herokuapp.com
-      jobs:
-        - name: yarn dev and cypress run
+
+        - name: Cypress
           commands:
-            - yarn add cypress --save-dev
-            - yarn build
-            - yarn start:ci &
-            - yarn cy:run #you can enable tests recording by adding record key: https://docs.cypress.io/guides/guides/continuous-integration.html#Record-tests
+            # restore cypress cache
+            - cache restore cypress-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json)-$(checksum basic/semaphore.yml)
+
+            # verify the Cypress test binary so its check status is cached
+            - cy:verify
+
+            # setup cypress.env from secrets
+            - cp ~/.config/cypress.env.json ./
+
+            # prints SEMAPHORE_* environment variables
+            - yarn run print-env -- SEMAPHORE
+
+            # finally, build the web application and run end-to-end tests
+            - yarn start:ci
+            - yarn cy:run
