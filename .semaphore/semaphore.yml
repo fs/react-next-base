@@ -19,7 +19,7 @@ global_job_config:
       value: 'https://rails-base-graphql-api.herokuapp.com'
 
     - name: PORT
-      value: '5000'
+      value: '3000'
 
   secrets:
     - name: react-next-base-secrets
