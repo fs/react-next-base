@@ -16,7 +16,7 @@ describe('Login Page', () => {
     it('should not pass incorrect user', () => {
       cy.get('[data-cy=email]').type('incorrect@mail.com');
       cy.get('[data-cy=password]').type('incorrectPassword');
-      cy.get('[data-cy=signIn]').click();
+      cy.get('[data-cy=submit-button]').click();
       cy.get('@formHeaderTag').should('contain', 'Sign In');
     });
   });
@@ -43,7 +43,7 @@ describe('Login Page', () => {
         .eq(2)
         .click();
       cy.get('[data-cy=email]').type('test@mail.com');
-      cy.get('[data-cy=passwordRecovery]').click();
+      cy.get('[data-cy=submit-button]').click();
       cy.get('[data-cy=password-recovery-message]').should(
         'contain',
         'Password recovery instructions were sent if that account exists',
