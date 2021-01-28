@@ -17,7 +17,6 @@ global_job_config:
       - nvm use
 blocks:
   - name: Setup
-    dependencies: []
     task:
       jobs:
         - name: yarn install and cache
@@ -55,8 +54,6 @@ blocks:
       env_vars:
         - name: API_URL
           value: 'https://rails-base-graphql-api.herokuapp.com'
-      secrets:
-        - name: react-next-base-secrets
       jobs:
         - name: yarn dev and cypress run
           commands:
