@@ -23,9 +23,8 @@ global_job_config:
 
   prologue:
     commands:
-      - nvm use
       - checkout
-
+      - nvm use
       - cache restore node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock),node-modules-${SEMAPHORE_GIT_BRANCH},node-modules-master
 
 blocks:
