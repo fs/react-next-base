@@ -45,7 +45,7 @@ blocks:
   - name: Setup
     task:
       jobs:
-        - name: Setup deps and cache
+        - name: Deps and cache
           commands:
             - yarn install --frozen-lockfile
             - cache store
@@ -67,15 +67,8 @@ blocks:
 
         - name: E2E
           commands:
-            # restore cypress and next.js cache
-            # - cache restore cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
-
-            # install cypress in case of cache miss and verify
+            # install cypress
             - yarn run cy:install
-            # - yarn run cy:verify
-
-            # store cypress cache
-            # - cache store cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) ~/.cache/Cypress
 
             # setup cypress.env from secrets
             - cp ~/.config/cypress.env.json ./
