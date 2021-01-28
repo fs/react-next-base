@@ -57,6 +57,8 @@ blocks:
       env_vars:
         - name: API_URL
           value: https://rails-base-graphql-api.herokuapp.com
+      secrets:
+        - name: cypress-env
       jobs:
         - name: yarn dev and cypress run
           commands:
