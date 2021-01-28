@@ -47,25 +47,22 @@ blocks:
             - yarn install --frozen-lockfile
             - cache store
 
-  - name: Lints
-    task:
-      jobs:
-        - name: Common
-          commands:
-            - yarn run lint
-
-        - name: CSS
-          commands:
-            - yarn run lint:css
-
   - name: Tests
     task:
       jobs:
-        - name: Yarn
+        - name: Lint JS
+          commands:
+            - yarn run lint
+
+        - name: Lint CSS
+          commands:
+            - yarn run lint:css
+
+        - name: Unit test
           commands:
             - yarn run test:ci
 
-        - name: Cypress
+        - name: E2E
           commands:
             # restore cypress and next.js cache
             - cache restore cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
