@@ -25,7 +25,7 @@ global_job_config:
     commands:
       - checkout
       - nvm use
-      - cache restore node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock),node-modules-${SEMAPHORE_GIT_BRANCH},node-modules-master
+      - cache restore
 
 blocks:
   - name: Setup
@@ -35,7 +35,7 @@ blocks:
           commands:
             - yarn install --frozen-lockfile
 
-            - cache store node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock) node_modules
+            - cache store
             - cache store cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) ~/.cache/Cypress
 
   - name: Lints
@@ -59,10 +59,10 @@ blocks:
         - name: Cypress
           commands:
             # restore cypress cache
-            - cache restore cypress-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
+            - cache restore cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
 
             # verify the Cypress test binary so its check status is cached
-            - cy:verify
+            - yarn run cy:verify
 
             # setup cypress.env from secrets
             - cp ~/.config/cypress.env.json ./
