@@ -19,7 +19,10 @@ global_job_config:
       value: 'https://rails-base-graphql-api.herokuapp.com'
 
     - name: PORT
-      value: '3000'
+      value: '5000'
+
+    - name: CYPRESS_BASE_URL
+      value: 'http://localhost:5000'
 
   secrets:
     - name: react-next-base-secrets
