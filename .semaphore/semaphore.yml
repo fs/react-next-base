@@ -25,6 +25,7 @@ global_job_config:
     commands:
       - checkout
       - cache restore node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock),node-modules-${SEMAPHORE_GIT_BRANCH},node-modules-master
+      - cp ~/.config/cypress.env.json ./
       - nvm use
 
 blocks:
