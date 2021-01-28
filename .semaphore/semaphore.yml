@@ -14,53 +14,49 @@ auto_cancel:
     when: 'true'
 
 global_job_config:
+  env_vars:
+    - name: API_URL
+      value: 'https://rails-base-graphql-api.herokuapp.com'
+
+  secrets:
+    - name: react-next-base-secrets
+
   prologue:
     commands:
       - checkout
-      - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+      - cache restore node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock),node-modules-${SEMAPHORE_GIT_BRANCH},node-modules-master
       - nvm use
 
 blocks:
   - name: Setup
-    dependencies: []
     task:
       jobs:
         - name: yarn install and cache
           commands:
             - yarn
-            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
-  - name: Lint
-    dependencies: ['Setup']
+            - cache store node-modules-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock) node_modules
+
+  - name: Lints
     task:
       jobs:
-        - name: yarn run lint
+        - name: Common
           commands:
             - yarn run lint
-  - name: CSS Lint
-    dependencies: ['Setup']
-    task:
-      jobs:
-        - name: yarn run lint:css
+
+        - name: CSS
           commands:
             - yarn run lint:css
+
   - name: Tests
-    dependencies: ['Setup']
     task:
       jobs:
-        - name: yarn test
+        - name: Yarn
           commands:
             - yarn run test:ci
-  - name: E2E Tests (cypress)
-    dependencies:
-      - Setup
-    task:
-      env_vars:
-        - name: API_URL
-          value: https://rails-base-graphql-api.herokuapp.com
-      jobs:
-        - name: yarn dev and cypress run
+
+        - name: Cypress
           commands:
             - yarn add cypress --save-dev
             - yarn build
-            - yarn start:ci &
-            - yarn cy:run #you can enable tests recording by adding record key: https://docs.cypress.io/guides/guides/continuous-integration.html#Record-tests
+            - 'yarn start:ci &'
+            - 'yarn cy:run'
