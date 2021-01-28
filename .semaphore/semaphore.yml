@@ -24,6 +24,9 @@ global_job_config:
     - name: CYPRESS_BASE_URL
       value: 'http://localhost:5000'
 
+    - name: CYPRESS_VIDEO
+      value: 'false'
+
   secrets:
     - name: react-next-base-secrets
 
