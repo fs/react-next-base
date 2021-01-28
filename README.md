@@ -1,3 +1,4 @@
+[![Build Status](https://flatstack.semaphoreci.com/badges/react-next-base/branches/master.svg?style=shields)](https://flatstack.semaphoreci.com/projects/react-next-base)
 # react-next-base
 
 ### Install dependencies:
