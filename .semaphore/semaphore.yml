@@ -18,6 +18,9 @@ global_job_config:
     - name: API_URL
       value: 'https://rails-base-graphql-api.herokuapp.com'
 
+    - name: PORT
+      value: '5000'
+
   secrets:
     - name: react-next-base-secrets
 
@@ -25,7 +28,12 @@ global_job_config:
     commands:
       - checkout
       - nvm use
+
+      # restore default cache
       - cache restore
+
+      # prints SEMAPHORE_* environment variables
+      - yarn run print-env -- SEMAPHORE
 
 blocks:
   - name: Setup
@@ -58,7 +66,7 @@ blocks:
 
         - name: Cypress
           commands:
-            # restore cypress cache
+            # restore cypress and next.js cache
             - cache restore cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
 
             # verify the Cypress test binary so its check status is cached
@@ -67,9 +75,12 @@ blocks:
             # setup cypress.env from secrets
             - cp ~/.config/cypress.env.json ./
 
-            # prints SEMAPHORE_* environment variables
-            - yarn run print-env -- SEMAPHORE
+            # restore next.js cache
+            - cache restore next-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
 
-            # finally, build the web application and run end-to-end tests
-            - yarn start:ci
-            - yarn cy:run
+            # build webapp and store next.js cache
+            - yarn build
+            - cache store next-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) .next/cache
+
+            # finally, run end-to-end tests
+            - yarn cy:ci

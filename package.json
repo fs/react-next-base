@@ -20,6 +20,7 @@
     "cy:chr": "cypress run --browser chrome",
     "cy:open": "cypress open",
     "cy:verify": "cypress verify",
+    "cy:ci": "start-server-and-test 'yarn start:ci' $PORT 'yarn cy:run'",
     "scan": "yarn lint && yarn lint:css && yarn test:ci",
     "scan:full": "yarn lint && yarn lint:css && yarn test:ci && yarn cy:run"
   },
