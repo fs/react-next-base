@@ -20,6 +20,7 @@ exports[`Homepage should render correctly 1`] = `
 >
   <h1
     class="c0 capitalize"
+    data-cy="welcome-page"
   >
     Welcome to React Next Base
   </h1>
