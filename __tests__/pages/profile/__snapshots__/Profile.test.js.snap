@@ -118,8 +118,8 @@ exports[`Profile page should render correctly 1`] = `
               First Name
             </label>
             <input
-              data-cy="firstName"
-              data-testid="test-firstName"
+              data-cy="first-name"
+              data-testid="test-first-name"
               id="firstName"
               name="firstName"
               placeholder="First Name"
@@ -137,8 +137,8 @@ exports[`Profile page should render correctly 1`] = `
               Last Name
             </label>
             <input
-              data-cy="lastName"
-              data-testid="test-lastName"
+              data-cy="last-name"
+              data-testid="test-last-name"
               id="lastName"
               name="lastName"
               placeholder="Last Name"
@@ -194,8 +194,8 @@ exports[`Profile page should render correctly 1`] = `
               Current Password
             </label>
             <input
-              data-cy="currentPassword"
-              data-testid="test-currentPassword"
+              data-cy="current-password"
+              data-testid="test-current-password"
               id="currentPassword"
               name="currentPassword"
               placeholder="Current Password"
@@ -207,8 +207,8 @@ exports[`Profile page should render correctly 1`] = `
             class="c4"
           >
             <input
-              data-cy="Update"
-              data-testid="test-Update"
+              data-cy="update-button"
+              data-testid="test-update-button"
               id="Update"
               name="Update"
               type="submit"
