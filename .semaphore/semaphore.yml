@@ -57,6 +57,9 @@ blocks:
       env_vars:
         - name: API_URL
           value: https://rails-base-graphql-api.herokuapp.com
+      files:
+        - path: ~/cypress.env.json
+          content: ewogICJlbWFpbCI6ICJtYXJhdC5zYWRyaWV2QGZsYXRzdGFjay5jb20iLAogICJwYXNzd29yZCI6ICJQd2QyMTA5MyIKfQo=
       jobs:
         - name: yarn dev and cypress run
           commands:
