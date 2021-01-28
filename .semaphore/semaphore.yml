@@ -59,7 +59,7 @@ blocks:
         - name: Cypress
           commands:
             # restore cypress cache
-            - cache restore cypress-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json)-$(checksum basic/semaphore.yml)
+            - cache restore cypress-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
 
             # verify the Cypress test binary so its check status is cached
             - cy:verify
