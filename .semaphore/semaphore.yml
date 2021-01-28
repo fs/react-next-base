@@ -27,10 +27,10 @@ global_job_config:
   prologue:
     commands:
       - checkout
-      - nvm use
 
-      # restore default cache
+      # restore cache for nvm, yarn and node_modeles
       - cache restore
+      - nvm use
 
       # prints SEMAPHORE_* environment variables
       - yarn run print-env -- SEMAPHORE
@@ -39,12 +39,10 @@ blocks:
   - name: Setup
     task:
       jobs:
-        - name: yarn install and cache
+        - name: Setup Yarn deps and restore cache
           commands:
             - yarn install --frozen-lockfile
-
             - cache store
-            - cache store cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) ~/.cache/Cypress
 
   - name: Lints
     task:
@@ -69,8 +67,12 @@ blocks:
             # restore cypress and next.js cache
             - cache restore cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)
 
-            # verify the Cypress test binary so its check status is cached
+            # install cypress in case of cache miss and verify
+            - yarn run cy:install
             - yarn run cy:verify
+
+            # store cypress cache
+            - cache store cypress-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) ~/.cache/Cypress
 
             # setup cypress.env from secrets
             - cp ~/.config/cypress.env.json ./
