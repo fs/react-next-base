@@ -1,4 +1,4 @@
-describe('Login Page', () => {
+describe('Sign In', () => {
   beforeEach(() => {
     cy.visit('/login');
     cy.get('[data-cy=login-form-title]')
