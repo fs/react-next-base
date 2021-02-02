@@ -1,0 +1,10 @@
+{
+  "validUser": {
+    "email": "marat.sadriev@flatstack.com",
+    "password": "Pwd21093"
+  },
+  "invalidUser": {
+    "email": "test@test.com",
+    "password": "000"
+  }
+}
