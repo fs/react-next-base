@@ -1,8 +1,11 @@
 describe('Activities', () => {
   beforeEach(() => {
-    cy.login(Cypress.env('email'), Cypress.env('password'));
-    cy.get('[data-cy=dropdown-toggler]').click();
-    cy.contains('Activity').click();
+    cy.fixture('users').then(users => {
+      cy.login(users.validUser);
+
+      cy.get('[data-cy=dropdown-toggler]').click();
+      cy.contains('Activity').click();
+    });
   });
 
   it('should see activity page', () => {

@@ -31,7 +31,7 @@ const DefaultTemplate = ({ children }) => {
   const [signOut] = useSignOut();
 
   return (
-    <Wrapper>
+    <Wrapper data-cy="default-template">
       <Header user={user} signOut={signOut} />
       <PageContent>{children}</PageContent>
     </Wrapper>
