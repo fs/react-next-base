@@ -39,7 +39,7 @@ global_job_config:
       - nvm use
 
       # prints SEMAPHORE_* environment variables
-      - yarn run print-env -- SEMAPHORE
+      - yarn print-env SEMAPHORE
 
 blocks:
   - name: Setup
