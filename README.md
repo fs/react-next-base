@@ -1,4 +1,5 @@
 [![Build Status](https://flatstack.semaphoreci.com/badges/react-next-base/branches/master.svg?style=shields)](https://flatstack.semaphoreci.com/projects/react-next-base)
+
 # react-next-base
 
 ### Install dependencies:
@@ -21,19 +22,23 @@ Ask for token and key represented above from admin
 
 ### Development server
 
-Run `yarn dev` for a dev server. Navigate to `http://localhost:3000/` or `lvh.me:3000`. The app will automatically reload if you change any of the source files.
+- Run `yarn server` for a dev server.
+- Open `lvh.me:3000`.
+- The app will automatically reload if you change any of the source files.
 
-###
+### Yarn tasks
 
-`yarn lint` - check linter errors
-
-###
-
-`yarn lint:css` - check style errors
-
-###
-
-`yarn test` - run tests
+- `server` - local server on 3000 port by default
+- `build` - build Next.js
+- `test:jest` - run Jest tests with autowatch for changes
+- `test:e2e` - run Cypress tests
+- `ci:jest` - run Jest in CI without watch
+- `ci:e2e` - run Cypress in CI with running Next.js server
+- `lint:js` - run eslint
+- `lint:css` - run stylelint
+- `cy:install` - install Cypress
+- `cy:open` - open Cypress app
+- `print-env` - run print-env to print environment variables
 
 #
 

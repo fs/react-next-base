@@ -55,7 +55,7 @@ blocks:
       jobs:
         - name: Lint JS
           commands:
-            - yarn run lint
+            - yarn run lint:js
 
         - name: Lint CSS
           commands:
@@ -63,7 +63,7 @@ blocks:
 
         - name: Unit test
           commands:
-            - yarn run test:ci
+            - yarn run ci:jest
 
         - name: E2E
           commands:
@@ -81,4 +81,4 @@ blocks:
             - cache store next-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml) .next/cache
 
             # finally, run end-to-end tests
-            - yarn cy:ci
+            - yarn ci:e2e
