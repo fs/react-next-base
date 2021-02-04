@@ -29,8 +29,8 @@ const Links = styled.div`
 
 const Header = ({ user, signOut }) => {
   const links = [
-    { text: 'Profile', url: PROFILE.pattern },
-    { text: 'Activity', url: ACTIVITY.pattern },
+    { text: 'Profile', url: PROFILE.pattern, dataCy: 'profile' },
+    { text: 'Activity', url: ACTIVITY.pattern, dataCy: 'activity' },
   ];
 
   const actions = [
