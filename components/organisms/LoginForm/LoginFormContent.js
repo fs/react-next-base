@@ -36,6 +36,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
+      testID: 'first-name',
       initialValue: '',
       validationSchema: Yup.string(),
     },
@@ -44,6 +45,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
+      testID: 'last-name',
       initialValue: '',
       validationSchema: Yup.string(),
     },
@@ -52,6 +54,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
+      testID: 'email',
       initialValue: '',
       validationSchema: Yup.string()
         .email('The email must be valid!!')
@@ -61,6 +64,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       type: 'password',
       name: 'password',
       title: 'Password',
+      testID: 'password',
       placeholder: '',
       initialValue: '',
       validationSchema: Yup.string().required('This field is required'),
@@ -68,6 +72,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     {
       type: 'submit',
       name: activeForm,
+      testID: 'submit-button',
       initialValue: submitButtonText,
     },
   ].filter(Boolean);
