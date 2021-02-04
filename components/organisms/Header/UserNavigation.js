@@ -85,7 +85,7 @@ const UserNavigation = ({ user, links, actions }) => {
     <UserNavigationWrapper ref={wrapperRef}>
       {user && (
         <>
-          <UserNameWrapper data-testid="test-user-name" onClick={toggleDropdown}>
+          <UserNameWrapper data-testid="test-user-name" data-cy="dropdown-toggler" onClick={toggleDropdown}>
             <ProfileImage avatar={avatar} />
             <UserName data-cy="user-name">{user.email}</UserName>
           </UserNameWrapper>
