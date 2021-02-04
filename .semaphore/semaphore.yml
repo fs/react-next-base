@@ -37,10 +37,6 @@ global_job_config:
       # restore cache for nvm, yarn and node_modeles
       - cache restore
       - nvm use
-
-      # prints SEMAPHORE_* environment variables
-      - yarn print-env SEMAPHORE
-
 blocks:
   - name: Setup
     task:
@@ -49,6 +45,9 @@ blocks:
           commands:
             - yarn install --frozen-lockfile
             - cache store
+
+            # prints SEMAPHORE_* environment variables
+            - yarn print-env SEMAPHORE
 
   - name: Tests
     task:
