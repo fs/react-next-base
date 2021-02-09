@@ -91,20 +91,20 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
 
   const TABS = [
     {
-      id: 'sign_in',
+      id: 'signin',
       name: 'Sign in',
       active: isSignIn,
       action: () => toggleForm(SIGN_IN_FORM),
       content: <Content />,
     },
     {
-      id: 'sign_up',
+      id: 'signup',
       name: 'Create an account',
       action: () => toggleForm(SIGN_UP_FORM),
       content: <Content />,
     },
     {
-      id: 'password_recovery',
+      id: 'password-recovery',
       name: 'Forgot your password',
       active: isRecovery,
       action: () => toggleForm(PASSWORD_RECOVERY_FORM),

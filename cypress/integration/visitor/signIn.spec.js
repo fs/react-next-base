@@ -10,7 +10,6 @@ describe('Sign In', () => {
 
     cy.login(validCredentials);
 
-    cy.location('pathname').should('eq', '/');
     cy.get('[data-cy=dropdown-toggler]').should('contain', validCredentials.email);
   });
 
@@ -19,6 +18,6 @@ describe('Sign In', () => {
 
     cy.login({ ...invalidCredentials, path: '/login' });
 
-    cy.get('[data-cy=default-template]').should('contain', 'Invalid credentials');
+    cy.get('[data-cy=notifier]').should('contain', 'Invalid credentials');
   });
 });
