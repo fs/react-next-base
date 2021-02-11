@@ -27,7 +27,7 @@ describe('Profile page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Profile />)));
-    const pageContent = await screen.getByTestId('test-profile-page');
+    const pageContent = await screen.getByTestId('profile-page');
 
     // Assert
     expect(pageContent).toMatchSnapshot();
@@ -44,7 +44,7 @@ describe('Profile page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Profile />)));
-    const loadingContent = await screen.getByTestId('test-profile-loading');
+    const loadingContent = await screen.getByTestId('profile-loading');
 
     // Assert
     expect(loadingContent).toMatchSnapshot();
@@ -71,7 +71,7 @@ describe('Profile page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Profile />)));
-    const errorContent = await screen.getByTestId('test-profile-error');
+    const errorContent = await screen.getByTestId('profile-error');
 
     // Assert
     expect(errorContent).toMatchSnapshot();
