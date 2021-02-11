@@ -5,8 +5,8 @@
   "scripts": {
     "build": "next build",
     "server": "node server.js",
-    "test:jest": "jest --watch",
-    "lint:js": "eslint --fix --ext .js,.jsx,.ts,.tsx pages components",
+    "test": "jest --watch",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx pages components",
     "lint:css:in:js": "stylelint './**/*.js'",
     "lint:css:in:ts": "stylelint './**/*.tsx'",
     "lint:css": "yarn lint:css:in:js && yarn lint:css:in:ts",
