@@ -16,10 +16,11 @@ exports[`Homepage should render correctly 1`] = `
 
 <div
   class=""
-  data-testid="test-page-content"
+  data-testid="page-content"
 >
   <h1
     class="c0 capitalize"
+    data-cy="welcome-page"
   >
     Welcome to React Next Base
   </h1>

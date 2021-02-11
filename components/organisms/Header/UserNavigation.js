@@ -85,7 +85,7 @@ const UserNavigation = ({ user, links, actions }) => {
     <UserNavigationWrapper ref={wrapperRef}>
       {user && (
         <>
-          <UserNameWrapper data-testid="test-user-name" onClick={toggleDropdown}>
+          <UserNameWrapper data-testid="user-name" data-cy="dropdown-toggler" onClick={toggleDropdown}>
             <ProfileImage avatar={avatar} />
             <UserName data-cy="user-name">{user.email}</UserName>
           </UserNameWrapper>
@@ -93,7 +93,7 @@ const UserNavigation = ({ user, links, actions }) => {
             <UserNavigationList
               links={links}
               actions={actions}
-              data-testid="test-user-navigation"
+              data-testid="user-navigation"
               data-cy="user-navigation-list"
             />
           )}
