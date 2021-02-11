@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <NotifierProvider>
       <DefaultTemplate>
-        <PageContent data-testid="test-page-content">
+        <PageContent data-testid="page-content">
           <Title className="capitalize" data-cy="welcome-page">
             Welcome to React Next Base
           </Title>

@@ -69,7 +69,7 @@ exports[`Profile page should render correctly 1`] = `
 }
 
 <div
-  data-testid="test-profile-page"
+  data-testid="profile-page"
 >
   <div
     class="c0"
@@ -101,7 +101,7 @@ exports[`Profile page should render correctly 1`] = `
             <input
               accept="image/*"
               data-cy="avatar"
-              data-testid="test-avatar"
+              data-testid="avatar"
               id="avatar"
               name="avatar"
               type="file"
@@ -119,7 +119,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               data-cy="first-name"
-              data-testid="test-first-name"
+              data-testid="first-name"
               id="firstName"
               name="firstName"
               placeholder="First Name"
@@ -138,7 +138,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               data-cy="last-name"
-              data-testid="test-last-name"
+              data-testid="last-name"
               id="lastName"
               name="lastName"
               placeholder="Last Name"
@@ -157,7 +157,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               data-cy="email"
-              data-testid="test-email"
+              data-testid="email"
               id="email"
               name="email"
               placeholder="Email"
@@ -176,7 +176,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               data-cy="password"
-              data-testid="test-password"
+              data-testid="password"
               id="password"
               name="password"
               placeholder="New Password"
@@ -195,7 +195,7 @@ exports[`Profile page should render correctly 1`] = `
             </label>
             <input
               data-cy="current-password"
-              data-testid="test-current-password"
+              data-testid="current-password"
               id="currentPassword"
               name="currentPassword"
               placeholder="Current Password"
@@ -208,7 +208,7 @@ exports[`Profile page should render correctly 1`] = `
           >
             <input
               data-cy="update-button"
-              data-testid="test-update-button"
+              data-testid="update-button"
               id="Update"
               name="Update"
               type="submit"
@@ -231,7 +231,7 @@ exports[`Profile page should render correctly 1`] = `
 
 exports[`Profile page should show error on error 1`] = `
 <div
-  data-testid="test-profile-error"
+  data-testid="profile-error"
 >
   <p>
     GraphQL error: Current User not found or accessible
@@ -241,7 +241,7 @@ exports[`Profile page should show error on error 1`] = `
 
 exports[`Profile page should show loader while loading 1`] = `
 <h3
-  data-testid="test-profile-loading"
+  data-testid="profile-loading"
 >
   Loading...
 </h3>

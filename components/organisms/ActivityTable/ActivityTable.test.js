@@ -11,7 +11,7 @@ describe('ActivityTable', () => {
   test('should render correctly', () => {
     // Arrange
     const mockData = activitiesMock;
-    const mockTestId = 'test-activity-table';
+    const mockTestId = 'activity-table';
 
     // Act
     render(renderWithTheme(<ActivityTable data={mockData} />));
@@ -25,7 +25,7 @@ describe('ActivityTable', () => {
   test('should render correctly if no data', () => {
     // Arrange
     const mockData = [];
-    const mockTestId = 'test-activity-table-empty';
+    const mockTestId = 'activity-table-empty';
 
     // Act
     render(renderWithTheme(<ActivityTable data={mockData} />));

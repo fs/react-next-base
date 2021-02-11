@@ -53,7 +53,7 @@ const ActivityTable = ({ data }) => {
   return (
     <>
       {data.length > 0 ? (
-        <StyledTable data-testid="test-activity-table" data-cy="test-activity-table">
+        <StyledTable data-testid="activity-table" data-cy="activity-table">
           <thead>
             <tr>
               {columnNames.map((name, id) => (
@@ -83,7 +83,7 @@ const ActivityTable = ({ data }) => {
           </tbody>
         </StyledTable>
       ) : (
-        <EmptyList data-testid="test-activity-table-empty">No records found</EmptyList>
+        <EmptyList data-testid="activity-table-empty">No records found</EmptyList>
       )}
     </>
   );
