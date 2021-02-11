@@ -127,7 +127,8 @@ exports[`Activity page should render correctly 1`] = `
 
 <table
   class="c0"
-  data-testid="test-activity-table"
+  data-cy="activity-table"
+  data-testid="activity-table"
 >
   <thead>
     <tr>
@@ -158,7 +159,9 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c2"
         color="#2979ff"
@@ -216,7 +219,9 @@ exports[`Activity page should render correctly 1`] = `
         </div>
       </td>
     </tr>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c8"
         color="#00e676"
@@ -274,7 +279,9 @@ exports[`Activity page should render correctly 1`] = `
         </div>
       </td>
     </tr>
-    <tr>
+    <tr
+      data-cy="activity-row"
+    >
       <td
         class="c9"
         color="#f50057"
@@ -358,7 +365,8 @@ exports[`Activity page should show error on error 1`] = `
 }
 
 <div
-  data-testid="test-activity-error"
+  data-cy="activity-error"
+  data-testid="activity-error"
 >
   <p>
     Something went wrong
@@ -416,7 +424,7 @@ exports[`Activity page should show loader while loading 1`] = `
 
 <div
   class="c0"
-  data-testid="test-activity-loading"
+  data-testid="activity-loading"
 >
   <span
     class="c1"

@@ -8,7 +8,7 @@ import pageInfoMock from '__tests__/mocks/pageInfoMock';
 import ActivityPagination from 'components/molecules/ActivityPagination';
 
 describe('ActivityPagination', () => {
-  const mockTestId = 'test-activity-pagination';
+  const mockTestId = 'activity-pagination';
   const mockPageNumber = 1;
   const mockSetPageNumber = jest.fn();
 

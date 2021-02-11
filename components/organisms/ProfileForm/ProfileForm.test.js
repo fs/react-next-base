@@ -63,7 +63,7 @@ describe('ProfileForm', () => {
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
     const expectedLastName = 'Test LastName';
-    const expectedAvatarTestId = 'test-avatar';
+    const expectedAvatarTestId = 'avatar';
     const expectedButtonText = 'Update';
     const expectedProfile = {
       email: expectedEmail,
