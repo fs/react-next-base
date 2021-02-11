@@ -83,6 +83,7 @@ const Activity = () => {
           values={activityEvents}
           hasEmptyOption
           onChange={handleFilterChange}
+          testId="activity-event-dropdown"
           disabled={loading}
           customStyles={filterDropdownStyles}
         />
@@ -92,6 +93,7 @@ const Activity = () => {
           selectedValue={pageSize}
           values={activityPageSizes.map(item => ({ value: item, name: item }))}
           onChange={handlePageSizeChange}
+          testId="activity-size-dropdown"
           disabled={loading}
           customStyles={pageSizeDropdownStyles}
         />
