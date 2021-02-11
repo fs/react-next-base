@@ -32,11 +32,11 @@ const Tabs = ({ tabs = [], active }) => {
             name={name}
             active={aciveTabId === id}
             onClick={() => onClickHandle({ id, action })}
-            dataTestId={`test-tab-${id}`}
+            dataTestId={`tab-${id}`}
           />
         ))}
       </StyledTabList>
-      <div data-testid="test-tabs-content">{tabs.find(({ id }) => id === aciveTabId).content}</div>
+      <div data-testid="tabs-content">{tabs.find(({ id }) => id === aciveTabId).content}</div>
     </StyledTabs>
   );
 };

@@ -21,7 +21,7 @@ describe('Homepage', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Homepage />)));
-    const container = await screen.getByTestId('test-page-content');
+    const container = await screen.getByTestId('page-content');
 
     // Assert
     expect(container).toMatchSnapshot();
