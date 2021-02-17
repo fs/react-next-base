@@ -1,5 +1,5 @@
-mutation signout($everywhere: Boolean = false) {
-  signout(input: { everywhere: $everywhere }) {
+mutation signout($input: SignOutInput!) {
+  signout(input: $input) {
     message
   }
 }
