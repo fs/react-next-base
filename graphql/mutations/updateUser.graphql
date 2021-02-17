@@ -11,12 +11,14 @@ mutation updateUser(
   $avatar: ImageUploader
 ) {
   updateUser(
-    email: $email
-    firstName: $firstName
-    lastName: $lastName
-    password: $password
-    currentPassword: $currentPassword
-    avatar: $avatar
+    input: {
+      email: $email
+      firstName: $firstName
+      lastName: $lastName
+      password: $password
+      currentPassword: $currentPassword
+      avatar: $avatar
+    }
   ) {
     ...UserInfo
   }

@@ -2,7 +2,7 @@
 #import "../fragments/authTokens.graphql"
 
 mutation signup($email: String!, $password: String!, $firstName: String, $lastName: String) {
-  signup(email: $email, password: $password, firstName: $firstName, lastName: $lastName) {
+  signup(input: { email: $email, password: $password, firstName: $firstName, lastName: $lastName }) {
     me {
       ...UserInfo
     }
