@@ -2,24 +2,8 @@
 
 #import "../fragments/userInfo.graphql"
 
-mutation updateUser(
-  $email: String
-  $firstName: String
-  $lastName: String
-  $password: String
-  $currentPassword: String
-  $avatar: ImageUploader
-) {
-  updateUser(
-    input: {
-      email: $email
-      firstName: $firstName
-      lastName: $lastName
-      password: $password
-      currentPassword: $currentPassword
-      avatar: $avatar
-    }
-  ) {
+mutation updateUser($input: UpdateUserInput!) {
+  updateUser(input: $input) {
     ...UserInfo
   }
 }

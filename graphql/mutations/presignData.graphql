@@ -1,5 +1,5 @@
-mutation presignData($filename: String!, $type: String!) {
-  presignData(input: { filename: $filename, type: $type }) {
+mutation presignData($input: PresignDataInput!) {
+  presignData(input: $input) {
     fields {
       key
       value

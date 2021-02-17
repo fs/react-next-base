@@ -1,8 +1,8 @@
 #import "../fragments/userInfo.graphql"
 #import "../fragments/authTokens.graphql"
 
-mutation signin($email: String!, $password: String!) {
-  signin(input: { email: $email, password: $password }) {
+mutation signin($input: SignInInput!) {
+  signin(input: $input) {
     me {
       ...UserInfo
     }
