@@ -31,11 +31,7 @@ const ColorLabel = styled.td(
   `,
 );
 
-const HeaderCell = styled.th(
-  ({ theme }) => css`
-    ${baseCellStyles(theme)}
-  `,
-);
+const HeaderCell = styled.th(({ theme }) => baseCellStyles(theme));
 
 const UserInfo = styled.span`
   margin-left: 0.5rem;
@@ -64,22 +60,20 @@ const ActivityTable = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
-              return (
-                <tr key={id}>
-                  <ColorLabel color={color} />
-                  <DataCell>{title}</DataCell>
-                  <DataCell>{description}</DataCell>
-                  <DataCell>{date.toString()}</DataCell>
-                  <DataCell>
-                    <ProfileImage avatar={avatarUrl} />
-                    <UserInfo>
-                      {name} ({email})
-                    </UserInfo>
-                  </DataCell>
-                </tr>
-              );
-            })}
+            {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => (
+              <tr key={id}>
+                <ColorLabel color={color} />
+                <DataCell>{title}</DataCell>
+                <DataCell>{description}</DataCell>
+                <DataCell>{date.toString()}</DataCell>
+                <DataCell>
+                  <ProfileImage avatar={avatarUrl} />
+                  <UserInfo>
+                    {name} ({email})
+                  </UserInfo>
+                </DataCell>
+              </tr>
+            ))}
           </tbody>
         </StyledTable>
       ) : (

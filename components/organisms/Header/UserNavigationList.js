@@ -34,47 +34,47 @@ const StyledUserMenu = styled.ul(
   `,
 );
 
-const UserMenuItem = styled.li(
-  ({ theme: { colors } }) => css`
-    a,
-    button {
-      display: block;
-      padding: 0.7rem 1rem;
-      line-height: 1;
-      color: ${colors.black};
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 1rem;
-      text-align: left;
-      &:hover,
-      &:active,
-      &:focus {
-        color: ${colors.green};
-      }
-    }
-  `,
-);
+const userMenuItemStyles = ({ colors }) => css`
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  line-height: 1;
+  color: ${colors.black};
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  text-align: left;
+  &:hover,
+  &:active,
+  &:focus {
+    color: ${colors.green};
+  }
+`;
+
+const UserMenuItemLink = styled.a(({ theme }) => userMenuItemStyles(theme));
+
+const UserMenuItemButton = styled.button(({ theme }) => userMenuItemStyles(theme));
 
 const UserNavigationList = ({ links = [], actions = [], ...attributes }) => (
   <StyledUserMenu {...attributes}>
     {links.map(({ text, url }, i) => {
       return (
-        <UserMenuItem key={i}>
+        <li key={i}>
           <Link route={url}>
-            <a>{text}</a>
+            <UserMenuItemLink>{text}</UserMenuItemLink>
           </Link>
-        </UserMenuItem>
+        </li>
       );
     })}
 
     {actions.map(({ text, onClick }, i) => {
       return (
-        <UserMenuItem key={i}>
-          <button type="button" onClick={onClick}>
+        <li key={i}>
+          <UserMenuItemButton type="button" onClick={onClick}>
             {text}
-          </button>
-        </UserMenuItem>
+          </UserMenuItemButton>
+        </li>
       );
     })}
   </StyledUserMenu>
