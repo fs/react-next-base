@@ -8,7 +8,7 @@ const { REFRESH_TOKEN_KEY } = require('../../config/jwt.json');
 const { setRefreshToken, deleteRefreshToken } = require('../../lib/auth/tokens');
 
 // Working with refresh token
-const handleResponse = ({ res, body }) => {
+const handleResponse = ({ req, res, body }) => {
   const authOperationNames = ['signin', 'signup', 'signout', 'updateToken'];
 
   try {
@@ -21,7 +21,7 @@ const handleResponse = ({ res, body }) => {
     } else if (authOperationName && data[authOperationName]) {
       const { refreshToken } = data[authOperationName];
 
-      setRefreshToken({ refreshToken, res });
+      setRefreshToken({ refreshToken, req, res });
     }
   } catch (error) {
     console.error(error);
@@ -80,10 +80,10 @@ const graphqlProxyMidlleware = createProxyMiddleware({
 
       if (contentEncoding === 'gzip') {
         zlib.gunzip(body, (err, dezipped) => {
-          handleResponse({ res, body: dezipped });
+          handleResponse({ req, res, body: dezipped });
         });
       } else {
-        handleResponse({ res, body });
+        handleResponse({ req, res, body });
       }
     });
   },
