@@ -21,7 +21,7 @@ const StyledTab = styled.li(
 );
 
 const Tab = ({ active, name, dataTestId, onClick }) => (
-  <StyledTab role="tab" active={active} onClick={onClick} data-testid={dataTestId}>
+  <StyledTab role="tab" active={active} onClick={onClick} data-testid={dataTestId} data-cy={dataTestId}>
     {name}
   </StyledTab>
 );

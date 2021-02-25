@@ -12,7 +12,11 @@ const Notifier = () => {
     }
   }, [message, type, clearMessage]);
 
-  return <ToastContainer position="top-center" autoClose={5000} closeOnClick hideProgressBar />;
+  return (
+    <div data-cy="notifier">
+      <ToastContainer position="top-center" autoClose={5000} closeOnClick hideProgressBar />
+    </div>
+  );
 };
 
 export default Notifier;

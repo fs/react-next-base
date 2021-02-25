@@ -54,12 +54,17 @@ const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNum
   };
 
   return (
-    <Wrapper data-testid="test-activity-pagination">
+    <Wrapper data-testid="activity-pagination">
       <PaginationButton disabled={!hasPreviousPage} onClick={() => goToPrevPage()} customStyles={prevButtonStyles}>
         <LeftPointerIcon />
       </PaginationButton>
       <PageNumber>{pageNumber}</PageNumber>
-      <PaginationButton disabled={!hasNextPage} onClick={() => goToNextPage()} customStyles={nextButtonStyles}>
+      <PaginationButton
+        testId="next-pagination"
+        disabled={!hasNextPage}
+        onClick={() => goToNextPage()}
+        customStyles={nextButtonStyles}
+      >
         <RightPointerIcon />
       </PaginationButton>
     </Wrapper>
