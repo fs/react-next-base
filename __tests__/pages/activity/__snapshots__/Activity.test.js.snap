@@ -161,6 +161,7 @@ exports[`Activity page should render correctly 1`] = `
   <tbody>
     <tr
       data-cy="activity-row"
+      data-id="1"
     >
       <td
         class="c2"
@@ -221,6 +222,7 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
     <tr
       data-cy="activity-row"
+      data-id="6"
     >
       <td
         class="c8"
@@ -281,6 +283,7 @@ exports[`Activity page should render correctly 1`] = `
     </tr>
     <tr
       data-cy="activity-row"
+      data-id="28"
     >
       <td
         class="c9"
