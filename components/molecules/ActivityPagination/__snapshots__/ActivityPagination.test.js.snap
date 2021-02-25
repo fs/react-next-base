@@ -74,7 +74,7 @@ exports[`ActivityPagination should render correctly 1`] = `
 
 <div
   class="c0"
-  data-testid="test-activity-pagination"
+  data-testid="activity-pagination"
 >
   <button
     class="c1"
@@ -98,6 +98,8 @@ exports[`ActivityPagination should render correctly 1`] = `
   </span>
   <button
     class="c4"
+    data-cy="next-pagination"
+    data-testid="next-pagination"
     type="button"
   >
     <svg
