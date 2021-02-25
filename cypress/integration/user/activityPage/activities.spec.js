@@ -35,4 +35,19 @@ describe('Activities', () => {
         .should('contain', 'User Logged In'),
     );
   });
+
+  it.only('user change page', () => {
+    cy.get('[data-cy=activity-row]').then($rows => {
+      const ids = $rows.map((i, el) => el.getAttribute('data-id'));
+      cy.get('[data-cy=next-pagination]').click();
+      cy.get('[data-cy=activity-row]').then($rows => {
+        const expectedIds = [];
+        for (let i = 0; i < $rows.length; i++) {
+          expectedIds.push($rows[i].getAttribute('data-id'));
+        }
+        expect(ids.get()).not.to.deep.eq(expectedIds);
+        expect(expectedIds.length).not.to.eq(0);
+      });
+    });
+  });
 });

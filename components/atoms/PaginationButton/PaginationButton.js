@@ -37,9 +37,16 @@ const StyledButton = styled.button(
   `,
 );
 
-const PaginationButton = ({ disabled, onClick, customStyles, children }) => {
+const PaginationButton = ({ testId, disabled, onClick, customStyles, children }) => {
   return (
-    <StyledButton type="button" disabled={disabled} onClick={onClick} customStyles={customStyles}>
+    <StyledButton
+      type="button"
+      data-cy={testId}
+      data-testid={testId}
+      disabled={disabled}
+      onClick={onClick}
+      customStyles={customStyles}
+    >
       {children}
     </StyledButton>
   );
