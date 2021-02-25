@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export default ({ up, breakpoints }) => css`
+const baseCellStyles = ({ up, breakpoints }) => css`
   border-bottom: 1px solid #e1e1e1;
   padding: 0.8rem 0.6rem;
   font-size: 0.8rem;
@@ -15,3 +15,5 @@ export default ({ up, breakpoints }) => css`
     padding-left: 0;
   }
 `;
+
+export default baseCellStyles;
