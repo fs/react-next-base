@@ -1,7 +1,7 @@
 describe('Activities Page', () => {
   beforeEach(() => {
-    cy.fixture('users').then(users => {
-      cy.login(users.validUser);
+    cy.fixture('users').then(({ validUser }) => {
+      cy.login(validUser);
 
       cy.get('[data-cy=dropdown-toggler]').click();
       cy.contains('Activity').click();
@@ -9,7 +9,7 @@ describe('Activities Page', () => {
   });
 
   it('User sees activities table', () => {
-    cy.get('[data-cy=test-activity-table]').should('be.visible');
+    cy.get('[data-cy=activity-table]').should('be.visible');
 
     cy.get('[data-cy=activity-row]')
       .its('length')
