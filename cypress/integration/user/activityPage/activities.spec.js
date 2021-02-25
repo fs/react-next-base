@@ -36,7 +36,7 @@ describe('Activities', () => {
     );
   });
 
-  it.only('user change page', () => {
+  it('user change page', () => {
     cy.get('[data-cy=activity-row]').then($rows => {
       const ids = $rows.map((i, el) => el.getAttribute('data-id'));
       cy.get('[data-cy=next-pagination]').click();
