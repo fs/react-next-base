@@ -42,7 +42,7 @@ describe('ActivityDropdown', () => {
     const options = screen.getAllByRole('option');
 
     // Assert
-    expect(emptyOption).toBeDefined();
+    expect(emptyOption).toBeInTheDocument();
     expect(options.length).toEqual(expectedValuesCount);
   });
 });
