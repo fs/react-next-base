@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
-import '@testing-library/jest-dom/extend-expect';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import pageInfoMock from '__tests__/mocks/pageInfoMock';
