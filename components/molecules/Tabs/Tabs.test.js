@@ -31,7 +31,7 @@ describe('Tabs', () => {
     const activeTabContent = screen.getByText(firstTabContent);
 
     // Assert
-    expect(activeTabContent).not.toBeNull();
+    expect(activeTabContent).toBeInTheDocument();
   });
 
   test('should show switch tab and show this tab content', async () => {
@@ -44,6 +44,6 @@ describe('Tabs', () => {
     const switchedTabContent = await screen.findByText(secondTabContent);
 
     // Assert
-    expect(switchedTabContent).not.toBeNull();
+    expect(switchedTabContent).toBeInTheDocument();
   });
 });

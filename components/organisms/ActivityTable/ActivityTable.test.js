@@ -33,6 +33,6 @@ describe('ActivityTable', () => {
     const emptyText = screen.getByTestId(mockTestId);
 
     // Assert
-    expect(emptyText).toBeDefined();
+    expect(emptyText).toBeInTheDocument();
   });
 });

@@ -23,7 +23,7 @@ Ask for token and key represented above from admin
 ### Development server
 
 - Run `yarn server` for a dev server.
-- Open `lvh.me:3000`.
+- Open `lvh.me:5000`.
 - The app will automatically reload if you change any of the source files.
 
 ### Yarn tasks

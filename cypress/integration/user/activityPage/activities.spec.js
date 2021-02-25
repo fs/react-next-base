@@ -1,4 +1,4 @@
-describe('Activities', () => {
+describe('Activities Page', () => {
   beforeEach(() => {
     cy.fixture('users').then(users => {
       cy.login(users.validUser);
@@ -8,7 +8,7 @@ describe('Activities', () => {
     });
   });
 
-  it('user sees activities table', () => {
+  it('User sees activities table', () => {
     cy.get('[data-cy=test-activity-table]').should('be.visible');
 
     cy.get('[data-cy=activity-row]')
@@ -16,7 +16,7 @@ describe('Activities', () => {
       .should('be.eq', 5);
   });
 
-  it('user changes activity page size', () => {
+  it('User changes activity page size', () => {
     cy.get('[data-cy=activity-size-dropdown]').select('25');
 
     cy.get('[data-cy=activity-row]')
@@ -24,7 +24,7 @@ describe('Activities', () => {
       .should('be.eq', 25);
   });
 
-  it('user selects event', () => {
+  it('User selects event', () => {
     cy.get('[data-cy=activity-event-dropdown]').select('User logged in');
 
     cy.get('[data-cy=activity-row]').each(item =>
@@ -36,7 +36,7 @@ describe('Activities', () => {
     );
   });
 
-  it('user change page', () => {
+  it('User changes page', () => {
     cy.get('[data-cy=activity-row]').then($rows => {
       const ids = $rows.map((i, el) => el.getAttribute('data-id'));
       cy.get('[data-cy=next-pagination]').click();
