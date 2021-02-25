@@ -31,19 +31,19 @@ describe('Tabs', () => {
     const activeTabContent = screen.getByText(firstTabContent);
 
     // Assert
-    expect(activeTabContent).not.toBeNull();
+    expect(activeTabContent).toBeInTheDocument();
   });
 
   test('should show switch tab and show this tab content', async () => {
     // Act
     render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
 
-    const secondTab = screen.getByTestId(`test-tab-${MOCK_TABS[1].id}`);
+    const secondTab = screen.getByTestId(`tab-${MOCK_TABS[1].id}`);
 
     fireEvent.click(secondTab);
     const switchedTabContent = await screen.findByText(secondTabContent);
 
     // Assert
-    expect(switchedTabContent).not.toBeNull();
+    expect(switchedTabContent).toBeInTheDocument();
   });
 });
