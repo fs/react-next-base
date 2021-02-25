@@ -19,6 +19,7 @@
 
 # public
 /public/*.js
+public/*.js.map
 
 # misc
 .DS_Store
@@ -30,3 +31,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+
+cypress.env.json

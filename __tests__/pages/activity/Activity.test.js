@@ -28,7 +28,7 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const pageContent = screen.getByTestId('test-activity-table');
+    const pageContent = screen.getByTestId('activity-table');
 
     // Assert
     expect(pageContent).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const loadingContent = screen.getByTestId('test-activity-loading');
+    const loadingContent = screen.getByTestId('activity-loading');
 
     // Assert
     expect(loadingContent).toMatchSnapshot();
@@ -71,7 +71,7 @@ describe('Activity page', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Activity />)));
-    const errorContent = screen.getByTestId('test-activity-error');
+    const errorContent = screen.getByTestId('activity-error');
 
     // Assert
     expect(errorContent).toMatchSnapshot();

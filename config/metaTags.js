@@ -1,7 +1,7 @@
 // https://github.com/gokulkrishh/awesome-meta-and-manifest
 export default [
   {
-    'http-equiv': 'X-UA-Compatible',
+    httpEquiv: 'X-UA-Compatible',
     content: 'IE=edge',
   },
   {
