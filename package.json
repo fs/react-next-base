@@ -50,6 +50,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-fonts": "^1.1.0",
     "next-images": "^1.4.0",
+    "next-pwa": "^5.0.5",
     "next-routes": "^1.4.2",
     "next-svgr": "^0.0.2",
     "next-with-apollo": "^5.0.0",
