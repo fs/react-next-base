@@ -19,10 +19,10 @@ const Profile = () => {
 
   return (
     <NotifierProvider>
-      {loading && <h3 data-testid="test-profile-loading">Loading...</h3>}
-      {error && <ErrorMessage data-testid="test-profile-error">{errorMessage}</ErrorMessage>}
+      {loading && <h3 data-testid="profile-loading">Loading...</h3>}
+      {error && <ErrorMessage data-testid="profile-error">{errorMessage}</ErrorMessage>}
       {!loading && !error && (
-        <DefaultTemplate data-testid="test-profile-page">
+        <DefaultTemplate data-testid="profile-page">
           <ProfileForm profile={profile} />
           <Notifier />
         </DefaultTemplate>
