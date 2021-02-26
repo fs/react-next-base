@@ -49,6 +49,7 @@ const ProfileFormContent = ({
       type: 'file',
       name: 'avatar',
       title: 'Avatar',
+      testID: 'avatar',
       accept: 'image/*',
       onChange: handleAvatarChange,
     },
@@ -57,6 +58,7 @@ const ProfileFormContent = ({
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
+      testID: 'first-name',
       initialValue: firstName || '',
       validationSchema: Yup.string(),
     },
@@ -65,6 +67,7 @@ const ProfileFormContent = ({
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
+      testID: 'last-name',
       initialValue: lastName || '',
       validationSchema: Yup.string(),
     },
@@ -73,6 +76,7 @@ const ProfileFormContent = ({
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
+      testID: 'email',
       initialValue: email || '',
       validationSchema: Yup.string()
         .email('The email must be valid!!')
@@ -83,6 +87,7 @@ const ProfileFormContent = ({
       name: 'password',
       title: 'New Password',
       placeholder: 'New Password',
+      testID: 'password',
       initialValue: '',
       validationSchema: Yup.string(),
     },
@@ -91,6 +96,7 @@ const ProfileFormContent = ({
       name: 'currentPassword',
       title: 'Current Password',
       placeholder: 'Current Password',
+      testID: 'current-password',
       initialValue: '',
       validationSchema: Yup.string().when(['password'], {
         is: password => password?.length > 0,
@@ -101,6 +107,7 @@ const ProfileFormContent = ({
     {
       type: 'submit',
       name: 'Update',
+      testID: 'update-button',
       initialValue: 'Update',
     },
   ];

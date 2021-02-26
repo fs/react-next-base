@@ -43,7 +43,13 @@ const ActivityDropdown = ({
     <Wrapper customStyles={customStyles} data-testid={testId}>
       <StyledLabel htmlFor="activity-dropdown">
         {label}
-        <StyledSelect id="activity-dropdown" value={selectedValue} onChange={onChange} disabled={disabled}>
+        <StyledSelect
+          id="activity-dropdown"
+          data-cy={testId}
+          value={selectedValue}
+          onChange={onChange}
+          disabled={disabled}
+        >
           {hasEmptyOption && <option value="">{emptyOptionLabel || '--Please choose an option--'}</option>}
           {values.map(({ value, name }) => (
             <option key={value} value={value}>

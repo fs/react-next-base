@@ -49,7 +49,7 @@ const ActivityTable = ({ data }) => {
   return (
     <>
       {data.length > 0 ? (
-        <StyledTable data-testid="test-activity-table">
+        <StyledTable data-testid="activity-table" data-cy="activity-table">
           <thead>
             <tr>
               {columnNames.map((name, id) => (
@@ -60,24 +60,26 @@ const ActivityTable = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => (
-              <tr key={id}>
-                <ColorLabel color={color} />
-                <DataCell>{title}</DataCell>
-                <DataCell>{description}</DataCell>
-                <DataCell>{date.toString()}</DataCell>
-                <DataCell>
-                  <ProfileImage avatar={avatarUrl} />
-                  <UserInfo>
-                    {name} ({email})
-                  </UserInfo>
-                </DataCell>
-              </tr>
-            ))}
+            {data.map(({ id, title, description, date, color, name, email, avatarUrl }) => {
+              return (
+                <tr key={id} data-cy="activity-row" data-id={id}>
+                  <ColorLabel color={color} />
+                  <DataCell>{title}</DataCell>
+                  <DataCell>{description}</DataCell>
+                  <DataCell>{date.toString()}</DataCell>
+                  <DataCell>
+                    <ProfileImage avatar={avatarUrl} />
+                    <UserInfo>
+                      {name} ({email})
+                    </UserInfo>
+                  </DataCell>
+                </tr>
+              );
+            })}
           </tbody>
         </StyledTable>
       ) : (
-        <EmptyList data-testid="test-activity-table-empty">No records found</EmptyList>
+        <EmptyList data-testid="activity-table-empty">No records found</EmptyList>
       )}
     </>
   );

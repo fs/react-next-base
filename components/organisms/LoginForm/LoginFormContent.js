@@ -36,6 +36,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
+      testID: 'first-name',
       initialValue: '',
       validationSchema: Yup.string(),
     },
@@ -44,6 +45,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
+      testID: 'last-name',
       initialValue: '',
       validationSchema: Yup.string(),
     },
@@ -52,6 +54,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
+      testID: 'email',
       initialValue: '',
       validationSchema: Yup.string()
         .email('The email must be valid!!')
@@ -61,6 +64,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       type: 'password',
       name: 'password',
       title: 'Password',
+      testID: 'password',
       placeholder: '',
       initialValue: '',
       validationSchema: Yup.string().required('This field is required'),
@@ -68,6 +72,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     {
       type: 'submit',
       name: activeForm,
+      testID: 'submit-button',
       initialValue: submitButtonText,
     },
   ].filter(Boolean);
@@ -86,20 +91,20 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
 
   const TABS = [
     {
-      id: 'sign_in',
+      id: 'signin',
       name: 'Sign in',
       active: isSignIn,
       action: () => toggleForm(SIGN_IN_FORM),
       content: <Content />,
     },
     {
-      id: 'sign_up',
+      id: 'signup',
       name: 'Create an account',
       action: () => toggleForm(SIGN_UP_FORM),
       content: <Content />,
     },
     {
-      id: 'password_recovery',
+      id: 'password-recovery',
       name: 'Forgot your password',
       active: isRecovery,
       action: () => toggleForm(PASSWORD_RECOVERY_FORM),

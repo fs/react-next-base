@@ -58,9 +58,9 @@ const UserMenuItemButton = styled.button(({ theme }) => userMenuItemStyles(theme
 
 const UserNavigationList = ({ links = [], actions = [], ...attributes }) => (
   <StyledUserMenu {...attributes}>
-    {links.map(({ text, url }, i) => {
+    {links.map(({ text, url, dataCy }, i) => {
       return (
-        <li key={i}>
+        <li key={i} data-cy={dataCy}>
           <Link route={url}>
             <UserMenuItemLink>{text}</UserMenuItemLink>
           </Link>
