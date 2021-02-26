@@ -19,12 +19,10 @@ const Wrap = styled.div`
   align-items: center;
 `;
 
-const DataCell = ({ children }) => {
-  return (
-    <StyledCell>
-      <Wrap>{children}</Wrap>
-    </StyledCell>
-  );
-};
+const DataCell = ({ children }) => (
+  <StyledCell>
+    <Wrap>{children}</Wrap>
+  </StyledCell>
+);
 
 export default DataCell;

@@ -31,11 +31,7 @@ const ColorLabel = styled.td(
   `,
 );
 
-const HeaderCell = styled.th(
-  ({ theme }) => css`
-    ${baseCellStyles(theme)}
-  `,
-);
+const HeaderCell = styled.th(({ theme }) => baseCellStyles(theme));
 
 const UserInfo = styled.span`
   margin-left: 0.5rem;
