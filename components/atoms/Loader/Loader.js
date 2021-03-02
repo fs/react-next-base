@@ -23,7 +23,7 @@ const Title = styled.span`
 `;
 
 const Loader = ({ children, testId }) => (
-  <Wrapper data-testid={testId}>
+  <Wrapper data-testid={testId} data-cy={testId}>
     <Title>{children}</Title>
   </Wrapper>
 );

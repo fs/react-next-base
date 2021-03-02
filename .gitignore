@@ -31,5 +31,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-
-cypress.env.json

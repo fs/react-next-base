@@ -128,7 +128,7 @@ const ProfileFormContent = ({
         </AvatarWrapper>
       )}
       <Form form={form} />
-      {loading && <Loader>Loading</Loader>}
+      {loading && <Loader testId="profile-updating-loader">Loading</Loader>}
     </FormWrapper>
   );
 };
