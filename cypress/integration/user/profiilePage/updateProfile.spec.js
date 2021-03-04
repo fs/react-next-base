@@ -9,11 +9,21 @@ describe('Update Profile', () => {
     });
   });
 
-  it('User sees profile update form', () => {
+  it('User updates his profile', () => {
     const { firstName, lastName } = this.user;
     const timestamp = +new Date();
 
     cy.get('[data-cy=profile-update-form]').should('be.visible');
+
+    cy.fixture('images/logo.png').then(fileContent => {
+      cy.get('[data-testid=avatar]')
+        .then(Cypress.Blob.base64StringToBlob)
+        .attachFile({
+          fileContent,
+          fileName: 'logo.png',
+          mimeType: 'image/png',
+        });
+    });
 
     cy.get('[data-cy=first-name]').type(`${firstName}-${timestamp}`);
     cy.get('[data-cy=last-name]').type(`${lastName}-${timestamp}`);
