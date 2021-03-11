@@ -5,6 +5,7 @@ const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
 const withPWA = require('next-pwa');
+const { injectManifest } = require('workbox-build');
 
 dotenv.config();
 
