@@ -16,13 +16,17 @@ const bodyParserJSON = bodyParser.json();
 // Create the Express-Next App
 const app = next({ dev: DEV });
 const handle = routes.getRequestHandler(app);
+const { parse } = require('url');
+const { join } = require('path');
 
 // Start the app
 app
   .prepare()
   // Start Express server and serve the
   .then(() => {
-    express()
+    const swPathName = 'public/sw.js';
+    const server = express();
+    server
       // use proxy middleware to send graphql requests to api server
       .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMidlleware)
       .use(secure)
@@ -31,6 +35,10 @@ app
         if (err) throw err;
         console.log(`> Ready on http://localhost:${PORT}`);
       });
+    server.get(swPathName, (req, res) => {
+      const filePath = join(__dirname, '.next', swPathName);
+      app.serveStatic(req, res, filePath);
+    });
   })
   .catch(ex => {
     console.error(ex.stack);
