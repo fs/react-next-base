@@ -16,13 +16,7 @@ describe('Update Profile', () => {
     cy.get('[data-cy=profile-update-form]').should('be.visible');
 
     cy.fixture('images/logo.png').then(fileContent => {
-      cy.get('[data-testid=avatar]')
-        .then(Cypress.Blob.base64StringToBlob)
-        .attachFile({
-          fileContent,
-          fileName: 'logo.png',
-          mimeType: 'image/png',
-        });
+      cy.get('[data-testid=avatar]').attachFile({ fileContent, fileName: 'logo.png', mimeType: 'image/png' });
     });
 
     cy.get('[data-cy=first-name]').type(`${firstName}-${timestamp}`);
