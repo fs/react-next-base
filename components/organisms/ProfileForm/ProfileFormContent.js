@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import Form from 'components/molecules/Form';
 import Loader from 'components/atoms/Loader';
+import Form from '../../molecules/Form';
 
 const FormWrapper = styled.div`
   margin-left: auto;
