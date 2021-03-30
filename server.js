@@ -24,7 +24,7 @@ app
   .prepare()
   // Start Express server and serve the
   .then(() => {
-    const swPathName = 'public/sw.js';
+    const swPathName = '/service-worker.js';
     const server = express();
     server
       // use proxy middleware to send graphql requests to api server
@@ -36,7 +36,7 @@ app
         console.log(`> Ready on http://localhost:${PORT}`);
       });
     server.get(swPathName, (req, res) => {
-      const filePath = join(__dirname, '.next', swPathName);
+      const filePath = join(__dirname, '.next', '/service-worker.js');
       app.serveStatic(req, res, filePath);
     });
   })

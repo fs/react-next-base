@@ -4,8 +4,8 @@ const withPlugins = require('next-compose-plugins');
 const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
-const withPWA = require('next-pwa');
-const { injectManifest } = require('workbox-build');
+// const withPWA = require('next-pwa');
+// const { injectManifest } = require('workbox-build');
 const withOffline = require('next-offline');
 
 dotenv.config();

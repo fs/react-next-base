@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js -p $PORT",
     "server": "node server.js",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts",
