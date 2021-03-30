@@ -427,6 +427,7 @@ exports[`Activity page should show loader while loading 1`] = `
 
 <div
   class="c0"
+  data-cy="activity-loading"
   data-testid="activity-loading"
 >
   <span
