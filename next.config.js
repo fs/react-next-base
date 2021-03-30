@@ -4,7 +4,6 @@ const withPlugins = require('next-compose-plugins');
 const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
-const withPWA = require('next-pwa');
 
 dotenv.config();
 
@@ -47,19 +46,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [
-    [
-      withPWA,
-      {
-        pwa: {
-          dest: 'public',
-        },
-      },
-    ],
-    [nextImages],
-    [nextFonts],
-    [svgr],
-  ],
-  nextConfig,
-);
+module.exports = withPlugins([[nextImages], [nextFonts], [svgr]], nextConfig);
