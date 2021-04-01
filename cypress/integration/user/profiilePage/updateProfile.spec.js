@@ -15,16 +15,14 @@ describe('Update Profile', () => {
 
     cy.get('[data-cy=profile-update-form]').should('be.visible');
 
+    cy.get('[data-cy=avatar]').attachFile('images/logo.png');
+
     cy.get('[data-cy=first-name]')
       .clear()
       .type(`${firstName}-${timestamp}`);
     cy.get('[data-cy=last-name]')
       .clear()
       .type(`${lastName}-${timestamp}`);
-
-    cy.fixture('cat.jpeg').then(fileContent => {
-      cy.get('[data-testid=avatar]').attachFile({ fileContent, fileName: 'cat.jpeg', mimeType: 'image/jpeg' });
-    });
 
     cy.get('[data-cy=update-button]').click();
 
