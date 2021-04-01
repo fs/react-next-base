@@ -65,7 +65,7 @@ const Form = ({ form }: { form: FormType }) => {
   const validationSchema = Yup.object().shape(mapValues(formByName, 'validationSchema'));
   // todo custom components to the fields, strict types
   return (
-    <FormWrapper>
+    <FormWrapper data-cy="profile-update-form">
       <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
         {({ isSubmitting, status }) => (
           <FormikForm>

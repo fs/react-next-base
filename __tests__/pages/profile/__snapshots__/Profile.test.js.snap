@@ -82,6 +82,7 @@ exports[`Profile page should render correctly 1`] = `
     </h3>
     <div
       class="c2"
+      data-cy="profile-update-form"
     >
       <form
         action="#"
