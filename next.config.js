@@ -1,11 +1,9 @@
 const dotenv = require('dotenv');
-const webpack = require('webpack');
 const withPlugins = require('next-compose-plugins');
 const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
 const withPWA = require('next-pwa');
-const { injectManifest } = require('workbox-build');
 
 dotenv.config();
 
