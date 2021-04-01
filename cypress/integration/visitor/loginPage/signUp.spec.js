@@ -12,7 +12,7 @@ describe('Sign Up', () => {
     const validCredentials = {
       firstName,
       lastName,
-      email: `${firstName}-${timestamp}@gmail.com`,
+      email: `${firstName}-${timestamp}@test.com`,
       password: timestamp,
     };
 
