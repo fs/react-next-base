@@ -68,10 +68,10 @@ const UserNavigationList = ({ links = [], actions = [], ...attributes }) => (
       );
     })}
 
-    {actions.map(({ text, onClick }, i) => {
+    {actions.map(({ text, onClick, testId }, i) => {
       return (
         <UserMenuItem key={i}>
-          <button type="button" onClick={onClick}>
+          <button data-cy={testId} type="button" onClick={onClick}>
             {text}
           </button>
         </UserMenuItem>

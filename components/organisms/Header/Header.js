@@ -34,14 +34,14 @@ const Header = ({ user, signOut }) => {
   ];
 
   const actions = [
-    { text: 'Sign Out', onClick: signOut },
+    { text: 'Sign Out', onClick: signOut, testId: 'sign-out' },
     { text: 'Log out from all devices', onClick: () => signOut({ everywhere: true }) },
   ];
 
   return (
     <HeaderWrapper>
       <Logo />
-      <Links>
+      <Links data-cy="header-links">
         {!user && (
           <Link route={LOGIN.pattern}>
             <a>Log In</a>
