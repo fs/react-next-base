@@ -5,7 +5,8 @@ import { TextFormFieldConfig } from 'components/atoms/formFields/TextFormField';
 import { PasswordFormFieldConfig } from 'components/atoms/formFields/PasswordFormField';
 import { TextareaFormFieldConfig } from 'components/atoms/formFields/TextareaFormField';
 import { FileFormFieldConfig } from 'components/atoms/formFields/FileFormField';
-import { SubmitButtonFieldConfig } from '../../components/atoms/formFields/SubmitButton';
+import { SubmitButtonFieldConfig } from 'components/atoms/formFields/SubmitButton';
+import { EmailFormFieldConfig } from '../../components/atoms/formFields/EmailFormField';
 
 export enum FormFieldType {
   password = 'password',
@@ -15,6 +16,7 @@ export enum FormFieldType {
   text = 'text',
   file = 'file',
   submit = 'submit',
+  email = 'email',
 }
 
 export interface BaseFormFieldConfig {
@@ -34,7 +36,8 @@ export type FormFieldConfig =
   | CheckboxFormFieldConfig
   | TextFormFieldConfig
   | TextareaFormFieldConfig
-  | SubmitButtonFieldConfig;
+  | SubmitButtonFieldConfig
+  | EmailFormFieldConfig;
 
 export interface FormType {
   fields: FormFieldConfig[];

@@ -11,6 +11,7 @@ import PasswordFormField from 'components/atoms/formFields/PasswordFormField';
 import TextareaFormField from 'components/atoms/formFields/TextareaFormField';
 import FileFormField from 'components/atoms/formFields/FileFormField';
 import SubmitButton from 'components/atoms/formFields/SubmitButton';
+import EmailFormField from 'components/atoms/formFields/EmailFormField';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
 import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
 
@@ -61,6 +62,12 @@ const Form = ({ form }: { form: FormType }) => {
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
                         <FileFormField {...field} />
+                      </DefaultFieldWrapper>
+                    );
+                  case FormFieldType.email:
+                    return (
+                      <DefaultFieldWrapper key={name} name={name} title={title}>
+                        <EmailFormField {...field} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.submit:
