@@ -14,6 +14,7 @@ const TextFormField = ({ placeholder, disabled, name, testID }: TextFormFieldCon
       placeholder={placeholder}
       disabled={disabled}
       name={name}
+      id={name}
       data-testid={testID}
       data-cy={testID}
     />

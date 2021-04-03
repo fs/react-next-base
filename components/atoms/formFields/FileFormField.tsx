@@ -5,10 +5,12 @@ import { BaseFormFieldConfig, FormFieldType } from 'config/types';
 export interface FileFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.file;
   accept: string;
+  onChange?: void;
 }
 
-const FileFormField = ({ name, accept, testID }: FileFormFieldConfig) => {
-  return <Field type="file" name={name} accept={accept} data-testid={testID} data-cy={testID} />;
+const FileFormField = ({ name, accept, testID, onChange }: FileFormFieldConfig) => {
+  const props = onChange ? { onChange } : {};
+  return <Field type="file" id={name} name={name} accept={accept} data-testid={testID} data-cy={testID} {...props} />;
 };
 
 export default FileFormField;

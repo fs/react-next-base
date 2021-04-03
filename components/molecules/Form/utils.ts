@@ -1,11 +1,28 @@
-import { FormFieldType } from 'config/types';
+import { StringSchema } from 'yup';
+import { FormFieldConfig } from '../../../config/types';
 
-export const isFieldTypeInput = (type: FormFieldType): boolean => {
-  return !(type === FormFieldType.textarea || type === FormFieldType.select);
-};
-export const filterExistActions = (onClick?: void, onChange?: void, onBlur?: void) => {
-  return Object.entries({ onClick, onChange, onBlur }).reduce(
-    (acc, [key, val]) => (val ? { ...acc, [key]: val } : { ...acc }),
-    {},
-  );
+interface InitialValues {
+  [key: string]: unknown;
+}
+
+interface ValidationSchema {
+  [key: string]: StringSchema;
+}
+
+interface FormikProps {
+  initialValues: InitialValues;
+  validationSchema: ValidationSchema;
+}
+
+export const collectFormikProps = (fields: FormFieldConfig[]): FormikProps => {
+  const init: FormikProps = { initialValues: {}, validationSchema: {} };
+  return fields.reduce((acc, item) => {
+    if (item.initialValue) {
+      acc.initialValues[item.name] = item.initialValue;
+    }
+    if (item.validationSchema) {
+      acc.validationSchema[item.name] = item.validationSchema;
+    }
+    return acc;
+  }, init);
 };

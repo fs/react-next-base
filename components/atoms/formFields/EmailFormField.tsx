@@ -7,7 +7,7 @@ export interface EmailFormFieldConfig extends BaseFormFieldConfig {
 }
 
 const EmailFormField = ({ name, testID, disabled }: EmailFormFieldConfig) => {
-  return <Field type="email" name={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
+  return <Field type="email" name={name} id={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
 };
 
 export default EmailFormField;

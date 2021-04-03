@@ -1,7 +1,4 @@
 import React from 'react';
-import mapKeys from 'lodash/mapKeys';
-import mapValues from 'lodash/mapValues';
-import * as Yup from 'yup';
 import { Form as FormikForm, Formik } from 'formik';
 import { FormFieldConfig, FormFieldType, FormType } from 'config/types';
 import SelectFormField from 'components/atoms/formFields/SelectFormField';
@@ -14,18 +11,15 @@ import SubmitButton from 'components/atoms/formFields/SubmitButton';
 import EmailFormField from 'components/atoms/formFields/EmailFormField';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
 import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
+import { collectFormikProps } from './utils';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
-  const formByName = mapKeys(fields, 'name');
-  const initialValues = mapValues(formByName, 'initialValue');
+  const formikProps = collectFormikProps(fields);
 
-  // @ts-ignore
-  const validationSchema = Yup.object().shape(mapValues(formByName, 'validationSchema'));
-  // todo custom components to the fields, strict types
   return (
     <FormWrapper data-cy="profile-update-form">
-      <Formik enableReinitialize initialValues={initialValues} onSubmit={submit} validationSchema={validationSchema}>
+      <Formik enableReinitialize onSubmit={submit} {...formikProps}>
         {({ isSubmitting, status }) => (
           <FormikForm>
             <FormContainer>

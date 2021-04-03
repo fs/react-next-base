@@ -19,7 +19,14 @@ export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
 
 const PasswordFormField = ({ name, autoComplete, disabled, placeholder }: PasswordFormFieldConfig) => {
   return (
-    <Field type="password" name={name} autoComplete={autoComplete} disabled={disabled} placeholder={placeholder} />
+    <Field
+      type="password"
+      name={name}
+      id={name}
+      autoComplete={autoComplete}
+      disabled={disabled}
+      placeholder={placeholder}
+    />
   );
 };
 

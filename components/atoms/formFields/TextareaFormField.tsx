@@ -7,7 +7,7 @@ export interface TextareaFormFieldConfig extends BaseFormFieldConfig {
 }
 
 const TextareaFormField = ({ name, testID, disabled }: TextareaFormFieldConfig) => {
-  return <Field type="textarea" name={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
+  return <Field type="textarea" name={name} id={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
 };
 
 export default TextareaFormField;

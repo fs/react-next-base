@@ -27,6 +27,7 @@ export interface BaseFormFieldConfig {
   validationSchema?: StringSchema;
   testID?: string;
   disabled?: boolean;
+  initialValue?: unknown;
 }
 
 export type FormFieldConfig =
