@@ -1,4 +1,5 @@
 import { StringSchema } from 'yup';
+import { SelectFormFieldConfig } from 'components/molecules/Form/SelectFormField';
 
 export enum FormFieldType {
   password = 'password',
@@ -21,13 +22,6 @@ export interface BaseFormFieldConfig {
   validationSchema?: StringSchema;
   testID?: string;
   disabled?: boolean;
-}
-
-export interface SelectFormFieldConfig extends BaseFormFieldConfig {
-  type: FormFieldType.select;
-  options: OptionType[];
-  initialValue?: OptionType;
-  validationSchema: StringSchema;
 }
 
 export interface FileFormFieldConfig extends BaseFormFieldConfig {
@@ -69,24 +63,7 @@ export type FormFieldConfig =
   | TextFormFieldConfig
   | TextareaFormFieldConfig;
 
-// export interface FormFieldConfig {
-//   accept?: string;
-//   initialValue?: string | number | boolean;
-//   label?: string;
-//   options?: OptionType[];
-//   placeholder?: string | number;
-//   title?: string;
-//   type: FormFieldType;
-//   validationSchema: StringSchema;
-//   testID?: string;
-// }
-
 export interface FormType {
   fields: FormFieldConfig[];
   submit: any;
-}
-
-export interface OptionType {
-  label: string | number;
-  value: string | number;
 }

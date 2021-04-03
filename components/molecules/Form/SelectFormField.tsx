@@ -1,6 +1,18 @@
-import { FormFieldType, OptionType, SelectFormFieldConfig } from 'config/types';
+import { BaseFormFieldConfig, FormFieldType } from 'config/types';
 import { Field } from 'formik';
 import React from 'react';
+import { StringSchema } from 'yup';
+
+export interface SelectFormFieldConfig extends BaseFormFieldConfig {
+  type: FormFieldType.select;
+  options: OptionType[];
+  validationSchema: StringSchema;
+}
+
+export interface OptionType {
+  label: string | number;
+  value: string | number;
+}
 
 const SelectFormField = ({
   name,
