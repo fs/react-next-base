@@ -36,7 +36,11 @@ const Form = ({ form }: { form: FormType }) => {
                   case FormFieldType.checkbox:
                     return <CheckboxFormField key={name} {...field} />;
                   case FormFieldType.text:
-                    return <TextFormField key={name} {...field} />;
+                    return (
+                      <DefaultFieldWrapper key={name} name={name} title={title}>
+                        <TextFormField {...field} />
+                      </DefaultFieldWrapper>
+                    );
                   default:
                     return null;
                 }
