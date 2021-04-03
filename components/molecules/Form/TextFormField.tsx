@@ -7,8 +7,8 @@ export interface TextFormFieldConfig extends BaseFormFieldConfig {
   placeholder?: string;
 }
 
-const TextFormField = ({ placeholder, disabled }: TextFormFieldConfig) => {
-  return <Field type="text" placeholder={placeholder} disabled={disabled} />;
+const TextFormField = ({ placeholder, disabled, name }: TextFormFieldConfig) => {
+  return <Field type="text" placeholder={placeholder} disabled={disabled} name={name} />;
 };
 
 export default TextFormField;

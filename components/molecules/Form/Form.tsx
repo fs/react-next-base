@@ -9,6 +9,7 @@ import DefaultFieldWrapper from './DefaultFieldWrapper';
 import SelectFormField from './SelectFormField';
 import CheckboxFormField from './CheckboxFormField';
 import TextFormField from './TextFormField';
+import PasswordFormField from './PasswordFormField';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
@@ -39,6 +40,12 @@ const Form = ({ form }: { form: FormType }) => {
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
                         <TextFormField {...field} />
+                      </DefaultFieldWrapper>
+                    );
+                  case FormFieldType.password:
+                    return (
+                      <DefaultFieldWrapper key={name} name={name} title={title}>
+                        <PasswordFormField {...field} />
                       </DefaultFieldWrapper>
                     );
                   default:

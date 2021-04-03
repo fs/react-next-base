@@ -2,6 +2,7 @@ import { StringSchema } from 'yup';
 import { SelectFormFieldConfig } from 'components/molecules/Form/SelectFormField';
 import { CheckboxFormFieldConfig } from 'components/molecules/Form/CheckboxFormField';
 import { TextFormFieldConfig } from 'components/molecules/Form/TextFormField';
+import { PasswordFormFieldConfig } from 'components/molecules/Form/PasswordFormField';
 
 export enum FormFieldType {
   password = 'password',
@@ -25,20 +26,6 @@ export interface BaseFormFieldConfig {
 export interface FileFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.file;
   accept: string;
-}
-
-/**
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
- */
-export enum PasswordAutocomplete {
-  off = 'off',
-  newPassword = 'new-password',
-  currentPassword = 'current-password',
-}
-
-export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
-  type: FormFieldType.password;
-  autocomplete?: PasswordAutocomplete;
 }
 
 export interface TextareaFormFieldConfig extends BaseFormFieldConfig {
