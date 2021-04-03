@@ -1,5 +1,5 @@
 import { StringSchema } from 'yup';
-import { FormFieldConfig } from '../../../config/types';
+import { FormFieldConfig } from 'config/types';
 
 interface InitialValues {
   [key: string]: unknown;
