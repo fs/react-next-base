@@ -6,10 +6,10 @@ export interface CheckboxFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.checkbox;
 }
 
-const CheckboxFormField = ({ name, title, onClick }: CheckboxFormFieldConfig) => {
+const CheckboxFormField = ({ name, title, testID, disabled }: CheckboxFormFieldConfig) => {
   return (
     <label htmlFor={name}>
-      <Field type={FormFieldType.checkbox} name={name} onClick={onClick} />
+      <Field as="checkbox" name={name} data-testid={testID} data-cy={testID} disabled={disabled} />
       {title}
     </label>
   );

@@ -7,6 +7,7 @@ export interface SelectFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.select;
   options: OptionType[];
   validationSchema: StringSchema;
+  placeholder: string;
 }
 
 export interface OptionType {
@@ -14,28 +15,16 @@ export interface OptionType {
   value: string | number;
 }
 
-const SelectFormField = ({
-  name,
-  testID,
-  placeholder,
-  disabled,
-  options,
-  onBlur,
-  onChange,
-  onClick,
-}: SelectFormFieldConfig) => {
+const SelectFormField = ({ name, testID, placeholder, disabled, options }: SelectFormFieldConfig) => {
   return (
     <Field
-      as={FormFieldType.select}
+      as="select"
       name={name}
       id={name}
       data-testid={testID}
       data-cy={testID}
       placeholder={placeholder}
       disabled={disabled}
-      onBlur={onBlur}
-      onChange={onChange}
-      onClick={onClick}
     >
       {options.map((option: OptionType) => {
         const { value, label: optionLabel } = option;

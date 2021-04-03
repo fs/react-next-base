@@ -1,6 +1,7 @@
 import { StringSchema } from 'yup';
 import { SelectFormFieldConfig } from 'components/molecules/Form/SelectFormField';
-import { CheckboxFormFieldConfig } from '../../components/molecules/Form';
+import { CheckboxFormFieldConfig } from 'components/molecules/Form/CheckboxFormField';
+import { TextFormFieldConfig } from 'components/molecules/Form/TextFormField';
 
 export enum FormFieldType {
   password = 'password',
@@ -13,12 +14,8 @@ export enum FormFieldType {
 
 export interface BaseFormFieldConfig {
   type: FormFieldType;
-  onClick?: void;
-  onChange?: void;
-  onBlur?: void;
   name: string;
   label?: string;
-  placeholder?: string | number;
   title?: string;
   validationSchema?: StringSchema;
   testID?: string;
@@ -42,10 +39,6 @@ export enum PasswordAutocomplete {
 export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.password;
   autocomplete?: PasswordAutocomplete;
-}
-
-export interface TextFormFieldConfig extends BaseFormFieldConfig {
-  type: FormFieldType.text;
 }
 
 export interface TextareaFormFieldConfig extends BaseFormFieldConfig {
