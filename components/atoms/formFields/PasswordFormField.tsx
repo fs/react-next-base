@@ -13,11 +13,11 @@ export enum PasswordAutocomplete {
 
 export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.password;
-  autocomplete?: PasswordAutocomplete;
+  autoComplete?: PasswordAutocomplete;
 }
 
-const PasswordFormField = ({ name, autocomplete }: PasswordFormFieldConfig) => {
-  return <Field type="password" name={name} autocomplete={autocomplete} />;
+const PasswordFormField = ({ name, autoComplete }: PasswordFormFieldConfig) => {
+  return <Field type="password" name={name} autoComplete={autoComplete} />;
 };
 
 export default PasswordFormField;

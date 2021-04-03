@@ -73,7 +73,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       type: 'submit',
       name: activeForm,
       testID: 'submit-button',
-      initialValue: submitButtonText,
+      label: submitButtonText,
     },
   ].filter(Boolean);
 

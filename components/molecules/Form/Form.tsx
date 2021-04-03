@@ -4,14 +4,15 @@ import mapValues from 'lodash/mapValues';
 import * as Yup from 'yup';
 import { Form as FormikForm, Formik } from 'formik';
 import { FormFieldConfig, FormFieldType, FormType } from 'config/types';
-import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
+import SelectFormField from 'components/atoms/formFields/SelectFormField';
+import CheckboxFormField from 'components/atoms/formFields/CheckboxFormField';
+import TextFormField from 'components/atoms/formFields/TextFormField';
+import PasswordFormField from 'components/atoms/formFields/PasswordFormField';
+import TextareaFormField from 'components/atoms/formFields/TextareaFormField';
+import FileFormField from 'components/atoms/formFields/FileFormField';
+import SubmitButton from 'components/atoms/formFields/SubmitButton';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
-import SelectFormField from '../../atoms/formFields/SelectFormField';
-import CheckboxFormField from '../../atoms/formFields/CheckboxFormField';
-import TextFormField from '../../atoms/formFields/TextFormField';
-import PasswordFormField from '../../atoms/formFields/PasswordFormField';
-import TextareaFormField from '../../atoms/formFields/TextareaFormField';
-import FileFormField from '../../atoms/formFields/FileFormField';
+import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
@@ -62,6 +63,8 @@ const Form = ({ form }: { form: FormType }) => {
                         <FileFormField {...field} />
                       </DefaultFieldWrapper>
                     );
+                  case FormFieldType.submit:
+                    return <SubmitButton key={name} {...field} />;
                   default:
                     return null;
                 }
