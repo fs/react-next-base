@@ -9,63 +9,74 @@ import TextareaFormField from 'components/atoms/formFields/TextareaFormField';
 import FileFormField from 'components/atoms/formFields/FileFormField';
 import SubmitButton from 'components/atoms/formFields/SubmitButton';
 import EmailFormField from 'components/atoms/formFields/EmailFormField';
+import { object } from 'yup';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
-import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
+import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
 import { collectFormikProps } from './utils';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
-  const formikProps = collectFormikProps(fields);
-
+  const { initialValues, validationSchema } = collectFormikProps(fields);
+  const formValidationSchema = object().shape(validationSchema);
   return (
     <FormWrapper data-cy="profile-update-form">
-      <Formik enableReinitialize onSubmit={submit} {...formikProps}>
+      <Formik
+        enableReinitialize
+        onSubmit={submit}
+        initialValues={initialValues}
+        validationSchema={formValidationSchema}
+      >
         {({ isSubmitting, status }) => (
           <FormikForm>
             <FormContainer>
-              {fields.map((field: FormFieldConfig) => {
-                const { name, title } = field;
-                switch (field.type) {
+              {fields.map((fieldConfig: FormFieldConfig) => {
+                const { name, title } = fieldConfig;
+                const disabled = isSubmitting ? true : fieldConfig.disabled;
+                switch (fieldConfig.type) {
                   case FormFieldType.select:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <SelectFormField {...field} />
+                        <SelectFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.checkbox:
-                    return <CheckboxFormField key={name} {...field} />;
+                    return <CheckboxFormField key={name} {...fieldConfig} disabled={disabled} />;
                   case FormFieldType.text:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <TextFormField {...field} />
+                        <TextFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.password:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <PasswordFormField {...field} />
+                        <PasswordFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.textarea:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <TextareaFormField {...field} />
+                        <TextareaFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.file:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <FileFormField {...field} />
+                        <FileFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.email:
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <EmailFormField {...field} />
+                        <EmailFormField {...fieldConfig} disabled={disabled} />
                       </DefaultFieldWrapper>
                     );
                   case FormFieldType.submit:
-                    return <SubmitButton key={name} {...field} />;
+                    return (
+                      <FieldWrapper key={name}>
+                        <SubmitButton {...fieldConfig} disabled={disabled} />
+                      </FieldWrapper>
+                    );
                   default:
                     return null;
                 }

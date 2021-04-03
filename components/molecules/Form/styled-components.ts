@@ -5,7 +5,8 @@ export const FormWrapper = styled.div`
 
   input,
   textarea,
-  select {
+  select,
+  button {
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
