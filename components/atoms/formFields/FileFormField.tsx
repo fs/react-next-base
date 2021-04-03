@@ -7,7 +7,7 @@ export interface FileFormFieldConfig extends BaseFormFieldConfig {
   accept: string;
 }
 
-const FileFormField = ({ name, accept, testID }: FormFieldType) => {
+const FileFormField = ({ name, accept, testID }: FileFormFieldConfig) => {
   return <Field type="file" name={name} accept={accept} data-testid={testID} data-cy={testID} />;
 };
 

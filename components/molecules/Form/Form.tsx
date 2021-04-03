@@ -6,12 +6,12 @@ import { Form as FormikForm, Formik } from 'formik';
 import { FormFieldConfig, FormFieldType, FormType } from 'config/types';
 import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
-import SelectFormField from './SelectFormField';
-import CheckboxFormField from './CheckboxFormField';
-import TextFormField from './TextFormField';
-import PasswordFormField from './PasswordFormField';
-import TextareaFormField from './TextareaFormField';
-import FileFormField from './FileFormField';
+import SelectFormField from '../../atoms/formFields/SelectFormField';
+import CheckboxFormField from '../../atoms/formFields/CheckboxFormField';
+import TextFormField from '../../atoms/formFields/TextFormField';
+import PasswordFormField from '../../atoms/formFields/PasswordFormField';
+import TextareaFormField from '../../atoms/formFields/TextareaFormField';
+import FileFormField from '../../atoms/formFields/FileFormField';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;

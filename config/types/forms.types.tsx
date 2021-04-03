@@ -1,10 +1,10 @@
 import { StringSchema } from 'yup';
-import { SelectFormFieldConfig } from 'components/molecules/Form/SelectFormField';
-import { CheckboxFormFieldConfig } from 'components/molecules/Form/CheckboxFormField';
-import { TextFormFieldConfig } from 'components/molecules/Form/TextFormField';
-import { PasswordFormFieldConfig } from 'components/molecules/Form/PasswordFormField';
-import { TextareaFormFieldConfig } from 'components/molecules/Form/TextareaFormField';
-import { FileFormFieldConfig } from 'components/molecules/Form/FileFormField';
+import { SelectFormFieldConfig } from 'components/atoms/formFields/SelectFormField';
+import { CheckboxFormFieldConfig } from 'components/atoms/formFields/CheckboxFormField';
+import { TextFormFieldConfig } from 'components/atoms/formFields/TextFormField';
+import { PasswordFormFieldConfig } from 'components/atoms/formFields/PasswordFormField';
+import { TextareaFormFieldConfig } from 'components/atoms/formFields/TextareaFormField';
+import { FileFormFieldConfig } from 'components/atoms/formFields/FileFormField';
 
 export enum FormFieldType {
   password = 'password',
