@@ -11,6 +11,7 @@ import CheckboxFormField from './CheckboxFormField';
 import TextFormField from './TextFormField';
 import PasswordFormField from './PasswordFormField';
 import TextareaFormField from './TextareaFormField';
+import FileFormField from './FileFormField';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
@@ -53,6 +54,12 @@ const Form = ({ form }: { form: FormType }) => {
                     return (
                       <DefaultFieldWrapper key={name} name={name} title={title}>
                         <TextareaFormField {...field} />
+                      </DefaultFieldWrapper>
+                    );
+                  case FormFieldType.file:
+                    return (
+                      <DefaultFieldWrapper key={name} name={name} title={title}>
+                        <FileFormField {...field} />
                       </DefaultFieldWrapper>
                     );
                   default:

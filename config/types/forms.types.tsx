@@ -4,6 +4,7 @@ import { CheckboxFormFieldConfig } from 'components/molecules/Form/CheckboxFormF
 import { TextFormFieldConfig } from 'components/molecules/Form/TextFormField';
 import { PasswordFormFieldConfig } from 'components/molecules/Form/PasswordFormField';
 import { TextareaFormFieldConfig } from 'components/molecules/Form/TextareaFormField';
+import { FileFormFieldConfig } from 'components/molecules/Form/FileFormField';
 
 export enum FormFieldType {
   password = 'password',
@@ -22,11 +23,6 @@ export interface BaseFormFieldConfig {
   validationSchema?: StringSchema;
   testID?: string;
   disabled?: boolean;
-}
-
-export interface FileFormFieldConfig extends BaseFormFieldConfig {
-  type: FormFieldType.file;
-  accept: string;
 }
 
 export type FormFieldConfig =
