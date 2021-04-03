@@ -20,12 +20,17 @@ module.exports = {
       '<rootDir>/__tests__/mocks/fileMock.js',
     '\\.(css|less)$': '<rootDir>/__tests__/mocks/styleMock.js',
     '\\.svg': '<rootDir>/__tests__/mocks/svgrMock.js',
+    // fix styled-components undefined
+    '^styled-components(.*)$': '<rootDir>/node_modules/styled-components$1',
+    // fix react undefined
+    '^react(.*)$': '<rootDir>/node_modules/react$1',
   },
+  moduleDirectories: ['node_modules', '.'],
   testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.test.json',
+      tsconfig: 'tsconfig.test.json',
     },
   },
 };

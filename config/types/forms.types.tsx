@@ -6,7 +6,7 @@ import { PasswordFormFieldConfig } from 'components/atoms/formFields/PasswordFor
 import { TextareaFormFieldConfig } from 'components/atoms/formFields/TextareaFormField';
 import { FileFormFieldConfig } from 'components/atoms/formFields/FileFormField';
 import { SubmitButtonFieldConfig } from 'components/atoms/formFields/SubmitButton';
-import { EmailFormFieldConfig } from '../../components/atoms/formFields/EmailFormField';
+import { EmailFormFieldConfig } from 'components/atoms/formFields/EmailFormField';
 
 export enum FormFieldType {
   password = 'password',
