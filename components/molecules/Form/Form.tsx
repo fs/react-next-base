@@ -31,7 +31,7 @@ const Form = ({ form }: { form: FormType }) => {
             <FormContainer>
               {fields.map((fieldConfig: FormFieldConfig) => {
                 const { name, title } = fieldConfig;
-                const disabled = isSubmitting ? true : fieldConfig.disabled;
+                const disabled = isSubmitting ? true : fieldConfig.disabled || false;
                 switch (fieldConfig.type) {
                   case FormFieldType.select:
                     return (

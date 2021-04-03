@@ -18,7 +18,6 @@ const ProfileForm = ({ profile }) => {
   const handleAvatarChange = event => {
     const {
       target: {
-        // wtf?
         validity,
         files: [file],
       },
