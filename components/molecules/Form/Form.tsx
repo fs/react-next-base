@@ -7,6 +7,7 @@ import { FormFieldConfig, FormFieldType, FormType } from 'config/types';
 import { ErrorWrapper, FormContainer, FormWrapper } from './styled-components';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
 import SelectFormField from './SelectFormField';
+import CheckboxFormField from './CheckboxFormField';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
@@ -31,6 +32,8 @@ const Form = ({ form }: { form: FormType }) => {
                         <SelectFormField {...field} />
                       </DefaultFieldWrapper>
                     );
+                  case FormFieldType.checkbox:
+                    return <CheckboxFormField {...field} />;
                   default:
                     return null;
                 }
