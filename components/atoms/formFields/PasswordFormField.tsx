@@ -16,8 +16,8 @@ export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
   autoComplete?: PasswordAutocomplete;
 }
 
-const PasswordFormField = ({ name, autoComplete }: PasswordFormFieldConfig) => {
-  return <Field type="password" name={name} autoComplete={autoComplete} />;
+const PasswordFormField = ({ name, autoComplete, disabled }: PasswordFormFieldConfig) => {
+  return <Field type="password" name={name} autoComplete={autoComplete} disabled={disabled} />;
 };
 
 export default PasswordFormField;

@@ -5,9 +5,9 @@ export interface SubmitButtonFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.submit;
 }
 
-const SubmitButton = ({ label, testID }: SubmitButtonFieldConfig) => {
+const SubmitButton = ({ label, testID, disabled }: SubmitButtonFieldConfig) => {
   return (
-    <button type="submit" data-testid={testID} data-cy={testID}>
+    <button type="submit" data-testid={testID} data-cy={testID} disabled={disabled}>
       {label}
     </button>
   );
