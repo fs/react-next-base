@@ -17,7 +17,7 @@ interface FormikProps {
 export const collectFormikProps = (fields: FormFieldConfig[]): FormikProps => {
   const init: FormikProps = { initialValues: {}, validationSchema: {} };
   return fields.reduce((acc, item) => {
-    if (item.initialValue) {
+    if (item.initialValue != null) {
       acc.initialValues[item.name] = item.initialValue;
     }
     if (item.validationSchema) {

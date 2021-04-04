@@ -26,65 +26,68 @@ const Form = ({ form }: { form: FormType }) => {
         initialValues={initialValues}
         validationSchema={formValidationSchema}
       >
-        {({ isSubmitting, status }) => (
-          <FormikForm>
-            <FormContainer>
-              {fields.map((fieldConfig: FormFieldConfig) => {
-                const { name, title } = fieldConfig;
-                const disabled = isSubmitting ? true : fieldConfig.disabled || false;
-                switch (fieldConfig.type) {
-                  case FormFieldType.select:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <SelectFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.checkbox:
-                    return <CheckboxFormField key={name} {...fieldConfig} disabled={disabled} />;
-                  case FormFieldType.text:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <TextFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.password:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <PasswordFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.textarea:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <TextareaFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.file:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <FileFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.email:
-                    return (
-                      <DefaultFieldWrapper key={name} name={name} title={title}>
-                        <EmailFormField {...fieldConfig} disabled={disabled} />
-                      </DefaultFieldWrapper>
-                    );
-                  case FormFieldType.submit:
-                    return (
-                      <FieldWrapper key={name}>
-                        <SubmitButton {...fieldConfig} disabled={disabled} />
-                      </FieldWrapper>
-                    );
-                  default:
-                    return null;
-                }
-              })}
-            </FormContainer>
-            {!!status && <ErrorWrapper>{status}</ErrorWrapper>}
-          </FormikForm>
-        )}
+        {props => {
+          const { isSubmitting, status } = props;
+          return (
+            <FormikForm>
+              <FormContainer>
+                {fields.map((fieldConfig: FormFieldConfig) => {
+                  const { name, title } = fieldConfig;
+                  const disabled = isSubmitting ? true : fieldConfig.disabled || false;
+                  switch (fieldConfig.type) {
+                    case FormFieldType.select:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <SelectFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.checkbox:
+                      return <CheckboxFormField key={name} {...fieldConfig} disabled={disabled} />;
+                    case FormFieldType.text:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <TextFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.password:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <PasswordFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.textarea:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <TextareaFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.file:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <FileFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.email:
+                      return (
+                        <DefaultFieldWrapper key={name} name={name} title={title}>
+                          <EmailFormField {...fieldConfig} disabled={disabled} />
+                        </DefaultFieldWrapper>
+                      );
+                    case FormFieldType.submit:
+                      return (
+                        <FieldWrapper key={name}>
+                          <SubmitButton {...fieldConfig} disabled={disabled} />
+                        </FieldWrapper>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
+              </FormContainer>
+              {!!status && <ErrorWrapper>{status}</ErrorWrapper>}
+            </FormikForm>
+          );
+        }}
       </Formik>
     </FormWrapper>
   );
