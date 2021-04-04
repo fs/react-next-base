@@ -8,9 +8,20 @@ export interface FileFormFieldConfig extends BaseFormFieldConfig {
   onChange?: void;
 }
 
-const FileFormField = ({ name, accept, testID, onChange }: FileFormFieldConfig) => {
+const FileFormField = ({ name, accept, testID, onChange, disabled }: FileFormFieldConfig) => {
   const props = onChange ? { onChange } : {};
-  return <Field type="file" id={name} name={name} accept={accept} data-testid={testID} data-cy={testID} {...props} />;
+  return (
+    <Field
+      type="file"
+      id={name}
+      name={name}
+      accept={accept}
+      data-testid={testID}
+      data-cy={testID}
+      {...props}
+      disabled={disabled}
+    />
+  );
 };
 
 export default FileFormField;
