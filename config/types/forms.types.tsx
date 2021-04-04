@@ -24,13 +24,16 @@ export interface BaseFormFieldConfig {
   name: string;
   label?: string;
   title?: string;
-  validationSchema?: StringSchema;
   testID?: string;
   disabled?: boolean;
-  initialValue?: unknown;
 }
 
-export type FormFieldConfig =
+interface FormikProps {
+  validationSchema?: StringSchema;
+  initialValue: unknown;
+}
+
+export type FormFieldConfig = (
   | SelectFormFieldConfig
   | FileFormFieldConfig
   | PasswordFormFieldConfig
@@ -38,7 +41,9 @@ export type FormFieldConfig =
   | TextFormFieldConfig
   | TextareaFormFieldConfig
   | SubmitButtonFieldConfig
-  | EmailFormFieldConfig;
+  | EmailFormFieldConfig
+) &
+  FormikProps;
 
 export interface FormType {
   fields: FormFieldConfig[];
