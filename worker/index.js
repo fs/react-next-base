@@ -4,8 +4,7 @@
 // https://developers.google.com/web/tools/workbox/guides/configure-workbox#disable_logging
 //
 
-// doesn't working
-// self.__WB_DISABLE_DEV_LOGS = true
+self.__WB_DISABLE_DEV_LOGS = true;
 // workbox.setConfig({debug: false})
 
 const util = require('./util');
