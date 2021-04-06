@@ -5,7 +5,7 @@ describe('Sign out', () => {
       cy.login(validUser);
     });
   });
-  it('User sign out', () => {
+  it('User signs out', () => {
     cy.get('[data-cy=dropdown-toggler]').click();
     cy.get('[data-cy=sign-out]').click();
 

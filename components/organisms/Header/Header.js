@@ -34,7 +34,7 @@ const Header = ({ user, signOut }) => {
   ];
 
   const actions = [
-    { text: 'Sign Out', onClick: signOut, testId: 'sign-out' },
+    { text: 'Sign Out', onClick: signOut, dataTestId: 'sign-out' },
     { text: 'Log out from all devices', onClick: () => signOut({ everywhere: true }) },
   ];
 
