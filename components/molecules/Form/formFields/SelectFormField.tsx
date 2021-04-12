@@ -1,6 +1,6 @@
-import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 import { Field } from 'formik';
 import React from 'react';
+import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
 export interface SelectFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.select;
