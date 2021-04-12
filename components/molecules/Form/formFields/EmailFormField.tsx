@@ -1,6 +1,6 @@
 import React from 'react';
-import { BaseFormFieldConfig, FormFieldType } from 'config/types';
 import { Field } from 'formik';
+import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
 export interface EmailFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.email;

@@ -7,7 +7,7 @@ import SubmitButton from './SubmitButton';
 import TextareaFormField from './TextareaFormField';
 import TextFormField from './TextFormField';
 
-export default {
+export {
   CheckboxFormField,
   EmailFormField,
   FileFormField,

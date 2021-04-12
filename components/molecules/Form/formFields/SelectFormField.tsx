@@ -1,4 +1,4 @@
-import { BaseFormFieldConfig, FormFieldType } from 'config/types';
+import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 import { Field } from 'formik';
 import React from 'react';
 

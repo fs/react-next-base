@@ -1,15 +1,18 @@
 import React from 'react';
 import { Form as FormikForm, Formik } from 'formik';
-import { FormFieldConfig, FormFieldType, FormType } from 'config/types';
-import SelectFormField from 'components/atoms/formFields/SelectFormField';
-import CheckboxFormField from 'components/atoms/formFields/CheckboxFormField';
-import TextFormField from 'components/atoms/formFields/TextFormField';
-import PasswordFormField from 'components/atoms/formFields/PasswordFormField';
-import TextareaFormField from 'components/atoms/formFields/TextareaFormField';
-import FileFormField from 'components/atoms/formFields/FileFormField';
-import SubmitButton from 'components/atoms/formFields/SubmitButton';
-import EmailFormField from 'components/atoms/formFields/EmailFormField';
 import { object } from 'yup';
+
+import {
+  SelectFormField,
+  CheckboxFormField,
+  TextFormField,
+  PasswordFormField,
+  TextareaFormField,
+  FileFormField,
+  SubmitButton,
+  EmailFormField,
+} from './formFields';
+import { FormFieldConfig, FormFieldType, FormType } from './forms.types';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
 import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
 import { collectFormikProps } from './utils';

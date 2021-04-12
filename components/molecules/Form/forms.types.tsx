@@ -1,6 +1,6 @@
 import React from 'react';
 import { StringSchema } from 'yup';
-import formFields from 'components/atoms/formFields';
+import * as formFields from 'components/molecules/Form/formFields';
 import { InferValueTypes } from 'utils/ts';
 
 export enum FormFieldType {

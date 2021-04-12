@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
-import { BaseFormFieldConfig, FormFieldType } from 'config/types';
+import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
 export interface TextareaFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.textarea;
