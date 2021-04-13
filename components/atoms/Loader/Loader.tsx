@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 
@@ -22,7 +22,11 @@ const Title = styled.span`
   font-weight: bold;
 `;
 
-const Loader = ({ children, testId }) => (
+interface Props {
+  testId?: string;
+}
+
+const Loader = ({ children, testId }: PropsWithChildren<Props>): JSX.Element => (
   <Wrapper data-testid={testId} data-cy={testId}>
     <Title>{children}</Title>
   </Wrapper>
