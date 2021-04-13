@@ -1,6 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
+import type { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
+
+import type ITest from 'types/test';
 
 const Wrapper = styled.div(
   ({ theme: { colors } }) => css`
@@ -22,9 +25,7 @@ const Title = styled.span`
   font-weight: bold;
 `;
 
-interface Props {
-  testId?: string;
-}
+type Props = ITest;
 
 const Loader = ({ children, testId }: PropsWithChildren<Props>): JSX.Element => (
   <Wrapper data-testid={testId} data-cy={testId}>
