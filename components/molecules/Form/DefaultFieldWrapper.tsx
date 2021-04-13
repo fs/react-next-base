@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { ErrorMessage } from 'formik';
-import { BaseFormFieldConfig } from 'config/types';
+import { BaseFormFieldConfig } from './forms.types';
 import { ErrorWrapper, FieldLabel, FieldWrapper } from './styled-components';
 
 interface DefaultFieldWrapperProps {
