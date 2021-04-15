@@ -19,6 +19,14 @@
       "": ["./"]
     }
   },
-  "include": ["pages", "components/templates", "components"],
+  "include": [
+    "pages",
+    "components/templates",
+    "components",
+    "next-env.d.ts",
+    "declarations/*",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }
