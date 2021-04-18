@@ -36,50 +36,49 @@ const Form = ({ form }: { form: FormType }) => {
               <FormContainer>
                 {fields.map((fieldConfig: FormFieldConfig) => {
                   const { name, title } = fieldConfig;
-                  const disabled = isSubmitting ? true : fieldConfig.disabled || false;
                   switch (fieldConfig.type) {
                     case FormFieldType.select:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <SelectFormField {...fieldConfig} disabled={disabled} />
+                          <SelectFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.checkbox:
-                      return <CheckboxFormField key={name} {...fieldConfig} disabled={disabled} />;
+                      return <CheckboxFormField key={name} {...fieldConfig} isFormSubmitting={isSubmitting} />;
                     case FormFieldType.text:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <TextFormField {...fieldConfig} disabled={disabled} />
+                          <TextFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.password:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <PasswordFormField {...fieldConfig} disabled={disabled} />
+                          <PasswordFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.textarea:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <TextareaFormField {...fieldConfig} disabled={disabled} />
+                          <TextareaFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.file:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <FileFormField {...fieldConfig} disabled={disabled} />
+                          <FileFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.email:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <EmailFormField {...fieldConfig} disabled={disabled} />
+                          <EmailFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.submit:
                       return (
                         <FieldWrapper key={name}>
-                          <SubmitButton {...fieldConfig} disabled={disabled} />
+                          <SubmitButton {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </FieldWrapper>
                       );
                     default:
