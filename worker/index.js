@@ -1,28 +1,10 @@
 import 'firebase/messaging';
 import firebase from 'firebase/app';
 import localforage from 'localforage';
-// 'use strict';
-
-// To disable all workbox logging during development, you can set self.__WB_DISABLE_DEV_LOGS to true
-// https://developers.google.com/web/tools/workbox/guides/configure-workbox#disable_logging
-//
 
 // self.__WB_DISABLE_DEV_LOGS = true;
-// workbox.setConfig({debug: false})
-
 // const util = require('./util');
-
 // util();
-
-// listen to message event from window
-// self.addEventListener('message', event => {
-//   HOW TO TEST THIS?
-//   Run this in your browser console:
-//       window.navigator.serviceWorker.controller.postMessage({command: 'log', message: 'hello world'})
-//   OR use next-pwa injected workbox object
-//       window.workbox.messageSW({command: 'log', message: 'hello world'})
-//   console.log(event.data);
-// });
 
 const firebaseCloudMessaging = {
   //checking whether token is available in indexed DB
@@ -33,14 +15,14 @@ const firebaseCloudMessaging = {
   init: async function() {
     if (!firebase.apps.length) {
       firebase.initializeApp({
-        apiKey: 'AIzaSyDFh7vqPeYpn910SH57WeofWnMXDc8WJGE',
-        authDomain: 'fir-cloud-messaging-5543f.firebaseapp.com',
-        databaseURL: 'https://fir-cloud-messaging-5543f.firebaseio.com',
-        projectId: 'fir-cloud-messaging-5543f',
-        storageBucket: 'fir-cloud-messaging-5543f.appspot.com',
-        messagingSenderId: '354347614212',
-        appId: '1:354347614212:web:7b474a30c18aa6d2b47551',
-        measurementId: 'G-L63HMWWX6W',
+        databaseURL: 'https://react-next-base.firebaseio.com',
+        apiKey: 'AIzaSyDzObPF0TEJ4G80DFUnQzRDwy8oNQiTH4k',
+        authDomain: 'react-next-base.firebaseapp.com',
+        projectId: 'react-next-base',
+        storageBucket: 'react-next-base.appspot.com',
+        messagingSenderId: '641828025180',
+        appId: '1:641828025180:web:f35fafa05226e1c29a8799',
+        measurementId: 'G-3FGKMWEJNJ',
       });
 
       try {
@@ -55,7 +37,7 @@ const firebaseCloudMessaging = {
         if (status && status === 'granted') {
           //getting token from FCM
           const fcm_token = await messaging.getToken({
-            vapidKey: 'BHKTEUH2duqytR3M_MViWykEoTgBb6MtrhkfsrzGkQqVjBJ0ape8ym4zIbx7JluWLfqABa_lykF5cAKcBu_7MGg',
+            vapidKey: 'BN-wMGpdhUIylZonRIx-GGjwuFCPlp_BK9cxb8Cu8pO47FpBrZbKNkRMJIU9vdbUqh3O2XV80QkrZv8f93_ivu4',
           });
           if (fcm_token) {
             //setting FCM token in indexed db using localforage

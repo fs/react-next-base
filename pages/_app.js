@@ -7,14 +7,12 @@ import GlobalStyles from 'public/styles/globalStyles';
 import theme from 'public/styles/theme';
 import metaTags from 'config/metaTags';
 import linkTags from 'config/linkTags';
-
 // Custom styles
 import 'public/styles/custom.css';
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <>
         <Head>

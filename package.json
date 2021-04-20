@@ -26,6 +26,7 @@
   "dependencies": {
     "@apollo/client": "^3.0.2",
     "@babel/types": "^7.8.7",
+    "@firebase/messaging": "^0.7.9",
     "@types/jest": "^26.0.7",
     "@types/lodash": "^4.14.158",
     "@types/node": "^14.11.2",
@@ -38,6 +39,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-force-https": "^1.0.0",
+    "firebase": "^8.4.1",
     "formik": "^2.1.4",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.10.3",
@@ -45,6 +47,7 @@
     "https-proxy-agent": "^5.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "jest-extended": "^0.11.5",
+    "localforage": "^1.9.0",
     "lodash": "^4.17.15",
     "next": "9.5.4",
     "next-compose-plugins": "^2.2.0",
