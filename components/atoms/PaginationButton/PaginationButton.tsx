@@ -1,13 +1,11 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
-import { DefaultTheme } from 'styled-components';
 
 import { StyledButton } from './styled';
 import ITest from 'types/test';
 
 interface Props extends ITest {
-
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   customStyles?: string;
 }

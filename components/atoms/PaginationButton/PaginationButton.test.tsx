@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import PaginationButton from 'components/atoms/PaginationButton';
+import PaginationButton from './PaginationButton';
 
 describe('PaginationButton', () => {
   const mockText = "PaginationButton's content";
