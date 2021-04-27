@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 
-import type ITest from 'types/test';
+import type ITest from 'types/testType';
 
 const Wrapper = styled.div(
   ({ theme: { colors } }) => css`

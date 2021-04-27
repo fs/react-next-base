@@ -1,8 +1,8 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 
+import ITest from 'types/testType';
 import { StyledButton } from './styled';
-import ITest from 'types/test';
 
 interface Props extends ITest {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
-import type ITest from 'types/test';
+import type ITest from 'types/testType';
 
 type Props = ITest;
 

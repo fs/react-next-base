@@ -1,8 +1,11 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 
-const StyledTab = styled.li(
+interface IStyles {
+  active: boolean;
+}
+
+export const StyledTab = styled.li<IStyles>(
   ({ theme: { colors, breakpoints, down }, active }) => css`
     padding: 0 15px 5px 15px;
     font-size: 1rem;
@@ -20,10 +23,13 @@ const StyledTab = styled.li(
   `,
 );
 
-const Tab = ({ active, name, dataTestId, onClick }) => (
-  <StyledTab role="tab" active={active} onClick={onClick} data-testid={dataTestId} data-cy={dataTestId}>
-    {name}
-  </StyledTab>
-);
+export const StyledTabList = styled.ul(
+  ({ theme: { breakpoints, down } }) => css`
+    display: flex;
+    margin-bottom: 2rem;
 
-export default Tab;
+    ${down(breakpoints.sm)} {
+      flex-direction: column;
+    }
+  `,
+);

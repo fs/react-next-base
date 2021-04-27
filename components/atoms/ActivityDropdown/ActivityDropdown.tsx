@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import ITest from 'types/test';
+import ITest from 'types/testType';
 import { DefaultTheme } from 'styled-components';
 import { Wrapper, StyledLabel, StyledSelect } from './styled';
 

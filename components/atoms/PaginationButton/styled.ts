@@ -1,8 +1,8 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface IStyles {
   customStyles?: string;
-} 
+}
 
 export const StyledButton = styled.button<IStyles>(
   ({
