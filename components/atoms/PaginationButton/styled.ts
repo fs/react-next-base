@@ -1,7 +1,10 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.button(
+interface IStyles {
+  customStyles?: string;
+}
+
+export const StyledButton = styled.button<IStyles>(
   ({
     theme: {
       colors: { grey },
@@ -36,20 +39,3 @@ const StyledButton = styled.button(
     ${customStyles}
   `,
 );
-
-const PaginationButton = ({ testId, disabled, onClick, customStyles, children }) => {
-  return (
-    <StyledButton
-      type="button"
-      data-cy={testId}
-      data-testid={testId}
-      disabled={disabled}
-      onClick={onClick}
-      customStyles={customStyles}
-    >
-      {children}
-    </StyledButton>
-  );
-};
-
-export default PaginationButton;

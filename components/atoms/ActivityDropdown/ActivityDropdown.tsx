@@ -1,32 +1,25 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 
-const Wrapper = styled.div(
-  ({ theme, customStyles }) => css`
-    display: flex;
-    justify-content: center;
 
-    ${customStyles && customStyles(theme)}
-  `,
-);
+import ITest from 'types/testType';
+import { DefaultTheme } from 'styled-components';
+import { Wrapper, StyledLabel, StyledSelect } from './styled';
 
-const StyledLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  color: ${({ theme }) => theme.colors.darkGrey};
-`;
+interface IOption {
+  value: string | number;
+  name: string | number;
+}
 
-const StyledSelect = styled.select(
-  ({ theme: { up, breakpoints } }) => css`
-    margin-top: 0.5rem;
-    padding: 0.25rem;
-    font-size: 1rem;
-
-    ${up(breakpoints.sm)} {
-      font-size: 0.8rem;
-    }
-  `,
-);
+interface Props extends ITest {
+  label: string;
+  selectedValue?: IOption['value'];
+  values: IOption[];
+  hasEmptyOption?: boolean;
+  emptyOptionLabel?: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  disabled?: boolean;
+  customStyles?: (theme: DefaultTheme) => any;
+}
 
 const ActivityDropdown = ({
   label,
@@ -38,7 +31,7 @@ const ActivityDropdown = ({
   disabled,
   customStyles,
   testId,
-}) => {
+}: Props): JSX.Element  => {
   return (
     <Wrapper customStyles={customStyles} data-testid={testId}>
       <StyledLabel htmlFor="activity-dropdown">

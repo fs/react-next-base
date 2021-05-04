@@ -12,14 +12,12 @@ describe('Tabs', () => {
     {
       id: 'tab_1',
       name: 'first test tab',
-      active: true,
       onClick,
       content: <p>{firstTabContent}</p>,
     },
     {
       id: 'tab_2',
       name: 'second test tab',
-      active: false,
       onClick,
       content: <p>{secondTabContent}</p>,
     },
@@ -27,7 +25,7 @@ describe('Tabs', () => {
 
   test('should show active tab content', () => {
     // Act
-    render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
+    render(renderWithTheme(<Tabs tabs={MOCK_TABS} activeId={MOCK_TABS[0].id} />));
     const activeTabContent = screen.getByText(firstTabContent);
 
     // Assert
@@ -36,7 +34,7 @@ describe('Tabs', () => {
 
   test('should show switch tab and show this tab content', async () => {
     // Act
-    render(renderWithTheme(<Tabs tabs={MOCK_TABS} />));
+    render(renderWithTheme(<Tabs tabs={MOCK_TABS} activeId={MOCK_TABS[0].id} />));
 
     const secondTab = screen.getByTestId(`tab-${MOCK_TABS[1].id}`);
 

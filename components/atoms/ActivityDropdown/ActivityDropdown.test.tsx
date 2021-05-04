@@ -10,12 +10,13 @@ import ActivityDropdown from 'components/atoms/ActivityDropdown';
 describe('ActivityDropdown', () => {
   const mockLabel = "ActivityDropdown's label";
   const mockValues = activityPageSizes.map(item => ({ value: item, name: item }));
+  const mockOnChange = jest.fn;
 
   test('should render correctly', () => {
     // Arrange
 
     // Act
-    const { container } = render(renderWithTheme(<ActivityDropdown label={mockLabel} values={mockValues} />));
+    const { container } = render(renderWithTheme(<ActivityDropdown label={mockLabel} values={mockValues} onChange={mockOnChange} />));
 
     // Assert
     expect(container).toMatchSnapshot();
@@ -34,6 +35,7 @@ describe('ActivityDropdown', () => {
           values={mockValues}
           hasEmptyOption
           emptyOptionLabel={mockEmptyOptionLabel}
+          onChange={mockOnChange}
         />,
       ),
     );
