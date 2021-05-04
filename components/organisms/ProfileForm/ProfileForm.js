@@ -30,7 +30,6 @@ const ProfileForm = ({ profile }) => {
   };
 
   const onSubmit = async (values, { setSubmitting, setStatus }) => {
-    debugger;
     setStatus('');
     setSubmitting(true);
     setLoading(true);
