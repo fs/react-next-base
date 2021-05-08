@@ -1,8 +1,6 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
-import type ITest from 'types/testType';
-
-type Props = ITest;
+import type Props from 'types/testType';
 
 const ErrorMessage = ({ children, testId }: PropsWithChildren<Props>): JSX.Element => (
   <div data-testid={testId} data-cy={testId}>
