@@ -106,7 +106,7 @@ describe('ProfileForm', () => {
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
     const expectedLastName = 'Test LastName';
-    const expectedButtonText = 'Update';
+    // const expectedButtonText = 'Update';
     const expectedPasswordPlaceholderText = 'New Password';
     const expectedProfile = {
       email: expectedEmail,

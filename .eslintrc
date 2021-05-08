@@ -31,6 +31,8 @@
       1,
       { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
     ],
+    "@typescript-eslint/no-unused-vars": "error",
+    "react/require-default-props": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": 0,

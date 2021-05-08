@@ -12,7 +12,7 @@ const StyledFormTitle = styled.h3`
 `;
 
 const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
-  const isSignIn = activeForm === SIGN_IN_FORM;
+  // const isSignIn = activeForm === SIGN_IN_FORM;
   const isSignUp = activeForm === SIGN_UP_FORM;
   const isRecovery = activeForm === PASSWORD_RECOVERY_FORM;
 
