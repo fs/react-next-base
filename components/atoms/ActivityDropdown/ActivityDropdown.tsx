@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import ITest from 'types/testType';
 import { DefaultTheme } from 'styled-components';
 import { Wrapper, StyledLabel, StyledSelect } from './styled';
@@ -18,7 +17,7 @@ interface Props extends ITest {
   emptyOptionLabel?: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   disabled?: boolean;
-  customStyles?: (theme: DefaultTheme) => any;
+  customStyles?: (theme: DefaultTheme) => string;
 }
 
 const ActivityDropdown = ({
@@ -31,7 +30,7 @@ const ActivityDropdown = ({
   disabled,
   customStyles,
   testId,
-}: Props): JSX.Element  => {
+}: Props): JSX.Element => {
   return (
     <Wrapper customStyles={customStyles} data-testid={testId}>
       <StyledLabel htmlFor="activity-dropdown">

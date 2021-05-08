@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const nextRoutes = require('next-routes');
 const routes = require('./config/routes');
 

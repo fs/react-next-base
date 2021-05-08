@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { withApolloClient } from 'lib/withApolloClient';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import TYPES from 'config/types/notifierTypes';
@@ -8,26 +8,35 @@ const NotifierProvider = ({ children }) => {
   const [message, setMessage] = useState('');
   const [type, setType] = useState('');
 
-  const setError = errorMessage => {
-    const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
-    setMessage(parsedMessage);
-    setType(TYPES.error);
-  };
+  const setError = useCallback(
+    (errorMessage) => {
+      const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
+      setMessage(parsedMessage);
+      setType(TYPES.error);
+    },
+    [setMessage, setType],
+  );
 
-  const setInfo = infoMessage => {
-    setMessage(infoMessage);
-    setType(TYPES.info);
-  };
+  const setInfo = useCallback(
+    (infoMessage) => {
+      setMessage(infoMessage);
+      setType(TYPES.info);
+    },
+    [setMessage, setType],
+  );
 
-  const setSuccess = successMessage => {
-    setMessage(successMessage);
-    setType(TYPES.success);
-  };
+  const setSuccess = useCallback(
+    (successMessage) => {
+      setMessage(successMessage);
+      setType(TYPES.success);
+    },
+    [setMessage, setType],
+  );
 
-  const clearMessage = () => {
+  const clearMessage = useCallback(() => {
     setMessage('');
     setType('');
-  };
+  }, [setMessage, setType]);
 
   const context = useMemo(
     () => ({

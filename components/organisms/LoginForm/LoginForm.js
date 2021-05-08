@@ -31,7 +31,7 @@ const LoginForm = () => {
     if (detail) setMessage(detail);
   }, [recoverPasswordContext]);
 
-  const toggleForm = form => {
+  const toggleForm = (form) => {
     setActiveForm(form);
     setMessage('');
   };
@@ -44,7 +44,9 @@ const LoginForm = () => {
         [PASSWORD_RECOVERY_FORM]: recoverPassword,
       }[activeForm];
 
-      if (!action) throw new Error(`Action for ${activeForm} form is not exists`);
+      if (!action) {
+        console.error(`Action for ${activeForm} form is not exists`);
+      }
 
       setSubmitting(true);
 

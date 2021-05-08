@@ -31,6 +31,8 @@
       1,
       { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
     ],
+    "no-console": "off",
+    "prefer-destructuring": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "react/require-default-props": "off",
     "react/jsx-one-expression-per-line": "off",

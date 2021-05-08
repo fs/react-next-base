@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
-export const Wrapper = styled.div<{customStyles?: (theme: any) => any}>(
+export const Wrapper = styled.div<{ customStyles?: (theme: DefaultTheme) => string }>(
   ({ theme, customStyles }) => css`
     display: flex;
     justify-content: center;
