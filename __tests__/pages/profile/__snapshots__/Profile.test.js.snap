@@ -232,6 +232,7 @@ exports[`Profile page should render correctly 1`] = `
 
 exports[`Profile page should show error on error 1`] = `
 <div
+  data-cy="profile-error"
   data-testid="profile-error"
 >
   <p>

@@ -6,8 +6,12 @@ const Notifier = () => {
   const { message, type, clearMessage } = useNotifier();
 
   useEffect(() => {
-    if (message && type) {
-      toast[type](message);
+    if (message && type && clearMessage) {
+      if (type === 'default') {
+        toast(message);
+      } else {
+        toast[type](message);
+      }
       clearMessage();
     }
   }, [message, type, clearMessage]);

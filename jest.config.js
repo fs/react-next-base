@@ -8,6 +8,8 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/__tests__/helpers',
     '<rootDir>/__tests__/mocks',
+    '<rootDir>/__tests__/jest.setEnvVars.js',
+    '<rootDir>/__tests__/jest.setup.js',
   ],
   preset: 'ts-jest',
   transform: {
