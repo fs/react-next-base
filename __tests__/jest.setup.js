@@ -8,5 +8,9 @@ window.MutationObserver = MutationObserver;
 jest.setTimeout(30000);
 
 // hotfix https://github.com/vercel/next.js/issues/15543
-jest.mock('next/link', () => 'div');
+jest.mock('next/link', () => {
+  return ({ children }) => {
+    return children;
+  };
+});
 global.URL.createObjectURL = jest.fn();

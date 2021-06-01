@@ -19,6 +19,6 @@
       "": ["./"]
     }
   },
-  "include": ["pages", "components/templates", "components"],
+  "include": ["pages", "components/shared/templates", "components"],
   "exclude": ["node_modules"]
 }
