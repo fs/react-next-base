@@ -7,7 +7,8 @@ exports[`ProfileFormContent should render correctly 1`] = `
 
 .c2 input,
 .c2 textarea,
-.c2 select {
+.c2 select,
+.c2 button {
   width: 100%;
   padding: 1rem;
   font-size: 1rem;
@@ -211,7 +212,6 @@ exports[`ProfileFormContent should render correctly 1`] = `
               id="Update"
               name="Update"
               type="submit"
-              value="Update"
             />
           </div>
         </div>

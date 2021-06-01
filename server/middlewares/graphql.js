@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const zlib = require('zlib');
 const Cookie = require('universal-cookie');
 const { createProxyMiddleware } = require('http-proxy-middleware');
@@ -14,7 +15,7 @@ const handleResponse = ({ req, res, body }) => {
   try {
     const { data } = JSON.parse(body.toString());
 
-    const authOperationName = Object.keys(data).find(key => authOperationNames.includes(key));
+    const authOperationName = Object.keys(data).find((key) => authOperationNames.includes(key));
 
     if (authOperationName === 'signout') {
       deleteRefreshToken({ res });
@@ -38,7 +39,8 @@ const graphqlProxyMidlleware = createProxyMiddleware({
     const { body } = req;
 
     if (!body || !Object.keys(body).length) {
-      return res.end();
+      res.end();
+      return;
     }
 
     const { operationName } = body;
@@ -53,7 +55,7 @@ const graphqlProxyMidlleware = createProxyMiddleware({
     // send request body in correct format (after parsing body with body-parser library)
     const contentType = proxyReq.getHeader('Content-Type');
 
-    const writeBody = bodyData => {
+    const writeBody = (bodyData) => {
       proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
       proxyReq.write(bodyData);
     };
@@ -61,15 +63,15 @@ const graphqlProxyMidlleware = createProxyMiddleware({
     if (contentType === 'application/json') {
       writeBody(JSON.stringify(body));
     }
-
-    if (contentType === 'application/x-www-form-urlencoded') {
-      writeBody(querystring.stringify(body));
-    }
+    // TODO: what it is?
+    // if (contentType === 'application/x-www-form-urlencoded') {
+    //   writeBody(querystring.stringify(body));
+    // }
   },
   onProxyRes: (proxyRes, req, res) => {
     const bodyChunks = [];
 
-    proxyRes.on('data', chunk => {
+    proxyRes.on('data', (chunk) => {
       bodyChunks.push(chunk);
     });
 

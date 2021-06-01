@@ -108,7 +108,7 @@ const ProfileFormContent = ({
       type: 'submit',
       name: 'Update',
       testID: 'update-button',
-      initialValue: 'Update',
+      label: 'Update',
     },
   ];
 

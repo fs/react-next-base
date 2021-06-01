@@ -15,11 +15,12 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-const dotenvPlugin = require('cypress-dotenv');
+import dotenvPlugin from 'cypress-dotenv';
 
-module.exports = (on, config) => {
-  config = dotenvPlugin(config);
-  return config;
+const configure = (on, config) => {
+  return dotenvPlugin(config);
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 };
+
+export default configure;
