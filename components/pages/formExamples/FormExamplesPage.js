@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Form from 'components/molecules/Form';
+import Form from 'components/shared/molecules/Form';
 
 const form = {
   fields: [

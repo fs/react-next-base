@@ -10,12 +10,12 @@ import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
 
 import ErrorDecorator from 'decorators/ErrorDecorator';
-import Loader from 'components/atoms/Loader';
-import ErrorMessage from 'components/atoms/ErrorMessage';
-import DefaultTemplate from 'components/templates/DefaultTemplate';
-import ActivityTable from 'components/organisms/ActivityTable';
-import ActivityPagination from 'components/molecules/ActivityPagination';
-import ActivityDropdown from 'components/atoms/ActivityDropdown';
+import Loader from 'components/shared/atoms/Loader';
+import ErrorMessage from 'components/shared/atoms/ErrorMessage';
+import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
+import ActivityTable from 'components/shared/organisms/ActivityTable';
+import ActivityPagination from 'components/shared/molecules/ActivityPagination';
+import ActivityDropdown from 'components/shared/atoms/ActivityDropdown';
 
 const Wrapper = styled.div`
   position: relative;

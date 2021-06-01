@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 
-import DefaultTemplate from 'components/templates/DefaultTemplate';
+import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import { NotifierProvider } from 'contexts/NotifierContext';
 
 const Title = styled.h1`

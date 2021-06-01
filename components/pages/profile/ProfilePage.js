@@ -1,16 +1,16 @@
 import React from 'react';
 
 import ErrorDecorator from 'decorators/ErrorDecorator';
-import ErrorMessage from 'components/atoms/ErrorMessage';
+import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
 
-import DefaultTemplate from 'components/templates/DefaultTemplate';
-import ProfileForm from 'components/organisms/ProfileForm';
+import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
+import ProfileForm from 'components/shared/organisms/ProfileForm';
 import { NotifierProvider } from 'contexts/NotifierContext';
-import Notifier from 'components/atoms/Notifier';
+import Notifier from 'components/shared/atoms/Notifier';
 
 const Profile = () => {
   const { loading, error, user } = useCurrentUser();

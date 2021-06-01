@@ -7,7 +7,7 @@ import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
 
 import ProfilePage from '.';
 
-jest.mock('components/templates/DefaultTemplate', () => 'div');
+jest.mock('components/shared/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/currentUser');
 jest.mock('lib/apollo/hooks/actions/auth', () => ({
   useSignIn: jest.fn(() => []),

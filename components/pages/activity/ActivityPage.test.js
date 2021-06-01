@@ -9,7 +9,7 @@ import activitiesMock from '__tests__/mocks/activitiesMock';
 
 import ActivityPage from '.';
 
-jest.mock('components/templates/DefaultTemplate', () => 'div');
+jest.mock('components/shared/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/activity');
 jest.mock('lib/apollo/hooks/actions/auth', () => ({
   useSignIn: jest.fn(() => []),
