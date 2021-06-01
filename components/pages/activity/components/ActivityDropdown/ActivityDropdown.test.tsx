@@ -5,7 +5,7 @@ import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import activityPageSizes from 'config/activityPageSizes';
 
-import ActivityDropdown from 'components/shared/atoms/ActivityDropdown';
+import ActivityDropdown from '.';
 
 describe('ActivityDropdown', () => {
   const mockLabel = "ActivityDropdown's label";

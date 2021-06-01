@@ -13,9 +13,10 @@ import ErrorDecorator from 'decorators/ErrorDecorator';
 import Loader from 'components/shared/atoms/Loader';
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
-import ActivityTable from 'components/shared/organisms/ActivityTable';
-import ActivityPagination from 'components/shared/molecules/ActivityPagination';
-import ActivityDropdown from 'components/shared/atoms/ActivityDropdown';
+
+import ActivityDropdown from './components/ActivityDropdown';
+import ActivityTable from './components/ActivityTable';
+import ActivityPagination from './components/ActivityPagination';
 
 const Wrapper = styled.div`
   position: relative;

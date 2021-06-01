@@ -4,7 +4,7 @@ import 'jest-styled-components';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import pageInfoMock from '__tests__/mocks/pageInfoMock';
-import ActivityPagination from 'components/shared/molecules/ActivityPagination';
+import ActivityPagination from 'components/pages/activity/components/ActivityPagination';
 
 describe('ActivityPagination', () => {
   const mockTestId = 'activity-pagination';

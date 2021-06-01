@@ -4,7 +4,7 @@ import 'jest-styled-components';
 
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import activitiesMock from '__tests__/mocks/activitiesMock';
-import ActivityTable from 'components/shared/organisms/ActivityTable';
+import ActivityTable from 'components/pages/activity/components/ActivityTable';
 
 describe('ActivityTable', () => {
   test('should render correctly', () => {

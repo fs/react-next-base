@@ -84,6 +84,26 @@ exports[`Activity page should render correctly 1`] = `
   margin-left: 0.5rem;
 }
 
+@media (min-width:calc(576px + 0.02px)) {
+
+}
+
+@media (min-width:calc(576px + 0.02px)) {
+
+}
+
+@media (min-width:calc(576px + 0.02px)) {
+
+}
+
+@media (min-width:calc(576px + 0.02px)) {
+
+}
+
+@media (min-width:calc(576px + 0.02px)) {
+
+}
+
 @media (min-width:calc(992px + 0.02px)) {
   .c3 {
     padding: 1.2rem 1rem;
@@ -103,26 +123,6 @@ exports[`Activity page should render correctly 1`] = `
     padding: 1.2rem 1rem;
     font-size: 0.9rem;
   }
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
-}
-
-@media (min-width:calc(576px + 0.02px)) {
-
 }
 
 <table

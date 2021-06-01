@@ -2,7 +2,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import Tabs from 'components/shared/molecules/Tabs';
-import Form from '../../molecules/Form';
+import Form from '../../../../shared/molecules/Form';
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
 
 const StyledFormTitle = styled.h3`
