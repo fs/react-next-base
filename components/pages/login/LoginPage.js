@@ -7,7 +7,7 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 import LoginForm from 'components/organisms/LoginForm';
 import Notifier from 'components/atoms/Notifier';
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <NotifierProvider>
       <DefaultTemplate>
@@ -18,4 +18,4 @@ const Login = () => {
   );
 };
 
-export default withApolloClient(WithAuth(Login));
+export default withApolloClient(WithAuth(LoginPage));

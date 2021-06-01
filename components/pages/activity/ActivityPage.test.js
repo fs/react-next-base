@@ -7,7 +7,7 @@ import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import activitiesMock from '__tests__/mocks/activitiesMock';
 
-import Activity from 'pages/activity';
+import ActivityPage from '.';
 
 jest.mock('components/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/activity');
@@ -27,7 +27,7 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivity);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<ActivityPage />)));
     const pageContent = screen.getByTestId('activity-table');
 
     // Assert
@@ -44,7 +44,7 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivity);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<ActivityPage />)));
     const loadingContent = screen.getByTestId('activity-loading');
 
     // Assert
@@ -70,7 +70,7 @@ describe('Activity page', () => {
     useActivity.mockImplementation(mockUseActivityErrorData);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Activity />)));
+    render(renderWithTheme(renderWithApolloClient(<ActivityPage />)));
     const errorContent = screen.getByTestId('activity-error');
 
     // Assert

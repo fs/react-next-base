@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Form from '../../components/molecules/Form';
+import Form from 'components/molecules/Form';
 
 const form = {
   fields: [
@@ -18,9 +18,7 @@ const form = {
       title: 'E-mail',
       placeholder: 'your email',
       initialValue: '',
-      validationSchema: Yup.string()
-        .email('The email must be valid!!')
-        .required('This field is required'),
+      validationSchema: Yup.string().email('The email must be valid!!').required('This field is required'),
     },
     {
       type: 'text',
@@ -62,7 +60,7 @@ const form = {
       initialValue: 'submit it',
     },
   ],
-  submit: values => console.log(values),
+  submit: (values) => console.log(values),
 };
 
 const FormExamples = () => {

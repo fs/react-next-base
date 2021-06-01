@@ -5,7 +5,7 @@ import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
 
-import Profile from 'pages/profile';
+import ProfilePage from '.';
 
 jest.mock('components/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/currentUser');
@@ -26,7 +26,7 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<ProfilePage />)));
     const pageContent = screen.getByTestId('profile-page');
 
     // Assert
@@ -43,7 +43,7 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUser);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<ProfilePage />)));
     const loadingContent = screen.getByTestId('profile-loading');
 
     // Assert
@@ -70,7 +70,7 @@ describe('Profile page', () => {
     useCurrentUser.mockImplementation(mockUseCurrentUserErrorData);
 
     // Act
-    render(renderWithTheme(renderWithApolloClient(<Profile />)));
+    render(renderWithTheme(renderWithApolloClient(<ProfilePage />)));
     const errorContent = screen.getByTestId('profile-error');
 
     // Assert
