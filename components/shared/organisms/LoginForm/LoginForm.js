@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import useNotifier from 'hooks/useNotifier';
+
 import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions/auth';
 import LoginFormContent from './LoginFormContent';
 
@@ -20,16 +22,20 @@ const StyledMessage = styled.div`
 const LoginForm = () => {
   const [signIn] = useSignIn();
   const [signUp] = useSignUp();
-  const [recoverPassword, recoverPasswordContext] = usePasswordRecovery();
+  const [recoverPassword, detailMessage, errorMessage] = usePasswordRecovery();
 
   const [activeForm, setActiveForm] = useState(SIGN_IN_FORM);
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    const detail = recoverPasswordContext?.data?.requestPasswordRecovery?.detail;
+  const { setSuccess, setError } = useNotifier();
 
-    if (detail) setMessage(detail);
-  }, [recoverPasswordContext]);
+  useEffect(() => {
+    if (detailMessage) setSuccess(detailMessage);
+  }, [detailMessage]);
+
+  useEffect(() => {
+    if (errorMessage) setError(errorMessage);
+  }, [errorMessage]);
 
   const toggleForm = (form) => {
     setActiveForm(form);

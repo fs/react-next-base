@@ -5,12 +5,12 @@ describe('Password Recovery', () => {
     });
   });
 
-  it('Visitor resets his password', () => {
+  it('Visitor resets his password with valid email', () => {
     const email = this.user.email;
     const expectedMessage = 'Password recovery instructions were sent if that account exists';
 
     cy.passwordRecovery({ email });
 
-    cy.get('[data-cy=password-recovery-message]').should('contain', expectedMessage);
+    cy.get('[data-cy=notifier]').should('contain', expectedMessage);
   });
 });
