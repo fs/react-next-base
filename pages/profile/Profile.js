@@ -5,7 +5,7 @@ import ErrorMessage from 'components/atoms/ErrorMessage';
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
-import { useCurrentUser } from 'lib/apollo/hooks/state';
+import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
 
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import ProfileForm from 'components/organisms/ProfileForm';

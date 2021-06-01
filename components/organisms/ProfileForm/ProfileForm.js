@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions';
+import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
 import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import useNotifier from 'hooks/useNotifier';
@@ -15,7 +15,7 @@ const ProfileForm = ({ profile }) => {
   const [temporaryUrl, setTemporaryUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleAvatarChange = event => {
+  const handleAvatarChange = (event) => {
     const {
       target: {
         validity,

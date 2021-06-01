@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { useActivity } from 'lib/apollo/hooks/activity';
+import { useActivity } from 'lib/apollo/hooks/state/activity';
 import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import activitiesMock from '__tests__/mocks/activitiesMock';
@@ -10,8 +10,8 @@ import activitiesMock from '__tests__/mocks/activitiesMock';
 import Activity from 'pages/activity';
 
 jest.mock('components/templates/DefaultTemplate', () => 'div');
-jest.mock('lib/apollo/hooks/activity.js');
-jest.mock('lib/apollo/hooks/actions.js', () => ({
+jest.mock('lib/apollo/hooks/state/activity');
+jest.mock('lib/apollo/hooks/actions/auth', () => ({
   useSignIn: jest.fn(() => []),
   useUpdateUser: jest.fn(() => []),
 }));

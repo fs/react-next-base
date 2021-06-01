@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Homepage should render correctly 1`] = `
+exports[`HomePage should render correctly 1`] = `
 .c0 {
   font-size: 2rem;
   text-align: center;
@@ -15,7 +15,7 @@ exports[`Homepage should render correctly 1`] = `
 }
 
 <div
-  class="pages__PageContent-f4fng6-1"
+  class="HomePage__PageContent-sc-1qrl93m-1"
   data-testid="page-content"
 >
   <h1

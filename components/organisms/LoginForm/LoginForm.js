@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions';
+import { useSignIn, useSignUp, usePasswordRecovery } from 'lib/apollo/hooks/actions/auth';
 import LoginFormContent from './LoginFormContent';
 
 import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';

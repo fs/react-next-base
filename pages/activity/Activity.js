@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
-import { useActivity } from 'lib/apollo/hooks/activity';
+import { useActivity } from 'lib/apollo/hooks/state/activity';
 
 import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
@@ -32,14 +32,14 @@ const dropdownStyles = ({ up, breakpoints }) => css`
     font-size: 0.9rem;
   }
 `;
-const filterDropdownStyles = theme => css`
+const filterDropdownStyles = (theme) => css`
   ${dropdownStyles(theme)}
 
   ${theme.up(theme.breakpoints.sm)} {
     left: 1rem;
   }
 `;
-const pageSizeDropdownStyles = theme => css`
+const pageSizeDropdownStyles = (theme) => css`
   ${dropdownStyles(theme)}
 
   ${theme.up(theme.breakpoints.sm)} {
@@ -64,12 +64,12 @@ const Activity = () => {
     setPageNumber(1);
   };
 
-  const handleFilterChange = event => {
+  const handleFilterChange = (event) => {
     setFilterValue(event.target.value);
     resetState();
   };
 
-  const handlePageSizeChange = event => {
+  const handlePageSizeChange = (event) => {
     setPageSize(+event.target.value);
     resetState();
   };
@@ -91,7 +91,7 @@ const Activity = () => {
         <ActivityDropdown
           label="Choose activity page size:"
           selectedValue={pageSize}
-          values={activityPageSizes.map(item => ({ value: item, name: item }))}
+          values={activityPageSizes.map((item) => ({ value: item, name: item }))}
           onChange={handlePageSizeChange}
           testId="activity-size-dropdown"
           disabled={loading}
@@ -110,11 +110,7 @@ const Activity = () => {
 
         {!loading && !error && <ActivityTable data={activities} />}
         {loading && <Loader testId="activity-loading">Loading...</Loader>}
-        {error && (
-          <ErrorMessage testId="activity-error">
-            {errorMessage}
-          </ErrorMessage>
-        )}
+        {error && <ErrorMessage testId="activity-error">{errorMessage}</ErrorMessage>}
       </Wrapper>
     </DefaultTemplate>
   );
