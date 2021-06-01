@@ -12,7 +12,7 @@ const StyledFormTitle = styled.h3`
 `;
 
 const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
-  const isSignIn = activeForm === SIGN_IN_FORM;
+  // const isSignIn = activeForm === SIGN_IN_FORM;
   const isSignUp = activeForm === SIGN_UP_FORM;
   const isRecovery = activeForm === PASSWORD_RECOVERY_FORM;
 
@@ -93,7 +93,6 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     {
       id: 'signin',
       name: 'Sign in',
-      active: isSignIn,
       action: () => toggleForm(SIGN_IN_FORM),
       content: <Content />,
     },
@@ -106,7 +105,6 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     {
       id: 'password-recovery',
       name: 'Forgot your password',
-      active: isRecovery,
       action: () => toggleForm(PASSWORD_RECOVERY_FORM),
       content: <Content />,
     },

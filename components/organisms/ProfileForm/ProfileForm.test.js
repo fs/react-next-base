@@ -18,7 +18,6 @@ describe('ProfileForm', () => {
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
     const expectedLastName = 'Test LastName';
-    const expectedButtonText = 'Update';
     const expectedProfile = {
       email: expectedEmail,
       firstName: expectedFirstName,
@@ -29,7 +28,6 @@ describe('ProfileForm', () => {
       ...expectedProfile,
       password: '',
       currentPassword: '',
-      [expectedButtonText]: expectedButtonText,
     };
     const mockUpdateUser = jest.fn(() => Promise.resolve());
     useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
@@ -41,7 +39,7 @@ describe('ProfileForm', () => {
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
     // Act
-    fireEvent.click(screen.getByText(expectedButtonText));
+    fireEvent.click(screen.getByTestId('update-button'));
 
     // Assert
     await waitFor(() => expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues));
@@ -64,7 +62,6 @@ describe('ProfileForm', () => {
     const expectedFirstName = 'Test FirstName';
     const expectedLastName = 'Test LastName';
     const expectedAvatarTestId = 'avatar';
-    const expectedButtonText = 'Update';
     const expectedProfile = {
       email: expectedEmail,
       firstName: expectedFirstName,
@@ -80,7 +77,6 @@ describe('ProfileForm', () => {
       ...expectedProfile,
       password: '',
       currentPassword: '',
-      [expectedButtonText]: expectedButtonText,
     };
     const mockUpdateUser = jest.fn(() => Promise.resolve());
     useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
@@ -95,7 +91,7 @@ describe('ProfileForm', () => {
     fireEvent.change(fileInput, mockAvatarChangeEvent);
 
     // Act
-    fireEvent.click(screen.getByText(expectedButtonText));
+    fireEvent.click(screen.getByTestId('update-button'));
 
     // Assert
     await waitFor(() => expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues));
@@ -110,7 +106,7 @@ describe('ProfileForm', () => {
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
     const expectedLastName = 'Test LastName';
-    const expectedButtonText = 'Update';
+    // const expectedButtonText = 'Update';
     const expectedPasswordPlaceholderText = 'New Password';
     const expectedProfile = {
       email: expectedEmail,
@@ -135,7 +131,7 @@ describe('ProfileForm', () => {
     fireEvent.input(screen.getByPlaceholderText(expectedPasswordPlaceholderText), { value: '123' });
 
     // Act
-    fireEvent.click(screen.getByText(expectedButtonText));
+    fireEvent.click(screen.getByTestId('update-button'));
 
     // Assert
     await waitFor(() => expect(mockErrorDecorator).toHaveBeenCalledWith(expectedError));
