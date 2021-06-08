@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const StyledImageWrapper = styled.div`
+export const StyledImageWrapper = styled.div`
   position: relative;
   display: inline-block;
   width: 1.875rem;
@@ -10,7 +9,8 @@ const StyledImageWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
 `;
-const StyledImage = styled.img`
+
+export const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -25,14 +25,3 @@ const StyledImage = styled.img`
   max-height: 100%;
   margin: auto; */
 `;
-
-const ProfileImage = ({ avatar, alt }) => {
-  const defaultAvatar = `${process.env.ASSET_HOST}/images/avatar-placeholder.png`;
-  return (
-    <StyledImageWrapper>
-      <StyledImage alt={alt || 'Avatar'} src={avatar || defaultAvatar} />
-    </StyledImageWrapper>
-  );
-};
-
-export default ProfileImage;
