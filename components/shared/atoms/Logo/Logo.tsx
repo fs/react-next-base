@@ -3,7 +3,7 @@ import { Link } from 'routes';
 
 import LogoIcon from 'public/images/logo.svg';
 
-const Logo = () => (
+const Logo = (): JSX.Element => (
   <Link route="/">
     <a>
       <LogoIcon />
