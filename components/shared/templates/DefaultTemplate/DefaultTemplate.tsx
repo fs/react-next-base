@@ -9,9 +9,7 @@ import { useSignOut } from 'lib/apollo/hooks/actions/auth';
 
 import { Wrapper, PageContent } from './styled';
 
-interface Props extends ITest {}
-
-const DefaultTemplate = ({ children, testId = 'default-template' }: PropsWithChildren<Props>): JSX.Element => {
+const DefaultTemplate = ({ children, testId = 'default-template' }: PropsWithChildren<ITest>): JSX.Element => {
   const { user } = useCurrentUser(false);
   const [signOut] = useSignOut();
 
