@@ -5,6 +5,15 @@ describe('Sign Up', () => {
     });
   });
 
+  afterEach(() => {
+    cy.get('body').then(($body) => {
+      if ($body.find('[data-cy=dropdown-toggler]').length > 0) {
+        cy.get('[data-cy=dropdown-toggler]').click();
+        cy.get('[data-cy=sign-out]').click();
+      }
+    });
+  });
+
   it('Visitor singns up with valid credentials', () => {
     const timestamp = +new Date();
     const { firstName, lastName } = this.user;
