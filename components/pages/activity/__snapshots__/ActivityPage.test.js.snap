@@ -17,33 +17,6 @@ exports[`Activity page should render correctly 1`] = `
   object-fit: cover;
 }
 
-.c3 {
-  border-bottom: 1px solid #e1e1e1;
-  padding: 0.8rem 0.6rem;
-  font-size: 0.8rem;
-  line-height: 1.6;
-  font-weight: 100;
-}
-
-.c3:first-child {
-  padding-left: 0;
-}
-
-.c3:nth-child(4) {
-  white-space: nowrap;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .c0 {
   position: relative;
   border-spacing: 0;
@@ -84,8 +57,31 @@ exports[`Activity page should render correctly 1`] = `
   margin-left: 0.5rem;
 }
 
-@media (min-width:calc(576px + 0.02px)) {
+.c3 {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 0.8rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-weight: 100;
+}
 
+.c3:first-child {
+  padding-left: 0;
+}
+
+.c3:nth-child(4) {
+  white-space: nowrap;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 @media (min-width:calc(576px + 0.02px)) {
@@ -104,11 +100,8 @@ exports[`Activity page should render correctly 1`] = `
 
 }
 
-@media (min-width:calc(992px + 0.02px)) {
-  .c3 {
-    padding: 1.2rem 1rem;
-    font-size: 0.9rem;
-  }
+@media (min-width:calc(576px + 0.02px)) {
+
 }
 
 @media (min-width:calc(992px + 0.02px)) {
@@ -120,6 +113,13 @@ exports[`Activity page should render correctly 1`] = `
 
 @media (min-width:calc(992px + 0.02px)) {
   .c1 {
+    padding: 1.2rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width:calc(992px + 0.02px)) {
+  .c3 {
     padding: 1.2rem 1rem;
     font-size: 0.9rem;
   }
