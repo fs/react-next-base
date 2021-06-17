@@ -15,7 +15,7 @@ exports[`HomePage should render correctly 1`] = `
 }
 
 <div
-  class="HomePage__PageContent-sc-1qrl93m-1"
+  class="styled__PageContent-sc-1bxgj0r-1"
   data-testid="page-content"
 >
   <h1
