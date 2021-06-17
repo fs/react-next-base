@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
@@ -7,12 +6,7 @@ import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import { NotifierProvider } from 'contexts/NotifierContext';
 
-const Title = styled.h1`
-  font-size: 2rem;
-  text-align: center;
-`;
-
-const PageContent = styled.div``;
+import { Title, PageContent } from './styled';
 
 const HomePage = () => {
   return (

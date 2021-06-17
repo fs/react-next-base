@@ -1,22 +1,8 @@
 import React from 'react';
 import { Link } from 'routes';
-import styled from 'styled-components';
 import Router from 'next/router';
 
-const TitleWrapper = styled.section`
-  max-width: 78.75rem;
-  padding: 3.75rem 1.25rem 1.875rem;
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const Description = styled.p`
-  font-size: 0.9rem;
-`;
-
-const StyledLink = styled.a`
-  text-decoration: underline;
-`;
+import { TitleWrapper, Description, StyledLink } from './styled';
 
 const ErrorPage = ({ statusCode }) => {
   const is404 = statusCode === 404;
