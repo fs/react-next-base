@@ -15,7 +15,6 @@ const firebaseCloudMessaging = {
   init: async function() {
     if (!firebase.apps.length) {
       firebase.initializeApp({
-        databaseURL: 'https://react-next-base.firebaseio.com',
         apiKey: 'AIzaSyDzObPF0TEJ4G80DFUnQzRDwy8oNQiTH4k',
         authDomain: 'react-next-base.firebaseapp.com',
         projectId: 'react-next-base',
@@ -42,7 +41,6 @@ const firebaseCloudMessaging = {
           if (fcm_token) {
             //setting FCM token in indexed db using localforage
             localforage.setItem('fcm_token', fcm_token);
-            console.log('fcm token', fcm_token);
             //return the FCM token after saving it
             return fcm_token;
           }
@@ -54,4 +52,5 @@ const firebaseCloudMessaging = {
     }
   },
 };
+
 export { firebaseCloudMessaging };
