@@ -1,51 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 
-import baseCellStyles from './baseCellStyles';
 import DataCell from './DataCell';
 
-const StyledTable = styled.table(
-  ({ theme: { colors, up, breakpoints } }) =>
-    css`
-      position: relative;
-      border-spacing: 0;
-      display: block;
-      overflow-x: auto;
-      text-align: left;
-      width: 100%;
-      color: ${colors.darkGrey};
-
-      ${up(breakpoints.lg)} {
-        display: table;
-        overflow-x: initial;
-      }
-    `,
-);
-
-const ColorLabel = styled.td(
-  ({ color }) => css`
-    min-width: 5px;
-    background-color: ${color};
-  `,
-);
-
-const HeaderCell = styled.th(
-  ({ theme }) => css`
-    ${baseCellStyles(theme)}
-  `,
-);
-
-const UserInfo = styled.span`
-  margin-left: 0.5rem;
-`;
-
-const EmptyList = styled.div`
-  margin: 3rem 0;
-  text-align: center;
-  font-style: italic;
-`;
+import { StyledTable, ColorLabel, HeaderCell, UserInfo, EmptyList } from './styled';
 
 const ActivityTable = ({ data }) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
