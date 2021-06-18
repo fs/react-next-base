@@ -6,12 +6,7 @@ describe('Sign In', () => {
   });
 
   afterEach(() => {
-    cy.get('body').then(($body) => {
-      if ($body.find('[data-cy=dropdown-toggler]').length > 0) {
-        cy.get('[data-cy=dropdown-toggler]').click();
-        cy.get('[data-cy=sign-out]').click();
-      }
-    });
+    cy.signout();
   });
 
   it('Visitor signs in with valid credentials', () => {
@@ -22,7 +17,7 @@ describe('Sign In', () => {
     cy.get('[data-cy=dropdown-toggler]').should('contain', validCredentials.email);
   });
 
-  it('Visitor should be redirected to home page if authorized', () => {
+  it('Authorized user visits auth page', () => {
     const validCredentials = this.users.validUser;
 
     cy.login(validCredentials);

@@ -55,3 +55,12 @@ Cypress.Commands.add('passwordRecovery', ({ email }) => {
 
   cy.get('[data-cy=submit-button]').click();
 });
+
+Cypress.Commands.add('signout', () => {
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy=dropdown-toggler]').length > 0) {
+      cy.get('[data-cy=dropdown-toggler]').click();
+      cy.get('[data-cy=sign-out]').click();
+    }
+  });
+});

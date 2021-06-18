@@ -9,12 +9,7 @@ describe('Activities Page', () => {
   });
 
   afterEach(() => {
-    cy.get('body').then(($body) => {
-      if ($body.find('[data-cy=dropdown-toggler]').length > 0) {
-        cy.get('[data-cy=dropdown-toggler]').click();
-        cy.get('[data-cy=sign-out]').click();
-      }
-    });
+    cy.signout();
   });
 
   it('User sees activities table', () => {
