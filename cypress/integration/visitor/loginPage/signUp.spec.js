@@ -5,6 +5,10 @@ describe('Sign Up', () => {
     });
   });
 
+  afterEach(() => {
+    cy.signout();
+  });
+
   it('Visitor singns up with valid credentials', () => {
     const timestamp = +new Date();
     const { firstName, lastName } = this.user;
