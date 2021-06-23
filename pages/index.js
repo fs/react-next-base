@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
 import { NotifierProvider } from 'contexts/NotifierContext';
-import { firebaseCloudMessaging } from '../worker';
+import { useFirebaseMessaging } from '../hooks/useFirebaseMessaging';
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -14,14 +14,7 @@ const Title = styled.h1`
 const PageContent = styled.div``;
 
 const HomePage = () => {
-  // need to get a token for messaging
-  useEffect(() => {
-    const tokenTest = firebaseCloudMessaging.init();
-    tokenTest.then(payload => {
-      console.log(payload);
-      // maybe send it to backend
-    });
-  });
+  useFirebaseMessaging();
 
   return (
     <NotifierProvider>

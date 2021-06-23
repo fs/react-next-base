@@ -7,12 +7,12 @@ import localforage from 'localforage';
 // util();
 
 const firebaseCloudMessaging = {
-  //checking whether token is available in indexed DB
+  // checking whether token is available in indexed DB
   tokenInlocalforage: async () => {
     return localforage.getItem('fcm_token');
   },
-  //initializing firebase app
-  init: async function() {
+  // initializing firebase app
+  async init() {
     if (!firebase.apps.length) {
       firebase.initializeApp({
         apiKey: 'AIzaSyDzObPF0TEJ4G80DFUnQzRDwy8oNQiTH4k',
@@ -27,21 +27,21 @@ const firebaseCloudMessaging = {
       try {
         const messaging = firebase.messaging();
         const tokenInLocalForage = await this.tokenInlocalforage();
-        //if FCM token is already there just return the token
+        // if FCM token is already there just return the token
         if (tokenInLocalForage !== null) {
           return tokenInLocalForage;
         }
-        //requesting notification permission from browser
+        // requesting notification permission from browser
         const status = await Notification.requestPermission();
         if (status && status === 'granted') {
-          //getting token from FCM
+          // getting token from FCM
           const fcm_token = await messaging.getToken({
             vapidKey: 'BN-wMGpdhUIylZonRIx-GGjwuFCPlp_BK9cxb8Cu8pO47FpBrZbKNkRMJIU9vdbUqh3O2XV80QkrZv8f93_ivu4',
           });
           if (fcm_token) {
-            //setting FCM token in indexed db using localforage
+            // setting FCM token in indexed db using localforage
             localforage.setItem('fcm_token', fcm_token);
-            //return the FCM token after saving it
+            // return the FCM token after saving it
             return fcm_token;
           }
         }
