@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile page should render correctly 1`] = `
+.c2 {
+  max-width: 40rem;
+}
+
+.c2 input,
+.c2 textarea,
+.c2 select,
+.c2 button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgb(179,179,179);
+}
+
+.c2 [type='file'] {
+  border: none;
+  padding: 0;
+}
+
+.c2 input[type='checkbox'],
+.c2 input[type='radio'] {
+  width: auto;
+}
+
+.c2 textarea {
+  resize: vertical;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c4 {
+  position: relative;
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.c5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c0 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem;
+  position: relative;
+}
+
+.c1 {
+  max-width: 40rem;
+  margin: 0 auto 1rem;
+  line-height: 1.25;
+  -webkit-letter-spacing: -0.035rem;
+  -moz-letter-spacing: -0.035rem;
+  -ms-letter-spacing: -0.035rem;
+  letter-spacing: -0.035rem;
+}
+
+<div
+  data-testid="profile-page"
+>
+  <div
+    class="c0"
+  >
+    <h3
+      class="c1"
+      data-cy="profile-form-title"
+    >
+      Profile
+    </h3>
+    <div
+      class="c2"
+      data-cy="profile-update-form"
+    >
+      <form
+        action="#"
+      >
+        <div
+          class="c3"
+        >
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="avatar"
+            >
+              Avatar
+            </label>
+            <input
+              accept="image/*"
+              data-cy="avatar"
+              data-testid="avatar"
+              id="avatar"
+              name="avatar"
+              type="file"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="firstName"
+            >
+              First Name
+            </label>
+            <input
+              data-cy="first-name"
+              data-testid="first-name"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
+              type="text"
+              value="First Name"
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="lastName"
+            >
+              Last Name
+            </label>
+            <input
+              data-cy="last-name"
+              data-testid="last-name"
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="email"
+            >
+              Email
+            </label>
+            <input
+              data-cy="email"
+              data-testid="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              value="user@mail.ru"
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="password"
+            >
+              New Password
+            </label>
+            <input
+              data-cy="password"
+              data-testid="password"
+              id="password"
+              name="password"
+              placeholder="New Password"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <label
+              class="c5"
+              for="currentPassword"
+            >
+              Current Password
+            </label>
+            <input
+              data-cy="current-password"
+              data-testid="current-password"
+              id="currentPassword"
+              name="currentPassword"
+              placeholder="Current Password"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            class="c4"
+          >
+            <input
+              data-cy="update-button"
+              data-testid="update-button"
+              id="Update"
+              name="Update"
+              type="submit"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    data-cy="notifier"
+  >
+    <div
+      class="Toastify"
+    />
+  </div>
+</div>
+`;
+
+exports[`Profile page should show error on error 1`] = `
+<div
+  data-cy="profile-error"
+  data-testid="profile-error"
+>
+  <p>
+    GraphQL error: Current User not found or accessible
+  </p>
+</div>
+`;
+
+exports[`Profile page should show loader while loading 1`] = `
+<h3
+  data-testid="profile-loading"
+>
+  Loading...
+</h3>
+`;

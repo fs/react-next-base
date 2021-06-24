@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const next = require('next');
@@ -6,7 +9,7 @@ const express = require('express');
 const secure = require('express-force-https');
 const bodyParser = require('body-parser');
 
-const graphqlProxyMidlleware = require('./server/middlewares/graphql');
+const graphqlProxyMiddleware = require('./server/middlewares/graphql');
 
 const routes = require('./routes');
 const { DEV, PORT, GRAPHQL_APP_URL } = require('./config/vars');
@@ -24,15 +27,15 @@ app
   .then(() => {
     express()
       // use proxy middleware to send graphql requests to api server
-      .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMidlleware)
+      .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMiddleware)
       .use(secure)
       .use(handle)
-      .listen(PORT, err => {
+      .listen(PORT, (err) => {
         if (err) throw err;
         console.log(`> Ready on http://localhost:${PORT}`);
       });
   })
-  .catch(ex => {
+  .catch((ex) => {
     console.error(ex.stack);
     process.exit(1);
   });

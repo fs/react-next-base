@@ -70,7 +70,7 @@ blocks:
             - yarn run cy:install
 
             # setup cypress.env from secrets
-            - cp ~/.config/cypress.env.json ./
+            #- cp ~/.config/cypress.env.json ./
 
             # restore next.js cache
             - cache restore next-${SEMAPHORE_GIT_BRANCH}-$(checksum yarn.lock)-$(checksum .semaphore/semaphore.yml)

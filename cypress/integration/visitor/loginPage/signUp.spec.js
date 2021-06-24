@@ -5,15 +5,19 @@ describe('Sign Up', () => {
     });
   });
 
+  afterEach(() => {
+    cy.signout();
+  });
+
   it('Visitor singns up with valid credentials', () => {
-    const timestemp = +new Date();
+    const timestamp = +new Date();
     const { firstName, lastName } = this.user;
 
     const validCredentials = {
       firstName,
       lastName,
-      email: `${firstName}-${timestemp}@gmail.com`,
-      password: timestemp,
+      email: `${firstName}-${timestamp}@test.com`,
+      password: timestamp,
     };
 
     cy.signup(validCredentials);

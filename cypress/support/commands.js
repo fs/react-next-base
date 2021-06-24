@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+import 'cypress-file-upload';
+
 Cypress.Commands.add('login', ({ email, password, path = '/' }) => {
   cy.visit('/login');
   cy.get('[data-cy=email]').type(email);
@@ -52,4 +54,13 @@ Cypress.Commands.add('passwordRecovery', ({ email }) => {
   cy.get('[data-cy=email]').type(email);
 
   cy.get('[data-cy=submit-button]').click();
+});
+
+Cypress.Commands.add('signout', () => {
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy=dropdown-toggler]').length > 0) {
+      cy.get('[data-cy=dropdown-toggler]').click();
+      cy.get('[data-cy=sign-out]').click();
+    }
+  });
 });
