@@ -2,7 +2,7 @@ import 'firebase/messaging';
 import firebase from 'firebase/app';
 import localforage from 'localforage';
 
-// self.__WB_DISABLE_DEV_LOGS = true;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const util = require('./util');
 
 const firebaseConfig = util();
