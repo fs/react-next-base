@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 // scripts for firebase and firebase messaging
 importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js');
@@ -9,6 +11,7 @@ firebase.initializeApp(firebaseConfig);
 // retrieve firebase messaging
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function(payload) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+messaging.onBackgroundMessage(function (payload) {
   // here we can handle notification data
 });

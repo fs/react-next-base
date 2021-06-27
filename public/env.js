@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const firebaseConfig = {
   apiKey: 'AIzaSyDzObPF0TEJ4G80DFUnQzRDwy8oNQiTH4k',
   authDomain: 'react-next-base.firebaseapp.com',
