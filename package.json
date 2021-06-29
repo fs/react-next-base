@@ -66,6 +66,7 @@
     "@sheerun/mutationobserver-shim": "^0.3.3",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^7.0.0",
     "@types/cypress-dotenv": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
