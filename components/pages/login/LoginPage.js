@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Router } from 'routes';
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 import { NotifierProvider } from 'contexts/NotifierContext';
@@ -22,7 +23,9 @@ const LoginPage = () => {
 };
 
 LoginPage.getInitialProps = ({ res, accessTokenManager }) => {
-  if (accessTokenManager.accessToken) res.redirect(302, HOME.pattern);
+  if (accessTokenManager.accessToken) {
+    res ? res.redirect(302, HOME.pattern) : Router.pushRoute(HOME.pattern);
+  }
   return {};
 };
 
