@@ -1,11 +1,15 @@
 describe('Sign In', () => {
   beforeEach(() => {
-    cy.fixture('users').then(users => {
+    cy.fixture('users').then((users) => {
       this.users = users;
     });
   });
 
-  it('Visitor singns in with valid credentials', () => {
+  afterEach(() => {
+    cy.signout();
+  });
+
+  it('Visitor signs in with valid credentials', () => {
     const validCredentials = this.users.validUser;
 
     cy.login(validCredentials);
@@ -13,7 +17,17 @@ describe('Sign In', () => {
     cy.get('[data-cy=dropdown-toggler]').should('contain', validCredentials.email);
   });
 
-  it('Visitor singns in with invalid credentials', () => {
+  it('Authorized user visits auth page', () => {
+    const validCredentials = this.users.validUser;
+
+    cy.login(validCredentials);
+
+    cy.visit('/login');
+
+    cy.location('pathname').should('equal', '/');
+  });
+
+  it('Visitor signs in with invalid credentials', () => {
     const invalidCredentials = this.users.invalidUser;
 
     cy.login({ ...invalidCredentials, path: '/login' });

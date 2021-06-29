@@ -3,6 +3,7 @@ import React from 'react';
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 import { NotifierProvider } from 'contexts/NotifierContext';
+import { HOME } from 'config/routes';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
@@ -18,6 +19,11 @@ const LoginPage = () => {
       </DefaultTemplate>
     </NotifierProvider>
   );
+};
+
+LoginPage.getInitialProps = ({ res, accessTokenManager }) => {
+  if (accessTokenManager.accessToken) res.redirect(302, HOME.pattern);
+  return {};
 };
 
 export default withApolloClient(WithAuth(LoginPage));
