@@ -11,14 +11,13 @@ const bodyParser = require('body-parser');
 
 const graphqlProxyMiddleware = require('./server/middlewares/graphql');
 
-const routes = require('./routes');
 const { DEV, PORT, GRAPHQL_APP_URL } = require('./config/vars');
 
 // Create body-parser json middleware
 const bodyParserJSON = bodyParser.json();
 // Create the Express-Next App
 const app = next({ dev: DEV });
-const handle = routes.getRequestHandler(app);
+const handle = app.getRequestHandler();
 
 // Start the app
 app

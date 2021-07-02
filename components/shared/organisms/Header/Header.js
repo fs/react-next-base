@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'routes';
-
-import { PROFILE, LOGIN, ACTIVITY } from 'config/routes';
+import Link from 'next/link';
+import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
@@ -9,8 +8,8 @@ import { HeaderWrapper, Links } from './styled';
 
 const Header = ({ user, signOut }) => {
   const links = [
-    { text: 'Profile', url: PROFILE.pattern, dataCy: 'profile' },
-    { text: 'Activity', url: ACTIVITY.pattern, dataCy: 'activity' },
+    { text: 'Profile', url: PROFILE, dataCy: 'profile' },
+    { text: 'Activity', url: ACTIVITY, dataCy: 'activity' },
   ];
 
   const actions = [
@@ -23,7 +22,7 @@ const Header = ({ user, signOut }) => {
       <Logo />
       <Links data-cy="header-links">
         {!user && (
-          <Link route={LOGIN.pattern}>
+          <Link href={LOGIN} passHref>
             <a>Log In</a>
           </Link>
         )}
