@@ -9,20 +9,17 @@ query Activities($events: [ActivityEvent!], $last: Int, $before: String, $first:
       cursor
       node {
         body
-      }
-    }
-    nodes {
-      body
-      createdAt
-      event
-      id
-      title
-      user {
-        avatarUrl
-        email
-        firstName
+        createdAt
+        event
         id
-        lastName
+        title
+        user {
+          avatarUrl
+          email
+          firstName
+          id
+          lastName
+        }
       }
     }
     pageInfo {
