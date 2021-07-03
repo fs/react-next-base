@@ -11,7 +11,6 @@ import 'public/styles/custom.css';
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <>
         <Head>

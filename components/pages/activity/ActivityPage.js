@@ -35,14 +35,14 @@ const dropdownStyles = ({ up, breakpoints }) => css`
     font-size: 0.9rem;
   }
 `;
-const filterDropdownStyles = (theme) => css`
+const filterDropdownStyles = theme => css`
   ${dropdownStyles(theme)}
 
   ${theme.up(theme.breakpoints.sm)} {
     left: 1rem;
   }
 `;
-const pageSizeDropdownStyles = (theme) => css`
+const pageSizeDropdownStyles = theme => css`
   ${dropdownStyles(theme)}
 
   ${theme.up(theme.breakpoints.sm)} {
@@ -67,12 +67,12 @@ const Activity = () => {
     setPageNumber(1);
   };
 
-  const handleFilterChange = (event) => {
+  const handleFilterChange = event => {
     setFilterValue(event.target.value);
     resetState();
   };
 
-  const handlePageSizeChange = (event) => {
+  const handlePageSizeChange = event => {
     setPageSize(+event.target.value);
     resetState();
   };
@@ -94,7 +94,7 @@ const Activity = () => {
         <ActivityDropdown
           label="Choose activity page size:"
           selectedValue={pageSize}
-          values={activityPageSizes.map((item) => ({ value: item, name: item }))}
+          values={activityPageSizes.map(item => ({ value: item, name: item }))}
           onChange={handlePageSizeChange}
           testId="activity-size-dropdown"
           disabled={loading}

@@ -9,7 +9,7 @@ import ActivityDropdown from '.';
 
 describe('ActivityDropdown', () => {
   const mockLabel = "ActivityDropdown's label";
-  const mockValues = activityPageSizes.map((item) => ({ value: item, name: item }));
+  const mockValues = activityPageSizes.map(item => ({ value: item, name: item }));
   const mockOnChange = jest.fn;
 
   test('should render correctly', () => {

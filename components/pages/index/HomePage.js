@@ -5,10 +5,12 @@ import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import { NotifierProvider } from 'contexts/NotifierContext';
-
+import { useFirebaseMessaging } from 'hooks/useFirebaseMessaging';
 import { Title, PageContent } from './styled';
 
 const HomePage = () => {
+  useFirebaseMessaging();
+
   return (
     <NotifierProvider>
       <DefaultTemplate>

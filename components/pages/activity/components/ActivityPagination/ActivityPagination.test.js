@@ -41,7 +41,7 @@ describe('ActivityPagination', () => {
     const buttons = screen.getAllByRole('button');
 
     // Assert
-    buttons.forEach((btn) => {
+    buttons.forEach(btn => {
       expect(btn).toBeDisabled();
     });
   });

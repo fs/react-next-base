@@ -37,7 +37,7 @@ const LoginForm = () => {
     if (errorMessage) setError(errorMessage);
   }, [errorMessage]);
 
-  const toggleForm = (form) => {
+  const toggleForm = form => {
     setActiveForm(form);
     setMessage('');
   };

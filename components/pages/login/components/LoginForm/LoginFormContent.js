@@ -56,7 +56,9 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       placeholder: 'Email',
       testID: 'email',
       initialValue: '',
-      validationSchema: Yup.string().email('The email must be valid!!').required('This field is required'),
+      validationSchema: Yup.string()
+        .email('The email must be valid!!')
+        .required('This field is required'),
     },
     !isRecovery && {
       type: 'password',

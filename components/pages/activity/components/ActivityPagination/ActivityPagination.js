@@ -10,13 +10,13 @@ const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNum
   const goToPrevPage = () => {
     setBeforeCursor(startCursor);
     setAfterCursor(undefined);
-    setPageNumber((prevPageNumber) => prevPageNumber - 1);
+    setPageNumber(prevPageNumber => prevPageNumber - 1);
   };
 
   const goToNextPage = () => {
     setAfterCursor(endCursor);
     setBeforeCursor(undefined);
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    setPageNumber(prevPageNumber => prevPageNumber + 1);
   };
 
   return (
