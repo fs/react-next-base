@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'routes';
+import Link from 'next/link';
 
 const Title = styled.h1`
   font-size: 2rem;
@@ -17,7 +17,7 @@ const Home = () => (
 
     <p>
       <b>There is a body text</b> Lorem ipsum dolor sit amet,{' '}
-      <Link passHref route="/">
+      <Link passHref href="/">
         <a>consectetur adipiscing elit</a>
       </Link>
       , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus gravida quis blandit turpis. Lobortis
