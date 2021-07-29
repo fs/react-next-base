@@ -2,11 +2,18 @@ import React from 'react';
 import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
+import IUser from 'types/userType';
+
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
-const Header = ({ user, signOut }) => {
+interface Props {
+  user: IUser;
+  signOut: (params?: { everywhere: boolean }) => void;
+}
+
+const Header = ({ user, signOut }: Props): JSX.Element => {
   const links = [
     { text: 'Profile', url: PROFILE, dataCy: 'profile' },
     { text: 'Activity', url: ACTIVITY, dataCy: 'activity' },
