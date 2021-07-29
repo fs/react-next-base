@@ -8,6 +8,10 @@ describe('Activities Page', () => {
     });
   });
 
+  afterEach(() => {
+    cy.signout();
+  });
+
   it('User sees activities table', () => {
     cy.get('[data-cy=activity-table]').should('be.visible');
 
