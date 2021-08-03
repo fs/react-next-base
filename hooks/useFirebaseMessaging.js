@@ -6,7 +6,6 @@ export const useFirebaseMessaging = () => {
   useEffect(() => {
     const tokenTest = firebaseCloudMessaging.init();
     tokenTest.then((payload) => {
-      console.log(payload);
       // getting messaging token here
       // maybe send token to the backend, to start messaging
     });
