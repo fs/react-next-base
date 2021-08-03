@@ -25,9 +25,6 @@
 /public/*.js.map
 /public/env.js
 
-# worker
-/worker/util.js
-
 # misc
 .DS_Store
 .env
