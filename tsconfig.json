@@ -19,6 +19,11 @@
       "": ["./"]
     }
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": [
     "pages",
     "components/shared/templates",

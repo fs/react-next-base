@@ -11,10 +11,10 @@ dotenv.config();
 
 const nextConfig = {
   webpack: (config) => {
-    // Fixes npm packages that depend on `fs` module
-    config.node = {
-      fs: 'empty',
-    };
+    // // Fixes npm packages that depend on `fs` module
+    // config.node = {
+    //   fs: 'empty',
+    // };
 
     // add polyfills to all browsers
     const originalEntry = config.entry;
