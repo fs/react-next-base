@@ -3,8 +3,6 @@ import dotenv from 'dotenv';
 
 import next from 'next';
 import express from 'express';
-// TODO: FIX THIS
-// @ts-ignore
 import secure from 'express-force-https';
 import bodyParser from 'body-parser';
 import { DEV, PORT, GRAPHQL_APP_URL } from './config/vars';

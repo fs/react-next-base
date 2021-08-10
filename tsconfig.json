@@ -20,10 +20,12 @@
     }
   },
   "ts-node": {
+    "files": true,
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
+  "files": ["declarations/*"],
   "include": [
     "pages",
     "components/shared/templates",
