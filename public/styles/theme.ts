@@ -19,13 +19,13 @@ export enum Colors {
 }
 
 export const up = (breakpoint: Breakpoints, vertical = false) =>
-  `@media (min-${vertical ? 'height' : 'width'}: calc(${breakpoint} + 0.02px))`;
+  `@media (min-${vertical ? 'height' : 'width'}: calc(${breakpoint + 0.02}px))`;
 export const down = (breakpoint: Breakpoints, vertical = false) =>
   `@media (max-${vertical ? 'height' : 'width'}: ${breakpoint})`;
 export const between = (breakpointMin: Breakpoints, breakpointMax: Breakpoints, vertical = false) =>
-  `@media (max-${vertical ? 'height' : 'width'}: ${breakpointMax}) and (min-${
-    vertical ? 'height' : 'width'
-  }: calc(${breakpointMin} + 0.02px))`;
+  `@media (max-${vertical ? 'height' : 'width'}: ${breakpointMax}) and (min-${vertical ? 'height' : 'width'}: calc(${
+    breakpointMin + 0.02
+  }px))`;
 
 const theme: DefaultTheme = {
   breakpoints: Breakpoints,

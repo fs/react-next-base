@@ -84,21 +84,21 @@ exports[`ActivityTable should render correctly 1`] = `
   align-items: center;
 }
 
-@media (min-width:calc(992px + 0.02px)) {
+@media (min-width:calc(992px0.02px)) {
   .c0 {
     display: table;
     overflow-x: initial;
   }
 }
 
-@media (min-width:calc(992px + 0.02px)) {
+@media (min-width:calc(992px0.02px)) {
   .c1 {
     padding: 1.2rem 1rem;
     font-size: 0.9rem;
   }
 }
 
-@media (min-width:calc(992px + 0.02px)) {
+@media (min-width:calc(992px0.02px)) {
   .c3 {
     padding: 1.2rem 1rem;
     font-size: 0.9rem;

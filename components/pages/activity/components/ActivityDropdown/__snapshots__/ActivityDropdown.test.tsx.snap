@@ -29,7 +29,7 @@ exports[`ActivityDropdown should render correctly 1`] = `
   font-size: 1rem;
 }
 
-@media (min-width:calc(576px + 0.02px)) {
+@media (min-width:calc(576px0.02px)) {
   .c2 {
     font-size: 0.8rem;
   }
