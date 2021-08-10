@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "server": "ts-node server.js",
+    "server": "ts-node server.ts",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",
@@ -68,7 +68,9 @@
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^7.0.0",
+    "@types/body-parser": "^1.19.1",
     "@types/cypress-dotenv": "^1.2.0",
+    "@types/express": "^4.17.13",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "babel-eslint": "^10.1.0",
