@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import dotenv from 'dotenv';
-
 import next from 'next';
 import express from 'express';
 import secure from 'express-force-https';
 import bodyParser from 'body-parser';
 import { DEV, PORT, GRAPHQL_APP_URL } from './config/vars';
 import graphqlProxyMiddleware from './server/middlewares/graphql';
-
-dotenv.config();
 
 // Create body-parser json middleware
 const bodyParserJSON = bodyParser.json();
@@ -24,7 +20,7 @@ app
     express()
       // use proxy middleware to send graphql requests to api server
       // @ts-ignore
-      .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMiddleware())
+      .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMiddleware)
       .use(secure)
       .use((req, res) => {
         return handle(req, res);
