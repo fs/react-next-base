@@ -1,4 +1,4 @@
-fragment UserInfo on User {
+fragment UserInfo on CurrentUser {
   avatarUrl
   id
   email

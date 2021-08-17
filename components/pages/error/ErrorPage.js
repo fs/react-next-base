@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link } from 'routes';
-import Router from 'next/router';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { HOME } from 'config/routes';
 
 import { TitleWrapper, Description, StyledLink } from './styled';
 
 const ErrorPage = ({ statusCode }) => {
   const is404 = statusCode === 404;
+  const router = useRouter();
 
   const links = (
     <>
-      <StyledLink onClick={() => Router.back()}>Back to previous page</StyledLink> or{' '}
-      <Link passHref route="/contact">
+      <StyledLink onClick={() => router.back()}>Back to previous page</StyledLink> or{' '}
+      <Link passHref href={HOME}>
         <StyledLink>contact us</StyledLink>
       </Link>{' '}
       for help.
