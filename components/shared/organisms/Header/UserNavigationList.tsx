@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import IUserNavigation from 'interfaces/userNavigationTypes';
+import IUserNavigation from 'interfaces/userNavigationType';
 
 import { StyledUserMenu, UserMenuItem } from './styled';
 
@@ -20,7 +20,7 @@ const UserNavigationList = ({ links = [], actions = [] }: IUserNavigation) => (
     {actions.map(({ text, onClick, testId }) => {
       return (
         <UserMenuItem key={text}>
-          <button data-cy={testId} type="button" onClick={onClick}>
+          <button data-cy={testId} type="button" onClick={() => onClick()}>
             {text}
           </button>
         </UserMenuItem>

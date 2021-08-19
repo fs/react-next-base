@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 import IUser from 'interfaces/userType';
-import IUserNavigation from 'interfaces/userNavigationTypes';
+import IUserNavigation from 'interfaces/userNavigationType';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
