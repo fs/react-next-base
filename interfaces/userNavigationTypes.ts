@@ -7,7 +7,7 @@ interface LinkConfig extends ITest {
 
 interface ActionsConfig extends ITest {
   text: string;
-  onClick: () => void;
+  onClick: (arg: { everywhere?: boolean }) => Promise<void>; // TODO: expect any function here
 }
 
 export default interface IUserNavigation {
