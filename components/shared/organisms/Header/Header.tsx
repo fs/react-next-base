@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
-import IUser from 'types/userType';
+import IUser from 'interfaces/userType';
 
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';

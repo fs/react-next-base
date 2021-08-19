@@ -1,26 +1,11 @@
 import React from 'react';
 
 import Link from 'next/link';
-import ITest from 'types/testType';
+import IUserNavigation from 'interfaces/userNavigationTypes';
 
 import { StyledUserMenu, UserMenuItem } from './styled';
 
-interface LinkConfig extends ITest {
-  text: string;
-  url: string;
-}
-
-interface ActionsConfig extends ITest {
-  text: string;
-  onClick: () => void;
-}
-
-interface Props {
-  links?: LinkConfig[];
-  actions?: ActionsConfig[];
-}
-
-const UserNavigationList = ({ links = [], actions = [] }: Props) => (
+const UserNavigationList = ({ links = [], actions = [] }: IUserNavigation) => (
   <StyledUserMenu>
     {links.map(({ text, url, testId }) => {
       return (

@@ -1,21 +1,28 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
+import IUser from 'interfaces/userType';
+import IUserNavigation from 'interfaces/userNavigationTypes';
+
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
 
 import { UserName, UserNavigationWrapper, UserNameWrapper } from './styled';
 
-const UserNavigation = ({ user, links, actions }) => {
+interface Props extends IUserNavigation {
+  user: IUser;
+}
+
+const UserNavigation = ({ user, links, actions }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<any>(null);
 
   const toggleDropdown = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (wrapperRef.current && wrapperRef.current.contains(event.target)) {
+    const handleOutsideClick = (event: any) => {
+      if (wrapperRef?.current && wrapperRef?.current?.contains(event.target)) {
         return;
       }
       toggleDropdown();
@@ -39,7 +46,7 @@ const UserNavigation = ({ user, links, actions }) => {
       {user && (
         <>
           <UserNameWrapper data-testid="user-name" data-cy="dropdown-toggler" onClick={toggleDropdown}>
-            <ProfileImage avatar={avatar} />
+            <ProfileImage avatar={avatar} alt={user.email} />
             <UserName data-cy="user-name">{user.email}</UserName>
           </UserNameWrapper>
           {isOpen && (
