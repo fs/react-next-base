@@ -10,7 +10,7 @@ import { HeaderWrapper, Links } from './styled';
 
 interface Props {
   user: IUser;
-  signOut: (arg: { everywhere?: boolean }) => Promise<void>;
+  signOut: (arg?: { everywhere?: boolean }) => Promise<void>;
 }
 
 const Header = ({ user, signOut }: Props): JSX.Element => {
