@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import next from 'next';
 import express from 'express';
 import secure from 'express-force-https';
@@ -19,7 +18,6 @@ app
   .then(() => {
     express()
       // use proxy middleware to send graphql requests to api server
-      // @ts-ignore
       .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMiddleware)
       .use(secure)
       .use((req, res) => {
