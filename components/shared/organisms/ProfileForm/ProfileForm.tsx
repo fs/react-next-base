@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
+
+import IUser from 'interfaces/userType';
+
 import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
 import { useFileUpload } from 'hooks/useFileUpload';
-import ErrorDecorator from 'decorators/ErrorDecorator';
 import useNotifier from 'hooks/useNotifier';
+
+import ErrorDecorator from 'decorators/ErrorDecorator';
+
 import ProfileFormContent from './ProfileFormContent';
 
-const ProfileForm = ({ profile }) => {
+interface Props {
+  profile: IUser;
+}
+
+const ProfileForm = ({ profile }: Props) => {
   const { setSuccess } = useNotifier();
   const [updateUser] = useUpdateUser();
   const [presignFile] = usePresignFile();
@@ -15,7 +24,7 @@ const ProfileForm = ({ profile }) => {
   const [temporaryUrl, setTemporaryUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleAvatarChange = (event) => {
+  const handleAvatarChange = (event: any) => {
     const {
       target: {
         validity,
