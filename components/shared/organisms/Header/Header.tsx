@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
 import IUser from 'interfaces/userType';
+import ISignOut from 'interfaces/actionsType';
 
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
@@ -10,7 +11,7 @@ import { HeaderWrapper, Links } from './styled';
 
 interface Props {
   user: IUser;
-  signOut: (arg?: { everywhere?: boolean }) => Promise<void>;
+  signOut: ISignOut;
 }
 
 const Header = ({ user, signOut }: Props): JSX.Element => {
