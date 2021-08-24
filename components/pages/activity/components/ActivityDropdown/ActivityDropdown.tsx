@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ITest from 'types/testType';
+import ITest from 'interfaces/testType';
 import { DefaultTheme } from 'styled-components';
 import { Wrapper, StyledLabel, StyledSelect } from './styled';
 

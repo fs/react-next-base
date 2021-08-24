@@ -1,5 +1,5 @@
 import React from 'react';
-import ITest from 'types/testType';
+import ITest from 'interfaces/testType';
 
 import { StyledTab } from './styled';
 
