@@ -49,6 +49,9 @@ const nextConfig = {
     modern: true, // split bundles for modern/old browsers (production mode only)
     polyfillsOptimization: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = withPlugins([[nextImages], [nextFonts], [svgr]], nextConfig);

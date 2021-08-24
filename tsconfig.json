@@ -25,7 +25,6 @@
       "module": "CommonJS"
     }
   },
-  "files": ["declarations/*"],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js", "declarations/*"],
   "exclude": ["node_modules"]
 }
