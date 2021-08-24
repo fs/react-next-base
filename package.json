@@ -21,7 +21,7 @@
     "heroku-prebuild": "yarn install --production"
   },
   "engines": {
-    "node": ">=13.9.0"
+    "node": ">=14.17"
   },
   "dependencies": {
     "@apollo/client": "^3.4.5",
