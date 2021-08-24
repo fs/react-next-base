@@ -10,11 +10,14 @@ const svgr = require('next-svgr');
 dotenv.config();
 
 const nextConfig = {
-  webpack: (config) => {
-    // // Fixes npm packages that depend on `fs` module
-    // config.node = {
-    //   fs: 'empty',
-    // };
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
 
     // add polyfills to all browsers
     const originalEntry = config.entry;
