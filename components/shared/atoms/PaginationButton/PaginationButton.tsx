@@ -1,7 +1,7 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 
-import ITest from 'types/testType';
+import ITest from 'interfaces/testType';
 import { StyledButton } from './styled';
 
 interface Props extends ITest {
