@@ -26,14 +26,6 @@
     }
   },
   "files": ["declarations/*"],
-  "include": [
-    "pages",
-    "components/shared/templates",
-    "components",
-    "next-env.d.ts",
-    "declarations/*",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js"],
   "exclude": ["node_modules"]
 }
