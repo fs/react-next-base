@@ -2,18 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
+import IUser from 'interfaces/userType';
+import ISignOut from 'interfaces/actionsType';
+
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
-const Header = ({ user, signOut }) => {
+interface Props {
+  user: IUser;
+  signOut: ISignOut;
+}
+
+const Header = ({ user, signOut }: Props): JSX.Element => {
   const links = [
-    { text: 'Profile', url: PROFILE, dataCy: 'profile' },
-    { text: 'Activity', url: ACTIVITY, dataCy: 'activity' },
+    { text: 'Profile', url: PROFILE, testId: 'profile' },
+    { text: 'Activity', url: ACTIVITY, testId: 'activity' },
   ];
 
   const actions = [
-    { text: 'Sign Out', onClick: signOut, dataTestId: 'sign-out' },
+    { text: 'Sign Out', onClick: signOut, testId: 'sign-out' },
     { text: 'Log out from all devices', onClick: () => signOut({ everywhere: true }) },
   ];
 

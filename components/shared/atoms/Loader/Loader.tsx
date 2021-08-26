@@ -1,7 +1,7 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 
-import type Props from 'types/testType';
+import type Props from 'interfaces/testType';
 
 import { Wrapper, Title } from './styled';
 

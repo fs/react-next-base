@@ -37,6 +37,7 @@ export const StyledUserMenu = styled.ul(
     z-index: 1;
     list-style-type: none;
     filter: drop-shadow(0 0 3px ${colors.black});
+
     &::after {
       content: '';
       display: block;
