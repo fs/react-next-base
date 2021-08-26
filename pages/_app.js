@@ -18,10 +18,8 @@ class MyApp extends App {
           <title>React Next Base</title>
         </Head>
         <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyles />
-            <Component {...pageProps} />
-          </>
+          <GlobalStyles />
+          <Component {...pageProps} />
         </ThemeProvider>
       </>
     );
