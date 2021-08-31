@@ -3,5 +3,5 @@ export interface ISignOut {
 }
 
 export interface IPresignFile {
-  (arg?: { type: string; name: string }): { fields: []; url: string };
+  (arg?: { type: string; name: string }): Promise<any>;
 }
