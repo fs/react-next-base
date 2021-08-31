@@ -13,8 +13,9 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {
-      config.node = {
-        fs: 'empty',
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
       };
     }
 
@@ -47,6 +48,9 @@ const nextConfig = {
   experimental: {
     modern: true, // split bundles for modern/old browsers (production mode only)
     polyfillsOptimization: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
