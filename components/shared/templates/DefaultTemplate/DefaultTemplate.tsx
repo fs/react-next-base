@@ -1,7 +1,7 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import ITest from 'interfaces/testType';
-import ISignOut from 'interfaces/actionsType';
+import { ISignOut } from 'interfaces/actionsType';
 
 import Header from 'components/shared/organisms/Header';
 

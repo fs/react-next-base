@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
 import IUser from 'interfaces/userType';
-import ISignOut from 'interfaces/actionsType';
+import { ISignOut } from 'interfaces/actionsType';
 
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
