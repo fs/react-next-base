@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client';
+import { MutationResult, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { HOME } from 'config/routes';
 import { SIGN_IN_EVENT, SIGN_OUT_EVENT } from 'config/globalEvents';
@@ -12,6 +12,7 @@ import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.g
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
 import useNotifier from 'hooks/useNotifier';
+import { Mutation } from '@apollo/client/react/components';
 
 type SirnInProps = {
   email: string;
@@ -169,7 +170,9 @@ export const usePasswordRecovery = () => {
   return [mutate, detail, error];
 };
 
-export const useUpdateUser = () => {
+type UpdateUserMutation = (props: UpdateUserProps) => Promise<any>;
+
+export const useUpdateUser = (): [UpdateUserMutation, MutationResult] => {
   const [mutation, mutationState] = useMutation(updateUser, {
     update: (store, { data }) => {
       store.writeQuery({
@@ -204,8 +207,14 @@ interface PresignFileProps {
   filename: string;
 }
 
-export const usePresignFile = () => {
-  const [mutation, mutationState] = useMutation(presignData);
+interface PresignDataVars {
+  input: PresignFileProps;
+}
+
+type PresignDataMutation = (props: PresignFileProps) => Promise<any>;
+
+export const usePresignFile = (): [PresignDataMutation, MutationResult] => {
+  const [mutation, mutationState] = useMutation<any, PresignDataVars>(presignData);
 
   const mutate = async ({ type, filename }: PresignFileProps) => {
     if (!type || !filename) return { fields: [], url: '' };

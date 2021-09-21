@@ -20,29 +20,26 @@ interface SubmitProps {
   setStatus: (arg: string) => void;
 }
 
-interface IAvatar {
-  type: string;
-  name: string;
-}
-
 const ProfileForm = ({ profile }: Props) => {
   const { setSuccess } = useNotifier();
   const [updateUser] = useUpdateUser();
   const [presignFile] = usePresignFile();
   const [uploadFile] = useFileUpload();
 
-  const [avatar, setAvatar] = useState<IAvatar>({});
+  const [avatar, setAvatar] = useState<File|null>(null);
   const [temporaryUrl, setTemporaryUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleAvatarChange = (event: React.ChangeEvent) => {
-    const target = event.target as HTMLInputElement;
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target;
     const validity = target.validity;
-    const file: File = (target.files as FileList)[0];
+    if (target.files) {
+      const file = target.files[0];
 
-    if (validity.valid) {
-      setAvatar(file);
-      setTemporaryUrl(URL.createObjectURL(file));
+      if (validity.valid) {
+        setAvatar(file);
+        setTemporaryUrl(URL.createObjectURL(file));
+      }
     }
   };
 
@@ -52,9 +49,13 @@ const ProfileForm = ({ profile }: Props) => {
     setLoading(true);
 
     try {
-      const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
-      const uploadedAvatar = await uploadFile(presignData, avatar);
-      await updateUser({ ...values, avatar: uploadedAvatar });
+      if (avatar) {
+        const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
+        const uploadedAvatar = await uploadFile(presignData, avatar);
+        await updateUser({ ...values, avatar: uploadedAvatar });
+      } else {
+        await updateUser({ ...values });
+      }
       setLoading(false);
       setSuccess('Profile updated successfully');
     } catch (error) {
