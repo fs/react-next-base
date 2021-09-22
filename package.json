@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "start": "NODE_ENV=production ts-node server.ts -p $PORT",
     "server": "ts-node server.ts",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts",
