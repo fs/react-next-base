@@ -211,21 +211,35 @@ interface PresignDataVars {
   input: PresignFileProps;
 }
 
-type PresignDataMutation = (props: PresignFileProps) => Promise<any>;
+type PresignMutationResponseField = {
+  key: string;
+  value: string;
+};
+
+type PresignMutationResponse = {
+  presignData: {
+    url: string;
+    fields: PresignMutationResponseField[];
+  };
+};
+
+type PresignDataMutation = (props: PresignFileProps) => Promise<PresignMutationResponse['presignData'] | null>;
 
 export const usePresignFile = (): [PresignDataMutation, MutationResult] => {
-  const [mutation, mutationState] = useMutation<any, PresignDataVars>(presignData);
+  const [mutation, mutationState] = useMutation<PresignMutationResponse, PresignDataVars>(presignData);
 
   const mutate = async ({ type, filename }: PresignFileProps) => {
     if (!type || !filename) return { fields: [], url: '' };
 
     const presignDataInput = { type, filename };
 
-    const {
-      data: { presignData: fileData },
-    } = await mutation({ variables: { input: presignDataInput } });
+    const result = await mutation({ variables: { input: presignDataInput } });
 
-    return fileData;
+    if (!result.data) {
+      return null;
+    }
+
+    return result.data.presignData;
   };
 
   return [mutate, mutationState];
