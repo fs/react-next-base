@@ -7,14 +7,12 @@ import SignIn from 'graphql/mutations/signIn.graphql';
 import SignUp from 'graphql/mutations/signUp.graphql';
 import SignOut from 'graphql/mutations/signOut.graphql';
 import updateUser from 'graphql/mutations/updateUser.graphql';
-import presignData from 'graphql/mutations/presignData.graphql';
 import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.graphql';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
 import useNotifier from 'hooks/useNotifier';
-import { Mutation } from '@apollo/client/react/components';
 
-type SirnInProps = {
+type SignInProps = {
   email: string;
   password: string;
 };
@@ -57,7 +55,7 @@ export const useSignIn = () => {
     },
   });
 
-  const mutate = async ({ email, password }: SirnInProps) => {
+  const mutate = async ({ email, password }: SignInProps) => {
     const signInInput = {
       email,
       password,
@@ -197,49 +195,6 @@ export const useUpdateUser = (): [UpdateUserMutation, MutationResult] => {
     };
 
     await mutation({ variables: { input: updateUserInput } });
-  };
-
-  return [mutate, mutationState];
-};
-
-interface PresignFileProps {
-  type: string;
-  filename: string;
-}
-
-interface PresignDataVars {
-  input: PresignFileProps;
-}
-
-type PresignMutationResponseField = {
-  key: string;
-  value: string;
-};
-
-type PresignMutationResponse = {
-  presignData: {
-    url: string;
-    fields: PresignMutationResponseField[];
-  };
-};
-
-type PresignDataMutation = (props: PresignFileProps) => Promise<PresignMutationResponse['presignData'] | null>;
-
-export const usePresignFile = (): [PresignDataMutation, MutationResult] => {
-  const [mutation, mutationState] = useMutation<PresignMutationResponse, PresignDataVars>(presignData);
-
-  const mutate = async ({ type, filename }: PresignFileProps) => {
-    if (!type || !filename) return { fields: [], url: '' };
-
-    const presignDataInput = { type, filename };
-
-    const result = await mutation({ variables: { input: presignDataInput } });
-
-    if (!result.data) {
-      return null;
-    }
-
-    return result.data.presignData;
   };
 
   return [mutate, mutationState];

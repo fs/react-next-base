@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 
 import IUser from 'interfaces/userType';
 
-import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
-import { useFileUpload } from 'hooks/useFileUpload';
+import { useUpdateUser } from 'lib/apollo/hooks/actions/auth';
+import fileUpload from 'components/shared/organisms/ProfileForm/uploadAvatar';
+
 import useNotifier from 'hooks/useNotifier';
 
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileFormContent from './ProfileFormContent';
+import { usePresignFile } from '../../../../lib/apollo/hooks/actions/auth/usePresignFile';
 
 interface Props {
   profile: IUser;
@@ -23,7 +25,6 @@ const ProfileForm = ({ profile }: Props) => {
   const { setSuccess } = useNotifier();
   const [updateUser] = useUpdateUser();
   const [presignFile] = usePresignFile();
-  const [uploadFile] = useFileUpload();
 
   const [avatar, setAvatar] = useState<File | null>(null);
   const [temporaryUrl, setTemporaryUrl] = useState<string | null>(null);
@@ -53,7 +54,7 @@ const ProfileForm = ({ profile }: Props) => {
         if (!presignData) {
           throw new Error(' presignData are empty');
         }
-        const uploadedAvatar = await uploadFile(presignData, avatar);
+        const uploadedAvatar = await fileUpload(presignData, avatar);
         await updateUser({ ...values, avatar: uploadedAvatar });
       } else {
         await updateUser({ ...values });
