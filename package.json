@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "server": "node server.js",
+    "start": "NODE_ENV=production node server.js -p $PORT",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",
