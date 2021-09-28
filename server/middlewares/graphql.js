@@ -4,7 +4,7 @@ const Cookie = require('universal-cookie');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const { API_URL } = require('../../config/vars');
-const { REFRESH_TOKEN_KEY } = require('../../config/jwt');
+const { REFRESH_TOKEN_KEY } = require('../../config/jwt.json');
 
 const { setRefreshToken, deleteRefreshToken } = require('../../lib/auth/tokens');
 

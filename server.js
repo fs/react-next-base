@@ -1,9 +1,17 @@
-import next from 'next';
-import express from 'express';
-import secure from 'express-force-https';
-import bodyParser from 'body-parser';
-import { DEV, PORT, GRAPHQL_APP_URL } from './config/vars';
-import graphqlProxyMiddleware from './server/middlewares/graphql';
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const next = require('next');
+const express = require('express');
+const secure = require('express-force-https');
+const bodyParser = require('body-parser');
+
+const graphqlProxyMiddleware = require('./server/middlewares/graphql');
+
+const { DEV, PORT, GRAPHQL_APP_URL } = require('./config/vars');
 
 // Create body-parser json middleware
 const bodyParserJSON = bodyParser.json();
@@ -20,10 +28,9 @@ app
       // use proxy middleware to send graphql requests to api server
       .use(GRAPHQL_APP_URL, bodyParserJSON, graphqlProxyMiddleware)
       .use(secure)
-      .use((req, res) => {
-        return handle(req, res);
-      })
-      .listen(PORT, () => {
+      .use(handle)
+      .listen(PORT, (err) => {
+        if (err) throw err;
         console.log(`> Ready on http://localhost:${PORT}`);
       });
   })
