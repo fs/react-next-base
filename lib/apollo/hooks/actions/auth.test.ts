@@ -259,40 +259,4 @@ describe('Auth actions', () => {
       expect(result.current[1].data.updateUser).toEqual(mockCurrentUser);
     });
   });
-
-  describe('usePresignFile', () => {
-    test('should mutate state', async () => {
-      // Arrange
-      const data = {
-        type: 'test',
-        filename: 'test',
-      };
-      const mocks = [
-        {
-          request: {
-            query: PresignData,
-            variables: { input: data },
-          },
-          result: {
-            data: { presignFile: presignDataMock },
-          },
-        },
-      ];
-
-      // Act
-      const { result, waitForNextUpdate } = renderHook(() => usePresignFile(), {
-        wrapper: MockedProvider,
-        initialProps: {
-          mocks,
-        },
-      });
-      act(() => {
-        result.current[0](data);
-      });
-      await waitForNextUpdate();
-
-      // Assert
-      expect(result.current[1].data.presignFile).toEqual(presignDataMock);
-    });
-  });
 });
