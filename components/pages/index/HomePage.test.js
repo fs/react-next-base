@@ -21,9 +21,8 @@ describe('HomePage', () => {
 
     // Act
     render(renderWithTheme(renderWithApolloClient(<Homepage />)));
-    const container = screen.getByTestId('page-content');
 
     // Assert
-    expect(container).toMatchSnapshot();
+    expect(mockUseCurrentUser).toHaveBeenCalled();
   });
 });
