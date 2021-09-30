@@ -1,7 +1,10 @@
-module.exports = {
+import type { InitialOptionsTsJest } from 'ts-jest/dist/types';
+
+const config: InitialOptionsTsJest = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
   verbose: true,
   clearMocks: true,
-  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/__tests__/jest.setup.js', '<rootDir>/__tests__/jest.setEnvVars.js', 'jest-extended'],
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
@@ -11,28 +14,21 @@ module.exports = {
     '<rootDir>/__tests__/jest.setEnvVars.js',
     '<rootDir>/__tests__/jest.setup.js',
   ],
-  preset: 'ts-jest',
   transform: {
+    // Use babel-jest to transpile tests with the next/babel preset
+    // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     '\\.(gql|graphql)$': 'jest-transform-graphql',
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.(js)$': 'babel-jest',
   },
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__tests__/mocks/fileMock.js',
     '\\.(css|less)$': '<rootDir>/__tests__/mocks/styleMock.js',
     '\\.svg': '<rootDir>/__tests__/mocks/svgrMock.js',
-    // fix styled-components undefined
-    '^styled-components(.*)$': '<rootDir>/node_modules/styled-components$1',
-    // fix react undefined
-    '^react(.*)$': '<rootDir>/node_modules/react$1',
   },
-  moduleDirectories: ['node_modules', '.'],
+  moduleDirectories: ['node_modules', '<rootDir>/node_modules', '.'],
   testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
-    },
-  },
 };
+
+export default config;
