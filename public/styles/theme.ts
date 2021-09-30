@@ -1,11 +1,11 @@
 import { DefaultTheme } from 'styled-components';
 
 export enum Breakpoints {
-  xs = '320px',
-  sm = '576px',
-  md = '768px',
-  lg = '992px',
-  xl = '1200px',
+  xs = 320,
+  sm = 576,
+  md = 768,
+  lg = 992,
+  xl = 1200,
 }
 
 export enum Colors {
@@ -19,13 +19,13 @@ export enum Colors {
 }
 
 export const up = (breakpoint: Breakpoints, vertical = false) =>
-  `@media (min-${vertical ? 'height' : 'width'}: calc(${breakpoint} + 0.02px))`;
+  `@media (min-${vertical ? 'height' : 'width'}: ${breakpoint + 0.02}px)`;
 export const down = (breakpoint: Breakpoints, vertical = false) =>
-  `@media (max-${vertical ? 'height' : 'width'}: ${breakpoint})`;
+  `@media (max-${vertical ? 'height' : 'width'}: ${breakpoint}px)`;
 export const between = (breakpointMin: Breakpoints, breakpointMax: Breakpoints, vertical = false) =>
-  `@media (max-${vertical ? 'height' : 'width'}: ${breakpointMax}) and (min-${
-    vertical ? 'height' : 'width'
-  }: calc(${breakpointMin} + 0.02px))`;
+  `@media (max-${vertical ? 'height' : 'width'}: ${breakpointMax}px) and (min-${vertical ? 'height' : 'width'}: ${
+    breakpointMin + 0.02
+  }px)`;
 
 const theme: DefaultTheme = {
   breakpoints: Breakpoints,
