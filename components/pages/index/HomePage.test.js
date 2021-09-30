@@ -1,8 +1,10 @@
 import React from 'react';
-import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
+
+import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
+
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
 
 import Homepage from 'pages/index';
