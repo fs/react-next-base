@@ -1,1 +1,1 @@
-module.exports = { ReactComponent: 'icon-mock' };
+module.exports = { component: 'icon-mock' };
