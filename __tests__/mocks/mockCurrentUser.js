@@ -1,11 +1,11 @@
 export const mockCurrentUser = {
-  __typename: 'CurrentUser',
   avatarUrl: null,
   id: '160',
   email: 'test.test@test.com',
   firstName: 'Test',
   lastName: 'Test',
-  fullName: 'Test Test',
+  password: 'password',
+  currentPassword: 'currentPassword',
 };
 
 export const mockCurrentUserData = {
