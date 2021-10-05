@@ -2,13 +2,16 @@ import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
+import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
+import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
 import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
-jest.mock('lib/apollo/hooks/actions/auth');
+jest.mock('lib/apollo/hooks/actions/useUpdateUser');
+jest.mock('lib/apollo/hooks/actions/usePresignFile');
+
 jest.mock('hooks/useFileUpload');
 jest.mock('decorators/ErrorDecorator');
 

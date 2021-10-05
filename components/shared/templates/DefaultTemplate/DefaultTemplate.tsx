@@ -6,7 +6,7 @@ import ISignOut from 'interfaces/actionsType';
 import Header from 'components/shared/organisms/Header';
 
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
-import { useSignOut } from 'lib/apollo/hooks/actions/auth';
+import useSignOut from 'lib/apollo/hooks/actions/useSignOut';
 
 import { Wrapper, PageContent } from './styled';
 

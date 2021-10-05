@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
+import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
+import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
 import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import useNotifier from 'hooks/useNotifier';
