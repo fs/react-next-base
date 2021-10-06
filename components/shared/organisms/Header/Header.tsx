@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
-import IUser from 'interfaces/userType';
+import User from 'domain/User';
 import ISignOut from 'interfaces/actionsType';
 
 import Logo from 'components/shared/atoms/Logo';
@@ -10,7 +10,7 @@ import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
 interface Props {
-  user: IUser;
+  user: User;
   signOut: ISignOut;
 }
 
