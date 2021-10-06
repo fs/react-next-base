@@ -22,11 +22,15 @@ type SignUpMutationInputVariable = SignUpProps;
 
 type SignUpMutationInputVariables = { input: SignUpMutationInputVariable };
 
+type SignUpMutationData = {
+  signup: { me: User };
+};
+
 const useSignUp = () => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation<{ signup: { me: User } }, SignUpMutationInputVariables>(SignUp, {
+  const [mutation, mutationState] = useMutation<SignUpMutationData, SignUpMutationInputVariables>(SignUp, {
     update: (store, { data }) => {
       if (!data) {
         return;

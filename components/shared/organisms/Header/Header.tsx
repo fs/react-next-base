@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
 
 import User from 'domain/User';
-import ISignOut from 'interfaces/actionsType';
+import type useSignOut from 'lib/apollo/hooks/actions/useSignOut';
 
 import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
@@ -11,7 +11,7 @@ import { HeaderWrapper, Links } from './styled';
 
 interface Props {
   user: User;
-  signOut: ISignOut;
+  signOut: ReturnType<typeof useSignOut>[0];
 }
 
 const Header = ({ user, signOut }: Props): JSX.Element => {
