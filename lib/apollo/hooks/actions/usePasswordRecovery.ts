@@ -4,18 +4,36 @@ import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.g
 
 import useNotifier from 'hooks/useNotifier';
 
+type PasswordRecoveryProps = {
+  email: string;
+};
+
+type PasswordRecoveryMutationData = {
+  requestPasswordRecovery: {
+    detail: string;
+  };
+};
+
+type PasswordRecoveryMutationInputVariable = PasswordRecoveryProps;
+
+type PasswordRecoveryMutationVariables = {
+  input: PasswordRecoveryMutationInputVariable;
+};
+
 const usePasswordRecovery = () => {
   const { setError } = useNotifier();
 
-  const [mutation, mutationState] = useMutation(RequestPasswordRecovery);
+  const [mutation, mutationState] = useMutation<PasswordRecoveryMutationData, PasswordRecoveryMutationVariables>(
+    RequestPasswordRecovery,
+  );
 
-  const mutate = async ({ email }) => {
+  const mutate = async ({ email }: PasswordRecoveryProps) => {
     const requestPasswordRecoveryInput = { email };
 
     try {
       return await mutation({ variables: { input: requestPasswordRecoveryInput } });
     } catch (error) {
-      setError(error);
+      if (setError) setError(error);
       return null;
     }
   };
