@@ -8,12 +8,30 @@ import CurrentUser from 'graphql/queries/currentUser.graphql';
 
 import useNotifier from 'hooks/useNotifier';
 
+import User from 'domain/User';
+
+type SignUpProps = {
+  avatarUrl?: string;
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
+};
+
+type SignUpMutationInputVariable = SignUpProps;
+
+type SignUpMutationInputVariables = { input: SignUpMutationInputVariable };
+
 const useSignUp = () => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation(SignUp, {
+  const [mutation, mutationState] = useMutation<{ signup: { me: User } }, SignUpMutationInputVariables>(SignUp, {
     update: (store, { data }) => {
+      if (!data) {
+        return;
+      }
+
       store.writeQuery({
         query: CurrentUser,
         data: {
@@ -25,9 +43,9 @@ const useSignUp = () => {
     },
   });
 
-  const mutate = async ({ avatar, email, password, firstName, lastName }) => {
+  const mutate = async ({ avatarUrl, email, password, firstName, lastName }: SignUpProps) => {
     const signUpInput = {
-      avatar,
+      avatarUrl,
       email,
       password,
       firstName,
@@ -37,11 +55,11 @@ const useSignUp = () => {
     try {
       await mutation({ variables: { input: signUpInput } });
 
-      window.localStorage.setItem(SIGN_IN_EVENT, Date.now());
+      window.localStorage.setItem(SIGN_IN_EVENT, Date.now().toString());
 
       router.push(HOME);
     } catch (error) {
-      setError(error);
+      if (setError) setError(error);
     }
   };
 
