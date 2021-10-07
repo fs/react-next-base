@@ -18,11 +18,15 @@ type SignOutMutationVariables = {
   input: SignOutMutationVariable;
 };
 
+type SignOutMutationData = {
+  signout: { message: string };
+};
+
 const useSignOut = () => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation<{ signout: { message: string } }, SignOutMutationVariables>(SignOut, {
+  const [mutation, mutationState] = useMutation<SignOutMutationData, SignOutMutationVariables>(SignOut, {
     update: (store) => {
       store.writeQuery({
         query: CurrentUser,

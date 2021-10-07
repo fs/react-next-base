@@ -18,11 +18,15 @@ type SignInMutationInputVariable = SignInProps;
 
 type SignInMutationVariables = { input: SignInMutationInputVariable };
 
+type SignInMutationData = {
+  signin: { me: User };
+};
+
 const useSignIn = () => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation<{ signin: { me: User } }, SignInMutationVariables>(SignIn, {
+  const [mutation, mutationState] = useMutation<SignInMutationData, SignInMutationVariables>(SignIn, {
     update: (store, { data }) => {
       if (!data) {
         return;
