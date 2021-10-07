@@ -12,7 +12,7 @@ const ProfileForm = ({ profile }) => {
   const [presignFile] = usePresignFile();
   const [uploadFile] = useFileUpload();
 
-  const [avatar, setAvatar] = useState({});
+  const [avatar, setAvatar] = useState(undefined);
   const [temporaryUrl, setTemporaryUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -36,8 +36,11 @@ const ProfileForm = ({ profile }) => {
     setLoading(true);
 
     try {
-      const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
-      const uploadedAvatar = await uploadFile(presignData, avatar);
+      let uploadedAvatar;
+      if (avatar) {
+        const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
+        uploadedAvatar = await uploadFile(presignData, avatar);
+      }
       await updateUser({ ...values, avatar: uploadedAvatar });
       setLoading(false);
       setSuccess('Profile updated successfully');
