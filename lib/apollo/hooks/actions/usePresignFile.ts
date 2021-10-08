@@ -28,8 +28,13 @@ const usePresignFile = () => {
   const mutate = async ({ type, filename }: PresignFileProps) => {
     const presignDataInput = { type, filename };
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return (await mutation({ variables: { input: presignDataInput } })).data!.presignData;
+    const resultData = (await mutation({ variables: { input: presignDataInput } })).data;
+
+    if (!resultData) {
+      return undefined as never;
+    }
+
+    return resultData.presignData;
   };
 
   return [mutate, mutationState] as const;
