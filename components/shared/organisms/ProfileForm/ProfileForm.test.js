@@ -46,8 +46,7 @@ describe('ProfileForm', () => {
 
     // Assert
     await waitFor(() => expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues));
-    expect(mockPresignFile).toHaveBeenCalledWith({});
-    expect(mockFileUpload).toHaveBeenCalledWith(undefined, {});
+    expect(mockPresignFile).not.toHaveBeenCalledWith();
   });
 
   test('should call useUpdateUser and fileUpload on submit', async () => {
