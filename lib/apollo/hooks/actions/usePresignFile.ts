@@ -30,11 +30,7 @@ const usePresignFile = () => {
 
     const resultData = (await mutation({ variables: { input: presignDataInput } })).data;
 
-    if (!resultData) {
-      return undefined as never;
-    }
-
-    return resultData.presignData;
+    return resultData!.presignData;
   };
 
   return [mutate, mutationState] as const;
