@@ -11,10 +11,8 @@ import ActivityPage from '.';
 
 jest.mock('components/shared/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/activity');
-jest.mock('lib/apollo/hooks/actions/auth', () => ({
-  useSignIn: jest.fn(() => []),
-  useUpdateUser: jest.fn(() => []),
-}));
+jest.mock('lib/apollo/hooks/actions/useSignIn', () => []);
+jest.mock('lib/apollo/hooks/actions/useUpdateUser', () => []);
 
 describe('Activity page', () => {
   test('should render correctly', () => {
