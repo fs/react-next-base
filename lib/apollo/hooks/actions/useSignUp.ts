@@ -6,7 +6,7 @@ import { SIGN_IN_EVENT } from 'config/globalEvents.json';
 import SignUp from 'graphql/mutations/signUp.graphql';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 import User from 'domain/User';
 

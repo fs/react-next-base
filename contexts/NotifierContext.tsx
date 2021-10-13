@@ -1,18 +1,42 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useContext, createContext, useState, useMemo, useCallback, ReactNode } from 'react';
 import { withApolloClient } from 'lib/withApolloClient';
 import ErrorDecorator from 'decorators/ErrorDecorator';
-import TYPES from 'config/types/notifierTypes';
-import NotifierContext from './NotifierContext';
+import { toast, TypeOptions } from 'react-toastify';
 
-const NotifierProvider = ({ children }) => {
+type NotifierContext = {
+  message?: string;
+  type?: TypeOptions;
+  setError?: (message: string) => void;
+  setInfo?: (message: string) => void;
+  setSuccess?: (message: string) => void;
+  clearMessage?: () => void;
+};
+
+const NotifierContext = createContext<NotifierContext | null>(null);
+
+export const useNotifier = () => {
+  const value = useContext(NotifierContext);
+
+  if (value === null) {
+    throw new Error('useNotifier cannot be used outside of NotifierProvider');
+  }
+
+  return value;
+};
+
+type NotifierProviderProps = {
+  children: ReactNode;
+};
+
+export const NotifierProvider = withApolloClient(({ children }: NotifierProviderProps) => {
   const [message, setMessage] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState<TypeOptions | undefined>(undefined);
 
   const setError = useCallback(
     (errorMessage) => {
       const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
       setMessage(parsedMessage);
-      setType(TYPES.error);
+      setType(toast.TYPE.ERROR);
     },
     [setMessage, setType],
   );
@@ -20,7 +44,7 @@ const NotifierProvider = ({ children }) => {
   const setInfo = useCallback(
     (infoMessage) => {
       setMessage(infoMessage);
-      setType(TYPES.info);
+      setType(toast.TYPE.INFO);
     },
     [setMessage, setType],
   );
@@ -28,14 +52,14 @@ const NotifierProvider = ({ children }) => {
   const setSuccess = useCallback(
     (successMessage) => {
       setMessage(successMessage);
-      setType(TYPES.success);
+      setType(toast.TYPE.SUCCESS);
     },
     [setMessage, setType],
   );
 
   const clearMessage = useCallback(() => {
     setMessage('');
-    setType('');
+    setType(undefined);
   }, [setMessage, setType]);
 
   const context = useMemo(
@@ -51,6 +75,4 @@ const NotifierProvider = ({ children }) => {
   );
 
   return <NotifierContext.Provider value={context}>{children}</NotifierContext.Provider>;
-};
-
-export default withApolloClient(NotifierProvider);
+});

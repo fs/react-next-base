@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 
 import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.graphql';
 
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 type PasswordRecoveryProps = {
   email: string;
