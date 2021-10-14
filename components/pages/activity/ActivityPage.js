@@ -17,6 +17,7 @@ import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import ActivityDropdown from './components/ActivityDropdown';
 import ActivityTable from './components/ActivityTable';
 import ActivityPagination from './components/ActivityPagination';
+import { NotifierProvider } from '../../../contexts/NotifierContext';
 
 const Wrapper = styled.div`
   position: relative;
@@ -78,44 +79,46 @@ const Activity = () => {
   };
 
   return (
-    <DefaultTemplate>
-      <Wrapper>
-        <ActivityDropdown
-          label="Choose activity event:"
-          selectedValue={filterValue}
-          values={activityEvents}
-          hasEmptyOption
-          onChange={handleFilterChange}
-          testId="activity-event-dropdown"
-          disabled={loading}
-          customStyles={filterDropdownStyles}
-        />
-
-        <ActivityDropdown
-          label="Choose activity page size:"
-          selectedValue={pageSize}
-          values={activityPageSizes.map((item) => ({ value: item, name: item }))}
-          onChange={handlePageSizeChange}
-          testId="activity-size-dropdown"
-          disabled={loading}
-          customStyles={pageSizeDropdownStyles}
-        />
-
-        {pageInfo && (
-          <ActivityPagination
-            pageInfo={pageInfo}
-            setBeforeCursor={setBeforeCursor}
-            setAfterCursor={setAfterCursor}
-            pageNumber={pageNumber}
-            setPageNumber={setPageNumber}
+    <NotifierProvider>
+      <DefaultTemplate>
+        <Wrapper>
+          <ActivityDropdown
+            label="Choose activity event:"
+            selectedValue={filterValue}
+            values={activityEvents}
+            hasEmptyOption
+            onChange={handleFilterChange}
+            testId="activity-event-dropdown"
+            disabled={loading}
+            customStyles={filterDropdownStyles}
           />
-        )}
 
-        {!loading && !error && <ActivityTable data={activities} />}
-        {loading && <Loader testId="activity-loading">Loading...</Loader>}
-        {error && <ErrorMessage testId="activity-error">{errorMessage}</ErrorMessage>}
-      </Wrapper>
-    </DefaultTemplate>
+          <ActivityDropdown
+            label="Choose activity page size:"
+            selectedValue={pageSize}
+            values={activityPageSizes.map((item) => ({ value: item, name: item }))}
+            onChange={handlePageSizeChange}
+            testId="activity-size-dropdown"
+            disabled={loading}
+            customStyles={pageSizeDropdownStyles}
+          />
+
+          {pageInfo && (
+            <ActivityPagination
+              pageInfo={pageInfo}
+              setBeforeCursor={setBeforeCursor}
+              setAfterCursor={setAfterCursor}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+            />
+          )}
+
+          {!loading && !error && <ActivityTable data={activities} />}
+          {loading && <Loader testId="activity-loading">Loading...</Loader>}
+          {error && <ErrorMessage testId="activity-error">{errorMessage}</ErrorMessage>}
+        </Wrapper>
+      </DefaultTemplate>
+    </NotifierProvider>
   );
 };
 
