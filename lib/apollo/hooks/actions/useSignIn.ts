@@ -56,7 +56,13 @@ const useSignIn = () => {
 
       router.push(HOME);
     } catch (error) {
-      if (setError) setError(error);
+      if (setError) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('Unknown error');
+        }
+      }
     }
   };
 
