@@ -3,15 +3,15 @@ import ErrorDecorator from 'decorators/ErrorDecorator';
 import { toast, TypeOptions } from 'react-toastify';
 
 type NotifierContext = {
-  message?: string;
-  type?: TypeOptions;
-  setError?: (message: string) => void;
-  setInfo?: (message: string) => void;
-  setSuccess?: (message: string) => void;
-  clearMessage?: () => void;
+  message: string;
+  type: TypeOptions;
+  setError: (message: string) => void;
+  setInfo: (message: string) => void;
+  setSuccess: (message: string) => void;
+  clearMessage: () => void;
 };
 
-const NotifierContext = createContext<NotifierContext | null>(null);
+const NotifierContext = createContext<NotifierContext>({} as NotifierContext);
 
 export const useNotifier = () => {
   const value = useContext(NotifierContext);
@@ -29,7 +29,7 @@ type NotifierProviderProps = {
 
 export const NotifierProvider = ({ children }: NotifierProviderProps) => {
   const [message, setMessage] = useState('');
-  const [type, setType] = useState<TypeOptions | undefined>(undefined);
+  const [type, setType] = useState<TypeOptions>('default');
 
   const setError = useCallback(
     (errorMessage) => {
@@ -58,7 +58,7 @@ export const NotifierProvider = ({ children }: NotifierProviderProps) => {
 
   const clearMessage = useCallback(() => {
     setMessage('');
-    setType(undefined);
+    setType('default');
   }, [setMessage, setType]);
 
   const context = useMemo(
