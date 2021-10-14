@@ -1,5 +1,4 @@
 import React, { useContext, createContext, useState, useMemo, useCallback, ReactNode } from 'react';
-import { withApolloClient } from 'lib/withApolloClient';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import { toast, TypeOptions } from 'react-toastify';
 
@@ -28,7 +27,7 @@ type NotifierProviderProps = {
   children: ReactNode;
 };
 
-export const NotifierProvider = withApolloClient(({ children }: NotifierProviderProps) => {
+export const NotifierProvider = ({ children }: NotifierProviderProps) => {
   const [message, setMessage] = useState('');
   const [type, setType] = useState<TypeOptions | undefined>(undefined);
 
@@ -75,4 +74,4 @@ export const NotifierProvider = withApolloClient(({ children }: NotifierProvider
   );
 
   return <NotifierContext.Provider value={context}>{children}</NotifierContext.Provider>;
-});
+};

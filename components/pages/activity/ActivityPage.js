@@ -14,10 +14,10 @@ import Loader from 'components/shared/atoms/Loader';
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 
+import { NotifierProvider } from 'contexts/NotifierContext';
 import ActivityDropdown from './components/ActivityDropdown';
 import ActivityTable from './components/ActivityTable';
 import ActivityPagination from './components/ActivityPagination';
-import { NotifierProvider } from '../../../contexts/NotifierContext';
 
 const Wrapper = styled.div`
   position: relative;
