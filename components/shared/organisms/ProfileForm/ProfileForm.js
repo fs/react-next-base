@@ -3,7 +3,7 @@ import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
 import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 import ProfileFormContent from './ProfileFormContent';
 
 const ProfileForm = ({ profile }) => {
