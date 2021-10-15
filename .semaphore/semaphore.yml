@@ -64,6 +64,10 @@ blocks:
           commands:
             - yarn run ci:jest
 
+        - name: Types check
+          commands:
+            - yarn run lint:types
+
         - name: E2E
           commands:
             # install cypress
