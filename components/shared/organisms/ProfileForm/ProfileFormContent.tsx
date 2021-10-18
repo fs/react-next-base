@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
+
 import Form from 'components/shared/molecules/Form';
 import Loader from 'components/shared/atoms/Loader';
+import User from 'domain/User';
+import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 
 import { FormWrapper, StyledTitle, AvatarWrapper, AvatarImg } from './styled';
+import { FormikHelpers } from 'formik';
+
+type UpdateUserFn = ReturnType<typeof useUpdateUser>[0];
+type ValuesFromFormik = Parameters<UpdateUserFn>[0];
+
+type ProfileFormContentProps = {
+  temporaryUrl: string;
+  profile: User;
+  onSubmit: (values: ValuesFromFormik, formikHelpers: FormikHelpers<ValuesFromFormik>) => Promise<void>;
+  handleAvatarChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  loading: boolean;
+};
 
 const ProfileFormContent = ({
   temporaryUrl,
@@ -11,7 +26,7 @@ const ProfileFormContent = ({
   onSubmit,
   handleAvatarChange,
   loading,
-}) => {
+}: ProfileFormContentProps) => {
   const fields = [
     {
       type: 'file',
