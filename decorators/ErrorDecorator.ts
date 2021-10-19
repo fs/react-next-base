@@ -6,6 +6,16 @@ const getMessage: (errors: readonly Error[]) => string = (errors) => errors.map(
 const getStatus: (error: Error | GraphQLError) => unknown | null = (error) =>
   error && 'extensions' in error ? error.extensions?.status || null : null;
 
+function isApolloError(error: unknown): error is ApolloError {
+  return (
+    typeof error === 'object' &&
+    error != null &&
+    'graphQLErrors' in error &&
+    'networkError' in error &&
+    'message' in error
+  );
+}
+
 export default class ErrorDecorator extends Error {
   errors: readonly Error[] = [];
 
@@ -26,7 +36,7 @@ export default class ErrorDecorator extends Error {
   }
 
   static parse(error: unknown): readonly Error[] {
-    if (error instanceof ApolloError) {
+    if (isApolloError(error)) {
       return error.graphQLErrors;
     }
 
