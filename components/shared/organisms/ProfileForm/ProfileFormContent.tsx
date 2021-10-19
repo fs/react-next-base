@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
+import { FormikHelpers } from 'formik';
 
 import Form from 'components/shared/molecules/Form';
 import { FormFieldType } from 'components/shared/molecules/Form/forms.types';
@@ -8,7 +9,6 @@ import User from 'domain/User';
 import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 
 import { FormWrapper, StyledTitle, AvatarWrapper, AvatarImg } from './styled';
-import { FormikHelpers } from 'formik';
 
 type UpdateUserFn = ReturnType<typeof useUpdateUser>[0];
 type ValuesFromFormik = Parameters<UpdateUserFn>[0];
