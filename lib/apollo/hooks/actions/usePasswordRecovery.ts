@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 
 import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.graphql';
 
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 type PasswordRecoveryProps = {
   email: string;
@@ -33,7 +33,13 @@ const usePasswordRecovery = () => {
     try {
       return await mutation({ variables: { input: requestPasswordRecoveryInput } });
     } catch (error) {
-      if (setError) setError(error);
+      if (setError) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('Unknown error');
+        }
+      }
       return null;
     }
   };

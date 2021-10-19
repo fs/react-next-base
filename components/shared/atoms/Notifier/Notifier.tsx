@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 const Notifier = () => {
   const { message, type, clearMessage } = useNotifier();

@@ -6,7 +6,7 @@ import { SIGN_OUT_EVENT } from 'config/globalEvents.json';
 import SignOut from 'graphql/mutations/signOut.graphql';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 type SignOutProps = {
   everywhere?: boolean;
@@ -47,7 +47,13 @@ const useSignOut = () => {
 
       router.push(HOME);
     } catch (error) {
-      if (setError) setError(error);
+      if (setError) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('Unknown error');
+        }
+      }
     }
   };
 

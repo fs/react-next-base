@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 import useSignUp from 'lib/apollo/hooks/actions/useSignUp';
