@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-import IUser from 'interfaces/userType';
+import User from 'domain/User';
 import IUserNavigation from 'interfaces/userNavigationType';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
@@ -9,7 +9,7 @@ import UserNavigationList from './UserNavigationList';
 import { UserName, UserNavigationWrapper, UserNameWrapper } from './styled';
 
 interface Props extends IUserNavigation {
-  user: IUser;
+  user: User;
 }
 
 const UserNavigation = ({ user, links, actions }: Props) => {

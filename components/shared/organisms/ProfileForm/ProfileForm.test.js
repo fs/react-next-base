@@ -2,17 +2,39 @@ import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
-import { useUpdateUser, usePresignFile } from 'lib/apollo/hooks/actions/auth';
+import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
+import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
+import { useNotifier } from 'contexts/NotifierContext';
 import { useFileUpload } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
-jest.mock('lib/apollo/hooks/actions/auth');
+jest.mock('lib/apollo/hooks/actions/useUpdateUser');
+jest.mock('lib/apollo/hooks/actions/usePresignFile');
+jest.mock('contexts/NotifierContext');
 jest.mock('hooks/useFileUpload');
 jest.mock('decorators/ErrorDecorator');
 
 describe('ProfileForm', () => {
+  let mockUpdateUser;
+  let mockPresignFile;
+  let mockFileUpload;
+  let mockNotifierSetSuccess;
+
+  beforeEach(() => {
+    mockUpdateUser = jest.fn(() => Promise.resolve());
+    useUpdateUser.mockImplementation(() => [mockUpdateUser]);
+    mockPresignFile = jest.fn(() => Promise.resolve());
+    usePresignFile.mockImplementation(() => [mockPresignFile]);
+    mockFileUpload = jest.fn(() => Promise.resolve());
+    useFileUpload.mockImplementation(() => [mockFileUpload]);
+    mockNotifierSetSuccess = jest.fn();
+    useNotifier.mockImplementation(() => ({
+      setSuccess: mockNotifierSetSuccess,
+    }));
+  });
+
   test('should call useUpdateUser on submit', async () => {
     // Arrange
     const expectedEmail = 'test@test.com';
@@ -29,12 +51,6 @@ describe('ProfileForm', () => {
       password: '',
       currentPassword: '',
     };
-    const mockUpdateUser = jest.fn(() => Promise.resolve());
-    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
-    const mockPresignFile = jest.fn(() => Promise.resolve());
-    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
-    const mockFileUpload = jest.fn(() => Promise.resolve());
-    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
@@ -43,8 +59,8 @@ describe('ProfileForm', () => {
 
     // Assert
     await waitFor(() => expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues));
-    expect(mockPresignFile).toHaveBeenCalledWith({});
-    expect(mockFileUpload).toHaveBeenCalledWith(undefined, {});
+    expect(mockPresignFile).not.toHaveBeenCalled();
+    expect(mockFileUpload).not.toHaveBeenCalled();
   });
 
   test('should call useUpdateUser and fileUpload on submit', async () => {
@@ -78,12 +94,6 @@ describe('ProfileForm', () => {
       password: '',
       currentPassword: '',
     };
-    const mockUpdateUser = jest.fn(() => Promise.resolve());
-    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
-    const mockPresignFile = jest.fn(() => Promise.resolve());
-    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
-    const mockFileUpload = jest.fn(() => Promise.resolve());
-    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
 
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
@@ -101,7 +111,7 @@ describe('ProfileForm', () => {
     expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
   });
 
-  test('should call errrorDecorator on error', async () => {
+  test('should call errorDecorator on error', async () => {
     // Arrange
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
@@ -117,12 +127,8 @@ describe('ProfileForm', () => {
     const expectedError = {
       errors: [{ message: 'Record Invalid' }],
     };
-    const mockUpdateUser = jest.fn(() => Promise.reject(expectedError));
-    useUpdateUser.mockImplementation(jest.fn(() => [mockUpdateUser]));
-    const mockPresignFile = jest.fn(() => Promise.resolve());
-    usePresignFile.mockImplementation(jest.fn(() => [mockPresignFile]));
-    const mockFileUpload = jest.fn(() => Promise.resolve());
-    useFileUpload.mockImplementation(jest.fn(() => [mockFileUpload]));
+
+    mockUpdateUser = jest.fn(() => Promise.reject(expectedError));
 
     const mockErrorDecorator = jest.fn();
     ErrorDecorator.mockImplementation(mockErrorDecorator);
