@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
 
 import Form from 'components/shared/molecules/Form';
+import { FormFieldType } from 'components/shared/molecules/Form/forms.types';
 import Loader from 'components/shared/atoms/Loader';
 import User from 'domain/User';
 import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
@@ -29,7 +30,7 @@ const ProfileFormContent = ({
 }: ProfileFormContentProps) => {
   const fields = [
     {
-      type: 'file',
+      type: FormFieldType.file as const,
       name: 'avatar',
       title: 'Avatar',
       testID: 'avatar',
@@ -37,7 +38,7 @@ const ProfileFormContent = ({
       onChange: handleAvatarChange,
     },
     {
-      type: 'text',
+      type: FormFieldType.text as const,
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
@@ -46,7 +47,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'text',
+      type: FormFieldType.text as const,
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
@@ -55,7 +56,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'email',
+      type: FormFieldType.email as const,
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
@@ -64,7 +65,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string().email('The email must be valid!!').required('This field is required'),
     },
     {
-      type: 'password',
+      type: FormFieldType.password as const,
       name: 'password',
       title: 'New Password',
       placeholder: 'New Password',
@@ -73,7 +74,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'password',
+      type: FormFieldType.password as const,
       name: 'currentPassword',
       title: 'Current Password',
       placeholder: 'Current Password',
@@ -86,7 +87,7 @@ const ProfileFormContent = ({
       }),
     },
     {
-      type: 'submit',
+      type: FormFieldType.submit as const,
       name: 'Update',
       testID: 'update-button',
       label: 'Update',

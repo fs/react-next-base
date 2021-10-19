@@ -26,7 +26,7 @@ export interface BaseFormFieldConfig {
 
 interface FormikProps {
   validationSchema?: StringSchema;
-  initialValue: unknown;
+  initialValue?: unknown;
 }
 
 type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFields>>;
