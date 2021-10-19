@@ -9,11 +9,9 @@ import ProfilePage from '.';
 
 jest.mock('components/shared/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/currentUser');
-jest.mock('lib/apollo/hooks/actions/auth', () => ({
-  useSignIn: jest.fn(() => []),
-  useUpdateUser: jest.fn(() => []),
-  usePresignFile: jest.fn(() => []),
-}));
+jest.mock('lib/apollo/hooks/actions/useSignIn', () => jest.fn(() => []));
+jest.mock('lib/apollo/hooks/actions/useUpdateUser', () => jest.fn(() => []));
+jest.mock('lib/apollo/hooks/actions/usePresignFile', () => jest.fn(() => []));
 
 describe('Profile page', () => {
   test('should render correctly', async () => {
