@@ -236,7 +236,7 @@ exports[`Profile page should show error on error 1`] = `
   data-testid="profile-error"
 >
   <p>
-    GraphQL error: Current User not found or accessible
+    Current User not found or accessible
   </p>
 </div>
 `;
