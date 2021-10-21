@@ -212,6 +212,7 @@ exports[`ProfileFormContent should render correctly 1`] = `
               id="Update"
               name="Update"
               type="submit"
+              value="Update"
             />
           </div>
         </div>

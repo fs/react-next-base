@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
+import { FormikHelpers } from 'formik';
+
 import Form from 'components/shared/molecules/Form';
+import { FormFieldConfig, FormFieldType } from 'components/shared/molecules/Form/forms.types';
 import Loader from 'components/shared/atoms/Loader';
+import User from 'domain/User';
+import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 
 import { FormWrapper, StyledTitle, AvatarWrapper, AvatarImg } from './styled';
+
+type UpdateUserFn = ReturnType<typeof useUpdateUser>[0];
+type ValuesFromFormik = Parameters<UpdateUserFn>[0];
+
+type ProfileFormContentProps = {
+  temporaryUrl: string;
+  profile: User;
+  onSubmit: (values: ValuesFromFormik, formikHelpers: FormikHelpers<ValuesFromFormik>) => Promise<void>;
+  handleAvatarChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  loading: boolean;
+};
 
 const ProfileFormContent = ({
   temporaryUrl,
@@ -11,18 +27,19 @@ const ProfileFormContent = ({
   onSubmit,
   handleAvatarChange,
   loading,
-}) => {
-  const fields = [
+}: ProfileFormContentProps) => {
+  const fields: FormFieldConfig[] = [
     {
-      type: 'file',
+      type: FormFieldType.file,
       name: 'avatar',
       title: 'Avatar',
       testID: 'avatar',
       accept: 'image/*',
       onChange: handleAvatarChange,
+      initialValue: null,
     },
     {
-      type: 'text',
+      type: FormFieldType.text,
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
@@ -31,7 +48,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'text',
+      type: FormFieldType.text,
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
@@ -40,7 +57,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'email',
+      type: FormFieldType.email,
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
@@ -49,7 +66,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string().email('The email must be valid!!').required('This field is required'),
     },
     {
-      type: 'password',
+      type: FormFieldType.password,
       name: 'password',
       title: 'New Password',
       placeholder: 'New Password',
@@ -58,7 +75,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: 'password',
+      type: FormFieldType.password,
       name: 'currentPassword',
       title: 'Current Password',
       placeholder: 'Current Password',
@@ -71,10 +88,11 @@ const ProfileFormContent = ({
       }),
     },
     {
-      type: 'submit',
+      type: FormFieldType.submit,
       name: 'Update',
       testID: 'update-button',
       label: 'Update',
+      initialValue: 'Update',
     },
   ];
 

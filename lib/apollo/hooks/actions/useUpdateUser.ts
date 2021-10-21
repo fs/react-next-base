@@ -3,10 +3,11 @@ import { useMutation } from '@apollo/client';
 import UpdateUser from 'graphql/mutations/updateUser.graphql';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
+import type { Uploaded } from 'hooks/useFileUpload';
 import User from 'domain/User';
 
 type UpdateUserProps = {
-  avatarUrl: string;
+  avatar?: Uploaded;
   email: string;
   firstName: string;
   lastName: string;
@@ -40,9 +41,9 @@ const useUpdateUser = () => {
     },
   });
 
-  const mutate = async ({ avatarUrl, email, firstName, lastName, password, currentPassword }: UpdateUserProps) => {
+  const mutate = async ({ avatar, email, firstName, lastName, password, currentPassword }: UpdateUserProps) => {
     const updateUserInput = {
-      avatarUrl,
+      avatar,
       email,
       firstName,
       lastName,
@@ -53,7 +54,7 @@ const useUpdateUser = () => {
     await mutation({ variables: { input: updateUserInput } });
   };
 
-  return [mutate, mutationState];
+  return [mutate, mutationState] as const;
 };
 
 export default useUpdateUser;
