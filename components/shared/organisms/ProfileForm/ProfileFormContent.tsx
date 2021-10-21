@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { FormikHelpers } from 'formik';
 
 import Form from 'components/shared/molecules/Form';
-import { FormFieldType } from 'components/shared/molecules/Form/forms.types';
+import { FormFieldConfig, FormFieldType } from 'components/shared/molecules/Form/forms.types';
 import Loader from 'components/shared/atoms/Loader';
 import User from 'domain/User';
 import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
@@ -28,17 +28,18 @@ const ProfileFormContent = ({
   handleAvatarChange,
   loading,
 }: ProfileFormContentProps) => {
-  const fields = [
+  const fields: FormFieldConfig[] = [
     {
-      type: FormFieldType.file as const,
+      type: FormFieldType.file,
       name: 'avatar',
       title: 'Avatar',
       testID: 'avatar',
       accept: 'image/*',
       onChange: handleAvatarChange,
+      initialValue: null,
     },
     {
-      type: FormFieldType.text as const,
+      type: FormFieldType.text,
       name: 'firstName',
       title: 'First Name',
       placeholder: 'First Name',
@@ -47,7 +48,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: FormFieldType.text as const,
+      type: FormFieldType.text,
       name: 'lastName',
       title: 'Last Name',
       placeholder: 'Last Name',
@@ -56,7 +57,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: FormFieldType.email as const,
+      type: FormFieldType.email,
       name: 'email',
       title: 'Email',
       placeholder: 'Email',
@@ -65,7 +66,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string().email('The email must be valid!!').required('This field is required'),
     },
     {
-      type: FormFieldType.password as const,
+      type: FormFieldType.password,
       name: 'password',
       title: 'New Password',
       placeholder: 'New Password',
@@ -74,7 +75,7 @@ const ProfileFormContent = ({
       validationSchema: Yup.string(),
     },
     {
-      type: FormFieldType.password as const,
+      type: FormFieldType.password,
       name: 'currentPassword',
       title: 'Current Password',
       placeholder: 'Current Password',
@@ -87,10 +88,11 @@ const ProfileFormContent = ({
       }),
     },
     {
-      type: FormFieldType.submit as const,
+      type: FormFieldType.submit,
       name: 'Update',
       testID: 'update-button',
       label: 'Update',
+      initialValue: 'Update',
     },
   ];
 
