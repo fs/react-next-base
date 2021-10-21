@@ -50,6 +50,8 @@ describe('ProfileForm', () => {
       ...expectedProfile,
       password: '',
       currentPassword: '',
+      Update: 'Update',
+      avatar: undefined,
     };
 
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
@@ -93,6 +95,8 @@ describe('ProfileForm', () => {
       ...expectedProfile,
       password: '',
       currentPassword: '',
+      Update: 'Update',
+      avatar: undefined,
     };
 
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
