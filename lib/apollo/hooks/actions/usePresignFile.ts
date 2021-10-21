@@ -6,14 +6,16 @@ type PresignFileProps = {
   filename: string;
 };
 
+export type PresignData = {
+  fields: {
+    key: string;
+    value: string;
+  }[];
+  url: string;
+};
+
 type PresignFileData = {
-  presignData: {
-    fields: {
-      key: string;
-      value: string;
-    };
-    url: string;
-  };
+  presignData: PresignData;
 };
 
 type PresignFileMutationInputVariable = PresignFileProps;
