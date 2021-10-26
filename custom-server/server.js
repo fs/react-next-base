@@ -9,9 +9,9 @@ const express = require('express');
 const secure = require('express-force-https');
 const bodyParser = require('body-parser');
 
-const graphqlProxyMiddleware = require('./server/middlewares/graphql');
+const graphqlProxyMiddleware = require('../server/middlewares/graphql');
 
-const { DEV, PORT, GRAPHQL_APP_URL } = require('./config/vars');
+const { DEV, PORT, GRAPHQL_APP_URL } = require('../config/vars');
 
 // Create body-parser json middleware
 const bodyParserJSON = bodyParser.json();
