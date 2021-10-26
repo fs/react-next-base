@@ -7,5 +7,5 @@
     "isolatedModules": false,
     "noEmit": false
   },
-  "include": ["custom-server/*"]
+  "include": ["custom-server/*", "declarations/*"]
 }
