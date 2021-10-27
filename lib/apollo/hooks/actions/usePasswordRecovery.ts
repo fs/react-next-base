@@ -33,14 +33,7 @@ const usePasswordRecovery = () => {
     try {
       return await mutation({ variables: { input: requestPasswordRecoveryInput } });
     } catch (error) {
-      if (setError) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError('Unknown error');
-        }
-      }
-      return null;
+      if (setError) setError(error);
     }
   };
 
