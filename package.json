@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc --project custom-server/tsconfig.json && next build",
-    "server": "ts-node custom-server/server.ts",
-    "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/custom-server/server.js -p $PORT",
+    "build": "tsc --project server/tsconfig.json",
+    "server": "ts-node server/server.ts",
+    "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts && lint:types",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",

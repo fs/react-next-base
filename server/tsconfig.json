@@ -7,8 +7,9 @@
     "noEmit": false,
     "esModuleInterop": true,
     "baseUrl": "../",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true
   },
-  "include": ["../custom-server/*", "../declarations/*"],
+  "include": ["../server/*", "../declarations/*"],
   "exclude": ["../node_modules"]
 }
