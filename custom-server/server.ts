@@ -1,6 +1,5 @@
 import next from 'next';
 import express from 'express';
-// @ts-ignore
 import secure from 'express-force-https';
 import bodyParser from 'body-parser';
 
