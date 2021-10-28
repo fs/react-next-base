@@ -1,11 +1,14 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "outDir": ".dist",
     "target": "es2017",
     "isolatedModules": false,
-    "noEmit": false
+    "noEmit": false,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "skipLibCheck": true
   },
-  "include": ["custom-server/*", "declarations/*"]
+  "include": ["custom-server/*", "declarations/*"],
+  "exclude": ["node_modules"]
 }

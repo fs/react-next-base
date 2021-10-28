@@ -17,5 +17,5 @@
     "baseUrl": "."
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "**/*.js", "declarations/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "custom-server"]
 }
