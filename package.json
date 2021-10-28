@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc --project server/tsconfig.json",
+    "build": "tsc --project server/tsconfig.json && next build",
     "server": "ts-node server/server.ts",
     "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",
     "test": "jest --watch",
