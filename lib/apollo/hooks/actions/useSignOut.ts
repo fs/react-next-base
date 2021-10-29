@@ -47,13 +47,7 @@ const useSignOut = () => {
 
       router.push(HOME);
     } catch (error) {
-      if (setError) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError('Unknown error');
-        }
-      }
+      if (setError) setError(error);
     }
   };
 
