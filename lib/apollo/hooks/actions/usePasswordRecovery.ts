@@ -25,23 +25,19 @@ const usePasswordRecovery = () => {
 
   const [mutation, mutationState] = useMutation<PasswordRecoveryMutationData, PasswordRecoveryMutationVariables>(
     RequestPasswordRecovery,
+    {
+      onError: (error) => {
+        if (setError) setError(error);
+      },
+    },
   );
 
   const mutate = async ({ email }: PasswordRecoveryProps) => {
     const requestPasswordRecoveryInput = { email };
-
-    try {
-      return await mutation({ variables: { input: requestPasswordRecoveryInput } });
-    } catch (error) {
-      if (setError) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError('Unknown error');
-        }
-      }
-      return null;
-    }
+    const result = await mutation({
+      variables: { input: requestPasswordRecoveryInput },
+    });
+    return result;
   };
 
   const error = mutationState?.error;
