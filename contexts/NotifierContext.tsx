@@ -5,7 +5,7 @@ import { toast, TypeOptions } from 'react-toastify';
 type NotifierContext = {
   message: string;
   type: TypeOptions;
-  setError: (message: string) => void;
+  setError: (error: unknown) => void;
   setInfo: (message: string) => void;
   setSuccess: (message: string) => void;
   clearMessage: () => void;
