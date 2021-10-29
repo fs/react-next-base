@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Field } from 'formik';
 import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
 export interface FileFormFieldConfig extends BaseFormFieldConfig {
   type: FormFieldType.file;
   accept: string;
-  onChange?: void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FileFormField = ({ name, accept, testID, onChange, disabled }: FileFormFieldConfig) => {
