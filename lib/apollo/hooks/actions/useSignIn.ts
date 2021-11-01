@@ -10,7 +10,7 @@ import { useNotifier } from 'contexts/NotifierContext';
 
 import User from 'domain/User';
 
-type SignInProps = {
+export type SignInProps = {
   email: string;
   password: string;
 };
@@ -60,7 +60,7 @@ const useSignIn = () => {
     }
   };
 
-  return [mutate, mutationState];
+  return [mutate, mutationState] as const;
 };
 
 export default useSignIn;

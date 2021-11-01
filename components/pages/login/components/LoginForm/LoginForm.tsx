@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 import { useNotifier } from 'contexts/NotifierContext';
 
-import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
-import useSignUp from 'lib/apollo/hooks/actions/useSignUp';
-import usePasswordRecovery from 'lib/apollo/hooks/actions/usePasswordRecovery';
+import useSignIn, { SignInProps } from 'lib/apollo/hooks/actions/useSignIn';
+import useSignUp, { SignUpProps } from 'lib/apollo/hooks/actions/useSignUp';
+import usePasswordRecovery, { PasswordRecoveryProps } from 'lib/apollo/hooks/actions/usePasswordRecovery';
 
 import LoginFormContent from './LoginFormContent';
 
-import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
+import { FormAction } from './constants';
+
+const { PASSWORD_RECOVERY_FORM, SIGN_IN_FORM, SIGN_UP_FORM } = FormAction;
 
 const StyledFormWrapper = styled.div`
   text-align: center;
@@ -21,6 +23,11 @@ const StyledMessage = styled.div`
   color: ${({ theme: { colors } }) => colors.green};
   margin-top: 2rem;
 `;
+export type TOnSubmit = (
+  // TODO: тип должен выбираться от Action
+  values: SignUpProps,
+  { setSubmitting }: { setSubmitting: (value: boolean) => void },
+) => void;
 
 const LoginForm = () => {
   const [signIn] = useSignIn();
@@ -40,12 +47,12 @@ const LoginForm = () => {
     if (errorMessage) setError(errorMessage);
   }, [errorMessage]);
 
-  const toggleForm = (form) => {
+  const toggleForm = (form: FormAction) => {
     setActiveForm(form);
     setMessage('');
   };
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit: TOnSubmit = async (values, { setSubmitting }) => {
     try {
       const action = {
         [SIGN_IN_FORM]: signIn,
@@ -56,9 +63,7 @@ const LoginForm = () => {
       if (!action) {
         console.error(`Action for ${activeForm} form is not exists`);
       }
-
       setSubmitting(true);
-
       await action(values);
 
       setSubmitting(false);

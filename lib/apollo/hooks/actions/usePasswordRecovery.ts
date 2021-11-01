@@ -4,7 +4,7 @@ import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.g
 
 import { useNotifier } from 'contexts/NotifierContext';
 
-type PasswordRecoveryProps = {
+export type PasswordRecoveryProps = {
   email: string;
 };
 
@@ -43,7 +43,7 @@ const usePasswordRecovery = () => {
   const error = mutationState?.error;
   const detail = mutationState?.data?.requestPasswordRecovery?.detail;
 
-  return [mutate, detail, error];
+  return [mutate, detail, error] as const;
 };
 
 export default usePasswordRecovery;

@@ -3,15 +3,23 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Tabs from 'components/shared/molecules/Tabs';
 import Form from 'components/shared/molecules/Form';
-import { SIGN_IN_FORM, SIGN_UP_FORM, PASSWORD_RECOVERY_FORM } from './constants';
+import { FormType } from 'components/shared/molecules/Form/forms.types';
+import { FormAction } from './constants';
+import { TOnSubmit } from './LoginForm';
+
+const { PASSWORD_RECOVERY_FORM, SIGN_IN_FORM, SIGN_UP_FORM } = FormAction;
 
 const StyledFormTitle = styled.h3`
   margin: 0 auto 2rem;
   line-height: 1.25;
   letter-spacing: -0.035rem;
 `;
-
-const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
+type TLoginFormContent = {
+  onSubmit: TOnSubmit;
+  toggleForm: (action: FormAction) => void;
+  activeForm: FormAction;
+};
+const LoginFormContent = ({ onSubmit, toggleForm, activeForm }: TLoginFormContent) => {
   // const isSignIn = activeForm === SIGN_IN_FORM;
   const isSignUp = activeForm === SIGN_UP_FORM;
   const isRecovery = activeForm === PASSWORD_RECOVERY_FORM;
@@ -30,7 +38,8 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       [PASSWORD_RECOVERY_FORM]: 'Recover my password',
     }[activeForm] ?? '';
 
-  const fields = [
+  // TODO: change type
+  const fields: any = [
     isSignUp && {
       type: 'text',
       name: 'firstName',
@@ -75,7 +84,7 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
     },
   ].filter(Boolean);
 
-  const form = {
+  const form: FormType = {
     fields,
     submit: onSubmit,
   };
@@ -89,19 +98,19 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
 
   const TABS = [
     {
-      id: 'signin',
+      id: SIGN_IN_FORM,
       name: 'Sign in',
       action: () => toggleForm(SIGN_IN_FORM),
       content: <Content />,
     },
     {
-      id: 'signup',
+      id: SIGN_UP_FORM,
       name: 'Create an account',
       action: () => toggleForm(SIGN_UP_FORM),
       content: <Content />,
     },
     {
-      id: 'password-recovery',
+      id: PASSWORD_RECOVERY_FORM,
       name: 'Forgot your password',
       action: () => toggleForm(PASSWORD_RECOVERY_FORM),
       content: <Content />,

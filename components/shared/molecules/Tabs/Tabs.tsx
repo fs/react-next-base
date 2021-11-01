@@ -12,18 +12,18 @@ interface ITab {
 
 interface Props {
   tabs: ITab[];
-  activeId: string | number;
+  activeId?: string | number;
 }
 
-const Tabs = ({ tabs = [], activeId }: Props): JSX.Element => {
-  const [aciveTabId, setAciveTabId] = useState(activeId || tabs[0].id);
+const Tabs = ({ tabs, activeId = tabs[0].id }: Props): JSX.Element => {
+  const [activeTabId, setActiveTabId] = useState(activeId);
 
   const onClickHandle = (id: ITab['id'], action = () => {}) => {
-    setAciveTabId(id);
+    setActiveTabId(id);
     action();
   };
 
-  const activeContent = tabs.find(({ id }) => id === aciveTabId)?.content || tabs[0].content;
+  const activeContent = tabs.find(({ id }) => id === activeTabId)?.content || tabs[0].content;
 
   return (
     <>
@@ -32,7 +32,7 @@ const Tabs = ({ tabs = [], activeId }: Props): JSX.Element => {
           <Tab
             key={id}
             name={name}
-            active={aciveTabId === id}
+            active={activeTabId === id}
             onClick={() => onClickHandle(id, action)}
             testId={`tab-${id}`}
           />
