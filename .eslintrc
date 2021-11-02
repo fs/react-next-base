@@ -28,7 +28,7 @@
   "rules": {
     "react/jsx-filename-extension": [
       1,
-      { "extensions": [".js", ".jsx", ".tsx", ".ts"] }
+      { "extensions": [".jsx", ".tsx"] }
     ],
     "no-console": "off",
     "prefer-destructuring": "off",
