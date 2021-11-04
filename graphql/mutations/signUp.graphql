@@ -6,6 +6,7 @@ mutation signup($input: SignUpInput!) {
     me {
       ...UserInfo
     }
-    ...AuthTokens
+    accessToken
+    refreshToken
   }
 }
