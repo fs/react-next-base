@@ -1,0 +1,15 @@
+{
+  "name": "GraphQL",
+  "schemaPath": ".server-schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "server": {
+        "url": "https://rails-base-graphql-api.herokuapp.com/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": true
+      }
+    }
+  }
+}
