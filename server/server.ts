@@ -3,7 +3,7 @@ import express from 'express';
 import secure from 'express-force-https';
 import bodyParser from 'body-parser';
 
-import graphqlProxyMiddleware from '../server/middlewares/graphql';
+import graphqlProxyMiddleware from './middlewares/graphql';
 
 import { DEV, PORT, GRAPHQL_APP_URL } from '../config/vars';
 
