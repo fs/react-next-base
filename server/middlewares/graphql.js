@@ -3,10 +3,10 @@ const zlib = require('zlib');
 const Cookie = require('universal-cookie');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const { API_URL } = require('config/vars');
-const { REFRESH_TOKEN_KEY } = require('config/jwt.json');
+const { API_URL } = require('../../config/vars');
+const { REFRESH_TOKEN_KEY } = require('../../config/jwt.json');
 
-const { setRefreshToken, deleteRefreshToken } = require('lib/auth/tokens');
+const { setRefreshToken, deleteRefreshToken } = require('../../lib/auth/tokens');
 
 // Working with refresh token
 const handleResponse = ({ req, res, body }) => {
