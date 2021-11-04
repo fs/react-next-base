@@ -1,4 +1,4 @@
-fragment AuthTokens on Authentication {
+fragment AuthTokens on SignInPayload {
   accessToken
   refreshToken
 }
