@@ -69,7 +69,6 @@ const graphqlProxyMidlleware = createProxyMiddleware({
     // }
   },
   onProxyRes: (proxyRes, req, res) => {
-    console.log(proxyRes.headers);
     const bodyChunks = [];
 
     proxyRes.on('data', (chunk) => {
