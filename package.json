@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc --project server/tsconfig.json && next build",
-    "server": "ts-node  server/server.ts",
+    "server": "NODE_PATH=\".dist/\" ts-node  server/server.ts",
     "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",
     "test": "jest --watch",
     "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts && lint:types",
