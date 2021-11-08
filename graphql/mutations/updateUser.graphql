@@ -2,6 +2,8 @@
 
 mutation updateUser($input: UpdateUserInput!) {
   updateUser(input: $input) {
-    ...UserInfo
+    me {
+      ...UserInfo
+    }
   }
 }
