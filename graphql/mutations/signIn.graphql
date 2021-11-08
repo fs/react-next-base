@@ -1,11 +1,11 @@
 #import "../fragments/userInfo.graphql"
-#import "../fragments/authTokens.graphql"
 
 mutation signin($input: SignInInput!) {
   signin(input: $input) {
     me {
       ...UserInfo
     }
-    ...AuthTokens
+    accessToken
+    refreshToken
   }
 }
