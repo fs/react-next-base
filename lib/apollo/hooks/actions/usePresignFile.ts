@@ -15,7 +15,9 @@ export type PresignData = {
 };
 
 type PresignFileData = {
-  presignData: PresignData;
+  presignData: {
+    data: PresignData;
+  };
 };
 
 type PresignFileMutationInputVariable = PresignFileProps;
@@ -32,7 +34,7 @@ const usePresignFile = () => {
 
     const resultData = (await mutation({ variables: { input: presignDataInput } })).data;
 
-    return resultData!.presignData;
+    return resultData!.presignData.data;
   };
 
   return [mutate, mutationState] as const;
