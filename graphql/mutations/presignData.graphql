@@ -1,9 +1,11 @@
 mutation presignData($input: PresignDataInput!) {
   presignData(input: $input) {
-    fields {
-      key
-      value
+    data {
+      fields {
+        key
+        value
+      }
+      url
     }
-    url
   }
 }
