@@ -28,7 +28,6 @@ type Edge = {
 };
 
 type ActivityQueryState = {
-  me: User;
   activities: {
     edges: Edge[];
     pageInfo: PageInfo;
