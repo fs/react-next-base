@@ -2,11 +2,17 @@ import React from 'react';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 
+import { Activity } from 'interfaces/activityType';
+
 import DataCell from './DataCell';
 
 import { StyledTable, ColorLabel, HeaderCell, UserInfo, EmptyList } from './styled';
 
-const ActivityTable = ({ data }) => {
+type Props = {
+  data: Activity[];
+};
+
+const ActivityTable = ({ data }: Props) => {
   const columnNames = ['Title', 'Description', 'Date', 'User'];
 
   return (
@@ -16,7 +22,7 @@ const ActivityTable = ({ data }) => {
           <thead>
             <tr>
               {columnNames.map((name, id) => (
-                <HeaderCell key={name} colSpan={!id ? '2' : '1'}>
+                <HeaderCell key={name} colSpan={!id ? 2 : 1}>
                   {name}
                 </HeaderCell>
               ))}

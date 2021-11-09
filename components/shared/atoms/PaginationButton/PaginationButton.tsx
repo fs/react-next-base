@@ -1,5 +1,6 @@
 import React from 'react';
 import type { PropsWithChildren } from 'react';
+import { FlattenSimpleInterpolation } from 'styled-components';
 
 import ITest from 'interfaces/testType';
 import { StyledButton } from './styled';
@@ -7,7 +8,7 @@ import { StyledButton } from './styled';
 interface Props extends ITest {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
-  customStyles?: string;
+  customStyles?: FlattenSimpleInterpolation | string;
 }
 
 const PaginationButton = ({

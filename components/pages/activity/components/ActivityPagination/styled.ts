@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { AnyStyledComponent, css } from 'styled-components';
 
 import LeftPointer from 'public/images/icons/left-pointer.svg';
 import RightPointer from 'public/images/icons/right-pointer.svg';
@@ -12,10 +12,10 @@ export const Wrapper = styled.div`
 export const pointerIconStyles = css`
   width: 15px;
 `;
-export const LeftPointerIcon = styled(LeftPointer)`
+export const LeftPointerIcon = styled(LeftPointer as AnyStyledComponent)`
   ${pointerIconStyles}
 `;
-export const RightPointerIcon = styled(RightPointer)`
+export const RightPointerIcon = styled(RightPointer as AnyStyledComponent)`
   ${pointerIconStyles}
 `;
 
