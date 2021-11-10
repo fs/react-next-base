@@ -2,9 +2,25 @@ import React from 'react';
 
 import PaginationButton from 'components/shared/atoms/PaginationButton';
 
+import { PageInfo } from 'interfaces/activityType';
+
 import { Wrapper, LeftPointerIcon, PageNumber, RightPointerIcon, prevButtonStyles, nextButtonStyles } from './styled';
 
-const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNumber, setPageNumber }) => {
+type ActivityPaginationType = {
+  pageInfo: PageInfo;
+  setBeforeCursor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setAfterCursor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  pageNumber: number;
+};
+
+const ActivityPagination = ({
+  pageInfo,
+  setBeforeCursor,
+  setAfterCursor,
+  pageNumber,
+  setPageNumber,
+}: ActivityPaginationType) => {
   const { hasPreviousPage, hasNextPage, startCursor, endCursor } = pageInfo;
 
   const goToPrevPage = () => {
@@ -24,7 +40,9 @@ const ActivityPagination = ({ pageInfo, setBeforeCursor, setAfterCursor, pageNum
       <PaginationButton disabled={!hasPreviousPage} onClick={() => goToPrevPage()} customStyles={prevButtonStyles}>
         <LeftPointerIcon />
       </PaginationButton>
+
       <PageNumber>{pageNumber}</PageNumber>
+
       <PaginationButton
         testId="next-pagination"
         disabled={!hasNextPage}

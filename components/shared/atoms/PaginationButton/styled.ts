@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
 interface IStyles {
-  customStyles?: string;
+  customStyles?: FlattenSimpleInterpolation | string;
 }
 
 export const StyledButton = styled.button<IStyles>(

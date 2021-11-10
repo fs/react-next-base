@@ -1,6 +1,8 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
-export const Wrapper = styled.div<{ customStyles?: (theme: DefaultTheme) => string }>(
+export const Wrapper = styled.div<{
+  customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation | string;
+}>(
   ({ theme, customStyles }) => css`
     display: flex;
     justify-content: center;
