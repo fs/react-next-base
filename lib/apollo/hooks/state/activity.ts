@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { useQuery } from '@apollo/client';
 import Activities from 'graphql/queries/pages/activities.graphql';
 

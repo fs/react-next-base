@@ -1,7 +1,7 @@
-import styled, { AnyStyledComponent, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import LeftPointer from 'public/images/icons/left-pointer.svg';
-import RightPointer from 'public/images/icons/right-pointer.svg';
+import { component as LeftPointer } from 'public/images/icons/left-pointer.svg';
+import { component as RightPointer } from 'public/images/icons/right-pointer.svg';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,10 +12,10 @@ export const Wrapper = styled.div`
 export const pointerIconStyles = css`
   width: 15px;
 `;
-export const LeftPointerIcon = styled(LeftPointer as AnyStyledComponent)`
+export const LeftPointerIcon = styled(LeftPointer)`
   ${pointerIconStyles}
 `;
-export const RightPointerIcon = styled(RightPointer as AnyStyledComponent)`
+export const RightPointerIcon = styled(RightPointer)`
   ${pointerIconStyles}
 `;
 
