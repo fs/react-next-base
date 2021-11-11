@@ -22,7 +22,7 @@ const ProfileForm = ({ profile }: Props) => {
   const [avatar, setAvatar] = useState<File | undefined>(undefined);
   const [loading, setLoading] = useState(false);
 
-  const temporaryUrl = useMemo(() => URL.createObjectURL(avatar), [avatar]);
+  const temporaryUrl = useMemo(() => (avatar ? URL.createObjectURL(avatar) : null), [avatar]);
 
   const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {

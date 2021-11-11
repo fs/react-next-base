@@ -14,7 +14,7 @@ type UpdateUserFn = ReturnType<typeof useUpdateUser>[0];
 type ValuesFromFormik = Parameters<UpdateUserFn>[0];
 
 type ProfileFormContentProps = {
-  temporaryUrl: string;
+  temporaryUrl: string | null;
   profile: User;
   onSubmit: (values: ValuesFromFormik, formikHelpers: FormikHelpers<ValuesFromFormik>) => Promise<void>;
   handleAvatarChange: (event: ChangeEvent<HTMLInputElement>) => void;
