@@ -34,11 +34,11 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (detailMessage) setSuccess(detailMessage);
-  }, [detailMessage]);
+  }, [detailMessage, setSuccess]);
 
   useEffect(() => {
     if (errorMessage) setError(errorMessage);
-  }, [errorMessage]);
+  }, [errorMessage, setError]);
 
   const toggleForm = (form) => {
     setActiveForm(form);
