@@ -2,10 +2,10 @@ import React from 'react';
 
 import { StyledImageWrapper, StyledImage } from './styled';
 
-interface Props {
-  avatar: string;
-  alt: string;
-}
+type Props = {
+  avatar: string | null;
+  alt?: string;
+};
 
 const ProfileImage = ({ avatar, alt }: Props): JSX.Element => {
   const defaultAvatar = `${process.env.ASSET_HOST}/images/avatar-placeholder.png`;
