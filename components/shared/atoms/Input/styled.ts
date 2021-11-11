@@ -1,6 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
-export const FieldWrapper = styled.div(
+type TStyles = {
+  customStyles?: (theme: DefaultTheme, hasError: boolean | undefined) => FlattenSimpleInterpolation | string;
+  hasError?: boolean | undefined;
+};
+
+export const FieldWrapper = styled.div<TStyles>(
   ({ theme: { colors, breakpoints, up, down }, theme, hasError, customStyles }) => css`
     position: relative;
     width: 100%;
@@ -22,7 +27,7 @@ export const FieldWrapper = styled.div(
       font-size: 0.875rem;
       border-radius: 0;
       border: 0;
-      border-bottom: 1px solid ${hasError ? colors.error : colors.greyC4};
+      border-bottom: 1px solid ${hasError ? colors.error : colors.grey};
       font-family: 'Gilroy', sans-serif;
     }
 
@@ -37,7 +42,7 @@ export const FieldWrapper = styled.div(
     }
 
     input:disabled {
-      background-color: ${colors.greyFO};
+      background-color: ${colors.grey};
     }
 
     ${customStyles && customStyles(theme, hasError)}

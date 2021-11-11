@@ -16,6 +16,7 @@ export enum Colors {
   grey = '#ccc',
   lightGrey = '#eee',
   green = '#46a049',
+  error = '#ff0000',
 }
 
 export const up = (breakpoint: Breakpoints, vertical = false) =>

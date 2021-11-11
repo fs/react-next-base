@@ -1,10 +1,39 @@
 import React, { useState } from 'react';
 import { Field, ErrorMessage } from 'formik';
+import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
-import { ReactComponent as EyeIcon } from 'public/images/icons/eye.svg';
-import { ReactComponent as EyeClosedIcon } from 'public/images/icons/eye-closed.svg';
+import { component as EyeIcon } from 'public/images/icons/eye.svg';
+import { component as EyeClosedIcon } from 'public/images/icons/eye-closed.svg';
 
 import { FieldWrapper, ErrorWrapper, FieldLabel, ShowPasswordButton } from './styled';
+
+type TErrors = {
+  [key: string]: unknown;
+};
+
+type TTouched = {
+  [key: string]: unknown;
+};
+
+type TValues = {
+  [key: string]: unknown;
+};
+
+type TInput = {
+  type: string;
+  name: string;
+  testId?: string;
+  disabled?: boolean;
+  placeholder?: string;
+  errors?: TErrors;
+  touched?: TTouched;
+  values?: TValues;
+  customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  title?: string;
+};
 
 const Input = ({
   type,
@@ -16,17 +45,15 @@ const Input = ({
   touched = {},
   values,
   customStyles,
-  customErrorStyles,
   onClick,
   onChange,
   onBlur,
   title,
-  multiple,
-  autoComplete,
-  accept,
-}) => {
+}: TInput) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+
   const hasError = !!(errors[name] && touched[name]);
+
   const isInput = !(type === 'textarea');
   const inputType = type !== 'password' || !isShowPassword ? type : 'text';
 
@@ -52,9 +79,6 @@ const Input = ({
         data-cy={testId}
         placeholder={placeholder}
         disabled={disabled}
-        multiple={!!multiple}
-        autoComplete={autoComplete}
-        accept={accept}
         {...actions}
       />
       {type === 'password' && (
@@ -62,7 +86,7 @@ const Input = ({
           {isShowPassword ? <EyeClosedIcon /> : <EyeIcon />}
         </ShowPasswordButton>
       )}
-      <ErrorMessage name={name}>{(msg) => <ErrorWrapper style={customErrorStyles}>{msg}</ErrorWrapper>}</ErrorMessage>
+      <ErrorMessage name={name}>{(msg) => <ErrorWrapper>{msg}</ErrorWrapper>}</ErrorMessage>
     </FieldWrapper>
   );
 };

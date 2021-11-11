@@ -7,7 +7,7 @@ import { useNotifier } from 'contexts/NotifierContext';
 
 import UpdatePassword from 'graphql/mutations/updatePassword.graphql';
 
-type UpdatePasswordProps = {
+export type UpdatePasswordProps = {
   password: string;
   resetToken: string;
 };
@@ -29,10 +29,9 @@ const useUpdatePassword = () => {
     const updatePasswordInput = { password, resetToken };
 
     try {
-      return await mutation({ variables: { input: updatePasswordInput } });
+      await mutation({ variables: { input: updatePasswordInput } });
     } catch (error) {
       if (setError) setError(error);
-      return null;
     }
   };
 
