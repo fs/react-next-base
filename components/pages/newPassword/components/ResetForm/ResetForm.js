@@ -8,7 +8,7 @@ import { FormWrapper, ErrorWrapper, customButtonStyles } from './styled';
 
 const ResetForm = ({ form }) => {
   const { fields, initialValues, validationSchema, onSubmit } = form;
-  console.log('////');
+
   return (
     <FormWrapper data-cy="new-password-form">
       <Formik enableReinitialize initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>

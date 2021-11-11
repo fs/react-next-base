@@ -7,6 +7,11 @@ import { useNotifier } from 'contexts/NotifierContext';
 
 import UpdatePassword from 'graphql/mutations/updatePassword.graphql';
 
+type UpdatePasswordProps = {
+  password: string;
+  resetToken: string;
+};
+
 const useUpdatePassword = () => {
   const { setError, setSuccess } = useNotifier();
   const router = useRouter();
@@ -20,7 +25,7 @@ const useUpdatePassword = () => {
     onCompleted,
   });
 
-  const mutate = async ({ password, resetToken }) => {
+  const mutate = async ({ password, resetToken }: UpdatePasswordProps) => {
     const updatePasswordInput = { password, resetToken };
 
     try {
