@@ -9,7 +9,7 @@ export const StyledLink = styled.a(
     width: auto;
     border: none;
     padding: 0.76rem 1rem;
-    background-color: ${colors.blue};
+    background-color: ${colors.grey};
     font-size: 0.875rem;
     font-weight: 600;
     color: ${colors.white};
@@ -22,7 +22,7 @@ export const StyledLink = styled.a(
 
     &:disabled {
       cursor: default;
-      background: ${darken(0.1, colors.green)};
+      background: ${darken(0.1, colors.lightGrey)};
     }
 
     ${customStyles && customStyles(theme)}

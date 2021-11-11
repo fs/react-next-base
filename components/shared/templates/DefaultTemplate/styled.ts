@@ -12,7 +12,7 @@ export const PageContent = styled.div(
     css`
       padding: 2rem 1rem;
       width: 100%;
-      max-width: ${breakpoints.xl};
+      max-width: ${breakpoints.xl}px;
 
       ${down(breakpoints.xl)} {
         max-width: 100%;

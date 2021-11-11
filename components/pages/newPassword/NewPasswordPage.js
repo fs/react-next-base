@@ -1,6 +1,6 @@
 import React from 'react';
+import Router from 'next/router';
 
-import { useRouter } from 'next/router';
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 import { NotifierProvider } from 'contexts/NotifierContext';
@@ -11,17 +11,11 @@ import Notifier from 'components/shared/atoms/Notifier';
 
 import NewPasswordForm from './components/NewPasswordForm';
 
-import { PageContainer } from './styled';
-
 const NewPasswordPage = ({ query }) => {
-  const router = useRouter();
-
   return (
     <NotifierProvider>
       <DefaultTemplate>
-        <PageContainer>
-          <NewPasswordForm query={query} />
-        </PageContainer>
+        <NewPasswordForm query={query} />
       </DefaultTemplate>
       <Notifier />
     </NotifierProvider>
@@ -30,7 +24,7 @@ const NewPasswordPage = ({ query }) => {
 
 NewPasswordPage.getInitialProps = ({ res, accessTokenManager }) => {
   if (accessTokenManager.accessToken) {
-    res ? res.redirect(302, HOME) : router.push(HOME);
+    res ? res.redirect(302, HOME) : Router.push(HOME);
   }
   return {};
 };

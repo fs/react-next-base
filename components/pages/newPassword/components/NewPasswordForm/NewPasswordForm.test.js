@@ -3,19 +3,15 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 
 import { useUpdatePassword } from 'lib/apollo/hooks/actions/auth';
-import useNotifier from 'hooks/useNotifier';
+import { useNotifier } from 'contexts/NotifierContext';
 
 import NewPasswordForm from '.';
 
 jest.mock('lib/apollo/hooks/actions/auth');
-jest.mock('hooks/useNotifier');
+jest.mock('contexts/NotifierContext');
 
 describe('NewPasswordForm', () => {
-  const mockUseNotifier = jest.fn(() => ({
-    setError: jest.fn(),
-    setSuccess: jest.fn(),
-  }));
-  useNotifier.mockImplementation(mockUseNotifier);
+  useNotifier.mockImplementation(jest.fn(() => ({ setError: jest.fn(), setSuccess: jest.fn() })));
 
   const expectedDetailedMessage = 'Пароль успешно изменен';
   const mockUpdatePassword = jest.fn(() => Promise.resolve());

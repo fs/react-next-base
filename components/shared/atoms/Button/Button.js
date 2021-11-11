@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { StyledButton, BUTTON_HEIGHT_TYPES } from './styled';
+import { StyledButton } from './styled';
 
-const Button = ({ children, type = 'button', testId, heightType, ...rest }) => {
+const Button = ({ children, type = 'button', testId, ...rest }) => {
   return (
-    <StyledButton type={type} data-testid={testId} data-cy={testId} heightType={heightType} {...rest}>
+    <StyledButton type={type} data-testid={testId} data-cy={testId} {...rest}>
       {children}
     </StyledButton>
   );
 };
 
-export { BUTTON_HEIGHT_TYPES };
 export default Button;

@@ -3,27 +3,19 @@ import * as Yup from 'yup';
 
 import useUpdatePassword from 'lib/apollo/hooks/actions/useUpdatePassword';
 
-import useNotifier from 'hooks/useNotifier';
-
 import ResetForm from '../ResetForm';
+
+const passwordRegularExp = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])([0-9A-Za-z#$@&!?.*^{}<>;,)(~'"=_%+-]+)$/;
 
 const NewPasswordForm = ({ query = {} }) => {
   const [updatePassword] = useUpdatePassword();
 
-  const { setError } = useNotifier();
-
   const { reset_token: resetToken } = query;
 
   const onSubmit = async ({ password }, { setSubmitting }) => {
-    try {
-      setSubmitting(true);
-
-      await updatePassword({ password, resetToken });
-
-      setSubmitting(false);
-    } catch (error) {
-      setError(error);
-    }
+    setSubmitting(true);
+    await updatePassword({ password, resetToken });
+    setSubmitting(false);
   };
 
   const fields = [
@@ -48,11 +40,13 @@ const NewPasswordForm = ({ query = {} }) => {
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
-      .required('Это обязательное поле')
+      .required('This field is required')
       .trim()
-      .min(6, 'Минимальная длина пароля - 6 символов')
-      .oneOf([Yup.ref('password'), null], 'Пароль не совпадает')
-      .required('Это обязательное поле'),
+      .min(6, 'The minimum password length is 6 characters')
+      .matches(passwordRegularExp, 'Password must contain upper and lower case characters and numbers'),
+    passwordConfirmation: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Password does not match')
+      .required('This field is required'),
   });
 
   const form = {
