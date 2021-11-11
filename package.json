@@ -22,7 +22,8 @@
     "cy:install": "cypress install",
     "cy:open": "cypress open",
     "print-env": "print-env",
-    "heroku-prebuild": "yarn install --production"
+    "heroku-prebuild": "yarn install --production",
+    "prepare": "husky install"
   },
   "engines": {
     "node": ">=14.18.1 <=16.11"
@@ -95,7 +96,7 @@
     "eslint-plugin-react-hooks": "^4.2.1-alpha-6bce0355c-20211031",
     "eslint-plugin-testing-library": "^5.0.0",
     "eslint-plugin-typescript": "^0.14.0",
-    "husky": "^4.2.3",
+    "husky": "^7.0.0",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.0",
     "jest-transform-graphql": "^2.1.0",
@@ -109,10 +110,5 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "ts-jest": "^26.5.4",
     "ts-node": "^10.3.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }
