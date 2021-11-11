@@ -12,15 +12,20 @@ import ProfileForm from 'components/shared/organisms/ProfileForm';
 import { NotifierProvider } from 'contexts/NotifierContext';
 import Notifier from 'components/shared/atoms/Notifier';
 
+import User from 'domain/User';
+
 const Profile = () => {
   const { loading, error, user } = useCurrentUser();
-  const profile = user || {};
+
+  const profile = (user as User) || {};
   const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
 
   return (
     <NotifierProvider>
       {loading && <h3 data-testid="profile-loading">Loading...</h3>}
+
       {error && <ErrorMessage testId="profile-error">{errorMessage}</ErrorMessage>}
+
       {!loading && !error && (
         <DefaultTemplate data-testid="profile-page">
           <ProfileForm profile={profile} />
