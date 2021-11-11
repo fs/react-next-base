@@ -1,6 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
-export const StyledButton = styled.button(
+type TStyles = {
+  customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation | string;
+};
+
+export const StyledButton = styled.button<TStyles>(
   ({ customStyles, theme, theme: { colors } }) =>
     css`
       display: inline-flex;
