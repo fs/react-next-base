@@ -21,6 +21,14 @@ type ProfileFormContentProps = {
   loading: boolean;
 };
 
+type ProfileFormValues = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  currentPassword: string;
+};
+
 const ProfileFormContent = ({
   temporaryUrl,
   profile: { email, firstName, lastName, avatarUrl },
@@ -111,7 +119,7 @@ const ProfileFormContent = ({
           <AvatarImg src={avatarSrc} />
         </AvatarWrapper>
       )}
-      <Form form={form} />
+      <Form<ProfileFormValues> form={form} />
       {loading && <Loader testId="profile-updating-loader">Loading</Loader>}
     </FormWrapper>
   );
