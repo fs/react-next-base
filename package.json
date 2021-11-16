@@ -7,7 +7,7 @@
     "server": "ts-node  server/server.ts",
     "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",
     "test": "jest --watch",
-    "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts && yarn lint:types",
+    "lint": "yarn lint:js && yarn lint:css:in:js && yarn lint:css:in:ts && yarn lint:types && yarn eslint --fix",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./",
     "lint:css:in:js": "stylelint './**/*.js'",
     "lint:css:in:ts": "stylelint './**/*.tsx'",

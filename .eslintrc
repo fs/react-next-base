@@ -29,6 +29,7 @@
       1,
       { "extensions": [".jsx", ".tsx"] }
     ],
+    "prettier/prettier": ["error"],
     "no-console": "off",
     "prefer-destructuring": "off",
     "@typescript-eslint/no-unused-vars": "error",
