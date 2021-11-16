@@ -53,7 +53,7 @@ const NewPasswordForm = ({ query = {} }) => {
     fields,
     initialValues,
     validationSchema,
-    onSubmit,
+    submit: onSubmit,
   };
 
   return <ResetForm form={form} />;

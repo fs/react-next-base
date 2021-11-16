@@ -1,4 +1,5 @@
 import React from 'react';
+import type { FormikHelpers, FormikValues } from 'formik';
 import { StringSchema } from 'yup';
 import * as formFields from 'components/shared/molecules/Form/formFields';
 import { InferValueTypes } from 'utils/ts';
@@ -22,6 +23,8 @@ export interface BaseFormFieldConfig {
   title?: string;
   testID?: string;
   disabled?: boolean;
+  testId?: string;
+  placeholder?: string;
 }
 
 interface FormikProps {
@@ -37,7 +40,7 @@ type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : nev
 
 export type FormFieldConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'> & FormikProps;
 
-export interface FormType {
+export type FormType<TFormValues extends FormikValues = FormikValues> = {
   fields: FormFieldConfig[];
-  submit: any;
-}
+  submit: (values: TFormValues, formikHelpers: FormikHelpers<TFormValues>) => void | Promise<void>;
+};

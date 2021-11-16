@@ -1,18 +1,19 @@
 import React from 'react';
+import type { PropsWithChildren } from 'react';
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
 import { StyledLink } from './styled';
 
-interface Props {
+type TButtonedLink = {
   onClick?: () => void;
   children: React.ReactNode;
   customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation;
   href?: string;
   testId?: string;
-}
+};
 
 const ButtonedLink = React.forwardRef(
-  ({ children, customStyles, onClick, testId, href }: Props, ref: any): JSX.Element => {
+  ({ children, customStyles, onClick, testId, href }: PropsWithChildren<TButtonedLink>, ref: any): JSX.Element => {
     return (
       <StyledLink
         href={href}
