@@ -61,11 +61,8 @@ const Input = ({
     (acc, [key, val]) => (val ? { ...acc, [key]: val } : { ...acc }),
     {},
   );
-  const getValue = () => {
-    const [array, index, fieldName] = name.split('.');
-    return values?.[`${array}`]?.[`${index}`]?.[`${fieldName}`];
-  };
-  const hasValue = name.includes('.') ? getValue() : values?.[name];
+
+  const hasValue = values?.[name];
 
   return (
     <FieldWrapper hasError={hasError} customStyles={customStyles}>
