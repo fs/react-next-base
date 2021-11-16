@@ -34,11 +34,13 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (detailMessage) setSuccess(detailMessage);
-  }, [detailMessage, setSuccess]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detailMessage]);
 
   useEffect(() => {
     if (errorMessage) setError(errorMessage);
-  }, [errorMessage, setError]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorMessage]);
 
   const toggleForm = (form) => {
     setActiveForm(form);
