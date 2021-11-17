@@ -1,4 +1,5 @@
 import React from 'react';
+import type { FormikHelpers, FormikValues } from 'formik';
 import { StringSchema } from 'yup';
 import * as formFields from 'components/shared/molecules/Form/formFields';
 import { InferValueTypes } from 'utils/ts';
@@ -33,11 +34,12 @@ type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFie
 
 // (type1|type2) => Omit<type1,'prop1'>|Omit<type1,'prop1'>
 // @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types
+// eslint-disable-next-line
 type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
 
 export type FormFieldConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'> & FormikProps;
 
-export interface FormType {
+export type FormType<TFormValues extends FormikValues = FormikValues> = {
   fields: FormFieldConfig[];
-  submit: any;
-}
+  submit: (values: TFormValues, formikHelpers: FormikHelpers<TFormValues>) => void | Promise<void>;
+};

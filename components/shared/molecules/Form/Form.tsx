@@ -1,4 +1,5 @@
 import React from 'react';
+import type { FormikValues } from 'formik';
 import { Form as FormikForm, Formik } from 'formik';
 import { object } from 'yup';
 
@@ -17,13 +18,14 @@ import DefaultFieldWrapper from './DefaultFieldWrapper';
 import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
 import { collectFormikProps } from './utils';
 
-const Form = ({ form }: { form: FormType }) => {
+const Form = <FormValues extends FormikValues = FormikValues>({ form }: { form: FormType<FormValues> }) => {
   const { fields, submit } = form;
-  const { initialValues, validationSchema } = collectFormikProps(fields);
+  const { initialValues, validationSchema } = collectFormikProps<FormValues>(fields);
   const formValidationSchema = object().shape(validationSchema);
+
   return (
     <FormWrapper data-cy="profile-update-form">
-      <Formik
+      <Formik<FormValues>
         enableReinitialize
         onSubmit={submit}
         initialValues={initialValues}

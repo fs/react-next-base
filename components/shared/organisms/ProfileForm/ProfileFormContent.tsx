@@ -14,11 +14,19 @@ type UpdateUserFn = ReturnType<typeof useUpdateUser>[0];
 type ValuesFromFormik = Parameters<UpdateUserFn>[0];
 
 type ProfileFormContentProps = {
-  temporaryUrl: string;
+  temporaryUrl: string | null;
   profile: User;
   onSubmit: (values: ValuesFromFormik, formikHelpers: FormikHelpers<ValuesFromFormik>) => Promise<void>;
   handleAvatarChange: (event: ChangeEvent<HTMLInputElement>) => void;
   loading: boolean;
+};
+
+type ProfileFormValues = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  currentPassword: string;
 };
 
 const ProfileFormContent = ({
@@ -111,7 +119,7 @@ const ProfileFormContent = ({
           <AvatarImg src={avatarSrc} />
         </AvatarWrapper>
       )}
-      <Form form={form} />
+      <Form<ProfileFormValues> form={form} />
       {loading && <Loader testId="profile-updating-loader">Loading</Loader>}
     </FormWrapper>
   );
