@@ -1,24 +1,23 @@
+import type { FormikValues } from 'formik';
 import { StringSchema } from 'yup';
 import { FormFieldConfig } from './forms.types';
-
-interface InitialValues {
-  [key: string]: unknown;
-}
 
 interface ValidationSchema {
   [key: string]: StringSchema;
 }
 
-interface FormikProps {
-  initialValues: InitialValues;
+interface FormikProps<FormValues> {
+  initialValues: FormValues;
   validationSchema: ValidationSchema;
 }
 
-export const collectFormikProps = (fields: FormFieldConfig[]): FormikProps => {
-  const init: FormikProps = { initialValues: {}, validationSchema: {} };
+export const collectFormikProps = <FormValues extends FormikValues = FormikValues>(
+  fields: FormFieldConfig[],
+): FormikProps<FormValues> => {
+  const init: FormikProps<FormValues> = { initialValues: {} as FormValues, validationSchema: {} };
   return fields.reduce((acc, item) => {
     if (item.initialValue != null) {
-      acc.initialValues[item.name] = item.initialValue;
+      acc.initialValues[item.name as keyof FormValues] = item.initialValue as FormikValues[typeof item.name];
     }
     if (item.validationSchema) {
       acc.validationSchema[item.name] = item.validationSchema;

@@ -23,7 +23,7 @@ function createApolloClient(apolloState = {}, ctx) {
   // 'https-proxy-agent' is required here because it's a sever-side only module
   if (typeof window === 'undefined') {
     if (process.env.https_proxy) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
       fetchOptions.agent = new (require('https-proxy-agent'))(process.env.https_proxy);
     }
   }
