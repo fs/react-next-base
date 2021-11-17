@@ -24,7 +24,11 @@ const LoginPage = () => {
 
 LoginPage.getInitialProps = ({ res, accessTokenManager }) => {
   if (accessTokenManager.accessToken) {
-    res ? res.redirect(302, HOME) : Router.push(HOME);
+    if (res) {
+      res.redirect(302, HOME);
+    } else {
+      Router.push(HOME);
+    }
   }
   return {};
 };

@@ -17,12 +17,8 @@ describe('Update Profile', () => {
 
     cy.get('[data-cy=avatar]').attachFile('images/logo.png');
 
-    cy.get('[data-cy=first-name]')
-      .clear()
-      .type(`${firstName}-${timestamp}`);
-    cy.get('[data-cy=last-name]')
-      .clear()
-      .type(`${lastName}-${timestamp}`);
+    cy.get('[data-cy=first-name]').clear().type(`${firstName}-${timestamp}`);
+    cy.get('[data-cy=last-name]').clear().type(`${lastName}-${timestamp}`);
 
     cy.get('[data-cy=update-button]').click();
 
