@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 import User from 'domain/User';
-import UserNavigation from 'types/userNavigationType';
+import UserNavigationType from 'types/userNavigationType';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
 
 import { UserName, UserNavigationWrapper, UserNameWrapper } from './styled';
 
-type Props = UserNavigation & {
+type Props = UserNavigationType & {
   user: User;
 };
 
