@@ -14,15 +14,15 @@ interface Props extends IUserNavigation {
 
 const UserNavigation = ({ user, links, actions }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const wrapperRef = useRef<any>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
   useEffect(() => {
-    const handleOutsideClick = (event: any) => {
-      if (wrapperRef?.current && wrapperRef?.current?.contains(event.target)) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (wrapperRef?.current && event.target instanceof Node && wrapperRef?.current?.contains(event.target)) {
         return;
       }
       toggleDropdown();

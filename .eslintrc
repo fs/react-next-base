@@ -5,7 +5,6 @@
   "extends": [
     "airbnb",
     "prettier",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest-dom/recommended",
     "plugin:cypress/recommended"
@@ -30,6 +29,7 @@
       1,
       { "extensions": [".jsx", ".tsx"] }
     ],
+    "prettier/prettier": ["error"],
     "no-console": "off",
     "prefer-destructuring": "off",
     "@typescript-eslint/no-unused-vars": "error",
@@ -59,8 +59,9 @@
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/no-explicit-any": "error",
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js","**/*.spec.js", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"]}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js","**/*.spec.js", "**/*.test.jsx", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"]}],
     "import/extensions": [
       "error",
       {
