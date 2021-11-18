@@ -1,8 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { transparentize } from 'polished';
 
-export const Wrapper = styled.div(
-  ({ theme: { colors } }) => css`
+const Wrapper = styled.div<{ customStyles?: (theme: DefaultTheme) => string }>(({ theme, customStyles }) => {
+  const { colors } = theme;
+
+  return css`
     position: absolute;
     display: flex;
     justify-content: center;
@@ -12,11 +14,12 @@ export const Wrapper = styled.div(
     bottom: 0;
     right: 0;
     background-color: ${transparentize(0.1, colors.white)};
+    font-size: 1.5rem;
+    font-weight: bold;
     opacity: 0.7;
-  `,
-);
 
-export const Title = styled.span`
-  font-size: 1.5rem;
-  font-weight: bold;
-`;
+    ${customStyles && customStyles(theme)};
+  `;
+});
+
+export default Wrapper;

@@ -14,8 +14,9 @@ import {
 } from './formFields';
 import { FormFieldConfig, FormFieldType, FormType } from './forms.types';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
-import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
+import FormLoader from './FormLoader';
 import { collectFormikProps } from './utils';
+import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
 
 const Form = ({ form }: { form: FormType }) => {
   const { fields, submit } = form;
@@ -34,51 +35,53 @@ const Form = ({ form }: { form: FormType }) => {
           return (
             <FormikForm>
               <FormContainer>
+                {isSubmitting && <FormLoader />}
+
                 {fields.map((fieldConfig: FormFieldConfig) => {
                   const { name, title } = fieldConfig;
                   switch (fieldConfig.type) {
                     case FormFieldType.select:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <SelectFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <SelectFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.checkbox:
-                      return <CheckboxFormField key={name} {...fieldConfig} isFormSubmitting={isSubmitting} />;
+                      return <CheckboxFormField key={name} {...fieldConfig} />;
                     case FormFieldType.text:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <TextFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <TextFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.password:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <PasswordFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <PasswordFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.textarea:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <TextareaFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <TextareaFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.file:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <FileFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <FileFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.email:
                       return (
                         <DefaultFieldWrapper key={name} name={name} title={title}>
-                          <EmailFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <EmailFormField {...fieldConfig} />
                         </DefaultFieldWrapper>
                       );
                     case FormFieldType.submit:
                       return (
                         <FieldWrapper key={name}>
-                          <SubmitButton {...fieldConfig} isFormSubmitting={isSubmitting} />
+                          <SubmitButton {...fieldConfig} />
                         </FieldWrapper>
                       );
                     default:

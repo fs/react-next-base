@@ -17,7 +17,6 @@ export enum FormFieldType {
 export interface BaseFormFieldConfig {
   type: FormFieldType;
   name: string;
-  isFormSubmitting: boolean;
   label?: string;
   title?: string;
   testID?: string;

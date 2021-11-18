@@ -24,11 +24,20 @@ export const FormWrapper = styled.div`
     width: auto;
   }
 
+  input[type='submit'] {
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
   textarea {
     resize: vertical;
   }
 `;
 export const FormContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 `;
