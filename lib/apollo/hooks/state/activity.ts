@@ -5,7 +5,7 @@ import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
 
 import User from 'domain/User';
-import { PageInfo, Activity } from 'interfaces/activityType';
+import { PageInfo, Activity } from 'types/activityType';
 
 type ActivityParams = {
   beforeCursor?: string;

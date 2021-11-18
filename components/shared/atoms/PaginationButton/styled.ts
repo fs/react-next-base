@@ -1,10 +1,10 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-interface IStyles {
+type Styles = {
   customStyles?: FlattenSimpleInterpolation | string;
-}
+};
 
-export const StyledButton = styled.button<IStyles>(
+export const StyledButton = styled.button<Styles>(
   ({
     theme: {
       colors: { grey },

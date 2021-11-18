@@ -2,10 +2,10 @@ import React from 'react';
 import { Field } from 'formik';
 import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
-export interface TextFormFieldConfig extends BaseFormFieldConfig {
+export type TextFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.text;
   placeholder?: string;
-}
+};
 
 const TextFormField = ({ placeholder, disabled, name, testID }: TextFormFieldConfig) => {
   return (

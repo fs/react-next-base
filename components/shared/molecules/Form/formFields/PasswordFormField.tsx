@@ -11,11 +11,11 @@ export enum PasswordAutocomplete {
   currentPassword = 'current-password',
 }
 
-export interface PasswordFormFieldConfig extends BaseFormFieldConfig {
+export type PasswordFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.password;
   autoComplete?: PasswordAutocomplete;
   placeholder?: string;
-}
+};
 
 const PasswordFormField = ({ name, autoComplete, disabled, placeholder, testID }: PasswordFormFieldConfig) => {
   return (

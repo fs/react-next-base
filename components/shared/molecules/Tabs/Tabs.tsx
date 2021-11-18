@@ -3,22 +3,22 @@ import React, { useState } from 'react';
 import Tab from './Tab';
 import { StyledTabList } from './styled';
 
-interface ITab {
+type Tab = {
   id: number | string;
   name: string;
   action?: () => void;
   content?: JSX.Element;
-}
+};
 
-interface Props {
-  tabs: ITab[];
+type Props = {
+  tabs: Tab[];
   activeId: string | number;
-}
+};
 
 const Tabs = ({ tabs = [], activeId }: Props): JSX.Element => {
   const [aciveTabId, setAciveTabId] = useState(activeId || tabs[0].id);
 
-  const onClickHandle = (id: ITab['id'], action = () => {}) => {
+  const onClickHandle = (id: Tab['id'], action = () => {}) => {
     setAciveTabId(id);
     action();
   };
