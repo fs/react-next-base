@@ -1,7 +1,7 @@
 import React from 'react';
-import { Formik, Form as FormikForm, FormikValues } from 'formik';
+import { Formik, Form as FormikForm } from 'formik';
+import { StringSchema } from 'yup';
 
-import { collectFormikProps } from 'components/shared/molecules/Form/utils';
 import Button from 'components/shared/atoms/Button';
 import Input from 'components/shared/atoms/Input';
 
@@ -9,9 +9,21 @@ import { FormType, FormFieldConfig } from 'components/shared/molecules/Form/form
 
 import { FormWrapper, ErrorWrapper, customButtonStyles } from './styled';
 
-const ResetForm = <FormValues extends FormikValues = FormikValues>({ form }: { form: FormType<FormValues> }) => {
-  const { fields, submit } = form;
-  const { initialValues, validationSchema } = collectFormikProps<FormValues>(fields);
+interface InitialValues {
+  [key: string]: unknown;
+}
+
+interface ValidationSchema {
+  [key: string]: StringSchema;
+}
+
+interface FormValues extends FormType {
+  initialValues: InitialValues;
+  validationSchema: ValidationSchema;
+}
+
+const ResetForm = ({ form }: { form: FormValues }) => {
+  const { fields, initialValues, validationSchema, submit } = form;
 
   return (
     <FormWrapper data-cy="new-password-form">
