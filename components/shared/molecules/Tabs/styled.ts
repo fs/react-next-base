@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 
-interface IStyles {
+type Styles = {
   active: boolean;
-}
+};
 
-export const StyledTab = styled.li<IStyles>(
+export const StyledTab = styled.li<Styles>(
   ({ theme: { colors, breakpoints, down }, active }) => css`
     padding: 0 15px 5px 15px;
     font-size: 1rem;

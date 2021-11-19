@@ -2,14 +2,14 @@ import type { FormikValues } from 'formik';
 import { StringSchema } from 'yup';
 import { FormFieldConfig } from './forms.types';
 
-interface ValidationSchema {
+type ValidationSchema = {
   [key: string]: StringSchema;
-}
+};
 
-interface FormikProps<FormValues> {
+type FormikProps<FormValues> = {
   initialValues: FormValues;
   validationSchema: ValidationSchema;
-}
+};
 
 export const collectFormikProps = <FormValues extends FormikValues = FormikValues>(
   fields: FormFieldConfig[],

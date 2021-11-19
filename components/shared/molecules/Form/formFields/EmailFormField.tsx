@@ -2,10 +2,10 @@ import React from 'react';
 import { Field } from 'formik';
 import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
-export interface EmailFormFieldConfig extends BaseFormFieldConfig {
+export type EmailFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.email;
   placeholder?: string;
-}
+};
 
 const EmailFormField = ({ name, testID, disabled, placeholder }: EmailFormFieldConfig) => {
   return (

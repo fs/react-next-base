@@ -15,7 +15,7 @@ export enum FormFieldType {
   email = 'email',
 }
 
-export interface BaseFormFieldConfig {
+export type BaseFormFieldConfig = {
   type: FormFieldType;
   name: string;
   isFormSubmitting: boolean;
@@ -23,12 +23,12 @@ export interface BaseFormFieldConfig {
   title?: string;
   testID?: string;
   disabled?: boolean;
-}
+};
 
-interface FormikProps {
+type FormikProps = {
   validationSchema?: StringSchema;
   initialValue: unknown;
-}
+};
 
 type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFields>>;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import IUserNavigation from 'interfaces/userNavigationType';
+import IUserNavigation from 'types/userNavigationType';
 
 import { StyledUserMenu, UserMenuItem } from './styled';
 

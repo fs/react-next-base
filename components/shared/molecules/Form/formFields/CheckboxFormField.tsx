@@ -2,9 +2,9 @@ import { Field } from 'formik';
 import React from 'react';
 import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
-export interface CheckboxFormFieldConfig extends BaseFormFieldConfig {
+export type CheckboxFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.checkbox;
-}
+};
 
 const CheckboxFormField = ({ name, label, testID, disabled }: CheckboxFormFieldConfig) => {
   return (

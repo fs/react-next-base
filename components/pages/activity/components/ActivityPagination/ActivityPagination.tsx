@@ -2,7 +2,7 @@ import React from 'react';
 
 import PaginationButton from 'components/shared/atoms/PaginationButton';
 
-import { PageInfo } from 'interfaces/activityType';
+import { PageInfo } from 'types/activityType';
 
 import { Wrapper, LeftPointerIcon, PageNumber, RightPointerIcon, prevButtonStyles, nextButtonStyles } from './styled';
 

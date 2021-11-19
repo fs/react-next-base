@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 import User from 'domain/User';
-import IUserNavigation from 'interfaces/userNavigationType';
+import UserNavigationType from 'types/userNavigationType';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 import UserNavigationList from './UserNavigationList';
 
 import { UserName, UserNavigationWrapper, UserNameWrapper } from './styled';
 
-interface Props extends IUserNavigation {
+type Props = UserNavigationType & {
   user: User;
-}
+};
 
 const UserNavigation = ({ user, links, actions }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
