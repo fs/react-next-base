@@ -32,12 +32,12 @@ interface FormikProps {
   initialValue: unknown;
 }
 
-type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFields>>;
+export type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFields>>;
 
 // (type1|type2) => Omit<type1,'prop1'>|Omit<type1,'prop1'>
 // @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types
 // eslint-disable-next-line
-type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
+export type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
 
 export type FormFieldConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'> & FormikProps;
 

@@ -1,36 +1,51 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Formik, Form as FormikForm } from 'formik';
 import { StringSchema } from 'yup';
 
 import Button from 'components/shared/atoms/Button';
 import Input from 'components/shared/atoms/Input';
 
-import { FormType, FormFieldConfig } from 'components/shared/molecules/Form/forms.types';
+import { DistributiveOmit, FieldsUnionPropsTypes } from 'components/shared/molecules/Form/forms.types';
 
+import * as Yup from 'yup';
 import { FormWrapper, ErrorWrapper, customButtonStyles } from './styled';
 
-interface InitialValues {
-  [key: string]: unknown;
-}
+type InputConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'>;
 
-interface ValidationSchema {
+type InputConfigFormik = InputConfig & { validationSchema?: StringSchema };
+
+type FormSchema<T extends InputConfigFormik[]> = {
+  fields: T;
+  initialValues: { [keys in T[number]['name']]: unknown };
+  submit: (formValues: { [keys in T[number]['name']]: unknown }) => void;
+};
+
+type ValidationSchema = {
   [key: string]: StringSchema;
-}
+};
 
-interface FormValues extends FormType {
-  initialValues: InitialValues;
-  validationSchema: ValidationSchema;
-}
+function ResetForm<T extends InputConfigFormik[]>({ form }: { form: FormSchema<T> }) {
+  const { fields, initialValues, submit } = form;
 
-const ResetForm = ({ form }: { form: FormValues }) => {
-  const { fields, initialValues, validationSchema, submit } = form;
+  const validationSchema = useCallback(
+    () =>
+      Yup.object().shape(
+        fields.reduce((acc, item) => {
+          if (item.validationSchema) {
+            acc[item.name] = item.validationSchema;
+          }
+          return acc;
+        }, {} as ValidationSchema),
+      ),
+    [fields],
+  );
 
   return (
-    <FormWrapper data-cy="new-password-form">
+    <FormWrapper data-cy='new-password-form'>
       <Formik enableReinitialize initialValues={initialValues} validationSchema={validationSchema} onSubmit={submit}>
         {({ isSubmitting, status, errors, touched }) => (
           <FormikForm>
-            {fields.map(({ type, name, testId, placeholder }: FormFieldConfig) => {
+            {fields.map(({ type, name, testId, placeholder }) => {
               return (
                 <Input
                   type={type}
@@ -44,7 +59,7 @@ const ResetForm = ({ form }: { form: FormValues }) => {
                 />
               );
             })}
-            <Button type="submit" testId="submit-button" disabled={isSubmitting} customStyles={customButtonStyles}>
+            <Button type='submit' testId='submit-button' disabled={isSubmitting} customStyles={customButtonStyles}>
               Подтвердить
             </Button>
             {!!status && <ErrorWrapper>{status}</ErrorWrapper>}
@@ -53,5 +68,6 @@ const ResetForm = ({ form }: { form: FormValues }) => {
       </Formik>
     </FormWrapper>
   );
-};
+}
+
 export default ResetForm;
