@@ -3,10 +3,10 @@ import { ErrorMessage } from 'formik';
 import { BaseFormFieldConfig } from './forms.types';
 import { ErrorWrapper, FieldLabel, FieldWrapper } from './styled-components';
 
-interface DefaultFieldWrapperProps {
+type DefaultFieldWrapperProps = {
   name: BaseFormFieldConfig['name'];
   title: BaseFormFieldConfig['title'];
-}
+};
 
 const DefaultFieldWrapper = ({ name, title, children }: PropsWithChildren<DefaultFieldWrapperProps>) => {
   return (

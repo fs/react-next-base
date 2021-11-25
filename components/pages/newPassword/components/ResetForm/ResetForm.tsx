@@ -12,7 +12,7 @@ import { FormWrapper, ErrorWrapper, customButtonStyles } from './styled';
 
 type InputConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'>;
 
-type InputConfigFormik = InputConfig & { validationSchema?: StringSchema };
+type InputConfigFormik = InputConfig & { validationSchema?: StringSchema; placeholder?: string };
 
 type FormSchema<T extends InputConfigFormik[]> = {
   fields: T;
@@ -41,16 +41,16 @@ function ResetForm<T extends InputConfigFormik[]>({ form }: { form: FormSchema<T
   );
 
   return (
-    <FormWrapper data-cy='new-password-form'>
+    <FormWrapper data-cy="new-password-form">
       <Formik enableReinitialize initialValues={initialValues} validationSchema={validationSchema} onSubmit={submit}>
         {({ isSubmitting, status, errors, touched }) => (
           <FormikForm>
-            {fields.map(({ type, name, testId, placeholder }) => {
+            {fields.map(({ type, name, testID, placeholder }) => {
               return (
                 <Input
                   type={type}
                   name={name}
-                  testId={testId}
+                  testId={testID}
                   placeholder={placeholder}
                   disabled={isSubmitting}
                   errors={errors}
@@ -59,7 +59,7 @@ function ResetForm<T extends InputConfigFormik[]>({ form }: { form: FormSchema<T
                 />
               );
             })}
-            <Button type='submit' testId='submit-button' disabled={isSubmitting} customStyles={customButtonStyles}>
+            <Button type="submit" testId="submit-button" disabled={isSubmitting} customStyles={customButtonStyles}>
               Подтвердить
             </Button>
             {!!status && <ErrorWrapper>{status}</ErrorWrapper>}

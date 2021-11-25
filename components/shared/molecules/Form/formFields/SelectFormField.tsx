@@ -2,16 +2,16 @@ import { Field } from 'formik';
 import React from 'react';
 import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
 
-export interface SelectFormFieldConfig extends BaseFormFieldConfig {
+export type SelectFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.select;
   options: OptionType[];
   placeholder: string;
-}
+};
 
-export interface OptionType {
+export type OptionType = {
   label: string | number;
   value: string | number;
-}
+};
 
 const SelectFormField = ({ name, testID, placeholder, disabled, options }: SelectFormFieldConfig) => {
   return (

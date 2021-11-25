@@ -9,10 +9,10 @@ import Logo from 'components/shared/atoms/Logo';
 import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
-interface Props {
+type Props = {
   user?: User;
   signOut: ReturnType<typeof useSignOut>[0];
-}
+};
 
 const Header = ({ user, signOut }: Props): JSX.Element => {
   const links = [

@@ -1,16 +1,18 @@
-import ITest from 'interfaces/testType';
+import Test from 'types/testType';
 
-interface LinkConfig extends ITest {
+export type LinkConfig = Test & {
   text: string;
   url: string;
-}
+};
 
-interface ActionsConfig extends ITest {
+export type ActionsConfig = Test & {
   text: string;
   onClick: (arg?: { everywhere?: boolean }) => Promise<void>; // TODO: expect any function here
-}
+};
 
-export default interface IUserNavigation {
+type UserNavigation = {
   links?: LinkConfig[];
   actions?: ActionsConfig[];
-}
+};
+
+export default UserNavigation;

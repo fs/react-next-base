@@ -1,24 +1,24 @@
 import React from 'react';
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
-import ITest from 'interfaces/testType';
+import Test from 'types/testType';
 import { Wrapper, StyledLabel, StyledSelect } from './styled';
 
-interface IOption {
+type Option = {
   value: string | number;
   name: string | number;
-}
+};
 
-interface Props extends ITest {
+type Props = Test & {
   label: string;
-  selectedValue?: IOption['value'];
-  values: IOption[];
+  selectedValue?: Option['value'];
+  values: Option[];
   hasEmptyOption?: boolean;
   emptyOptionLabel?: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   disabled?: boolean;
   customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation;
-}
+};
 
 const ActivityDropdown = ({
   label,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 
-import { Activity } from 'interfaces/activityType';
+import { Activity } from 'types/activityType';
 
 import DataCell from './DataCell';
 
