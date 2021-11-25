@@ -9,7 +9,6 @@ import { DistributiveOmit, FieldsUnionPropsTypes } from 'components/shared/molec
 
 import * as Yup from 'yup';
 import { FormWrapper, ErrorWrapper, customButtonStyles } from './styled';
-import styled from 'styled-components';
 
 type InputConfig = DistributiveOmit<FieldsUnionPropsTypes, 'isFormSubmitting'>;
 
@@ -18,7 +17,7 @@ type InputConfigFormik = InputConfig & { validationSchema?: StringSchema; placeh
 type FormSchema<T extends InputConfigFormik[]> = {
   fields: T;
   initialValues: { [keys in T[number]['name']]: unknown };
-  button: (formValues: { [keys in T[number]['name']]: unknown }) => void;
+  submit: (formValues: { [keys in T[number]['name']]: unknown }) => void;
 };
 
 type ValidationSchema = {
