@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import type { PropsWithChildren } from 'react';
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
 import { StyledButton } from './styled';
 
-type TButton = {
-  type?: 'button' | 'submit' | 'reset' | undefined;
+export type TButtonProps = {
+  type?: 'button' | 'submit' | 'reset';
   testId?: string;
   disabled?: boolean;
   customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation;
+  onChange?: (event: ChangeEvent<HTMLButtonElement>) => void;
+  // onClick?: (event: ChangeEvent<HTMLButtonElement>) => void;
 };
 
 const Button = ({
@@ -17,9 +19,17 @@ const Button = ({
   testId,
   disabled,
   customStyles,
-}: PropsWithChildren<TButton>): JSX.Element => {
+  onChange,
+}: PropsWithChildren<TButtonProps>): JSX.Element => {
   return (
-    <StyledButton type={type} data-testid={testId} data-cy={testId} disabled={disabled} customStyles={customStyles}>
+    <StyledButton
+      type={type}
+      data-testid={testId}
+      data-cy={testId}
+      disabled={disabled}
+      customStyles={customStyles}
+      onChange={onChange}
+    >
       {children}
     </StyledButton>
   );

@@ -11,7 +11,7 @@ export enum FormFieldType {
   checkbox = 'checkbox',
   text = 'text',
   file = 'file',
-  submit = 'submit',
+  button = 'button',
   email = 'email',
 }
 

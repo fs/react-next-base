@@ -96,7 +96,7 @@ const ProfileFormContent = ({
       }),
     },
     {
-      type: FormFieldType.submit,
+      type: FormFieldType.button,
       name: 'Update',
       testID: 'update-button',
       label: 'Update',

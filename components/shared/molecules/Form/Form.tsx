@@ -77,7 +77,7 @@ const Form = <FormValues extends FormikValues = FormikValues>({ form }: { form: 
                           <EmailFormField {...fieldConfig} isFormSubmitting={isSubmitting} />
                         </DefaultFieldWrapper>
                       );
-                    case FormFieldType.submit:
+                    case FormFieldType.button:
                       return (
                         <FieldWrapper key={name}>
                           <SubmitButton {...fieldConfig} isFormSubmitting={isSubmitting} />

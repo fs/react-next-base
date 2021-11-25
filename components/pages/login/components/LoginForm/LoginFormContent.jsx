@@ -68,7 +68,8 @@ const LoginFormContent = ({ onSubmit, toggleForm, activeForm }) => {
       validationSchema: Yup.string().required('This field is required'),
     },
     {
-      type: 'submit',
+      type: 'button',
+      buttonType: 'submit',
       name: activeForm,
       testID: 'submit-button',
       initialValue: submitButtonText,

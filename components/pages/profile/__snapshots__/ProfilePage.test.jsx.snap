@@ -213,7 +213,7 @@ exports[`Profile page should render correctly 1`] = `
               data-testid="update-button"
               id="Update"
               name="Update"
-              type="submit"
+              type="button"
               value="Update"
             />
           </div>
