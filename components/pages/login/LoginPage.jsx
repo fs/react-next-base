@@ -8,6 +8,7 @@ import { HOME } from 'config/routes';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
+import SignInForm from 'components/shared/molecules/Form/SignInForm';
 
 import LoginForm from './components/LoginForm';
 
@@ -16,6 +17,7 @@ const LoginPage = () => {
     <NotifierProvider>
       <DefaultTemplate>
         <LoginForm />
+        <SignInForm />
         <Notifier />
       </DefaultTemplate>
     </NotifierProvider>
