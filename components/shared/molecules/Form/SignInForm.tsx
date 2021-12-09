@@ -4,9 +4,10 @@ import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
+
+import FormField from 'components/shared/atoms/FormField';
 import { SubmitButton } from 'components/shared/molecules/Form/formFields';
 import { FormFieldType } from './forms.types';
-import FormField from '../../atoms/FormField';
 
 const FormContentWrapper = styled.div`
   width: 40rem;
