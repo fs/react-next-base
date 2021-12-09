@@ -1,6 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Profile page should render correctly 1`] = `
+.c6 {
+  background-color: #eee;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgb(179,179,179);
+}
+
+.c6:hover {
+  background-color: #ccc;
+}
+
 .c2 {
   max-width: 40rem;
 }
@@ -208,14 +221,12 @@ exports[`Profile page should render correctly 1`] = `
           <div
             class="c4"
           >
-            <input
-              data-cy="update-button"
-              data-testid="update-button"
-              id="Update"
-              name="Update"
+            <button
+              class="c6"
               type="submit"
-              value="Update"
-            />
+            >
+              Submit
+            </button>
           </div>
         </div>
       </form>
