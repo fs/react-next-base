@@ -9,7 +9,15 @@ import { FormFieldType } from './forms.types';
 import FormField from '../../atoms/FormField';
 
 const FormContentWrapper = styled.div`
-  max-width: 40rem;
+  width: 40rem;
+`;
+
+const FieldWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
+const SubmitButtonWrapper = styled.div`
+  margin-top: 2rem;
 `;
 
 const initialValues = {
@@ -18,8 +26,8 @@ const initialValues = {
 };
 
 const SignInValidationSchema = Yup.object().shape({
-  email: Yup.string().required('Required'),
-  password: Yup.string().required('Required'),
+  email: Yup.string().email('Must be a valid email').max(255).required('This field is required'),
+  password: Yup.string().required('This field is required'),
 });
 
 type ValuesFromFormik = Parameters<ReturnType<typeof useSignIn>[0]>[0];
@@ -27,11 +35,15 @@ type ValuesFromFormik = Parameters<ReturnType<typeof useSignIn>[0]>[0];
 const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
   <FormContentWrapper>
     <Form>
-      <FormField name="email" type={FormFieldType.email} label="Email" />
-      <FormField name="password" type={FormFieldType.password} label="Password" />
-      <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting}>
-        Submit
-      </SubmitButton>
+      <FieldWrapper>
+        <FormField name="email" type={FormFieldType.email} label="Email" />
+      </FieldWrapper>
+      <FieldWrapper>
+        <FormField name="password" type={FormFieldType.password} label="Password" />
+      </FieldWrapper>
+      <SubmitButtonWrapper>
+        <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting} />
+      </SubmitButtonWrapper>
     </Form>
   </FormContentWrapper>
 );
