@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
+import * as Yup from 'yup';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 import { SubmitButton } from 'components/shared/molecules/Form/formFields';
@@ -16,10 +17,27 @@ const initialValues = {
   password: '',
 };
 
+const SignInValidationSchema = Yup.object().shape({
+  email: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+});
+
+type ValuesFromFormik = Parameters<ReturnType<typeof useSignIn>[0]>[0];
+
+const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
+  <FormContentWrapper>
+    <Form>
+      <FormField name="email" type={FormFieldType.email} label="Email" />
+      <FormField name="password" type={FormFieldType.password} label="Password" />
+      <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting}>
+        Submit
+      </SubmitButton>
+    </Form>
+  </FormContentWrapper>
+);
+
 const SignInForm = () => {
   const [signIn] = useSignIn();
-
-  type ValuesFromFormik = Parameters<typeof signIn>[0];
 
   const onSubmit = async (values: ValuesFromFormik, { setSubmitting }: FormikHelpers<ValuesFromFormik>) => {
     try {
@@ -31,19 +49,14 @@ const SignInForm = () => {
     }
   };
 
-  const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
-    <FormContentWrapper>
-      <Form>
-        <FormField name="email" type={FormFieldType.email} label="Email" />
-        <FormField name="password" type={FormFieldType.password} label="Password" />
-        <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting}>
-          Submit
-        </SubmitButton>
-      </Form>
-    </FormContentWrapper>
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      component={SignInFormContent}
+      validationSchema={SignInValidationSchema}
+    />
   );
-
-  return <Formik initialValues={initialValues} onSubmit={onSubmit} component={SignInFormContent} />;
 };
 
 export default SignInForm;
