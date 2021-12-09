@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form, Formik, FormikHelpers, Field, FormikProps } from 'formik';
+import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 import { SubmitButton } from 'components/shared/molecules/Form/formFields';
-import { Input } from 'components/shared/atoms/Input/Input';
 import { FormFieldType } from './forms.types';
+import FormField from '../../atoms/FormField';
 
 const FormContentWrapper = styled.div`
   max-width: 40rem;
@@ -34,11 +34,11 @@ const SignInForm = () => {
   const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
     <FormContentWrapper>
       <Form>
-        <label htmlFor="email">Email</label>
-        <Field as={Input} id="email" name="email" placeholder="Email" type="text" />
-        <label htmlFor="password">Password</label>
-        <Field as={Input} id="password" name="password" placeholder="Password" type="password" />
-        <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting} />
+        <FormField name="email" type={FormFieldType.email} label="Email" />
+        <FormField name="password" type={FormFieldType.password} label="Password" />
+        <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting}>
+          Submit
+        </SubmitButton>
       </Form>
     </FormContentWrapper>
   );
