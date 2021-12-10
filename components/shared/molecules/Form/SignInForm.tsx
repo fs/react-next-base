@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
+import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 
 import FormField from 'components/shared/atoms/FormField';
-import { SubmitButton } from 'components/shared/molecules/Form/formFields';
 import { FormFieldType } from './forms.types';
+import Button from '../../atoms/Button';
 
 const FormContentWrapper = styled.div`
   width: 40rem;
@@ -43,7 +43,9 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
         <FormField name="password" type={FormFieldType.password} label="Password" />
       </FieldWrapper>
       <SubmitButtonWrapper>
-        <SubmitButton type={FormFieldType.submit} name="signIn" isFormSubmitting={isSubmitting} />
+        <Button type={FormFieldType.submit} testID="submit-button" disabled={isSubmitting}>
+          Submit
+        </Button>
       </SubmitButtonWrapper>
     </Form>
   </FormContentWrapper>
@@ -52,11 +54,9 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
 const SignInForm = () => {
   const [signIn] = useSignIn();
 
-  const onSubmit = async (values: ValuesFromFormik, { setSubmitting }: FormikHelpers<ValuesFromFormik>) => {
+  const onSubmit = async (values: ValuesFromFormik) => {
     try {
-      setSubmitting(true);
       await signIn(values);
-      setSubmitting(false);
     } catch (error) {
       console.error(error);
     }

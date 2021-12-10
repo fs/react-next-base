@@ -5,6 +5,7 @@ type ButtonProps = {
   type: 'button' | 'submit' | 'reset' | undefined;
   children: string | undefined;
   testID: string | undefined;
+  disabled: boolean;
 };
 
 const ButtonHtml = styled.button`
@@ -20,9 +21,9 @@ const ButtonHtml = styled.button`
   }
 `;
 
-const Button = ({ type, children, testID }: ButtonProps) => {
+const Button = ({ type, children, testID, disabled }: ButtonProps) => {
   return (
-    <ButtonHtml type={type} data-testid={testID} data-cy={testID}>
+    <ButtonHtml type={type} data-testid={testID} data-cy={testID} disabled={disabled}>
       {children}
     </ButtonHtml>
   );
