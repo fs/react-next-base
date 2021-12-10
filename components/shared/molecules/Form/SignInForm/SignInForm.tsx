@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
@@ -8,19 +7,9 @@ import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 import Button from 'components/shared/atoms/Button';
 import FormField from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
-import { FormFieldType } from './forms.types';
+import { FormFieldType } from '../forms.types';
 
-const FormContentWrapper = styled.div`
-  width: 40rem;
-`;
-
-const FieldWrapper = styled.div`
-  margin-top: 1rem;
-`;
-
-const SubmitButtonWrapper = styled.div`
-  margin-top: 2rem;
-`;
+import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
 
 const initialValues = {
   email: '',

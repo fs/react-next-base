@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
-import { Input } from 'components/shared/atoms/Input/Input';
+import Input from 'components/shared/atoms/Input';
 
 const FormInput = styled(Input)`
   margin-top: 0.5rem;

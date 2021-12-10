@@ -5,5 +5,7 @@ export const Input = styled.input`
   padding: 1rem;
   font-size: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid rgb(179, 179, 179);
+  border: 1px solid ${({ theme }) => theme.colors.grey};
 `;
+
+export default Input;
