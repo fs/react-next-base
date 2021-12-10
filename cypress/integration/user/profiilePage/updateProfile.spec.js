@@ -20,7 +20,7 @@ describe('Update Profile', () => {
     cy.get('[data-cy=first-name]').clear().type(`${firstName}-${timestamp}`);
     cy.get('[data-cy=last-name]').clear().type(`${lastName}-${timestamp}`);
 
-    cy.get('[data-cy=update-button]').click();
+    cy.get('[data-cy=submit-button]').click();
 
     cy.get('[data-cy=profile-updating-loader]').should('be.visible');
     cy.get('[data-cy=notifier]').should('contain', 'Profile updated successfully');

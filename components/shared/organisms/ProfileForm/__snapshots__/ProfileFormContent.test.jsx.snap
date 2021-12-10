@@ -221,6 +221,8 @@ exports[`ProfileFormContent should render correctly 1`] = `
           >
             <button
               class="c6"
+              data-cy="submit-button"
+              data-testid="submit-button"
               type="submit"
             >
               Submit

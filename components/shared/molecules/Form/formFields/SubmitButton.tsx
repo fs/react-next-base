@@ -8,9 +8,21 @@ export type SubmitButtonFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.submit;
 };
 
+type SubmitButtonProps = {
+  testID: string;
+  type: 'submit';
+  children: string;
+};
+
 const SubmitButton = ({ name, testID, disabled }: SubmitButtonFieldConfig) => {
   return (
-    <Field type="submit" id={name} name={name} data-testid={testID} data-cy={testID} disabled={disabled} as={Button}>
+    <Field
+      type="submit"
+      id={name}
+      name={name}
+      disabled={disabled}
+      as={(props: SubmitButtonProps) => <Button {...props} testID={testID} />}
+    >
       Submit
     </Field>
   );

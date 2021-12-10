@@ -98,7 +98,7 @@ const ProfileFormContent = ({
     {
       type: FormFieldType.submit,
       name: 'Update',
-      testID: 'update-button',
+      testID: 'submit-button',
       label: 'Update',
       initialValue: 'Update',
     },

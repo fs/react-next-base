@@ -4,6 +4,7 @@ import styled from 'styled-components';
 type ButtonProps = {
   type: 'button' | 'submit' | 'reset' | undefined;
   children: string | undefined;
+  testID: string | undefined;
 };
 
 const ButtonHtml = styled.button`
@@ -19,8 +20,12 @@ const ButtonHtml = styled.button`
   }
 `;
 
-const Button = ({ type, children }: ButtonProps) => {
-  return <ButtonHtml type={type}>{children}</ButtonHtml>;
+const Button = ({ type, children, testID }: ButtonProps) => {
+  return (
+    <ButtonHtml type={type} data-testid={testID} data-cy={testID}>
+      {children}
+    </ButtonHtml>
+  );
 };
 
 export default Button;
