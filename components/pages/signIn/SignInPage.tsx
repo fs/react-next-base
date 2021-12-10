@@ -16,7 +16,7 @@ const PageContentWrapper = styled.div`
 const SignInPage = () => {
   return (
     <NotifierProvider>
-      <DefaultTemplate data-testid="signin-page">
+      <DefaultTemplate testId="signin-page">
         <PageContentWrapper>
           <SignInForm />
         </PageContentWrapper>
