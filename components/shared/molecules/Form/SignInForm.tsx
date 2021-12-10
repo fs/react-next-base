@@ -5,9 +5,10 @@ import * as Yup from 'yup';
 
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 
+import Button from 'components/shared/atoms/Button';
 import FormField from 'components/shared/atoms/FormField';
+import Loader from 'components/shared/atoms/Loader';
 import { FormFieldType } from './forms.types';
-import Button from '../../atoms/Button';
 
 const FormContentWrapper = styled.div`
   width: 40rem;
@@ -52,7 +53,7 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
 );
 
 const SignInForm = () => {
-  const [signIn] = useSignIn();
+  const [signIn, signInState] = useSignIn();
 
   const onSubmit = async (values: ValuesFromFormik) => {
     try {
@@ -63,12 +64,15 @@ const SignInForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      component={SignInFormContent}
-      validationSchema={SignInValidationSchema}
-    />
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        component={SignInFormContent}
+        validationSchema={SignInValidationSchema}
+      />
+      {signInState.loading && <Loader testId="signin-loader">Loading...</Loader>}
+    </>
   );
 };
 
