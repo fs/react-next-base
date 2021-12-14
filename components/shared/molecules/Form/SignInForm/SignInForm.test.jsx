@@ -59,7 +59,6 @@ describe('SignInForm', () => {
   test('should show error if fields are filled incorrectly', async () => {
     // Arrange
     const invalidInputEmail = 'test';
-    const correctInputEmail = 'email@gmail.com';
     const invalidInputPassword = '';
     render(renderWithTheme(<SignInForm />));
     const inputEmail = screen.getByTestId('input-email');
@@ -73,13 +72,15 @@ describe('SignInForm', () => {
     });
 
     fireEvent.change(inputEmail, { target: { value: '' } });
-    expect(screen.queryByText('This field is required')).toBeInTheDocument();
-    fireEvent.change(inputEmail, { target: { value: correctInputEmail } });
-    expect(screen.queryByText('This field is required')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText('This field is required')).toBeInTheDocument();
+    });
 
     fireEvent.change(inputPassword, { target: { value: invalidInputPassword } });
     fireEvent.click(submitButton);
-    expect(screen.queryByText('This field is required')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryAllByText('This field is required')).toHaveLength(2);
+    });
   });
 
   test('should show loader if is loading', () => {
