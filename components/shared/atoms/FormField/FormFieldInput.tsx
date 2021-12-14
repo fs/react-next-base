@@ -16,11 +16,11 @@ const ErrorWrapper = styled.div`
 
 type FormFiledProps = {
   name: string;
-  type: string;
+  type: 'email' | 'password' | 'text';
   label: string;
 };
 
-const FormField = ({ name, type, label }: FormFiledProps) => {
+const FormFieldInput = ({ name, type, label }: FormFiledProps) => {
   return (
     <label htmlFor={name}>
       {label}
@@ -30,4 +30,4 @@ const FormField = ({ name, type, label }: FormFiledProps) => {
   );
 };
 
-export default FormField;
+export default FormFieldInput;
