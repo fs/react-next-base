@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 
 import Button from 'components/shared/atoms/Button';
-import FormField from 'components/shared/atoms/FormField';
+import FormFieldInput from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
 import { FormFieldType } from '../forms.types';
 
@@ -27,10 +27,10 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
   <FormContentWrapper>
     <Form>
       <FieldWrapper>
-        <FormField name="email" type={FormFieldType.email} label="Email" />
+        <FormFieldInput name="email" type={FormFieldType.email} label="Email" />
       </FieldWrapper>
       <FieldWrapper>
-        <FormField name="password" type={FormFieldType.password} label="Password" />
+        <FormFieldInput name="password" type={FormFieldType.password} label="Password" />
       </FieldWrapper>
       <SubmitButtonWrapper>
         <Button type={FormFieldType.submit} testID="submit-button" disabled={isSubmitting}>
