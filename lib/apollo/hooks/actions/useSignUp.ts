@@ -67,7 +67,7 @@ const useSignUp = () => {
     }
   };
 
-  return [mutate, mutationState];
+  return [mutate, mutationState] as const;
 };
 
 export default useSignUp;
