@@ -60,7 +60,7 @@ const useSignIn = () => {
     }
   };
 
-  return [mutate, mutationState];
+  return [mutate, mutationState] as const;
 };
 
 export default useSignIn;

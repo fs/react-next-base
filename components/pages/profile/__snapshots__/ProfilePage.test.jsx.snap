@@ -13,7 +13,7 @@ exports[`Profile page should render correctly 1`] = `
   padding: 1rem;
   font-size: 1rem;
   border-radius: 0.3rem;
-  border: 1px solid rgb(179,179,179);
+  border: 1px solid #ccc;
 }
 
 .c2 [type='file'] {
@@ -209,8 +209,8 @@ exports[`Profile page should render correctly 1`] = `
             class="c4"
           >
             <input
-              data-cy="update-button"
-              data-testid="update-button"
+              data-cy="submit-button"
+              data-testid="submit-button"
               id="Update"
               name="Update"
               type="submit"

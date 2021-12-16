@@ -57,7 +57,7 @@ describe('ProfileForm', () => {
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
 
     // Act
-    fireEvent.click(screen.getByTestId('update-button'));
+    fireEvent.click(screen.getByTestId('submit-button'));
 
     // Assert
     await waitFor(() => expect(mockUpdateUser).toHaveBeenCalledWith(expectedValues));
@@ -105,7 +105,7 @@ describe('ProfileForm', () => {
     fireEvent.change(fileInput, mockAvatarChangeEvent);
 
     // Act
-    fireEvent.click(screen.getByTestId('update-button'));
+    fireEvent.click(screen.getByTestId('submit-button'));
 
     // Assert
     await waitFor(() => expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues));
@@ -141,7 +141,7 @@ describe('ProfileForm', () => {
     fireEvent.input(screen.getByPlaceholderText(expectedPasswordPlaceholderText), { value: '123' });
 
     // Act
-    fireEvent.click(screen.getByTestId('update-button'));
+    fireEvent.click(screen.getByTestId('submit-button'));
 
     // Assert
     await waitFor(() => expect(mockErrorDecorator).toHaveBeenCalledWith(expectedError));
