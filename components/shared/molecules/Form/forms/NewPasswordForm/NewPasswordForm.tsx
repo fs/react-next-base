@@ -59,7 +59,7 @@ const NewPasswordForm = ({ query }) => {
 
   const onSubmit = async ({ password }: { password: string }) => {
     try {
-      // await updatePassword(password, resetToken);
+      // await updatePassword({password, resetToken});
     } catch (error) {
       console.error(error);
     }
