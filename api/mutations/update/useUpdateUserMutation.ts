@@ -9,7 +9,9 @@ type UpdateUserResponseData = {
   updateUser: UpdateUserData;
 };
 
-type UpdateUserRequestVariables = { input: UpdateUserVariables };
+type UpdateUserRequestVariables = {
+  input: UpdateUserVariables;
+};
 
 const useUpdateUserMutation = (
   options?: MutationHookOptions<UpdateUserResponseData, UpdateUserRequestVariables>,
