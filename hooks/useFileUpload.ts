@@ -1,4 +1,4 @@
-import type { PresignData } from 'lib/apollo/hooks/actions/usePresignFile';
+import type { PresignFile } from 'api/types/file/pressignApiType';
 
 type UploadedMetadata = {
   filename: string;
@@ -13,7 +13,7 @@ export type Uploaded = {
 };
 
 export const useFileUpload = () => {
-  const uploadFile = async ({ fields, url }: PresignData, file: File): Promise<Uploaded> => {
+  const uploadFile = async ({ fields, url }: PresignFile, file: File): Promise<Uploaded> => {
     const keyField = fields.find(({ key }) => key === 'key');
 
     if (!keyField) {

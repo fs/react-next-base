@@ -1,38 +1,18 @@
-import { useMutation } from '@apollo/client';
-
-import RequestPasswordRecovery from 'graphql/mutations/requestPasswordRecovery.graphql';
+import type { PasswordRecoveryVariables } from 'api/types/user/passwordRecoveryApiType';
+import useRequestPasswordRecoveryMutation from 'api/mutations/useRequestPasswordRecoveryMutation';
 
 import { useNotifier } from 'contexts/NotifierContext';
-
-type PasswordRecoveryProps = {
-  email: string;
-};
-
-type PasswordRecoveryMutationData = {
-  requestPasswordRecovery: {
-    detail: string;
-  };
-};
-
-type PasswordRecoveryMutationInputVariable = PasswordRecoveryProps;
-
-type PasswordRecoveryMutationVariables = {
-  input: PasswordRecoveryMutationInputVariable;
-};
 
 const usePasswordRecovery = () => {
   const { setError } = useNotifier();
 
-  const [mutation, mutationState] = useMutation<PasswordRecoveryMutationData, PasswordRecoveryMutationVariables>(
-    RequestPasswordRecovery,
-    {
-      onError: (error) => {
-        if (setError) setError(error);
-      },
+  const [mutation, mutationResult] = useRequestPasswordRecoveryMutation({
+    onError: (error) => {
+      if (setError) setError(error);
     },
-  );
+  });
 
-  const mutate = async ({ email }: PasswordRecoveryProps) => {
+  const mutate = async ({ email }: PasswordRecoveryVariables) => {
     const requestPasswordRecoveryInput = { email };
     const result = await mutation({
       variables: { input: requestPasswordRecoveryInput },
@@ -40,8 +20,8 @@ const usePasswordRecovery = () => {
     return result;
   };
 
-  const error = mutationState?.error;
-  const detail = mutationState?.data?.requestPasswordRecovery?.detail;
+  const error = mutationResult?.error;
+  const detail = mutationResult?.data?.requestPasswordRecovery?.detail;
 
   return [mutate, detail, error];
 };
