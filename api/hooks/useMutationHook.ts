@@ -4,7 +4,7 @@ import type { MutationTuple, MutationHookOptions } from '@apollo/client';
 
 import { useMutation } from '@apollo/client';
 
-const useMutationHook = <TData = any, TVariables = Record<string, any>>(
+const useMutationHook = <TData, TVariables>(
   mutation: DocumentNode | TypedDocumentNode<TData, TVariables>,
   options?: MutationHookOptions<TData, TVariables> | undefined,
 ): MutationTuple<TData, TVariables> => {
