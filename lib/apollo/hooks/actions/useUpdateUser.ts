@@ -14,7 +14,7 @@ const useUpdateUser = () => {
         query: CurrentUser,
         data: {
           me: {
-            ...data.updateUser,
+            ...data.updateUser.me,
           },
         },
       });
