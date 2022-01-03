@@ -1,11 +1,9 @@
-import { useQuery } from '@apollo/client';
-import Activities from 'graphql/queries/pages/activities.graphql';
-
+import useActivitiesQuery from 'api/queries/useActivitiesQuery';
 import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
 
-import User from 'domain/User';
-import { PageInfo, Activity } from 'types/activityType';
+import { Activity } from 'types/activityType';
+import type { ActivityEdge } from 'api/types/user/activity';
 
 type ActivityParams = {
   beforeCursor?: string;
@@ -14,34 +12,7 @@ type ActivityParams = {
   pageSize: number;
 };
 
-type Edge = {
-  cursor: string;
-  node: {
-    body: string;
-    createdAt: string | Date;
-    event: string;
-    id: string | number;
-    title: string;
-    user: User;
-  };
-};
-
-type ActivityQueryState = {
-  activities: {
-    edges: Edge[];
-    pageInfo: PageInfo;
-  };
-};
-
-type ActivityQueryVars = {
-  events: string[];
-  last?: number;
-  before?: string;
-  first?: number;
-  after?: string;
-};
-
-const getFormattedActivity = (edges: Edge[]): Activity[] => {
+const getFormattedActivity = (edges: ActivityEdge[]): Activity[] => {
   return edges.map(
     ({
       node: {
@@ -75,9 +46,7 @@ export const useActivity = ({
   const first = afterCursor || (!afterCursor && !beforeCursor) ? pageSize : undefined;
   const last = beforeCursor ? pageSize : undefined;
 
-  const { loading, error, data } = useQuery<ActivityQueryState, ActivityQueryVars>(Activities, {
-    fetchPolicy: 'cache-and-network',
-    nextFetchPolicy: 'cache-first',
+  const { loading, error, data } = useActivitiesQuery({
     variables: {
       events,
       last,
