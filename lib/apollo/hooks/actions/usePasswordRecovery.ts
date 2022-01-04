@@ -40,10 +40,11 @@ const usePasswordRecovery = () => {
     return result;
   };
 
+  const error = mutationResult?.error;
   const detailMessage = mutationResult?.data?.requestPasswordRecovery?.detail;
   const loading = mutationResult?.loading;
 
-  return [mutate, detailMessage, loading] as const;
+  return [mutate, detailMessage, loading, error] as const;
 };
 
 export default usePasswordRecovery;
