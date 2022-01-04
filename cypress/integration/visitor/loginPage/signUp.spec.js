@@ -17,7 +17,7 @@ describe('Sign Up', () => {
       firstName,
       lastName,
       email: `${firstName}-${timestamp}@test.com`,
-      password: `Password` + timestamp,
+      password: `Password + ${timestamp}`,
     };
 
     cy.signup(validCredentials);
@@ -26,14 +26,14 @@ describe('Sign Up', () => {
   });
 
   it('Visitor singns up with existed email', () => {
-    const timestemp = +new Date();
+    const timestamp = +new Date();
     const { firstName, lastName, email } = this.user;
 
     const invalidCredentials = {
       firstName,
       lastName,
       email,
-      password: `Password` + timestemp,
+      password: `Password + ${timestamp}`,
       path: '/signup',
     };
 
