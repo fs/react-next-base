@@ -32,7 +32,6 @@ describe('SignInForm', () => {
     const inputEmailValue = 'email@gmail.com';
     const inputPasswordValue = 'Password1';
 
-    // Act
     render(renderWithTheme(<SignUpForm />));
 
     const inputFirstName = screen.getByTestId('input-firstName');
@@ -45,6 +44,7 @@ describe('SignInForm', () => {
     fireEvent.change(inputEmail, { target: { value: inputEmailValue } });
     fireEvent.change(inputPassword, { target: { value: inputPasswordValue } });
 
+    // Act
     fireEvent.click(screen.getByTestId('submit-button'));
 
     await waitFor(() => {
@@ -59,8 +59,8 @@ describe('SignInForm', () => {
       loading: true,
       data: null,
     };
-
     useSignUp.mockImplementation(() => [signUp, signUpState]);
+
     render(renderWithTheme(<SignUpForm />));
 
     const inputFirstNameValue = 'Name';

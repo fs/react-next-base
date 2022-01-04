@@ -9,7 +9,8 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
-import SignInForm from 'components/pages/signIn/components/SignInForm';
+
+import SignInForm from './components/SignInForm';
 
 import { PageContentWrapper } from './styled';
 
