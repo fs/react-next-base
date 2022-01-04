@@ -23,7 +23,7 @@ type PasswordRecoveryMutationVariables = {
 const usePasswordRecovery = () => {
   const { setError } = useNotifier();
 
-  const [mutation, mutationState] = useMutation<PasswordRecoveryMutationData, PasswordRecoveryMutationVariables>(
+  const [mutation, mutationResult] = useMutation<PasswordRecoveryMutationData, PasswordRecoveryMutationVariables>(
     RequestPasswordRecovery,
     {
       onError: (error) => {
@@ -40,10 +40,11 @@ const usePasswordRecovery = () => {
     return result;
   };
 
-  const error = mutationState?.error;
-  const detail = mutationState?.data?.requestPasswordRecovery?.detail;
+  const error = mutationResult?.error;
+  const detailMessage = mutationResult?.data?.requestPasswordRecovery?.detail;
+  const loading = mutationResult?.loading;
 
-  return [mutate, detail, error];
+  return [mutate, detailMessage, loading, error] as const;
 };
 
 export default usePasswordRecovery;

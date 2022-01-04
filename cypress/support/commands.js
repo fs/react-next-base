@@ -47,10 +47,9 @@ Cypress.Commands.add('signup', ({ email, password, firstName, lastName, path = '
 });
 
 Cypress.Commands.add('passwordRecovery', ({ email }) => {
-  cy.visit('/login');
-  cy.get('[data-cy=tab-password-recovery]').click();
+  cy.visit('/recovery-password');
 
-  cy.get('[data-cy=email]').type(email);
+  cy.get('[data-cy=input-email]').type(email);
 
   cy.get('[data-cy=submit-button]').click();
 });
