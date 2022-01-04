@@ -1,7 +1,9 @@
 import React, { PropsWithChildren } from 'react';
 import { ErrorMessage } from 'formik';
-import { BaseFormFieldConfig } from './forms.types';
-import { ErrorWrapper, FieldLabel, FieldWrapper } from './styled-components';
+
+import { BaseFormFieldConfig } from 'types/formsType';
+
+import { ErrorWrapper, FieldLabel, FieldWrapper } from './styled';
 
 type DefaultFieldWrapperProps = {
   name: BaseFormFieldConfig['name'];

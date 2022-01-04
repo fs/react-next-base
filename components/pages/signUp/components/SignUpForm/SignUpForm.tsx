@@ -7,9 +7,9 @@ import useSignUp from 'lib/apollo/hooks/actions/useSignUp';
 import Button from 'components/shared/atoms/Button';
 import FormFieldInput from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
-import { FormFieldType } from '../../forms.types';
+import { FormFieldType } from 'types/formsType';
 
-import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from '../styled-components';
+import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
 
 const passwordRegularExp = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])([0-9A-Za-z#$@&!?.*^{}<>;,)(~'"=_%+-]+)$/;
 

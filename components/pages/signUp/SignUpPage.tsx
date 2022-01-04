@@ -1,17 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { NotifierProvider } from 'contexts/NotifierContext';
-import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
-import Notifier from 'components/shared/atoms/Notifier';
-import SignUpForm from 'components/shared/molecules/Form/forms/SignUpForm';
 import { withApolloClient } from 'lib/withApolloClient';
 import WithAuth from 'lib/auth/withAuth';
 
-const PageContentWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import { NotifierProvider } from 'contexts/NotifierContext';
+
+import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
+import Notifier from 'components/shared/atoms/Notifier';
+import SignUpForm from './components/SignUpForm';
+
+import { PageContentWrapper } from './styled';
 
 const SignUpPage = () => {
   return (

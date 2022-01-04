@@ -1,6 +1,7 @@
 import type { FormikValues } from 'formik';
 import { StringSchema } from 'yup';
-import { FormFieldConfig } from './forms.types';
+
+import { FormFieldConfig } from 'types/formsType';
 
 type ValidationSchema = {
   [key: string]: StringSchema;

@@ -1,6 +1,6 @@
 import { Field } from 'formik';
 import React from 'react';
-import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
+import { BaseFormFieldConfig, FormFieldType } from 'types/formsType';
 
 export type CheckboxFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.checkbox;

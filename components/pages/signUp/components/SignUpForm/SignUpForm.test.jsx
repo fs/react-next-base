@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import 'jest-styled-components';
+
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 
 import useSignUp from 'lib/apollo/hooks/actions/useSignUp';
@@ -23,14 +23,6 @@ describe('SignInForm', () => {
       },
     };
     useSignUp.mockImplementation(() => [signUp, signUpState]);
-  });
-
-  test('should render correctly', () => {
-    // Act
-    const { container } = render(renderWithTheme(<SignUpForm />));
-
-    // Assert
-    expect(container).toMatchSnapshot();
   });
 
   test('should call SignIn fn after click "Submit" button', async () => {
@@ -57,19 +49,6 @@ describe('SignInForm', () => {
 
     await waitFor(() => {
       expect(signUp).toHaveBeenCalled();
-    });
-  });
-
-  test('should show error if fields are filled incorrectly', async () => {
-    // Arrange
-
-    render(renderWithTheme(<SignUpForm />));
-    const submitButton = screen.getByTestId('submit-button');
-
-    fireEvent.click(submitButton);
-    await waitFor(() => {
-      expect(screen.queryAllByText('This field is required')).toHaveLength(4);
-      expect(signUp).not.toHaveBeenCalled();
     });
   });
 
