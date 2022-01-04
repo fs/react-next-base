@@ -18,6 +18,10 @@ export const HeaderWrapper = styled.header(
 export const Links = styled.div`
   display: flex;
   align-items: center;
+
+  a {
+    margin: 0 0.5rem;
+  }
 `;
 
 export const StyledUserMenu = styled.ul(
