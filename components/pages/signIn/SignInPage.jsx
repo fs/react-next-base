@@ -1,17 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import Router from 'next/router';
 
-import { NotifierProvider } from 'contexts/NotifierContext';
-import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
-import Notifier from 'components/shared/atoms/Notifier';
-import SignInForm from 'components/shared/molecules/Form/SignInForm';
 import { withApolloClient } from 'lib/withApolloClient';
 import WithAuth from 'lib/auth/withAuth';
 
-const PageContentWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import { HOME } from 'config/routes';
+import { NotifierProvider } from 'contexts/NotifierContext';
+
+import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
+import Notifier from 'components/shared/atoms/Notifier';
+import SignInForm from 'components/pages/signIn/components/SignInForm';
+
+import { PageContentWrapper } from './styled';
 
 const SignInPage = () => {
   return (
@@ -24,6 +24,17 @@ const SignInPage = () => {
       </DefaultTemplate>
     </NotifierProvider>
   );
+};
+
+SignInPage.getInitialProps = ({ res, accessTokenManager }) => {
+  if (accessTokenManager.accessToken) {
+    if (res) {
+      res.redirect(302, HOME);
+    } else {
+      Router.push(HOME);
+    }
+  }
+  return {};
 };
 
 export default withApolloClient(WithAuth(SignInPage));

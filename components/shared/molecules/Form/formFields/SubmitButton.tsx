@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
-import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
+import { BaseFormFieldConfig, FormFieldType } from 'types/formsType';
 
 export type SubmitButtonFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.submit;

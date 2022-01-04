@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { PROFILE, ACTIVITY, LOGIN } from 'config/routes';
+import { PROFILE, ACTIVITY, SIGNIN, SIGNUP } from 'config/routes';
 
 import User from 'domain/User';
 import type useSignOut from 'lib/apollo/hooks/actions/useSignOut';
@@ -30,9 +30,15 @@ const Header = ({ user, signOut }: Props): JSX.Element => {
       <Logo />
       <Links data-cy="header-links">
         {!user && (
-          <Link href={LOGIN} passHref>
-            <a>Log In</a>
-          </Link>
+          <>
+            <Link href={SIGNIN} passHref>
+              <a>Sign In</a>
+            </Link>
+            |
+            <Link href={SIGNUP} passHref>
+              <a>Sign Up</a>
+            </Link>
+          </>
         )}
         {!!user && <UserNavigation user={user} links={links} actions={actions} />}
       </Links>
