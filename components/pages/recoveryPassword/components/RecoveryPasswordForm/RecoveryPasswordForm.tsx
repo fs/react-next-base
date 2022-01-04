@@ -40,10 +40,10 @@ const RecoveryPasswordFormContent = ({ isSubmitting }: FormikProps<ValuesFromFor
 const RecoveryPasswordForm = () => {
   const [recoveryPassword, detailMessage, loading] = usePasswordRecovery();
 
-  const { setSuccess } = useNotifier();
+  const { setInfo } = useNotifier();
 
   useEffect(() => {
-    if (detailMessage) setSuccess(detailMessage);
+    if (detailMessage) setInfo(detailMessage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [detailMessage]);
 

@@ -16,10 +16,10 @@ describe('RecoveryPasswordForm', () => {
   let detailMessage;
   let loading;
 
-  const mockSetSuccess = jest.fn();
+  const mockSetInfo = jest.fn();
   useNotifier.mockImplementation(
     jest.fn(() => ({
-      setSuccess: mockSetSuccess,
+      setInfo: mockSetInfo,
     })),
   );
 
