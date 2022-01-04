@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Link from 'next/link';
 
-const Title = styled.h1`
-  font-size: 2rem;
-  text-align: center;
-`;
+import { Title } from './styled';
 
 const Home = () => (
   <>

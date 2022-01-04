@@ -7,7 +7,7 @@ import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
 import Button from 'components/shared/atoms/Button';
 import FormFieldInput from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
-import { FormFieldType } from '../forms.types';
+import { FormFieldType } from 'types/formsType';
 
 import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
 
