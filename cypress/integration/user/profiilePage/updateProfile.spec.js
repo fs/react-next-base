@@ -2,7 +2,7 @@ describe('Update Profile', () => {
   beforeEach(() => {
     cy.fixture('users').then(({ validUser }) => {
       this.user = validUser;
-      cy.login(validUser);
+      cy.signin(validUser);
 
       cy.get('[data-cy=dropdown-toggler]').click();
       cy.contains('Profile').click();

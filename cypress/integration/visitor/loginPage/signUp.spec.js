@@ -17,7 +17,7 @@ describe('Sign Up', () => {
       firstName,
       lastName,
       email: `${firstName}-${timestamp}@test.com`,
-      password: timestamp,
+      password: `Password` + timestamp,
     };
 
     cy.signup(validCredentials);
@@ -33,8 +33,8 @@ describe('Sign Up', () => {
       firstName,
       lastName,
       email,
-      password: timestemp,
-      path: '/login',
+      password: `Password` + timestemp,
+      path: '/signup',
     };
 
     cy.signup(invalidCredentials);
