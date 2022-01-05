@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { Field } from 'formik';
-import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
+import { BaseFormFieldConfig, FormFieldType } from 'types/formsType';
 
 export type FileFormFieldConfig = BaseFormFieldConfig & {
   type: FormFieldType.file;

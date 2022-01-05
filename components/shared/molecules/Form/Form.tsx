@@ -3,6 +3,10 @@ import type { FormikValues } from 'formik';
 import { Form as FormikForm, Formik } from 'formik';
 import { object } from 'yup';
 
+import { FormFieldConfig, FormFieldType, FormType } from 'types/formsType';
+
+import { collectFormikProps } from './utils';
+
 import {
   SelectFormField,
   CheckboxFormField,
@@ -13,10 +17,8 @@ import {
   SubmitButton,
   EmailFormField,
 } from './formFields';
-import { FormFieldConfig, FormFieldType, FormType } from './forms.types';
 import DefaultFieldWrapper from './DefaultFieldWrapper';
-import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled-components';
-import { collectFormikProps } from './utils';
+import { ErrorWrapper, FormContainer, FormWrapper, FieldWrapper } from './styled';
 
 const Form = <FormValues extends FormikValues = FormikValues>({ form }: { form: FormType<FormValues> }) => {
   const { fields, submit } = form;

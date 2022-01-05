@@ -12,7 +12,7 @@ describe('Sign In', () => {
   it('Visitor signs in with valid credentials', () => {
     const validCredentials = this.users.validUser;
 
-    cy.login(validCredentials);
+    cy.signin(validCredentials);
 
     cy.get('[data-cy=dropdown-toggler]').should('contain', validCredentials.email);
   });
@@ -20,9 +20,9 @@ describe('Sign In', () => {
   it('Authorized user visits auth page', () => {
     const validCredentials = this.users.validUser;
 
-    cy.login(validCredentials);
+    cy.signin(validCredentials);
 
-    cy.visit('/login');
+    cy.visit('/signin');
 
     cy.location('pathname').should('equal', '/');
   });
@@ -30,7 +30,7 @@ describe('Sign In', () => {
   it('Visitor signs in with invalid credentials', () => {
     const invalidCredentials = this.users.invalidUser;
 
-    cy.login({ ...invalidCredentials, path: '/login' });
+    cy.signin({ ...invalidCredentials, path: '/signin' });
 
     cy.get('[data-cy=notifier]').should('contain', 'Invalid credentials');
   });

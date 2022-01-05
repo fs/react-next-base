@@ -2,11 +2,13 @@ import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
 import { FormikHelpers } from 'formik';
 
-import Form from 'components/shared/molecules/Form';
-import { FormFieldConfig, FormFieldType } from 'components/shared/molecules/Form/forms.types';
-import Loader from 'components/shared/atoms/Loader';
 import User from 'domain/User';
+import { FormFieldConfig, FormFieldType } from 'types/formsType';
+
 import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
+
+import Loader from 'components/shared/atoms/Loader';
+import Form from 'components/shared/molecules/Form';
 
 import { FormWrapper, StyledTitle, AvatarWrapper, AvatarImg } from './styled';
 

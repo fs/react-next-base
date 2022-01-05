@@ -1,30 +1,10 @@
-import { useMutation } from '@apollo/client';
+import type { UpdateUserVariables } from 'api/types/user/user';
+import useUpdateUserMutation from 'api/mutations/update/useUpdateUserMutation';
 
-import UpdateUser from 'graphql/mutations/updateUser.graphql';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-import type { Uploaded } from 'hooks/useFileUpload';
-import User from 'domain/User';
-
-type UpdateUserProps = {
-  avatar?: Uploaded;
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  currentPassword: string;
-};
-
-type UpdateUserMutationData = {
-  updateUser: User;
-};
-
-type UpdateUserMutationInputVariable = UpdateUserProps;
-
-type UpdateUserMutationVariables = { input: UpdateUserMutationInputVariable };
-
 const useUpdateUser = () => {
-  const [mutation, mutationState] = useMutation<UpdateUserMutationData, UpdateUserMutationVariables>(UpdateUser, {
+  const [mutation, mutationResult] = useUpdateUserMutation({
     update: (store, { data }) => {
       if (!data) {
         return;
@@ -34,14 +14,14 @@ const useUpdateUser = () => {
         query: CurrentUser,
         data: {
           me: {
-            ...data.updateUser,
+            ...data.updateUser.me,
           },
         },
       });
     },
   });
 
-  const mutate = async ({ avatar, email, firstName, lastName, password, currentPassword }: UpdateUserProps) => {
+  const mutate = async ({ avatar, email, firstName, lastName, password, currentPassword }: UpdateUserVariables) => {
     const updateUserInput = {
       avatar,
       email,
@@ -54,7 +34,7 @@ const useUpdateUser = () => {
     await mutation({ variables: { input: updateUserInput } });
   };
 
-  return [mutate, mutationState] as const;
+  return [mutate, mutationResult] as const;
 };
 
 export default useUpdateUser;

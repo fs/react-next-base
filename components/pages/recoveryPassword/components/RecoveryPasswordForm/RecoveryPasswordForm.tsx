@@ -1,36 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
-import useSignIn from 'lib/apollo/hooks/actions/useSignIn';
+import { useNotifier } from 'contexts/NotifierContext';
+import usePasswordRecovery from 'lib/apollo/hooks/actions/usePasswordRecovery';
 
 import Button from 'components/shared/atoms/Button';
 import FormFieldInput from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
-import { FormFieldType } from '../forms.types';
+import { FormFieldType } from 'types/formsType';
 
 import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
 
 const initialValues = {
   email: '',
-  password: '',
 };
 
 const SignInValidationSchema = Yup.object().shape({
   email: Yup.string().email('Must be a valid email').max(255).required('This field is required'),
-  password: Yup.string().required('This field is required'),
 });
 
-type ValuesFromFormik = Parameters<ReturnType<typeof useSignIn>[0]>[0];
+type ValuesFromFormik = Parameters<ReturnType<typeof usePasswordRecovery>[0]>[0];
 
-const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
+const RecoveryPasswordFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
   <FormContentWrapper>
     <Form>
       <FieldWrapper>
         <FormFieldInput name="email" type={FormFieldType.email} label="Email" />
-      </FieldWrapper>
-      <FieldWrapper>
-        <FormFieldInput name="password" type={FormFieldType.password} label="Password" />
       </FieldWrapper>
       <SubmitButtonWrapper>
         <Button type={FormFieldType.submit} testID="submit-button" disabled={isSubmitting}>
@@ -41,15 +37,18 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
   </FormContentWrapper>
 );
 
-const SignInForm = () => {
-  const [signIn, signInState] = useSignIn();
+const RecoveryPasswordForm = () => {
+  const [recoveryPassword, detailMessage, loading] = usePasswordRecovery();
+
+  const { setInfo } = useNotifier();
+
+  useEffect(() => {
+    if (detailMessage) setInfo(detailMessage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detailMessage]);
 
   const onSubmit = async (values: ValuesFromFormik) => {
-    try {
-      await signIn(values);
-    } catch (error) {
-      console.error(error);
-    }
+    await recoveryPassword(values);
   };
 
   return (
@@ -57,12 +56,12 @@ const SignInForm = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        component={SignInFormContent}
+        component={RecoveryPasswordFormContent}
         validationSchema={SignInValidationSchema}
       />
-      {signInState.loading && <Loader testId="signin-loader">Loading...</Loader>}
+      {loading && <Loader testId="recovery-password-loader">Loading...</Loader>}
     </>
   );
 };
 
-export default SignInForm;
+export default RecoveryPasswordForm;

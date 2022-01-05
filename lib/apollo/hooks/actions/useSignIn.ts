@@ -1,32 +1,20 @@
-import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
+
 import { HOME } from 'config/routes';
 import { SIGN_IN_EVENT } from 'config/globalEvents.json';
-
-import SignIn from 'graphql/mutations/signIn.graphql';
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
 import { useNotifier } from 'contexts/NotifierContext';
 
-import User from 'domain/User';
+import type { SignInVariables } from 'api/types/user/signInApiType';
+import type { SignInMutationResult } from 'api/mutations/useSignInMutation';
+import useSignInMutation from 'api/mutations/useSignInMutation';
 
-type SignInProps = {
-  email: string;
-  password: string;
-};
-type SignInMutationInputVariable = SignInProps;
+import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-type SignInMutationVariables = { input: SignInMutationInputVariable };
-
-type SignInMutationData = {
-  signin: { me: User };
-};
-
-const useSignIn = () => {
+const useSignIn = (): [(variables: SignInVariables) => Promise<void>, SignInMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation<SignInMutationData, SignInMutationVariables>(SignIn, {
+  const [mutation, mutationResult] = useSignInMutation({
     update: (store, { data }) => {
       if (!data) {
         return;
@@ -43,7 +31,7 @@ const useSignIn = () => {
     },
   });
 
-  const mutate = async ({ email, password }: SignInProps) => {
+  const mutate = async ({ email, password }: SignInVariables) => {
     const signInInput = {
       email,
       password,
@@ -60,7 +48,7 @@ const useSignIn = () => {
     }
   };
 
-  return [mutate, mutationState] as const;
+  return [mutate, mutationResult];
 };
 
 export default useSignIn;

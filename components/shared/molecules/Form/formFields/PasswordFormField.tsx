@@ -1,6 +1,6 @@
 import { Field } from 'formik';
 import React from 'react';
-import { BaseFormFieldConfig, FormFieldType } from '../forms.types';
+import { BaseFormFieldConfig, FormFieldType } from 'types/formsType';
 
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete

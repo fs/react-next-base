@@ -1,32 +1,20 @@
-import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
+
 import { HOME } from 'config/routes';
 import { SIGN_OUT_EVENT } from 'config/globalEvents.json';
-
-import SignOut from 'graphql/mutations/signOut.graphql';
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
 import { useNotifier } from 'contexts/NotifierContext';
 
-type SignOutProps = {
-  everywhere?: boolean;
-};
+import type { SignOutVariables } from 'api/types/user/signOutApiType';
+import type { SignOutMutationResult } from 'api/mutations/useSignOutMutation';
+import useSignOutMutation from 'api/mutations/useSignOutMutation';
 
-type SignOutMutationVariable = SignOutProps;
+import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-type SignOutMutationVariables = {
-  input: SignOutMutationVariable;
-};
-
-type SignOutMutationData = {
-  signout: { message: string };
-};
-
-const useSignOut = () => {
+const useSignOut = (): [(variables?: SignOutVariables) => Promise<void>, SignOutMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationState] = useMutation<SignOutMutationData, SignOutMutationVariables>(SignOut, {
+  const [mutation, mutationResult] = useSignOutMutation({
     update: (store) => {
       store.writeQuery({
         query: CurrentUser,
@@ -37,7 +25,7 @@ const useSignOut = () => {
     },
   });
 
-  const mutate = async ({ everywhere = false }: SignOutProps = {}) => {
+  const mutate = async ({ everywhere = false }: SignOutVariables = {}) => {
     const signOutInput = { everywhere };
 
     try {
@@ -51,7 +39,7 @@ const useSignOut = () => {
     }
   };
 
-  return [mutate, mutationState] as const;
+  return [mutate, mutationResult];
 };
 
 export default useSignOut;

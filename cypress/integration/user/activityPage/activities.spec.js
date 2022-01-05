@@ -1,7 +1,7 @@
 describe('Activities Page', () => {
   beforeEach(() => {
     cy.fixture('users').then(({ validUser }) => {
-      cy.login(validUser);
+      cy.signin(validUser);
 
       cy.get('[data-cy=dropdown-toggler]').click();
       cy.contains('Activity').click();

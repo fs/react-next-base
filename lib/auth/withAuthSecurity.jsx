@@ -1,5 +1,5 @@
 import React from 'react';
-import { LOGIN } from 'config/routes';
+import { SIGNIN } from 'config/routes';
 
 const WithAuthSecurity = (Page) =>
   class WithAuthSecurityClass extends React.Component {
@@ -10,9 +10,9 @@ const WithAuthSecurity = (Page) =>
       if (accessToken) return Page.getInitialProps ? Page.getInitialProps(context) : {};
 
       if (!!req && !!res) {
-        res.redirect(302, LOGIN);
+        res.redirect(302, SIGNIN);
       } else {
-        window.location.href = LOGIN;
+        window.location.href = SIGNIN;
       }
       return {};
     }
