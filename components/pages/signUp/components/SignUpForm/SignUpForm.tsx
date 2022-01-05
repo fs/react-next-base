@@ -61,11 +61,7 @@ const SignUpForm = () => {
   const [signUp, signUpResult] = useSignUp();
 
   const onSubmit = async (values: ValuesFromFormik) => {
-    try {
-      await signUp(values);
-    } catch (error) {
-      console.error(error);
-    }
+    await signUp(values);
   };
 
   return (

@@ -29,7 +29,6 @@ describe('SignInForm', () => {
     const inputEmailValue = 'email@gmail.com';
     const inputPasswordValue = 'password';
 
-    // Act
     render(renderWithTheme(<SignInForm />));
 
     const inputEmail = screen.getByTestId('input-email');
@@ -38,9 +37,7 @@ describe('SignInForm', () => {
     fireEvent.change(inputEmail, { target: { value: inputEmailValue } });
     fireEvent.change(inputPassword, { target: { value: inputPasswordValue } });
 
-    expect(inputEmail.value).toBe(inputEmailValue);
-    expect(inputPassword.value).toBe(inputPasswordValue);
-
+    // Act
     fireEvent.click(screen.getByTestId('submit-button'));
 
     await waitFor(() => {
@@ -57,6 +54,7 @@ describe('SignInForm', () => {
     };
 
     useSignIn.mockImplementation(() => [signIn, signInState]);
+
     render(renderWithTheme(<SignInForm />));
 
     const inputEmailValue = 'email@gmail.com';

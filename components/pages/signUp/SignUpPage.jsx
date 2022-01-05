@@ -9,6 +9,7 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
+
 import SignUpForm from './components/SignUpForm';
 
 import { PageContentWrapper } from './styled';
