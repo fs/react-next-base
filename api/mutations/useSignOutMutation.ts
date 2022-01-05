@@ -1,4 +1,4 @@
-import type { MutationHookOptions, MutationTuple } from '@apollo/client';
+import type { MutationHookOptions, MutationTuple, MutationResult } from '@apollo/client';
 
 import SignOut from 'graphql/mutations/signOut.graphql';
 
@@ -12,6 +12,8 @@ type SignOutResponseData = {
 type SignOutRequestVariables = {
   input: SignOutVariables;
 };
+
+export type SignOutMutationResult = MutationResult<SignOutResponseData>;
 
 const useSignOutMutation = (
   options: MutationHookOptions<SignOutResponseData, SignOutRequestVariables>,

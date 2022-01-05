@@ -5,11 +5,12 @@ import { SIGN_OUT_EVENT } from 'config/globalEvents.json';
 import { useNotifier } from 'contexts/NotifierContext';
 
 import type { SignOutVariables } from 'api/types/user/signOutApiType';
+import type { SignOutMutationResult } from 'api/mutations/useSignOutMutation';
 import useSignOutMutation from 'api/mutations/useSignOutMutation';
 
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-const useSignOut = () => {
+const useSignOut = (): [(variables?: SignOutVariables) => Promise<void>, SignOutMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
@@ -38,7 +39,7 @@ const useSignOut = () => {
     }
   };
 
-  return [mutate, mutationResult] as const;
+  return [mutate, mutationResult];
 };
 
 export default useSignOut;

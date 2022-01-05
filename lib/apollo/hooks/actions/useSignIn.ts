@@ -5,11 +5,12 @@ import { SIGN_IN_EVENT } from 'config/globalEvents.json';
 import { useNotifier } from 'contexts/NotifierContext';
 
 import type { SignInVariables } from 'api/types/user/signInApiType';
+import type { SignInMutationResult } from 'api/mutations/useSignInMutation';
 import useSignInMutation from 'api/mutations/useSignInMutation';
 
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-const useSignIn = () => {
+const useSignIn = (): [(variables: SignInVariables) => Promise<void>, SignInMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
@@ -47,7 +48,7 @@ const useSignIn = () => {
     }
   };
 
-  return [mutate, mutationResult] as const;
+  return [mutate, mutationResult];
 };
 
 export default useSignIn;

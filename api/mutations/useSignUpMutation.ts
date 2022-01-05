@@ -1,4 +1,4 @@
-import type { MutationHookOptions, MutationTuple } from '@apollo/client';
+import type { MutationHookOptions, MutationTuple, MutationResult } from '@apollo/client';
 
 import SignUp from 'graphql/mutations/signUp.graphql';
 
@@ -12,6 +12,8 @@ type SignUpResponseData = {
 type SignUpRequestVariables = {
   input: SignUpVariables;
 };
+
+export type SignUpMutationResult = MutationResult<SignUpResponseData>;
 
 const useSignUpMutation = (
   options: MutationHookOptions<SignUpResponseData, SignUpRequestVariables>,

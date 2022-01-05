@@ -42,7 +42,7 @@ const SignInFormContent = ({ isSubmitting }: FormikProps<ValuesFromFormik>) => (
 );
 
 const SignInForm = () => {
-  const [signIn, signInState] = useSignIn();
+  const [signIn, signInResult] = useSignIn();
 
   const onSubmit = async (values: ValuesFromFormik) => {
     try {
@@ -60,7 +60,7 @@ const SignInForm = () => {
         component={SignInFormContent}
         validationSchema={SignInValidationSchema}
       />
-      {signInState.loading && <Loader testId="signin-loader">Loading...</Loader>}
+      {signInResult.loading && <Loader testId="signin-loader">Loading...</Loader>}
     </>
   );
 };

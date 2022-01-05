@@ -1,6 +1,6 @@
 import type { MutationHookOptions, MutationTuple } from '@apollo/client';
 
-import RequestPasswordRecoveryMutation from 'graphql/mutations/requestPasswordRecovery.graphql';
+import PasswordRecoveryMutation from 'graphql/mutations/requestPasswordRecovery.graphql';
 
 import type { PasswordRecoveryVariables, PasswordRecoveryData } from '../types/user/passwordRecoveryApiType';
 import useMutation from '../hooks/useMutationHook';
@@ -13,13 +13,10 @@ type PasswordRecoveryRequestVariables = {
   input: PasswordRecoveryVariables;
 };
 
-const useRequestPasswordRecoveryMutation = (
+const usePasswordRecoveryMutation = (
   options: MutationHookOptions<PasswordRecoveryResponseData, PasswordRecoveryRequestVariables>,
 ): MutationTuple<PasswordRecoveryResponseData, PasswordRecoveryRequestVariables> => {
-  return useMutation<PasswordRecoveryResponseData, PasswordRecoveryRequestVariables>(
-    RequestPasswordRecoveryMutation,
-    options,
-  );
+  return useMutation<PasswordRecoveryResponseData, PasswordRecoveryRequestVariables>(PasswordRecoveryMutation, options);
 };
 
-export default useRequestPasswordRecoveryMutation;
+export default usePasswordRecoveryMutation;

@@ -5,11 +5,12 @@ import { SIGN_IN_EVENT } from 'config/globalEvents.json';
 import { useNotifier } from 'contexts/NotifierContext';
 
 import type { SignUpVariables } from 'api/types/user/signUpApiType';
+import type { SignUpMutationResult } from 'api/mutations/useSignUpMutation';
 import useSignUpMutation from 'api/mutations/useSignUpMutation';
 
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-const useSignUp = () => {
+const useSignUp = (): [(variables: SignUpVariables) => Promise<void>, SignUpMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 

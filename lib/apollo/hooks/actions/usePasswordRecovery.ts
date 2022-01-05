@@ -1,12 +1,12 @@
 import type { PasswordRecoveryVariables } from 'api/types/user/passwordRecoveryApiType';
-import useRequestPasswordRecoveryMutation from 'api/mutations/useRequestPasswordRecoveryMutation';
+import usePasswordRecoveryMutation from 'api/mutations/usePasswordRecoveryMutation';
 
 import { useNotifier } from 'contexts/NotifierContext';
 
 const usePasswordRecovery = () => {
   const { setError } = useNotifier();
 
-  const [mutation, mutationResult] = useRequestPasswordRecoveryMutation({
+  const [mutation, mutationResult] = usePasswordRecoveryMutation({
     onError: (error) => {
       if (setError) setError(error);
     },
