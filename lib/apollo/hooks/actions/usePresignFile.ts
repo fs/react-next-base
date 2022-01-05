@@ -1,35 +1,10 @@
-import { useMutation } from '@apollo/client';
-import PresignData from 'graphql/mutations/presignData.graphql';
-
-type PresignFileProps = {
-  type: string;
-  filename: string;
-};
-
-export type PresignData = {
-  fields: {
-    key: string;
-    value: string;
-  }[];
-  url: string;
-};
-
-type PresignFileData = {
-  presignData: {
-    data: PresignData;
-  };
-};
-
-type PresignFileMutationInputVariable = PresignFileProps;
-
-type PresignFileMutationVariables = {
-  input: PresignFileMutationInputVariable;
-};
+import type { PresignFileVariables } from 'api/types/file/pressignApiType';
+import usePresignDataMutation from 'api/mutations/usePresignDataMutation';
 
 const usePresignFile = () => {
-  const [mutation, mutationState] = useMutation<PresignFileData, PresignFileMutationVariables>(PresignData);
+  const [mutation, mutationResult] = usePresignDataMutation();
 
-  const mutate = async ({ type, filename }: PresignFileProps) => {
+  const mutate = async ({ type, filename }: PresignFileVariables) => {
     const presignDataInput = { type, filename };
 
     const resultData = (await mutation({ variables: { input: presignDataInput } })).data;
@@ -37,7 +12,7 @@ const usePresignFile = () => {
     return resultData!.presignData.data;
   };
 
-  return [mutate, mutationState] as const;
+  return [mutate, mutationResult] as const;
 };
 
 export default usePresignFile;
