@@ -1,9 +1,11 @@
 import type User from 'domain/User';
 import type { Uploaded } from 'hooks/useFileUpload';
 
-export type UpdateUserData = {
+export type Me = {
   me: User;
 };
+
+export type UpdateUserData = Me;
 
 export type UpdateUserVariables = {
   avatar?: Uploaded;

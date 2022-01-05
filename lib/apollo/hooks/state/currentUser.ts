@@ -1,13 +1,7 @@
-import { useQuery } from '@apollo/client';
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-import User from 'domain/User';
-
-type UserData = {
-  me: User;
-};
+import useCurrentUserQuery from 'api/queries/useCurrentUserQuery';
 
 export const useCurrentUser = (prefetch = true) => {
-  const { data, loading, error } = useQuery<UserData>(CurrentUser, {
+  const { data, loading, error } = useCurrentUserQuery({
     fetchPolicy: prefetch ? 'cache-first' : 'cache-only',
   });
 
