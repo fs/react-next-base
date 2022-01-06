@@ -5,8 +5,10 @@ import PresignDataMutation from 'graphql/mutations/presignData.graphql';
 import type { PresignFileData, PresignFileVariables } from '../types/file/pressignApiType';
 import useMutation from '../hooks/useMutationHook';
 
+const MUTATION_NAME = 'presignData';
+
 type PresignFileResponseData = {
-  presignData: PresignFileData;
+  [MUTATION_NAME]: PresignFileData;
 };
 
 type PresignFileRequestVariables = {

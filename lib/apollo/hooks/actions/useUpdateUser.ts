@@ -1,25 +1,9 @@
 import type { UpdateUserVariables } from 'api/types/user/user';
+import type { UpdateUserMutationResult } from 'api/mutations/update/useUpdateUserMutation';
 import useUpdateUserMutation from 'api/mutations/update/useUpdateUserMutation';
 
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
-const useUpdateUser = () => {
-  const [mutation, mutationResult] = useUpdateUserMutation({
-    update: (store, { data }) => {
-      if (!data) {
-        return;
-      }
-
-      store.writeQuery({
-        query: CurrentUser,
-        data: {
-          me: {
-            ...data.updateUser.me,
-          },
-        },
-      });
-    },
-  });
+const useUpdateUser = (): [(variables: UpdateUserVariables) => Promise<void>, UpdateUserMutationResult] => {
+  const [mutation, mutationResult] = useUpdateUserMutation();
 
   const mutate = async ({ avatar, email, firstName, lastName, password, currentPassword }: UpdateUserVariables) => {
     const updateUserInput = {
@@ -34,7 +18,7 @@ const useUpdateUser = () => {
     await mutation({ variables: { input: updateUserInput } });
   };
 
-  return [mutate, mutationResult] as const;
+  return [mutate, mutationResult];
 };
 
 export default useUpdateUser;

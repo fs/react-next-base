@@ -8,22 +8,11 @@ import type { SignOutVariables } from 'api/types/user/signOutApiType';
 import type { SignOutMutationResult } from 'api/mutations/useSignOutMutation';
 import useSignOutMutation from 'api/mutations/useSignOutMutation';
 
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
 const useSignOut = (): [(variables?: SignOutVariables) => Promise<void>, SignOutMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationResult] = useSignOutMutation({
-    update: (store) => {
-      store.writeQuery({
-        query: CurrentUser,
-        data: {
-          me: null,
-        },
-      });
-    },
-  });
+  const [mutation, mutationResult] = useSignOutMutation();
 
   const mutate = async ({ everywhere = false }: SignOutVariables = {}) => {
     const signOutInput = { everywhere };

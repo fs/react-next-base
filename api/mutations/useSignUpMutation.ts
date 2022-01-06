@@ -1,12 +1,16 @@
-import type { MutationHookOptions, MutationTuple, MutationResult } from '@apollo/client';
+import type { MutationTuple, MutationResult } from '@apollo/client';
 
 import SignUp from 'graphql/mutations/signUp.graphql';
 
 import type { SignUpData, SignUpVariables } from '../types/user/signUpApiType';
 import useMutation from '../hooks/useMutationHook';
+import useUpdateCurrentUserCache from '../cache/write/useWriteCurrentUserCache';
+import { getResponseDataField, getDataWithoutToken } from '../helpers';
+
+const MUTATION_NAME = 'signup';
 
 type SignUpResponseData = {
-  signup: SignUpData;
+  [MUTATION_NAME]: SignUpData;
 };
 
 type SignUpRequestVariables = {
@@ -15,10 +19,14 @@ type SignUpRequestVariables = {
 
 export type SignUpMutationResult = MutationResult<SignUpResponseData>;
 
-const useSignUpMutation = (
-  options: MutationHookOptions<SignUpResponseData, SignUpRequestVariables>,
-): MutationTuple<SignUpResponseData, SignUpRequestVariables> => {
-  return useMutation<SignUpResponseData, SignUpRequestVariables>(SignUp, options);
+export const getData = (responseData?: SignUpResponseData | null): SignUpData | undefined | null =>
+  getResponseDataField(MUTATION_NAME, responseData);
+
+const useSignUpMutation = (): MutationTuple<SignUpResponseData, SignUpRequestVariables> => {
+  return useMutation<SignUpResponseData, SignUpRequestVariables>(SignUp, {
+    update: (cache, mutationResult) =>
+      useUpdateCurrentUserCache(cache, { data: getDataWithoutToken(getData(mutationResult.data)) }),
+  });
 };
 
 export default useSignUpMutation;
