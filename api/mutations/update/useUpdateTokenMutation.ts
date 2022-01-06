@@ -3,7 +3,7 @@ import type { FetchResult, ApolloClient, InMemoryCache } from '@apollo/client';
 import UpdateTokenMutation from 'graphql/mutations/updateToken.graphql';
 
 import type { UpdateTokenData } from '../../types/user/updateToken';
-import mutationApi from '../../class/mutationApi';
+import { mutationApi } from '../../hooks/useMutationHook';
 import getResponseDataField from '../../helpers/getResponseDataField';
 import { writeCurrentUserCache } from '../../cache/write/useWriteCurrentUserCache';
 

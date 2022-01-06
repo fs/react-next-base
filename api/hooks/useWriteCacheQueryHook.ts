@@ -1,4 +1,11 @@
-import { ApolloCache, Cache, Reference } from '@apollo/client';
+import type { ApolloCache, Cache, Reference, DataProxy, ApolloClient, InMemoryCache } from '@apollo/client';
+
+export const writeCacheQueryApi = <TData, TVariables>(
+  apolloClient: ApolloClient<InMemoryCache>,
+  options: DataProxy.WriteQueryOptions<TData, TVariables>,
+): void => {
+  return apolloClient.writeQuery(options);
+};
 
 const useWriteCacheQueryHook = <TResponseData, TData, TVariables>(
   cache: ApolloCache<TResponseData>,

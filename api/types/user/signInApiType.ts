@@ -1,5 +1,5 @@
-import { Me } from '../user/user';
-import { Token } from '../user/token';
+import { Me } from './user';
+import { Token } from './token';
 
 export type SignInData = Me & Token;
 
