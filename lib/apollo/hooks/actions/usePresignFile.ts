@@ -7,9 +7,9 @@ const usePresignFile = () => {
   const mutate = async ({ type, filename }: PresignFileVariables) => {
     const presignDataInput = { type, filename };
 
-    const mutationResult = await mutation({ variables: { input: presignDataInput } });
+    const fetchResult = await mutation({ variables: { input: presignDataInput } });
 
-    return getData(mutationResult.data)?.data;
+    return getData(fetchResult.data)?.data;
   };
 
   return [mutate, mutationResult] as const;
