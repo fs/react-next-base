@@ -22,10 +22,20 @@ describe('ProfileForm', () => {
   let mockFileUpload;
   let mockNotifierSetSuccess;
 
+  const mockPressgnFile = {
+    fields: [
+      {
+        key: 'mockKey',
+        value: 'mockValue',
+      },
+    ],
+    url: 'mockUrl',
+  };
+
   beforeEach(() => {
     mockUpdateUser = jest.fn(() => Promise.resolve());
     useUpdateUser.mockImplementation(() => [mockUpdateUser]);
-    mockPresignFile = jest.fn(() => Promise.resolve());
+    mockPresignFile = jest.fn(() => Promise.resolve(mockPressgnFile));
     usePresignFile.mockImplementation(() => [mockPresignFile]);
     mockFileUpload = jest.fn(() => Promise.resolve());
     useFileUpload.mockImplementation(() => [mockFileUpload]);
@@ -109,7 +119,7 @@ describe('ProfileForm', () => {
 
     // Assert
     await waitFor(() => expect(mockPresignFile).toHaveBeenCalledWith(expectedPresignFileValues));
-    expect(mockFileUpload).toHaveBeenCalledWith(undefined, mockFile);
+    expect(mockFileUpload).toHaveBeenCalledWith(mockPressgnFile, mockFile);
     expect(mockUpdateUser).toHaveBeenCalledWith(expectedUpdateUserValues);
     expect(mockPresignFile).toHaveBeenCalledBefore(mockFileUpload);
     expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
