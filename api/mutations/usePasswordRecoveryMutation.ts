@@ -4,6 +4,7 @@ import PasswordRecoveryMutation from 'graphql/mutations/requestPasswordRecovery.
 
 import type { PasswordRecoveryVariables, PasswordRecoveryData } from '../types/user/passwordRecoveryApiType';
 import useMutation from '../hooks/useMutationHook';
+import getResponseDataField from '../helpers/getResponseDataField';
 
 const MUTATION_NAME = 'requestPasswordRecovery';
 
@@ -14,6 +15,9 @@ type PasswordRecoveryResponseData = {
 type PasswordRecoveryRequestVariables = {
   input: PasswordRecoveryVariables;
 };
+
+export const getData = (responseData?: PasswordRecoveryResponseData | null): PasswordRecoveryData | null | undefined =>
+  getResponseDataField(MUTATION_NAME, responseData);
 
 const usePasswordRecoveryMutation = (
   options: MutationHookOptions<PasswordRecoveryResponseData, PasswordRecoveryRequestVariables>,

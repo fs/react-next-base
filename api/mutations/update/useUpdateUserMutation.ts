@@ -19,7 +19,7 @@ type UpdateUserRequestVariables = {
 
 export type UpdateUserMutationResult = MutationResult<UpdateUserResponseData>;
 
-export const getData = (responseData: UpdateUserResponseData | undefined | null): UpdateUserData | undefined | null =>
+export const getData = (responseData?: UpdateUserResponseData | null): UpdateUserData | undefined | null =>
   getResponseDataField(MUTATION_NAME, responseData);
 
 const useUpdateUserMutation = (): MutationTuple<UpdateUserResponseData, UpdateUserRequestVariables> => {
