@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type { CurrentUser } from 'api/types/user';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import WithAuth from 'lib/auth/withAuth';
@@ -12,12 +13,10 @@ import ProfileForm from 'components/shared/organisms/ProfileForm';
 import { NotifierProvider } from 'contexts/NotifierContext';
 import Notifier from 'components/shared/atoms/Notifier';
 
-import User from 'domain/User';
-
 const Profile = () => {
   const { loading, error, user } = useCurrentUser();
 
-  const profile = (user as User) || {};
+  const profile = (user as CurrentUser) || {};
   const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
 
   return (

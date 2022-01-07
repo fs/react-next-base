@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-import User from 'domain/User';
+import type { CurrentUser } from 'api/types/user';
 import UserNavigationType from 'types/userNavigationType';
 
 import ProfileImage from 'components/shared/atoms/ProfileImage';
@@ -9,7 +9,7 @@ import UserNavigationList from './UserNavigationList';
 import { UserName, UserNavigationWrapper, UserNameWrapper } from './styled';
 
 type Props = UserNavigationType & {
-  user: User;
+  user: CurrentUser;
 };
 
 const UserNavigation = ({ user, links, actions }: Props) => {

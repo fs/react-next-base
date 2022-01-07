@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PROFILE, ACTIVITY, SIGNIN, SIGNUP } from 'config/routes';
 
-import User from 'domain/User';
+import type { CurrentUser } from 'api/types/user';
 import type useSignOut from 'lib/apollo/hooks/actions/useSignOut';
 
 import Logo from 'components/shared/atoms/Logo';
@@ -10,7 +10,7 @@ import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
 type Props = {
-  user?: User;
+  user?: CurrentUser;
   signOut: ReturnType<typeof useSignOut>[0];
 };
 

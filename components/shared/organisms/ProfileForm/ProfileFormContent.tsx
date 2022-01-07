@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import * as Yup from 'yup';
 import { FormikHelpers } from 'formik';
 
-import User from 'domain/User';
+import type { CurrentUser } from 'api/types/user';
 import { FormFieldConfig, FormFieldType } from 'types/formsType';
 
 import type useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
@@ -17,7 +17,7 @@ type ValuesFromFormik = Parameters<UpdateUserFn>[0];
 
 type ProfileFormContentProps = {
   temporaryUrl: string | null;
-  profile: User;
+  profile: CurrentUser;
   onSubmit: (values: ValuesFromFormik, formikHelpers: FormikHelpers<ValuesFromFormik>) => Promise<void>;
   handleAvatarChange: (event: ChangeEvent<HTMLInputElement>) => void;
   loading: boolean;
