@@ -4,7 +4,7 @@ import UpdateTokenMutation from 'graphql/mutations/updateToken.graphql';
 
 import type { UpdateTokenData } from '../../types/user/updateToken';
 import { mutationApi } from '../../hooks/useMutationHook';
-import getResponseDataField from '../../helpers/getResponseDataField';
+import { getResponseDataField, getDataWithoutToken } from '../../helpers';
 import { writeCurrentUserCache } from '../../cache/write/useWriteCurrentUserCache';
 
 const MUTATION_NAME = 'updateToken';
@@ -26,8 +26,7 @@ export const updateTokenMutation = async (
   });
 
   if (withCacheUpdate) {
-    const data = getData(fetchResult.data);
-    writeCurrentUserCache(apolloClient, { data: data ? { me: data.me } : null });
+    writeCurrentUserCache(apolloClient, { data: getDataWithoutToken(getData(fetchResult.data)) });
   }
 
   return fetchResult;
