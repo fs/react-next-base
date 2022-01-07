@@ -1,13 +1,13 @@
-import User from 'domain/User';
-import { PageInfo } from 'types/activityType';
+import type { ID, PageInfo } from '../common';
+import type { CurrentUser } from './user';
 
 export type Activity = {
+  id: ID;
   body: string;
   createdAt: string | Date;
   event: string;
-  id: string | number;
   title: string;
-  user: User;
+  user: CurrentUser;
 };
 
 export type ActivityEdge = {

@@ -1,8 +1,16 @@
-import type User from 'domain/User';
 import type { Uploaded } from 'hooks/useFileUpload';
+import type { ID } from '../common';
+
+export type CurrentUser = {
+  id: ID;
+  email: string;
+  avatarUrl: string | null;
+  firstName: string;
+  lastName: string;
+};
 
 export type Me = {
-  me: User;
+  me: CurrentUser;
 };
 
 export type UpdateUserData = Me;

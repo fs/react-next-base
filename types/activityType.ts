@@ -1,12 +1,7 @@
-export type PageInfo = {
-  endCursor: string;
-  hasNextPage: boolean;
-  hasPreviousPage: boolean;
-  startCursor: string;
-};
+import { ID } from 'api/types/common';
 
 export type Activity = {
-  id: string | number;
+  id: ID;
   title: string;
   description: string;
   date: string;

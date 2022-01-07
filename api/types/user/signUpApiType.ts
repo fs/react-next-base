@@ -1,8 +1,6 @@
-import User from 'domain/User';
+import { Me } from './user';
 
-export type SignUpData = {
-  me: User;
-};
+export type SignUpData = Me;
 
 export type SignUpVariables = {
   avatarUrl?: string;

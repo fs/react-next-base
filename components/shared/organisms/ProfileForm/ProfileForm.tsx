@@ -1,16 +1,18 @@
 import React, { ChangeEvent, useMemo, useState } from 'react';
 import type { FormikHelpers } from 'formik';
+
+import type { CurrentUser } from 'api/types/user';
 import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
 import { useFileUpload } from 'hooks/useFileUpload';
 import type { Uploaded } from 'hooks/useFileUpload';
 import ErrorDecorator from 'decorators/ErrorDecorator';
 import { useNotifier } from 'contexts/NotifierContext';
-import User from 'domain/User';
+
 import ProfileFormContent from './ProfileFormContent';
 
 type Props = {
-  profile: User;
+  profile: CurrentUser;
 };
 
 const ProfileForm = ({ profile }: Props) => {
