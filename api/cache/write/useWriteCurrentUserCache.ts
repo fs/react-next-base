@@ -2,8 +2,8 @@ import type { ApolloCache, ApolloClient, InMemoryCache, Reference } from '@apoll
 
 import CurrentUserQuery from 'graphql/queries/currentUser.graphql';
 
-import type { Me } from '../../types/user/user';
-import useWriteCacheQuery, { writeCacheQueryApi } from '../../hooks/useWriteCacheQueryHook';
+import type { Me } from 'api/types/user/user';
+import useWriteCacheQuery, { writeCacheQueryApi } from 'api/hooks/useWriteCacheQueryHook';
 
 type CustomOptions = {
   data: Me | undefined | null;

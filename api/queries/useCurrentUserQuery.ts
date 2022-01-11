@@ -1,10 +1,14 @@
 import type { QueryHookOptions, QueryResult } from '@apollo/client';
 import CurrentUser from 'graphql/queries/currentUser.graphql';
 
-import type { Me } from '../types/user/user';
-import useQuery from '../hooks/useQueryHook';
+import type { Me } from 'api/types/user/user';
+import useQuery from 'api/hooks/useQueryHook';
 
-const useCurrentUserQuery = (options: QueryHookOptions<Me, undefined>): QueryResult<Me, undefined> => {
+type CurrentUserQueryOptions = QueryHookOptions<Me, undefined>;
+
+type CurrentUserQueryResult = QueryResult<Me, undefined>;
+
+const useCurrentUserQuery = (options: CurrentUserQueryOptions): CurrentUserQueryResult => {
   return useQuery<Me, undefined>(CurrentUser, options);
 };
 

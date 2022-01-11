@@ -2,10 +2,10 @@ import type { FetchResult, ApolloClient, InMemoryCache } from '@apollo/client';
 
 import UpdateTokenMutation from 'graphql/mutations/updateToken.graphql';
 
-import type { UpdateTokenData } from '../../types/user/updateToken';
-import { mutationApi } from '../../hooks/useMutationHook';
-import { getResponseDataField, getDataWithoutToken } from '../../helpers';
-import { writeCurrentUserCache } from '../../cache/write/useWriteCurrentUserCache';
+import type { UpdateTokenData } from 'api/types/user/updateToken';
+import { mutationApi } from 'api/hooks/useMutationHook';
+import { getResponseDataField, getDataWithoutToken } from 'api/helpers';
+import { writeCurrentUserCache } from 'api/cache/write/useWriteCurrentUserCache';
 
 const MUTATION_NAME = 'updateToken';
 

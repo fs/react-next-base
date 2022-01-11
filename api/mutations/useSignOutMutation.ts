@@ -3,8 +3,8 @@ import { useApolloClient } from '@apollo/client';
 
 import SignOut from 'graphql/mutations/signOut.graphql';
 
-import type { SignOutData, SignOutVariables } from '../types/user/signOutApiType';
-import useMutation from '../hooks/useMutationHook';
+import type { SignOutData, SignOutVariables } from 'api/types/user/signOutApiType';
+import useMutation from 'api/hooks/useMutationHook';
 
 const MUTATION_NAME = 'signout';
 
@@ -16,14 +16,16 @@ type SignOutRequestVariables = {
   input: SignOutVariables;
 };
 
+type SignOutMutationTuple = MutationTuple<SignOutResponseData, SignOutRequestVariables>;
+
 export type SignOutMutationResult = MutationResult<SignOutResponseData>;
 
-const useSignOutMutation = (): MutationTuple<SignOutResponseData, SignOutRequestVariables> => {
+const useSignOutMutation = (): SignOutMutationTuple => {
   const apolloClient = useApolloClient();
 
   return useMutation<SignOutResponseData, SignOutRequestVariables>(SignOut, {
     onCompleted: () => {
-      apolloClient.resetStore();
+      apolloClient.clearStore();
     },
   });
 };
