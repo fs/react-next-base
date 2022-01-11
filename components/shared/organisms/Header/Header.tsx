@@ -10,7 +10,7 @@ import UserNavigation from './UserNavigation';
 import { HeaderWrapper, Links } from './styled';
 
 type Props = {
-  user?: User;
+  user?: User | null;
   signOut: ReturnType<typeof useSignOut>[0];
 };
 

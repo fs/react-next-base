@@ -1,0 +1,3 @@
+fragment HasCurrentUser on CurrentUser {
+  id
+}

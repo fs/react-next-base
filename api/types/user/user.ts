@@ -2,7 +2,7 @@ import type User from 'domain/User';
 import type { Uploaded } from 'hooks/useFileUpload';
 
 export type Me = {
-  me: User;
+  me: User | null;
 };
 
 export type UpdateUserData = Me;
