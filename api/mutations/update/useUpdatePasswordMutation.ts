@@ -14,7 +14,7 @@ type UpdatePasswordRequestVariables = {
 };
 
 const useUpdatePasswordMutation = (
-  options?: MutationHookOptions<UpdatePasswordResponseData, UpdatePasswordRequestVariables>,
+  options: MutationHookOptions<UpdatePasswordResponseData, UpdatePasswordRequestVariables>,
 ): MutationTuple<UpdatePasswordResponseData, UpdatePasswordRequestVariables> => {
   return useMutation<UpdatePasswordResponseData, UpdatePasswordRequestVariables>(UpdatePasswordMutation, options);
 };
