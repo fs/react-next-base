@@ -3,14 +3,11 @@ import { useRouter } from 'next/router';
 import { SIGNIN } from 'config/routes';
 import { useNotifier } from 'contexts/NotifierContext';
 
+import type { UpdatePasswordVariables } from 'api/types/user/updatePasswordApiType';
+import type { UpdatePasswordMutationResult } from 'api/mutations/update/useUpdatePasswordMutation';
 import useUpdatePasswordMutation from 'api/mutations/update/useUpdatePasswordMutation';
 
-export type UpdatePasswordProps = {
-  password: string;
-  resetToken: string | string[] | undefined;
-};
-
-const useUpdatePassword = () => {
+const useUpdatePassword = (): [(variables: UpdatePasswordVariables) => Promise<void>, UpdatePasswordMutationResult] => {
   const { setError, setSuccess } = useNotifier();
   const router = useRouter();
 
@@ -23,7 +20,7 @@ const useUpdatePassword = () => {
     onCompleted,
   });
 
-  const mutate = async ({ password, resetToken }: UpdatePasswordProps) => {
+  const mutate = async ({ password, resetToken }: UpdatePasswordVariables) => {
     const updatePasswordInput = { password, resetToken };
 
     try {
@@ -33,7 +30,7 @@ const useUpdatePassword = () => {
     }
   };
 
-  return [mutate, mutationResult] as const;
+  return [mutate, mutationResult];
 };
 
 export default useUpdatePassword;

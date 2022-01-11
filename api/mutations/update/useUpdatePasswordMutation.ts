@@ -1,4 +1,4 @@
-import type { MutationHookOptions, MutationTuple } from '@apollo/client';
+import type { MutationHookOptions, MutationTuple, MutationResult } from '@apollo/client';
 
 import UpdatePasswordMutation from 'graphql/mutations/updatePassword.graphql';
 
@@ -13,9 +13,13 @@ type UpdatePasswordRequestVariables = {
   input: UpdatePasswordVariables;
 };
 
-const useUpdatePasswordMutation = (
-  options: MutationHookOptions<UpdatePasswordResponseData, UpdatePasswordRequestVariables>,
-): MutationTuple<UpdatePasswordResponseData, UpdatePasswordRequestVariables> => {
+type UpdatePasswordMutationOptions = MutationHookOptions<UpdatePasswordResponseData, UpdatePasswordRequestVariables>;
+
+type UpdatePasswordMutationTuple = MutationTuple<UpdatePasswordResponseData, UpdatePasswordRequestVariables>;
+
+export type UpdatePasswordMutationResult = MutationResult<UpdatePasswordResponseData>;
+
+const useUpdatePasswordMutation = (options: UpdatePasswordMutationOptions): UpdatePasswordMutationTuple => {
   return useMutation<UpdatePasswordResponseData, UpdatePasswordRequestVariables>(UpdatePasswordMutation, options);
 };
 
