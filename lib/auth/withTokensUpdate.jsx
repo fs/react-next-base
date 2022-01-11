@@ -1,33 +1,17 @@
 import React from 'react';
 import Cookie from 'universal-cookie';
 
-import UpdateToken from 'graphql/mutations/updateToken.graphql';
-import CurrentUser from 'graphql/queries/currentUser.graphql';
+import { updateTokenMutation, getData } from 'api/mutations/update/useUpdateTokenMutation';
+import { readHasCurrentUserCache } from 'api/cache/read/useReadHasCurrentUserCache';
 
 import { REFRESH_TOKEN_KEY, ACCESS_TOKEN_CHECK_INTERVAL, ACCESS_TOKEN_MINIMAL_LIFE_TIME } from 'config/jwt.json';
 
 import { setRefreshToken } from './tokens';
 
-const updateTokensMutation = (apolloClient) =>
-  apolloClient.mutate({
-    mutation: UpdateToken,
-    fetchPolicy: 'no-cache', // to not leak tokens data in apolloState $ROOT_MUTATION
-  });
-
 const updateTokensServerSide = async ({ req, res, apolloClient }) => {
   try {
-    const {
-      data: {
-        updateToken: { me, refreshToken },
-      },
-    } = await updateTokensMutation(apolloClient);
-
-    apolloClient.writeQuery({
-      query: CurrentUser,
-      data: {
-        me,
-      },
-    });
+    const fetchResult = await updateTokenMutation(apolloClient, true);
+    const { refreshToken } = getData(fetchResult.data);
 
     if (!res.writableEnded) setRefreshToken({ refreshToken, req, res });
   } catch (error) {
@@ -37,11 +21,9 @@ const updateTokensServerSide = async ({ req, res, apolloClient }) => {
 
 const hasUserData = (apolloClient) => {
   try {
-    const { me } = apolloClient.readQuery({
-      query: CurrentUser,
-    });
+    const data = readHasCurrentUserCache(apolloClient);
 
-    return !!me;
+    return !!data?.me;
   } catch (error) {
     return false;
   }
@@ -86,7 +68,7 @@ const WithTokensUpdate = (Page) =>
 
       if (!accessToken || !expires || expires - Date.now() <= ACCESS_TOKEN_MINIMAL_LIFE_TIME) {
         try {
-          await updateTokensMutation(apolloClient);
+          await updateTokenMutation(apolloClient);
         } catch (error) {
           console.error(error);
         }

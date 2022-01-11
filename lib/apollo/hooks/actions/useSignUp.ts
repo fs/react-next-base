@@ -8,30 +8,13 @@ import type { SignUpVariables } from 'api/types/user/signUpApiType';
 import type { SignUpMutationResult } from 'api/mutations/useSignUpMutation';
 import useSignUpMutation from 'api/mutations/useSignUpMutation';
 
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
 const useSignUp = (): [(variables: SignUpVariables) => Promise<void>, SignUpMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationResult] = useSignUpMutation({
-    update: (store, { data }) => {
-      if (!data) {
-        return;
-      }
+  const [mutation, mutationResult] = useSignUpMutation();
 
-      store.writeQuery({
-        query: CurrentUser,
-        data: {
-          me: {
-            ...data.signup.me,
-          },
-        },
-      });
-    },
-  });
-
-  const mutate = async ({ avatarUrl, email, password, firstName, lastName }: SignUpVariables) => {
+  const mutate = async ({ avatarUrl, email, password, firstName, lastName }: SignUpVariables): Promise<void> => {
     const signUpInput = {
       avatarUrl,
       email,

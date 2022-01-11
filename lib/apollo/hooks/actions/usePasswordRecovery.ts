@@ -1,5 +1,5 @@
 import type { PasswordRecoveryVariables } from 'api/types/user/passwordRecoveryApiType';
-import usePasswordRecoveryMutation from 'api/mutations/usePasswordRecoveryMutation';
+import usePasswordRecoveryMutation, { getData } from 'api/mutations/usePasswordRecoveryMutation';
 
 import { useNotifier } from 'contexts/NotifierContext';
 
@@ -21,7 +21,7 @@ const usePasswordRecovery = () => {
   };
 
   const error = mutationResult?.error;
-  const detailMessage = mutationResult?.data?.requestPasswordRecovery?.detail;
+  const detailMessage = getData(mutationResult.data)?.detail;
   const loading = mutationResult?.loading;
 
   return [mutate, detailMessage, loading, error] as const;

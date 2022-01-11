@@ -8,28 +8,11 @@ import type { SignInVariables } from 'api/types/user/signInApiType';
 import type { SignInMutationResult } from 'api/mutations/useSignInMutation';
 import useSignInMutation from 'api/mutations/useSignInMutation';
 
-import CurrentUser from 'graphql/queries/currentUser.graphql';
-
 const useSignIn = (): [(variables: SignInVariables) => Promise<void>, SignInMutationResult] => {
   const { setError } = useNotifier();
   const router = useRouter();
 
-  const [mutation, mutationResult] = useSignInMutation({
-    update: (store, { data }) => {
-      if (!data) {
-        return;
-      }
-
-      store.writeQuery({
-        query: CurrentUser,
-        data: {
-          me: {
-            ...data.signin.me,
-          },
-        },
-      });
-    },
-  });
+  const [mutation, mutationResult] = useSignInMutation();
 
   const mutate = async ({ email, password }: SignInVariables) => {
     const signInInput = {

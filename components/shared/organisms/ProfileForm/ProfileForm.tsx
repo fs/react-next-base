@@ -50,6 +50,11 @@ const ProfileForm = ({ profile }: Props) => {
       let uploadedAvatar: Uploaded | undefined;
       if (avatar) {
         const presignData = await presignFile({ type: avatar.type, filename: avatar.name });
+
+        if (!presignData) {
+          throw new Error('Unsigned file');
+        }
+
         uploadedAvatar = await uploadFile(presignData, avatar);
       }
       await updateUser({ ...values, avatar: uploadedAvatar });
