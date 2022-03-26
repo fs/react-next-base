@@ -9,7 +9,8 @@
     "baseUrl": "../",
     "skipLibCheck": true,
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["../server/*", "../declarations/*"],
   "exclude": ["../node_modules"]

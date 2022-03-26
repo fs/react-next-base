@@ -6,6 +6,7 @@ const withPlugins = require('next-compose-plugins');
 const nextImages = require('next-images');
 const nextFonts = require('next-fonts');
 const svgr = require('next-svgr');
+const path = require('path');
 
 dotenv.config();
 
@@ -29,6 +30,15 @@ const nextConfig = {
       }
 
       return entries;
+    };
+
+    // fix resolving react in @apollo/client package
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve.alias,
+        react: path.resolve(__dirname, 'node_modules/react'),
+      },
     };
 
     config.module.rules.push({
