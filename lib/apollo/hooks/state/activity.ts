@@ -3,27 +3,33 @@ import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
 
 import { Activity } from 'types/activityType';
-import type { ActivityEdge } from 'api/types/user/activity';
+// import type { ActivityEdge } from 'api/types/user/activity';
+import { Activities_activities_edges } from 'graphql/queries/pages/__generated__/Activities';
+import { ActivityEvent } from '__generated__/globalTypes';
 
 type ActivityParams = {
   beforeCursor?: string;
   afterCursor?: string;
-  filterValue?: string;
+  filterValue?: ActivityEvent;
   pageSize: number;
 };
 
-const getFormattedActivity = (edges: ActivityEdge[]): Activity[] => {
-  return edges.map(
-    ({
-      node: {
-        id,
-        title,
-        body,
-        createdAt,
-        event,
-        user: { firstName, lastName, email, avatarUrl },
-      },
-    }) => ({
+const getFormattedActivity = (edges: Activities_activities_edges[]): Activity[] => {
+  const activities: Activity[] = [];
+
+  edges.forEach(({ node }) => {
+    if (!node) return;
+
+    const {
+      id,
+      title,
+      body,
+      createdAt,
+      event,
+      user: { firstName, lastName, email, avatarUrl },
+    } = node;
+
+    activities.push({
       id,
       title,
       description: body,
@@ -32,8 +38,10 @@ const getFormattedActivity = (edges: ActivityEdge[]): Activity[] => {
       name: `${firstName} ${lastName}`,
       email,
       avatarUrl,
-    }),
-  );
+    });
+  });
+
+  return activities;
 };
 
 export const useActivity = ({
@@ -57,7 +65,9 @@ export const useActivity = ({
   });
 
   return {
-    activities: data?.activities?.edges ? getFormattedActivity(data?.activities.edges) : null,
+    activities: data?.activities?.edges
+      ? getFormattedActivity(data?.activities.edges as Activities_activities_edges[])
+      : null,
     pageInfo: data?.activities?.pageInfo || null,
     loading,
     error,

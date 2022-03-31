@@ -6,7 +6,7 @@ export type PageInfo = {
 };
 
 export type Activity = {
-  id: string | number;
+  id: string;
   title: string;
   description: string;
   date: string;

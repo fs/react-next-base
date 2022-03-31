@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "gen:types": "apollo client:codegen --target typescript --includes **/*.graphql --excludes **/__generated__",
+    "generate:schema": "apollo service:download --endpoint=https://rails-base-graphql-api.herokuapp.com/graphql graphql-schema.json",
+    "gen:types": "apollo client:codegen --localSchemaFile=graphql-schema.json,local-schema.graphql --target typescript --includes 'graphql/**/*.graphql' --excludes **/__generated__ --mergeInFieldsFromFragmentSpreads",
     "build": "tsc --project server/tsconfig.json && next build",
     "server": "ts-node  server/server.ts",
     "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",

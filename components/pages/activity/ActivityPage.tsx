@@ -14,6 +14,7 @@ import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 
 import { NotifierProvider } from 'contexts/NotifierContext';
+import { ActivityEvent } from '__generated__/globalTypes';
 import ActivityDropdown from './components/ActivityDropdown';
 import ActivityTable from './components/ActivityTable';
 import ActivityPagination from './components/ActivityPagination';
@@ -23,7 +24,7 @@ import { Wrapper, filterDropdownStyles, pageSizeDropdownStyles } from './styled'
 const Activity = () => {
   const [beforeCursor, setBeforeCursor] = useState<undefined | string>();
   const [afterCursor, setAfterCursor] = useState<undefined | string>();
-  const [filterValue, setFilterValue] = useState<undefined | string>();
+  const [filterValue, setFilterValue] = useState<undefined | ActivityEvent>();
 
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState(activityPageSizes[0]);
@@ -44,7 +45,7 @@ const Activity = () => {
   };
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilterValue(event.target.value);
+    setFilterValue(event.target.value as ActivityEvent);
     resetState();
   };
 

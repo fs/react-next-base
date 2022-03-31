@@ -13,6 +13,7 @@ query Activities($events: [ActivityEvent!], $last: Int, $before: String, $first:
         event
         id
         title
+        # companySidebar @client
         user {
           avatarUrl
           email
