@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "generate:schema": "apollo service:download --endpoint=https://rails-base-graphql-api.herokuapp.com/graphql graphql-schema.json",
-    "gen:types": "apollo client:codegen --localSchemaFile=graphql-schema.json,local-schema.graphql --target typescript --includes 'graphql/**/*.graphql' --excludes **/__generated__ --mergeInFieldsFromFragmentSpreads",
+    "generate:TSFiles": "apollo client:codegen --localSchemaFile=graphql-schema.json --target typescript --includes 'graphql/**/*.graphql' --excludes **/__generated__",
+    "gen:types": "yarn generate:schema && yarn generate:TSFiles",
     "build": "tsc --project server/tsconfig.json && next build",
     "server": "ts-node  server/server.ts",
     "start": "NODE_ENV=production NODE_PATH=\".dist/\" node .dist/server/server.js -p $PORT",
