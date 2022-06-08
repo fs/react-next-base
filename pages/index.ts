@@ -1,1 +1,1 @@
-export { default } from 'components/pages/index';
+export { default } from 'components/pages/home';
