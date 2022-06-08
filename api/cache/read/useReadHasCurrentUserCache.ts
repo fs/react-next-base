@@ -1,6 +1,7 @@
 import type { ApolloClient, InMemoryCache } from '@apollo/client';
 
-import HasCurrentUserFragment from 'graphql/fragments/currentUser/hasCurrentUser.graphql';
+// TODO: Maybe rename query?
+import HasCurrentUserFragment from 'graphql/fragments/hasCurrentUser.graphql';
 
 import type { Me } from 'api/types/user/user';
 import { readCacheFragmentApi } from 'api/hooks/useReadCacheFragmentHook';

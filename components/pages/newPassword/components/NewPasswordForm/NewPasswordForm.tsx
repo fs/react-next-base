@@ -13,11 +13,6 @@ import passwordRegExp from 'config/passwordRegExp';
 
 import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
 
-const initialValues = {
-  password: '',
-  passwordConfirmation: '',
-};
-
 const SignInValidationSchema = Yup.object().shape({
   password: Yup.string()
     .required('This field is required')
@@ -32,6 +27,11 @@ const SignInValidationSchema = Yup.object().shape({
 type FormValues = {
   password: string;
   passwordConfirmation: string;
+};
+
+const initialValues: FormValues = {
+  password: '',
+  passwordConfirmation: '',
 };
 
 const SignInFormContent = ({ isSubmitting }: FormikProps<FormValues>) => (
