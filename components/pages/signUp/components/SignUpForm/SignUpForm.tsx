@@ -8,10 +8,9 @@ import Button from 'components/shared/atoms/Button';
 import FormFieldInput from 'components/shared/atoms/FormField';
 import Loader from 'components/shared/atoms/Loader';
 import { FormFieldType } from 'types/formsType';
+import passwordRegExp from 'config/passwordRegExp';
 
 import { FieldWrapper, FormContentWrapper, SubmitButtonWrapper } from './styled';
-
-const passwordRegularExp = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])([0-9A-Za-z#$@&!?.*^{}<>;,)(~'"=_%+-]+)$/;
 
 const initialValues = {
   firstName: '',
@@ -28,7 +27,7 @@ const SignUpValidationSchema = Yup.object().shape({
     .required('This field is required')
     .trim()
     .min(6, 'The minimum password length is 6 characters')
-    .matches(passwordRegularExp, 'Password must contain upper and lower case characters and numbers'),
+    .matches(passwordRegExp, 'Password must contain upper and lower case characters and numbers'),
 });
 
 type ValuesFromFormik = Parameters<ReturnType<typeof useSignUp>[0]>[0];

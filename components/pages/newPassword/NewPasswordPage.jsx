@@ -17,7 +17,7 @@ import { PageContentWrapper } from './styled';
 const NewPasswordPage = ({ query }) => {
   return (
     <NotifierProvider>
-      <DefaultTemplate testId="recovery-password-page">
+      <DefaultTemplate testId="new-password-page">
         <PageContentWrapper>
           <NewPasswordForm query={query} />
         </PageContentWrapper>
