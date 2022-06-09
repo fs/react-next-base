@@ -36,7 +36,6 @@ const Activity = () => {
   });
 
   const { message: errorMessage } = parseApolloError(error);
-  console.log(errorMessage);
 
   const resetState = () => {
     setBeforeCursor(undefined);
