@@ -17,7 +17,8 @@ function isApolloError(error: unknown): error is ApolloError {
 
 export default class ErrorDecorator {
   error: Error | GraphQLError | null;
-  message: string = '';
+
+  message = '';
 
   constructor(error: unknown) {
     if (error) {

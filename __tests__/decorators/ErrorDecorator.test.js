@@ -62,46 +62,15 @@ describe('Error Decorator', () => {
     });
   });
 
-  describe('getMessages method', () => {
-    test('should return messages array for one error', () => {
-      // Arrange
-      const error = new ErrorDecorator('Error message');
-      const expectedMessages = ['Error message'];
+  test('should return messages array for one error', () => {
+    // Arrange
+    const error = new ErrorDecorator('Error message');
+    const expectedMessage = 'Error message';
 
-      // Act
-      const actualMessages = error.getMessages();
+    // Act
+    const { message: actualMessage } = error;
 
-      // Assert
-      expect(actualMessages).toEqual(expectedMessages);
-    });
-
-    test('should return messages array for a few errors', () => {
-      // Arrange
-      const otherErrorMessage = 'Your password invalid or expired';
-
-      const mockApolloErrors = new ApolloError({
-        graphQLErrors: [
-          {
-            message: errorMessage,
-            path: ['signup'],
-            locations: [{ line: 2, column: 3 }],
-          },
-          {
-            message: otherErrorMessage,
-            path: ['signup'],
-            locations: [{ line: 2, column: 3 }],
-          },
-        ],
-      });
-
-      const error = new ErrorDecorator(mockApolloErrors);
-      const expectedMessages = [errorMessage, otherErrorMessage];
-
-      // Act
-      const actualMessages = error.getMessages();
-
-      // Assert
-      expect(actualMessages).toEqual(expectedMessages);
-    });
+    // Assert
+    expect(actualMessage).toEqual(expectedMessage);
   });
 });
