@@ -1,10 +1,9 @@
 import React from 'react';
-import { NextPage } from 'next';
 import Link from 'next/link';
 
 import { Title } from './styled';
 
-const Home: NextPage = () => (
+const Home = () => (
   <>
     <Title data-cy="static-page-title">Welcome to static page</Title>
     <h1>h1 - This is a main title</h1>

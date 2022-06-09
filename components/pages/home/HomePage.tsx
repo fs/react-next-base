@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextPage } from 'next';
 
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
@@ -9,7 +8,7 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 
 import { Title, PageContent } from './styled';
 
-const HomePage: NextPage = () => {
+const HomePage = () => {
   return (
     <NotifierProvider>
       <DefaultTemplate>
