@@ -4,11 +4,11 @@ import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 import { useActivity } from 'lib/apollo/hooks/state/activity';
+import parseApolloError from 'lib/apollo/parseApolloError';
 
 import activityEvents from 'config/activityEvents';
 import activityPageSizes from 'config/activityPageSizes';
 
-import ErrorDecorator from 'decorators/ErrorDecorator';
 import Loader from 'components/shared/atoms/Loader';
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
@@ -35,7 +35,7 @@ const Activity = () => {
     pageSize,
   });
 
-  const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
+  const { message: errorMessage } = parseApolloError(error);
 
   const resetState = () => {
     setBeforeCursor(undefined);

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ErrorDecorator from 'decorators/ErrorDecorator';
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
+import parseApolloError from 'lib/apollo/parseApolloError';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import ProfileForm from 'components/shared/organisms/ProfileForm';
@@ -18,13 +18,13 @@ const Profile = () => {
   const { loading, error, user } = useCurrentUser();
 
   const profile = (user as User) || {};
-  const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
+  const { message: errorMessage } = parseApolloError(error);
 
   return (
     <NotifierProvider>
       {loading && <h3 data-testid="profile-loading">Loading...</h3>}
 
-      {error && <ErrorMessage testId="profile-error">{errorMessage}</ErrorMessage>}
+      {errorMessage && <ErrorMessage testId="profile-error">{errorMessage}</ErrorMessage>}
 
       {!loading && !error && (
         <DefaultTemplate data-testid="profile-page">

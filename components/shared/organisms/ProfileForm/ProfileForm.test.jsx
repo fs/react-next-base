@@ -4,17 +4,17 @@ import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
+import parseApolloError from 'lib/apollo/parseApolloError';
 import { useNotifier } from 'contexts/NotifierContext';
 import { useFileUpload } from 'hooks/useFileUpload';
-import ErrorDecorator from 'decorators/ErrorDecorator';
 
 import ProfileForm from './ProfileForm';
 
 jest.mock('lib/apollo/hooks/actions/useUpdateUser');
 jest.mock('lib/apollo/hooks/actions/usePresignFile');
+jest.mock('lib/apollo/parseApolloError');
 jest.mock('contexts/NotifierContext');
 jest.mock('hooks/useFileUpload');
-jest.mock('decorators/ErrorDecorator');
 
 describe('ProfileForm', () => {
   let mockUpdateUser;
@@ -125,7 +125,7 @@ describe('ProfileForm', () => {
     expect(mockFileUpload).toHaveBeenCalledBefore(mockUpdateUser);
   });
 
-  test('should call errorDecorator on error', async () => {
+  test('should call parseApolloError on error', async () => {
     // Arrange
     const expectedEmail = 'test@test.com';
     const expectedFirstName = 'Test FirstName';
@@ -138,14 +138,14 @@ describe('ProfileForm', () => {
       lastName: expectedLastName,
     };
 
+    const mockParseApolloError = jest.fn();
+    parseApolloError.mockImplementation(mockParseApolloError);
+
     const expectedError = {
       errors: [{ message: 'Record Invalid' }],
     };
 
     mockUpdateUser = jest.fn(() => Promise.reject(expectedError));
-
-    const mockErrorDecorator = jest.fn();
-    ErrorDecorator.mockImplementation(mockErrorDecorator);
 
     render(renderWithTheme(<ProfileForm profile={expectedProfile} />));
     fireEvent.input(screen.getByPlaceholderText(expectedPasswordPlaceholderText), { value: '123' });
@@ -154,6 +154,6 @@ describe('ProfileForm', () => {
     fireEvent.click(screen.getByTestId('submit-button'));
 
     // Assert
-    await waitFor(() => expect(mockErrorDecorator).toHaveBeenCalledWith(expectedError));
+    await waitFor(() => expect(mockParseApolloError).toHaveBeenCalledWith(expectedError));
   });
 });
