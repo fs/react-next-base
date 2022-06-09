@@ -35,7 +35,7 @@ const Activity = () => {
     pageSize,
   });
 
-  const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
+  const errorMessage = new ErrorDecorator(error).message;
 
   const resetState = () => {
     setBeforeCursor(undefined);

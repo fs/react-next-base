@@ -18,7 +18,7 @@ const Profile = () => {
   const { loading, error, user } = useCurrentUser();
 
   const profile = (user as User) || {};
-  const errorMessage = error ? new ErrorDecorator(error).getMessages() : null;
+  const errorMessage = new ErrorDecorator(error).message;
 
   return (
     <NotifierProvider>

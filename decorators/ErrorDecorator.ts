@@ -1,10 +1,9 @@
 import { ApolloError } from '@apollo/client';
 import { GraphQLError } from 'graphql';
 
-const getMessage: (errors: readonly Error[]) => string = (errors) => errors.map((error) => error.message).join(' \n');
-
-const getStatus: (error: Error | GraphQLError) => unknown | null = (error) =>
-  error && 'extensions' in error ? error.extensions?.status || null : null;
+const getGraphQLErrorExtensions = (error: GraphQLError) => {
+  return error?.extensions || null;
+};
 
 function isApolloError(error: unknown): error is ApolloError {
   return (
@@ -16,38 +15,51 @@ function isApolloError(error: unknown): error is ApolloError {
   );
 }
 
-export default class ErrorDecorator extends Error {
-  errors: readonly Error[] = [];
+export default class ErrorDecorator {
+  error: Error | GraphQLError | null;
+  message: string = '';
 
-  // TODO: mast we extends from Error?
-  // @ts-ignore
   constructor(error: unknown) {
-    const errors = ErrorDecorator.parse(error);
-    super(getMessage(errors));
-    this.errors = errors;
+    if (error) {
+      const parsedError = ErrorDecorator.parse(error);
+      this.error = parsedError;
+      this.message = parsedError?.message;
+    } else {
+      this.error = null;
+    }
   }
 
-  getMessages() {
-    return this.errors.map((err) => err.message);
-  }
-
+  /**
+   *
+   * @param status
+   * the function can be used if it is necessary to check the status of an error returned from the API
+   */
   hasStatus(status: unknown | null): boolean {
-    return this.errors.some((error) => getStatus(error) === status);
+    if (this.error instanceof GraphQLError) {
+      const errorExtensions = getGraphQLErrorExtensions(this.error);
+      return errorExtensions?.status === status;
+    }
+    return false;
   }
 
-  static parse(error: unknown): readonly Error[] {
+  /**
+   *
+   * @param error
+   * the function should be used to make the errors look like: Error or GraphQL Error
+   */
+  static parse(error: unknown): Error | GraphQLError {
     if (isApolloError(error)) {
-      return error.graphQLErrors;
+      return error.graphQLErrors[0];
     }
 
     if (typeof error === 'string') {
-      return [new Error(error)];
+      return new Error(error);
     }
 
     if (error instanceof Error) {
-      return [error];
+      return error;
     }
 
-    return [new Error('Something went wrong')];
+    return new Error('Something went wrong');
   }
 }

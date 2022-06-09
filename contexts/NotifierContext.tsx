@@ -33,7 +33,7 @@ export const NotifierProvider = ({ children }: NotifierProviderProps) => {
 
   const setError = useCallback(
     (errorMessage) => {
-      const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
+      const { message: parsedMessage } = new ErrorDecorator(errorMessage);
       setMessage(parsedMessage);
       setType(toast.TYPE.ERROR);
     },

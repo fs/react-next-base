@@ -61,7 +61,7 @@ const ProfileForm = ({ profile }: Props) => {
       setLoading(false);
       setSuccess('Profile updated successfully');
     } catch (error) {
-      const errorMsg = new ErrorDecorator(error).getMessages();
+      const errorMsg = new ErrorDecorator(error).message;
       setLoading(false);
       setStatus(errorMsg);
     }
