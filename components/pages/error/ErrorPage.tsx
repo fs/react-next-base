@@ -1,11 +1,18 @@
 import React from 'react';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
 import { HOME } from 'config/routes';
+import { ErrorPageContext } from 'types/pageContextInterfaces';
 
 import { TitleWrapper, Description, StyledLink } from './styled';
 
-const ErrorPage = ({ statusCode }) => {
+interface Props {
+  statusCode: number;
+}
+
+const ErrorPage: NextPage<Props> = ({ statusCode }) => {
   const is404 = statusCode === 404;
   const router = useRouter();
 
@@ -35,17 +42,9 @@ const ErrorPage = ({ statusCode }) => {
   );
 };
 
-const getStatusCode = (res, err) => {
-  if (res) {
-    return res.statusCode;
-  }
-
-  return err ? err.statusCode : 404;
-};
-
-ErrorPage.getInitialProps = ({ res, err, statusCode }) => {
+ErrorPage.getInitialProps = ({ res, err, statusCode }: ErrorPageContext) => {
   return {
-    statusCode: statusCode || getStatusCode(res, err),
+    statusCode: statusCode || res?.statusCode || err?.statusCode || 404,
   };
 };
 

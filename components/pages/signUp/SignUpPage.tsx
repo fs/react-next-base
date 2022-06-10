@@ -3,6 +3,7 @@ import Router from 'next/router';
 
 import { withApolloClient } from 'lib/withApolloClient';
 import WithAuth from 'lib/auth/withAuth';
+import { PageContext } from 'types/pageContextInterfaces';
 
 import { HOME } from 'config/routes';
 import { NotifierProvider } from 'contexts/NotifierContext';
@@ -10,16 +11,16 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
 
-import SignInForm from './components/SignInForm';
+import SignUpForm from './components/SignUpForm';
 
 import { PageContentWrapper } from './styled';
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
     <NotifierProvider>
-      <DefaultTemplate testId="signin-page">
+      <DefaultTemplate testId="signup-page">
         <PageContentWrapper>
-          <SignInForm />
+          <SignUpForm />
         </PageContentWrapper>
         <Notifier />
       </DefaultTemplate>
@@ -27,10 +28,11 @@ const SignInPage = () => {
   );
 };
 
-SignInPage.getInitialProps = ({ res, accessTokenManager }) => {
-  if (accessTokenManager.accessToken) {
+SignUpPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
+  if (accessTokenManager?.accessToken) {
     if (res) {
-      res.redirect(302, HOME);
+      res.writeHead(302, { Location: HOME });
+      res.end();
     } else {
       Router.push(HOME);
     }
@@ -38,4 +40,4 @@ SignInPage.getInitialProps = ({ res, accessTokenManager }) => {
   return {};
 };
 
-export default withApolloClient(WithAuth(SignInPage));
+export default withApolloClient(WithAuth(SignUpPage));

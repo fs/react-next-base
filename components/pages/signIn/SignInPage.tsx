@@ -2,7 +2,8 @@ import React from 'react';
 import Router from 'next/router';
 
 import { withApolloClient } from 'lib/withApolloClient';
-import WithAuth from 'lib/auth/withAuth';
+import withAuth from 'lib/auth/withAuth';
+import { PageContext } from 'types/pageContextInterfaces';
 
 import { HOME } from 'config/routes';
 import { NotifierProvider } from 'contexts/NotifierContext';
@@ -10,16 +11,16 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
 
-import RecoveryPasswordForm from './components/RecoveryPasswordForm';
+import SignInForm from './components/SignInForm';
 
 import { PageContentWrapper } from './styled';
 
-const RecoveryPasswordPage = () => {
+const SignInPage = () => {
   return (
     <NotifierProvider>
-      <DefaultTemplate testId="recovery-password-page">
+      <DefaultTemplate testId="signin-page">
         <PageContentWrapper>
-          <RecoveryPasswordForm />
+          <SignInForm />
         </PageContentWrapper>
         <Notifier />
       </DefaultTemplate>
@@ -27,10 +28,11 @@ const RecoveryPasswordPage = () => {
   );
 };
 
-RecoveryPasswordPage.getInitialProps = ({ res, accessTokenManager }) => {
-  if (accessTokenManager.accessToken) {
+SignInPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
+  if (accessTokenManager?.accessToken) {
     if (res) {
-      res.redirect(302, HOME);
+      res.writeHead(302, { Location: HOME });
+      res.end();
     } else {
       Router.push(HOME);
     }
@@ -38,4 +40,4 @@ RecoveryPasswordPage.getInitialProps = ({ res, accessTokenManager }) => {
   return {};
 };
 
-export default withApolloClient(WithAuth(RecoveryPasswordPage));
+export default withApolloClient(withAuth(SignInPage));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { parseJWT } from './tokens';
 
-class AccessTokenManager {
+export class AccessTokenManager {
   constructor() {
     this.delete();
   }

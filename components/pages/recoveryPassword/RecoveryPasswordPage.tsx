@@ -3,6 +3,7 @@ import Router from 'next/router';
 
 import { withApolloClient } from 'lib/withApolloClient';
 import WithAuth from 'lib/auth/withAuth';
+import { PageContext } from 'types/pageContextInterfaces';
 
 import { HOME } from 'config/routes';
 import { NotifierProvider } from 'contexts/NotifierContext';
@@ -10,16 +11,16 @@ import { NotifierProvider } from 'contexts/NotifierContext';
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
 import Notifier from 'components/shared/atoms/Notifier';
 
-import SignUpForm from './components/SignUpForm';
+import RecoveryPasswordForm from './components/RecoveryPasswordForm';
 
 import { PageContentWrapper } from './styled';
 
-const SignUpPage = () => {
+const RecoveryPasswordPage = () => {
   return (
     <NotifierProvider>
-      <DefaultTemplate testId="signup-page">
+      <DefaultTemplate testId="recovery-password-page">
         <PageContentWrapper>
-          <SignUpForm />
+          <RecoveryPasswordForm />
         </PageContentWrapper>
         <Notifier />
       </DefaultTemplate>
@@ -27,10 +28,11 @@ const SignUpPage = () => {
   );
 };
 
-SignUpPage.getInitialProps = ({ res, accessTokenManager }) => {
-  if (accessTokenManager.accessToken) {
+RecoveryPasswordPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
+  if (accessTokenManager?.accessToken) {
     if (res) {
-      res.redirect(302, HOME);
+      res.writeHead(302, { Location: HOME });
+      res.end();
     } else {
       Router.push(HOME);
     }
@@ -38,4 +40,4 @@ SignUpPage.getInitialProps = ({ res, accessTokenManager }) => {
   return {};
 };
 
-export default withApolloClient(WithAuth(SignUpPage));
+export default withApolloClient(WithAuth(RecoveryPasswordPage));
