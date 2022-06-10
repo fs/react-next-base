@@ -28,7 +28,6 @@ const SignInPage = () => {
   );
 };
 
-// TODO: duplicated code
 SignInPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
   if (accessTokenManager?.accessToken) {
     if (res) {
