@@ -7,7 +7,7 @@ export type TextareaFormFieldConfig = BaseFormFieldConfig & {
 };
 
 const TextareaFormField = ({ name, testID, disabled }: TextareaFormFieldConfig) => {
-  return <Field type="textarea" name={name} id={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
+  return <Field component="textarea" name={name} id={name} data-testid={testID} data-cy={testID} disabled={disabled} />;
 };
 
 export default TextareaFormField;
