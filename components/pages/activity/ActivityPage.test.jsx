@@ -1,13 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
+import { GraphQLError } from 'graphql';
+import { ApolloError } from '@apollo/client';
 
 import { useActivity } from 'lib/apollo/hooks/state/activity';
 import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import activitiesMock from '__tests__/mocks/activitiesMock';
 
-import ActivityPage from '.';
+import ActivityPage from './ActivityPage';
 
 jest.mock('components/shared/templates/DefaultTemplate', () => 'div');
 jest.mock('lib/apollo/hooks/state/activity');
@@ -51,15 +53,13 @@ describe('Activity page', () => {
 
   test('should show error on error', () => {
     // Arrange
-    const error = {
+    const error = new ApolloError({
       graphQLErrors: [
-        {
-          message:
-            'Variable $events of type [ActivityEvent!] was provided invalid value for 0 (Expected "USER_LOGGED_IN1" to be one of: USER_LOGGED_IN, USER_REGISTERED, USER_RESET_PASSWORD, RESET_PASSWORD_REQUESTED, USER_UPDATED)',
-          locations: [{ line: 1, column: 18 }],
-        },
+        new GraphQLError(
+          'Variable $events of type [ActivityEvent!] was provided invalid value for 0 (Expected "USER_LOGGED_IN1" to be one of: USER_LOGGED_IN, USER_REGISTERED, USER_RESET_PASSWORD, RESET_PASSWORD_REQUESTED, USER_UPDATED)',
+        ),
       ],
-    };
+    });
     const mockUseActivityErrorData = jest.fn(() => ({
       loading: false,
       error,

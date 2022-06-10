@@ -4,7 +4,7 @@ import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';
 import { useFileUpload } from 'hooks/useFileUpload';
 import type { Uploaded } from 'hooks/useFileUpload';
-import ErrorDecorator from 'decorators/ErrorDecorator';
+import parseApolloError from 'lib/apollo/parseApolloError';
 import { useNotifier } from 'contexts/NotifierContext';
 import User from 'domain/User';
 import ProfileFormContent from './ProfileFormContent';
@@ -61,7 +61,7 @@ const ProfileForm = ({ profile }: Props) => {
       setLoading(false);
       setSuccess('Profile updated successfully');
     } catch (error) {
-      const errorMsg = new ErrorDecorator(error).getMessages();
+      const { message: errorMsg } = parseApolloError(error);
       setLoading(false);
       setStatus(errorMsg);
     }

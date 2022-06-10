@@ -372,7 +372,7 @@ exports[`Activity page should show error on error 1`] = `
   data-testid="activity-error"
 >
   <p>
-    Something went wrong
+    Variable $events of type [ActivityEvent!] was provided invalid value for 0 (Expected "USER_LOGGED_IN1" to be one of: USER_LOGGED_IN, USER_REGISTERED, USER_RESET_PASSWORD, RESET_PASSWORD_REQUESTED, USER_UPDATED)
   </p>
 </div>
 `;

@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState, useMemo, useCallback, ReactNode } from 'react';
-import ErrorDecorator from 'decorators/ErrorDecorator';
 import { toast, TypeOptions } from 'react-toastify';
+import parseApolloError from 'lib/apollo/parseApolloError';
 
 type NotifierContext = {
   message: string;
@@ -32,9 +32,9 @@ export const NotifierProvider = ({ children }: NotifierProviderProps) => {
   const [type, setType] = useState<TypeOptions>('default');
 
   const setError = useCallback(
-    (errorMessage) => {
-      const [parsedMessage] = new ErrorDecorator(errorMessage).getMessages();
-      setMessage(parsedMessage);
+    (error) => {
+      const { message: errorMessage } = parseApolloError(error);
+      setMessage(errorMessage);
       setType(toast.TYPE.ERROR);
     },
     [setMessage, setType],
