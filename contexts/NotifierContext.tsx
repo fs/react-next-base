@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useMemo, useCallback, ReactNode } from 'react';
+import { useContext, createContext, useState, useMemo, useCallback, ReactNode } from 'react';
 import { toast, TypeOptions } from 'react-toastify';
 import parseApolloError from 'lib/apollo/parseApolloError';
 

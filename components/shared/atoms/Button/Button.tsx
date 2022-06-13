@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ButtonHtml } from './styled';
 
 type ButtonProps = {

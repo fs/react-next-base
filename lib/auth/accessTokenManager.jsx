@@ -1,4 +1,3 @@
-import React from 'react';
 import { parseJWT } from './tokens';
 
 export class AccessTokenManager {

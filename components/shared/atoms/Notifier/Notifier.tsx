@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNotifier } from 'contexts/NotifierContext';
 

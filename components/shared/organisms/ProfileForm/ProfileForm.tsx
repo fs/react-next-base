@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import type { FormikHelpers } from 'formik';
 import useUpdateUser from 'lib/apollo/hooks/actions/useUpdateUser';
 import usePresignFile from 'lib/apollo/hooks/actions/usePresignFile';

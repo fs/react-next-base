@@ -1,8 +1,8 @@
-import React from 'react';
+import { Component } from 'react';
 import { SIGNIN } from 'config/routes';
 
 const WithAuthSecurity = (Page) =>
-  class WithAuthSecurityClass extends React.Component {
+  class WithAuthSecurityClass extends Component {
     static async getInitialProps(context) {
       const { req, res, accessTokenManager } = context;
       const { accessToken } = accessTokenManager.get();

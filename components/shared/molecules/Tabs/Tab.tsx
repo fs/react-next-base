@@ -1,4 +1,4 @@
-import React from 'react';
+import { MouseEvent } from 'react';
 import Test from 'types/testType';
 
 import { StyledTab } from './styled';
@@ -6,7 +6,7 @@ import { StyledTab } from './styled';
 type Props = Test & {
   active: boolean;
   name: string;
-  onClick: (event: React.MouseEvent<HTMLLIElement>) => void;
+  onClick: (event: MouseEvent<HTMLLIElement>) => void;
 };
 
 const Tab = ({ active, name, testId, onClick }: Props): JSX.Element => (

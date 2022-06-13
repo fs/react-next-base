@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 
 import { SIGN_IN_EVENT, SIGN_OUT_EVENT } from 'config/globalEvents.json';
 
 const WithAuthSyncEvents = (Page) =>
-  class WithAuthSync extends React.Component {
+  class WithAuthSync extends Component {
     static async getInitialProps(context) {
       return Page.getInitialProps ? Page.getInitialProps(context) : {};
     }

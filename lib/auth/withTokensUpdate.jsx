@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import Cookie from 'universal-cookie';
 
 import { updateTokenMutation, getData } from 'api/mutations/update/useUpdateTokenMutation';
@@ -30,7 +30,7 @@ const hasUserData = (apolloClient) => {
 };
 
 const WithTokensUpdate = (Page) =>
-  class WithTokensUpdateClass extends React.Component {
+  class WithTokensUpdateClass extends Component {
     static async getInitialProps(context) {
       const { req, res, apolloClient } = context;
 

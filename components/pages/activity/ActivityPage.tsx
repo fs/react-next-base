@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
@@ -43,12 +43,12 @@ const Activity = () => {
     setPageNumber(1);
   };
 
-  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setFilterValue(event.target.value);
     resetState();
   };
 
-  const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handlePageSizeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setPageSize(+event.target.value);
     resetState();
   };

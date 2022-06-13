@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentProps } from 'react';
 import type { FormikHelpers, FormikValues } from 'formik';
 import { StringSchema } from 'yup';
 import * as formFields from 'components/shared/molecules/Form/formFields';
@@ -30,7 +30,7 @@ type FormikProps = {
   initialValue: unknown;
 };
 
-type FieldsUnionPropsTypes = React.ComponentProps<InferValueTypes<typeof formFields>>;
+type FieldsUnionPropsTypes = ComponentProps<InferValueTypes<typeof formFields>>;
 
 // (type1|type2) => Omit<type1,'prop1'>|Omit<type1,'prop1'>
 // @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types

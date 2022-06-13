@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
 import WithAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledImageWrapper, StyledImage } from './styled';
 
 type Props = {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 import User from 'domain/User';
 import UserNavigationType from 'types/userNavigationType';
