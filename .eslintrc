@@ -25,23 +25,19 @@
     "jest-dom"
   ],
   "rules": {
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".jsx", ".tsx"] }
-    ],
     "prettier/prettier": ["error"],
-    "no-console": "off",
-    "prefer-destructuring": "off",
-    "@typescript-eslint/no-unused-vars": "error",
     "react/require-default-props": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": 0,
     "react/no-array-index-key": 0,
     "react/no-did-update-set-state": "off",
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".jsx", ".tsx"] }
+    ],
     "react/react-in-jsx-scope": "off",
-    "global-require": "warn",
-    "no-underscore-dangle": [2, { "allow": [ "__STORE__" ] }],
+    "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/label-has-for": [ 1, {
       "components": [ "Label" ],
       "required": {
@@ -51,16 +47,16 @@
     }],
     "jsx-a11y/media-has-caption": 1,
     "jsx-a11y/anchor-is-valid": 0,
-    "max-len": 0,
-    "camelcase": "off",
-    "no-unused-expressions": "warn",
-    "no-nested-ternary": "off",
-    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-shadow": ["error"],
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js","**/*.spec.js", "**/*.test.jsx", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"]}],
     "import/extensions": [
@@ -72,12 +68,16 @@
         "jsx": "never"
       }
     ],
-    "@typescript-eslint/no-non-null-assertion": "off",
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "max-len": 0,
+    "camelcase": "off",
+    "no-unused-expressions": "warn",
+    "no-nested-ternary": "off",
+    "no-console": "off",
+    "prefer-destructuring": "off",
+    "global-require": "warn",
+    "no-underscore-dangle": [2, { "allow": [ "__STORE__" ] }]
   },
   "overrides": [
     {
