@@ -1,4 +1,4 @@
-import React from 'react';
+import { MouseEvent } from 'react';
 import type { PropsWithChildren } from 'react';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
@@ -6,7 +6,7 @@ import Test from 'types/testType';
 import { StyledButton } from './styled';
 
 type Props = Test & {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   customStyles?: FlattenSimpleInterpolation | string;
 };

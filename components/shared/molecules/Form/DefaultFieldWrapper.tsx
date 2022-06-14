@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { ErrorMessage } from 'formik';
 
 import { BaseFormFieldConfig } from 'types/formsType';

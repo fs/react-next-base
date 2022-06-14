@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';

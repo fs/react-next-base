@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import { DefaultTheme, FlattenSimpleInterpolation } from 'styled-components';
 
 import Test from 'types/testType';
@@ -15,7 +15,7 @@ type Props = Test & {
   values: Option[];
   hasEmptyOption?: boolean;
   emptyOptionLabel?: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   disabled?: boolean;
   customStyles?: (theme: DefaultTheme) => FlattenSimpleInterpolation;
 };

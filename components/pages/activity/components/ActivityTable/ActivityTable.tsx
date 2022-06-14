@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ProfileImage from 'components/shared/atoms/ProfileImage';
 
 import { Activity } from 'types/activityType';

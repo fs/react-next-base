@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { Field } from 'formik';
 import { BaseFormFieldConfig, FormFieldType } from 'types/formsType';
 

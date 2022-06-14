@@ -1,4 +1,3 @@
-import React from 'react';
 import renderWithApolloClient from '__tests__/helpers/renderWithApolloClient';
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';

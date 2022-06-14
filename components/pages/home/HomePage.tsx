@@ -1,5 +1,3 @@
-import React from 'react';
-
 import WithAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 

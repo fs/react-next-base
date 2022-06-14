@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import renderWithTheme from '__tests__/helpers/renderWithTheme';
 import Tabs from '.';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form, Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';

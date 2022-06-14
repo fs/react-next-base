@@ -1,4 +1,4 @@
-import React from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import PaginationButton from 'components/shared/atoms/PaginationButton';
 
@@ -8,9 +8,9 @@ import { Wrapper, LeftPointerIcon, PageNumber, RightPointerIcon, prevButtonStyle
 
 type ActivityPaginationType = {
   pageInfo: PageInfo;
-  setBeforeCursor: React.Dispatch<React.SetStateAction<string | undefined>>;
-  setAfterCursor: React.Dispatch<React.SetStateAction<string | undefined>>;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
+  setBeforeCursor: Dispatch<SetStateAction<string | undefined>>;
+  setAfterCursor: Dispatch<SetStateAction<string | undefined>>;
+  setPageNumber: Dispatch<SetStateAction<number>>;
   pageNumber: number;
 };
 

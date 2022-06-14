@@ -39,6 +39,7 @@
     "react/prop-types": 0,
     "react/no-array-index-key": 0,
     "react/no-did-update-set-state": "off",
+    "react/react-in-jsx-scope": "off",
     "global-require": "warn",
     "no-underscore-dangle": [2, { "allow": [ "__STORE__" ] }],
     "jsx-a11y/label-has-for": [ 1, {
