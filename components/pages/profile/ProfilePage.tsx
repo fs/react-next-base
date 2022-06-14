@@ -1,5 +1,5 @@
 import ErrorMessage from 'components/shared/atoms/ErrorMessage';
-import WithAuth from 'lib/auth/withAuth';
+import withAuth from 'lib/auth/withAuth';
 import WithAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 import { useCurrentUser } from 'lib/apollo/hooks/state/currentUser';
@@ -34,4 +34,4 @@ const Profile = () => {
   );
 };
 
-export default withApolloClient(WithAuth(WithAuthSecurity(Profile)));
+export default withApolloClient(withAuth(WithAuthSecurity(Profile)));

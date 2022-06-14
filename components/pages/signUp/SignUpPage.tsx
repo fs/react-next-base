@@ -1,7 +1,7 @@
 import Router from 'next/router';
 
 import { withApolloClient } from 'lib/withApolloClient';
-import WithAuth from 'lib/auth/withAuth';
+import withAuth from 'lib/auth/withAuth';
 import { PageContext } from 'types/pageContextInterfaces';
 
 import { HOME } from 'config/routes';
@@ -39,4 +39,4 @@ SignUpPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
   return {};
 };
 
-export default withApolloClient(WithAuth(SignUpPage));
+export default withApolloClient(withAuth(SignUpPage));
