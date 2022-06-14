@@ -29,7 +29,7 @@ const hasUserData = (apolloClient) => {
   }
 };
 
-const WithTokensUpdate = (Page) =>
+const withTokensUpdate = (Page) =>
   class WithTokensUpdateClass extends Component {
     static async getInitialProps(context) {
       const { req, res, apolloClient } = context;
@@ -85,4 +85,4 @@ const WithTokensUpdate = (Page) =>
     }
   };
 
-export default WithTokensUpdate;
+export default withTokensUpdate;
