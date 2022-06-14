@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import { SIGN_IN_EVENT, SIGN_OUT_EVENT } from 'config/globalEvents.json';
 
-const WithAuthSyncEvents = (Page) =>
+const withAuthSyncEvents = (Page) =>
   class WithAuthSync extends Component {
     static async getInitialProps(context) {
       return Page.getInitialProps ? Page.getInitialProps(context) : {};
@@ -29,4 +29,4 @@ const WithAuthSyncEvents = (Page) =>
     }
   };
 
-export default WithAuthSyncEvents;
+export default withAuthSyncEvents;
