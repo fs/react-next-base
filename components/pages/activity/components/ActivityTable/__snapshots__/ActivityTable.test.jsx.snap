@@ -54,6 +54,7 @@ exports[`ActivityTable should render correctly 1`] = `
 }
 
 .c7 {
+  width: calc(100% - 1.85rem);
   margin-left: 0.5rem;
 }
 
