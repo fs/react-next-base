@@ -33,6 +33,7 @@ export const HeaderCell = styled.th(
 );
 
 export const UserInfo = styled.span`
+  width: calc(100% - 1.85rem);
   margin-left: 0.5rem;
 `;
 
