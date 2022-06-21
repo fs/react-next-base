@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import fetch from 'isomorphic-unfetch';
 
