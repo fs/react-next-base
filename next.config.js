@@ -2,21 +2,15 @@
 /* eslint-disable no-param-reassign */
 
 const dotenv = require('dotenv');
-const withPlugins = require('next-compose-plugins');
-const nextImages = require('next-images');
-const nextFonts = require('next-fonts');
-const svgr = require('next-svgr');
 const path = require('path');
 
 dotenv.config();
 
-const nextConfig = {
+module.exports = {
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      };
+      config.resolve.fallback.fs = false;
     }
 
     // add polyfills to all browsers
@@ -59,5 +53,3 @@ const nextConfig = {
     polyfillsOptimization: true,
   },
 };
-
-module.exports = withPlugins([[nextImages], [nextFonts], [svgr]], nextConfig);
