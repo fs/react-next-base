@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
-import WithAuth from 'lib/auth/withAuth';
-import WithAuthSecurity from 'lib/auth/withAuthSecurity';
+import withAuth from 'lib/auth/withAuth';
+import withAuthSecurity from 'lib/auth/withAuthSecurity';
 import { withApolloClient } from 'lib/withApolloClient';
 import { useActivity } from 'lib/apollo/hooks/state/activity';
 import parseApolloError from 'lib/apollo/parseApolloError';
@@ -97,4 +97,4 @@ const Activity = () => {
   );
 };
 
-export default withApolloClient(WithAuth(WithAuthSecurity(Activity)));
+export default withApolloClient(withAuth(withAuthSecurity(Activity)));

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { SIGNIN } from 'config/routes';
 
-const WithAuthSecurity = (Page) =>
+const withAuthSecurity = (Page) =>
   class WithAuthSecurityClass extends Component {
     static async getInitialProps(context) {
       const { req, res, accessTokenManager } = context;
@@ -22,4 +22,4 @@ const WithAuthSecurity = (Page) =>
     }
   };
 
-export default WithAuthSecurity;
+export default withAuthSecurity;
