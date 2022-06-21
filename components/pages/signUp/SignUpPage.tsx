@@ -1,10 +1,7 @@
-import Router from 'next/router';
-
 import { withApolloClient } from 'lib/withApolloClient';
-import WithAuth from 'lib/auth/withAuth';
-import { PageContext } from 'types/pageContextInterfaces';
+import withAuth from 'lib/auth/withAuth';
+import withRedirectIfLoggedIn from 'lib/auth/withRedirectIfLoggedIn';
 
-import { HOME } from 'config/routes';
 import { NotifierProvider } from 'contexts/NotifierContext';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
@@ -27,16 +24,4 @@ const SignUpPage = () => {
   );
 };
 
-SignUpPage.getInitialProps = ({ res, accessTokenManager }: PageContext) => {
-  if (accessTokenManager?.accessToken) {
-    if (res) {
-      res.writeHead(302, { Location: HOME });
-      res.end();
-    } else {
-      Router.push(HOME);
-    }
-  }
-  return {};
-};
-
-export default withApolloClient(WithAuth(SignUpPage));
+export default withApolloClient(withAuth(withRedirectIfLoggedIn(SignUpPage)));

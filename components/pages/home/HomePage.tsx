@@ -1,4 +1,4 @@
-import WithAuth from 'lib/auth/withAuth';
+import withAuth from 'lib/auth/withAuth';
 import { withApolloClient } from 'lib/withApolloClient';
 
 import DefaultTemplate from 'components/shared/templates/DefaultTemplate';
@@ -20,4 +20,4 @@ const HomePage = () => {
   );
 };
 
-export default withApolloClient(WithAuth(HomePage));
+export default withApolloClient(withAuth(HomePage));
