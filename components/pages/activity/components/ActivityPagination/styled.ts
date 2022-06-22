@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { component as LeftPointer } from 'public/images/icons/left-pointer.svg';
-import { component as RightPointer } from 'public/images/icons/right-pointer.svg';
+import LeftPointer from 'public/images/icons/left-pointer.svg';
+import RightPointer from 'public/images/icons/right-pointer.svg';
 
 export const Wrapper = styled.div`
   display: flex;

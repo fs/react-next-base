@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { component as LogoIcon } from 'public/images/logo.svg';
+import LogoIcon from 'public/images/logo.svg';
 
 const Logo = (): JSX.Element => (
   <Link href="/" passHref>
