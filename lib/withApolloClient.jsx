@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import fetch from 'isomorphic-unfetch';
 
@@ -186,10 +185,6 @@ function withApollo(PageComponent, { ssr = true } = {}) {
             console.error('Error while running `getDataFromTree`', error);
           }
         }
-
-        // getDataFromTree does not call componentWillUnmount
-        // head side effect therefore need to be cleared manually
-        Head.rewind();
       }
 
       return {
