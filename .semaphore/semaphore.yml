@@ -34,7 +34,7 @@ global_job_config:
     commands:
       - checkout
 
-      # restore cache for nvm, yarn and node_modeles
+      # restore cache for nvm, yarn and node_modules
       - cache restore
       - nvm use
 blocks:
