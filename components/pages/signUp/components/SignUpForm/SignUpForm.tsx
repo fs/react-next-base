@@ -71,7 +71,7 @@ const SignUpForm = () => {
         component={SignUpFormContent}
         validationSchema={SignUpValidationSchema}
       />
-      {signUpResult.loading && <Loader testId="signin-loader">Loading...</Loader>}
+      {signUpResult.loading && <Loader testId="signup-loader">Loading...</Loader>}
     </>
   );
 };

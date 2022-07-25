@@ -8,7 +8,7 @@ import SignUpForm from './SignUpForm';
 
 jest.mock('lib/apollo/hooks/actions/useSignUp');
 
-describe('SignInForm', () => {
+describe('SignUpForm', () => {
   let signUp;
   let signUpState;
 
@@ -80,6 +80,6 @@ describe('SignInForm', () => {
     fireEvent.click(screen.getByTestId('submit-button'));
 
     // Assert
-    expect(screen.getByTestId('signin-loader')).toBeInTheDocument();
+    expect(screen.getByTestId('signup-loader')).toBeInTheDocument();
   });
 });
