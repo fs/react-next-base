@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const PageContent = styled.div(
+export const PageContent = styled.main(
   ({ theme: { down, breakpoints } }) =>
     css`
       padding: 2rem 1rem;
